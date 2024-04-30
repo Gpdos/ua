@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.main-content {
+    display: flex;
+    padding: 20px;
+}
+
+.settings-menu {
+    flex-basis: 20%;
+    background-color: #204060;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.settings-details {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
