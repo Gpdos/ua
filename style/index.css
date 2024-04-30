@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+main {
+    padding: 20px;
+}
+
+.carousel h2 {
+    background-color: #204060;
+    color: white;
+    padding: 10px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 200px;
+    padding: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.rating {
+    color: gold;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.category {
+    background-color: #204060;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
