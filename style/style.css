@@ -21,7 +21,8 @@ div {
 
 body {
     font-family: Helvetica, sans-serif;
-    background-color: #F5F5DC;
+    background: linear-gradient(to bottom, #1E5E99, #737373);
+    height: 100vh;
 }
 
 
@@ -29,14 +30,14 @@ body {
 /* //////////////////////////// */
 
 /* HEADER */
-/*
+
 header{
     justify-content: space-around;
     display: flex;
-    
+    height: fit-content;
     padding-block: 20px;
     padding-inline: 15px;
-}*/
+}
 
 #izq{
     float: left;
@@ -75,7 +76,7 @@ header{
     text-shadow:2px 2px 4px rgb(56, 56, 56);
     line-height: 10px;
 }
-/*
+
 ul {
     display: none;
 }
@@ -83,11 +84,12 @@ ul {
 input:checked~ul {
     display: block;
 }
-
+/*---------------------------------Esto hazlo por id y luego manda foto----------------------------------*/
+/*
 input {
     display: none;
-}*/
-/*
+}
+
 label {
     box-sizing: border-box;
     display: inline-block;
@@ -100,7 +102,7 @@ label {
     font-size: 55px;
     text-align: center;
     user-select: none;
-}
+}*/
 
 li {
     display: block;
@@ -110,7 +112,7 @@ li {
     width:fit-content;
     list-style: none;
     border-bottom: 1px solid grey;
-}*/
+}
 
 
 /* _HEADER_ */
