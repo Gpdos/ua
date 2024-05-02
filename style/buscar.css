@@ -35,28 +35,46 @@ nav a {
 }
 
 .filters {
-    flex-basis: 20%;
-    background-color: #204060;
-    padding: 10px;
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-    height: fit-content;
+    display: flex;            /* Habilita Flexbox */
+    flex-direction: column;   /* Alinea los hijos en columnas (verticalmente) */
+    align-items: flex-start;  /* Alinea los items al inicio de la dirección transversal (izquierda) */
+    justify-content: flex-start; /* Alinea los items al inicio de la dirección principal (arriba) */
+    flex-basis: 20%;          /* Base del tamaño del contenedor */
+    background-color: #003366;
+    padding: 10px;            /* Espaciado interno */
+    color: white;             /* Color del texto */
+    border-radius: 5px;       /* Borde redondeado */
+    margin-right: 20px;       /* Margen derecho */
+    height: 600px;            /* Altura fija */
+    overflow: auto;           /* Permite scroll si el contenido excede la altura */
 }
+
+.filters > div, .filters > h2, .filters > h3 {
+    width: 100%;              /* Asegura que los hijos ocupen todo el ancho disponible */
+    margin-bottom: 10px;      /* Espacio entre cada item */
+}
+
+.filters label {
+    display: block;           /* Asegura que cada label ocupe su propia línea */
+    margin-bottom: 5px;       /* Espacio después de cada label */
+}
+
+.filters input[type="checkbox"] {
+    margin-right: 5px;        /* Espacio a la derecha de cada checkbox */
+}
+
 
 .search-results {
     flex-grow: 1;
     color: white;
-    background-color: #204060;
+    background-color: #003366;
     border-radius: 5px;
     height: fit-content;
-
+    width: 800px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px;
-
-    
+    padding: 20px;  
 }
 
 .result img {
@@ -71,7 +89,7 @@ nav a {
     transition: box-shadow 0.3s ease;
     width: 20%;
 
-    flex: 0 1 30%; /* Each card will take up roughly 30% of the container's width, allowing for three cards per row */
+    flex: 0 1 30%;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease;
 }
