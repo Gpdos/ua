@@ -102,9 +102,6 @@ header nav a i {
     line-height: 10px;
 }
 
-ul {
-    display: none;
-}
 
 input:checked~ul {
     display: block;

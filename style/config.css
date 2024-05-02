@@ -1,12 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4; /* Cambio leve para un gris más claro similar al de la imagen */
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #003366;
+    background-color: #003366; /* Mantenemos este color azul oscuro */
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -15,18 +15,27 @@ header {
 }
 
 nav ul {
-    list-style: none;
+    background-color: #003366;
+
     padding: 0;
+    display: flex; /* Asegura que los elementos del nav se alineen horizontalmente */
+    align-items: center; /* Centra los elementos del nav verticalmente */
 }
 
-nav a {
+li {
+   
+    background-color: #003366;
+    color: white
+}
+
+a {
     color: white;
+   
     text-decoration: none;
-    margin: 0 15px;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 24px; /* Sin cambios aquí, ya es prominente */
 }
 
 .main-content {
@@ -34,27 +43,125 @@ nav a {
     padding: 20px;
 }
 
+
 .settings-menu {
-    flex-basis: 20%;
-    background-color: #204060;
-    padding: 10px;
+    flex-basis: 250px; /* Especificamos un ancho fijo para consistencia */
+    background-color: #003366;
+   
     color: white;
     border-radius: 5px;
     margin-right: 20px;
+    width: 100px;
+    height: fit-content;
+    display: flex; /* Añadimos flex para alinear los elementos internos */
+    flex-direction: column; /* Elementos internos en columna */
+    align-items: center; /* Centrar los elementos en el eje cruzado */
 }
 
 .settings-details {
     flex-grow: 1;
-    background-color: #ffffff;
-    padding: 10px;
+    background-color: #ffffff; /* Mantenemos el fondo blanco para detalles */
+    padding: 20px; /* Aumentamos el padding para más espacio */
     border-radius: 5px;
+    height: 600px;
+    overflow: auto; /* Añadimos auto overflow para manejar contenido excesivo */
 }
 
-form {
-    margin-top: 20px;
+.main-content {
+    
+    padding: 20px;
+    
 }
 
-form label, form select, form input {
+.profile-container { /* Contenedor para la foto y el menú de ajustes */
+    display: flex;
+    flex-direction: column; /* Organizar la foto y el menú en columna */
+    align-items: center; /* Centrar elementos horizontalmente */
+    width: 250px; /* Definir un ancho fijo para la sección lateral */
+    padding-right: 20px; /* Espaciado entre este contenedor y los detalles */
+}
+
+.settings-menu {
+    background-color: #003366; /* Color del fondo ajustado para la sección */
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    width: 200px; /* Ajusta el ancho al contenedor */
+    margin-top: 20px; /* Espacio después de la foto de perfil */
+    margin-left: 30px;
+}
+
+.settings-details, .publications {
+    flex-grow: 1;
+    background-color: #003366;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    width: 1150px;
+    margin-left: 20px; /* Espacio a la izquierda para separar del menú */
+}
+
+
+
+.publications {
+    flex-grow: 1;
+    color: white;
+    background-color: #003366;
+    border-radius: 5px;
+    height: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;  
+    margin-top: 25px; /* Espacio entre detalles y publicaciones si están en la misma columna */
+}
+
+img {
+    max-width: 100%;
+    height: 250px;
+}
+
+.result img {
+    width: 100%;
+    height: auto;
+}
+
+.card {
+    background-color: rgb(48, 188, 239);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    width: 20%;
+
+    flex: 0 1 30%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.card a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
     display: block;
-    margin-bottom: 10px;
+    padding: 10px;
+
+    
 }
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-content h2 {
+    margin-top: 0;
+}
+
+.card-content .stars {
+    color: orange;
+}
+
+

@@ -1,0 +1,12 @@
+body {
+    background-color: #000000; /* Negro */
+    color: #FFFFFF; /* Blanco */
+}
+
+header {
+    background-color: #000000; /* Negro */
+}
+
+nav a {
+    color: #FFFF00; /* Amarillo */
+}

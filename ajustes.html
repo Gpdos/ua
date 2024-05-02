@@ -3,36 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajustes</title>
-    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/ajustes.css">
+    <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
 <body>
     <header>
         <div class="logo">logo</div>
         <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#buscar">Buscar</a></li>
-                <li><a href="#publicar">Crear publicación</a></li>
-                <li><a href="#sesion">Iniciar sesión</a></li>
-            </ul>
+            <a href="index.html"><i class="icon-home-1"></i>Inicio</a>
+            <a href="buscar.html"><i class="icon-search"></i>Buscar</a>
+            <a href="nuevo.html"><i class="icon-new"></i>Crear publicación</a>
+            <a href="login.html"><i class="icon-user-plus"></i>Iniciar sesión</a>
+            <a href="ajustes.html"><i class="icon-user"></i>Mi perfil</a>
         </nav>
     </header>
     <div class="main-content">
-        <aside class="settings-menu">
-            <h2>Configuración</h2>
-            <ul>
-                <li><a href="#cuenta">Ajustes de cuenta</a></li>
-                <li><a href="#seguridad">Seguridad</a></li>
-                <li><a href="#privacidad">Privacidad</a></li>
-                <li><a href="#accesibilidad">Accesibilidad</a></li>
-                <li><a href="#sesion">Cerrar sesión</a></li>
-            </ul>
-        </aside>
+        <div class="profile-container">
+            <img src="fotos/gato.jpg" alt="Foto de perfil" class="profile-pic">
+            <aside class="settings-menu">
+                <h2>Ajustes de cuenta</h2>
+                <ul>
+                    <li><a href="#editar">Editar Perfil</a></li>
+                    <li><a href="#accesibilidad">Ajustes de Accesibilidad</a></li>
+                    <li><a href="#colecciones">Mis Colecciones</a></li>
+                    <li><a href="#cuenta">Ajustes de Cuenta</a></li>
+                    <li><a href="#seguridad">Seguridad</a></li>
+                    <li><a href="#privacidad">Privacidad</a></li>
+                    <li><a href="config.html">Accesibilidad</a></li>
+                    <li><a href="#sesion">Cerrar Sesión</a></li>
+                </ul>
+            </aside>
+        </div>
+        <div class="seccionesCen">
         <section class="settings-details">
-            <h2>Ajustes de cuenta</h2>
-            <!-- Contenido específico de los ajustes -->
+            <h2>USUARIO01</h2>
+            <p>13 publicaciones</p>
+            <p>Grado en Ingeniería Multimedia</p>
+            <p>Universidad de Alicante</p>
         </section>
+        <section class="publications">
+            <div class="card">
+                <a href="documento.html">
+                <img src="fotos/arquitectura.jpg" alt="Arquitectura" class="card-image">
+                <div class="card-content">
+                    <h2>TFG Arquitectura</h2>
+                    <p>Pepe Viyuela</p>
+                    <p>Ing. Multimedia</p>
+                    <div class="stars">
+                        <span>⭐⭐⭐</span>
+                    </div>
+                    <p>10/06/2003</p>
+                </div>
+            </a>
+            </div>
+            <div class="card">
+                <a href="documento.html">
+                <img src="fotos/arquitectura.jpg" alt="Arquitectura" class="card-image">
+                <div class="card-content">
+                    <h2>TFG Arquitectura</h2>
+                    <p>Pepe Viyuela</p>
+                    <p>Ing. Multimedia</p>
+                    <div class="stars">
+                        <span>⭐⭐⭐</span>
+                    </div>
+                    <p>10/06/2003</p>
+                </div>
+            </a>
+            </div>
+            <div class="card">
+                <a href="documento.html">
+                <img src="fotos/arquitectura.jpg" alt="Arquitectura" class="card-image">
+                <div class="card-content">
+                    <h2>TFG Arquitectura</h2>
+                    <p>Pepe Viyuela</p>
+                    <p>Ing. Multimedia</p>
+                    <div class="stars">
+                        <span>⭐⭐⭐</span>
+                    </div>
+                    <p>10/06/2003</p>
+                </div>
+            </a>
+            </div><!-- Aquí puede ir el contenido de las publicaciones del usuario -->
+        </section>
+
+    </div>
     </div>
 </body>
 </html>
