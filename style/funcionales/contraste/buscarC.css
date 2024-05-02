@@ -1,0 +1,8 @@
+.card {
+    background-color: #000000; /* Negro */
+    color: #FFFFFF; /* Blanco */
+}
+
+.card:hover {
+    background-color: #333333; /* Gris oscuro para hover */
+}

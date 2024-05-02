@@ -1,0 +1,8 @@
+.settings-menu, .settings-details {
+    background-color: #1E1E1E;
+    color: #E0E0E0;
+}
+
+.settings-menu a {
+    color: #BDBDBD; /* Gris medio para los enlaces */
+}

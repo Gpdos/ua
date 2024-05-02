@@ -1,0 +1,12 @@
+body {
+    background-color: #121212; /* Gris muy oscuro */
+    color: #E0E0E0; /* Gris claro */
+}
+
+header {
+    background-color: #1E1E1E; /* Gris oscuro */
+}
+
+nav a {
+    color: #E0E0E0; /* Gris claro */
+}
