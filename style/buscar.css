@@ -77,6 +77,13 @@ nav a {
     padding: 20px;  
 }
 
+#seccionesCen {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ajusta esto según tus necesidades */
+}
+
+
 .result img {
     width: 100%;
     height: auto;
