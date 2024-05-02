@@ -1,9 +1,9 @@
-img{
+img {
     border-radius: 10px;
 
 }
 
-div{
+div {
     border-radius: 10px;
 
 }
@@ -15,12 +15,102 @@ div{
     --blancoHueso: antiquewhite;
 }
 
-.sombra{
+.sombra {
     box-shadow: 5px 5px 10px rgb(23, 23, 23);
 }
 
-body{
+body {
     font-family: Helvetica, sans-serif;
     background-color: #F5F5DC;
 }
-  
+
+
+
+/* //////////////////////////// */
+
+/* HEADER */
+
+header{
+    justify-content: space-around;
+    display: flex;
+    /* background-color: aquamarine; */
+    padding-block: 20px;
+    padding-inline: 15px;
+}
+
+#izq{
+    float: left;
+    /* background-color: chartreuse; */
+    width: 10%;
+    display: flex;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+
+
+    img{
+        width: 80px;
+        height: 80px;
+    
+    }
+}
+#cen{
+    float: center;
+    background-color: var(--azulNormal);
+    width: 70%;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 35px;
+    text-shadow:0px 0px 5px rgba(255, 255, 255, 0.453);
+}
+#dch{
+    float: right;
+    /* background-color:darkred; */
+    width: 15%;
+    text-align: center;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 40px;
+    text-shadow:2px 2px 4px rgb(56, 56, 56);
+    line-height: 10px;
+}
+
+ul {
+    display: none;
+}
+
+input:checked~ul {
+    display: block;
+}
+
+input {
+    display: none;
+}
+
+label {
+    box-sizing: border-box;
+    display: inline-block;
+    border: 3px solid black;
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-weight: bold;
+    font-size: 55px;
+    text-align: center;
+    user-select: none;
+}
+
+li {
+    display: block;
+    background: lightgrey;
+    margin: 0;
+    padding: 10px;
+    width:fit-content;
+    list-style: none;
+    border-bottom: 1px solid grey;
+}
+
+
+/* _HEADER_ */
