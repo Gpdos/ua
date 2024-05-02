@@ -52,7 +52,7 @@ a {
     border-radius: 5px;
     margin-right: 20px;
     width: 100px;
-    height: 600px;
+    height: fit-content;
     display: flex; /* Añadimos flex para alinear los elementos internos */
     flex-direction: column; /* Elementos internos en columna */
     align-items: center; /* Centrar los elementos en el eje cruzado */
@@ -63,6 +63,7 @@ a {
     background-color: #ffffff; /* Mantenemos el fondo blanco para detalles */
     padding: 20px; /* Aumentamos el padding para más espacio */
     border-radius: 5px;
+    height: 600px;
     overflow: auto; /* Añadimos auto overflow para manejar contenido excesivo */
 }
 
@@ -115,6 +116,10 @@ a {
     margin-top: 25px; /* Espacio entre detalles y publicaciones si están en la misma columna */
 }
 
+img {
+    max-width: 100%;
+    height: 250px;
+}
 
 .result img {
     width: 100%;
