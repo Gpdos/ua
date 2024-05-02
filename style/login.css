@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #007bff, #cfd8dc);
+    background: linear-gradient(to bottom, #1E5E99, #737373);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -38,10 +38,11 @@ body {
   
   .form-group {
     margin-bottom: 20px;
-    margin-top: 50px;
+    margin-top: 100px;
     display: flex;
   align-items: center; 
   }
+
   
   .form-group img {
     width: 30px;
@@ -51,12 +52,36 @@ body {
   .form-group input[type="email"],
   .form-group input[type="password"] {
   width: calc(100% - 40px);
+  height: 40px;
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #e0f2f1;
+  background-color: #1E5E99;
   }
   
+
+  .form-group2 {
+    margin-bottom: 20px;
+    margin-top: 25px;
+    display: flex;
+  align-items: center; 
+  }
+
+  .form-group2 img {
+    width: 30px;
+    margin-right: 10px;
+  }
+
+  .form-group2 input[type="email"],
+  .form-group2 input[type="password"] {
+  width: calc(100% - 40px);
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1E5E99;
+  }
+
   .checkbox {
     display: flex;
     align-items: center;
