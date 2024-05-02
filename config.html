@@ -3,48 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Configuración</title>
-    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/config.css">
+    <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
 <body>
     <header>
         <div class="logo">logo</div>
         <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#buscar">Buscar</a></li>
-                <li><a href="#publicar">Crear publicación</a></li>
-                <li><a href="#sesion">Iniciar sesión</a></li>
-            </ul>
+            <a href="index.html"><i class="icon-home-1"></i>Inicio</a>
+            <a href="buscar.html"><i class="icon-search"></i>Buscar</a>
+            <a href="nuevo.html"><i class="icon-new"></i>Crear publicación</a>
+            <a href="login.html"><i class="icon-user-plus"></i>Iniciar sesión</a>
+            <a href="ajustes.html"><i class="icon-user"></i>Mi perfil</a>
         </nav>
     </header>
     <div class="main-content">
-        <aside class="settings-menu">
-            <h2>Configuración</h2>
-            <ul>
-                <li><a href="#cuenta">Ajustes de cuenta</a></li>
-                <li><a href="#seguridad">Seguridad</a></li>
-                <li><a href="#privacidad">Privacidad</a></li>
-                <li><a href="#accesibilidad">Accesibilidad</a></li>
-                <li><a href="#sesion">Cerrar sesión</a></li>
-            </ul>
-        </aside>
+        <div class="profile-container">
+            <img src="fotos/gato.jpg" alt="Foto de perfil" class="profile-pic">
+        
+            <aside class="settings-menu">
+                <h2>Configuración</h2>
+                <ul>
+                    <li><a href="ajustes.html">Ajustes de cuenta</a></li>
+                    <li><a href="#seguridad">Seguridad</a></li>
+                    <li><a href="#privacidad">Privacidad</a></li>
+                    <li><a href="#accesibilidad">Accesibilidad</a></li>
+                    <li><a href="#sesion">Cerrar sesión</a></li>
+                </ul>
+            </aside>
+        </div>
         <section class="settings-details">
-            <h2>Configuración</h2>
+            <h2>Opciones de Accesibilidad</h2>
             <form>
-                <label for="font-size">Tamaño de fuente</label>
+                <label for="font-size">Tamaño de fuente:</label>
                 <select id="font-size">
                     <option value="12px">12 px</option>
-                    <!-- Más opciones de tamaño -->
+                    <option value="14px">14 px</option>
+                    <option value="16px">16 px</option>
+                    <option value="18px">18 px</option>
                 </select>
-                <div>
+                
+                <fieldset>
+                    <legend>Estilo visual:</legend>
                     <input type="radio" id="default-style" name="style" checked>
                     <label for="default-style">Por defecto</label>
                     <input type="radio" id="night-mode" name="style">
                     <label for="night-mode">Modo noche</label>
                     <input type="radio" id="high-contrast" name="style">
                     <label for="high-contrast">Alto contraste</label>
-                </div>
+                    <input type="radio" id="read-mode" name="style">
+                    <label for="read-mode">Modo lectura (sin distracciones)</label>
+                </fieldset>
+                <p>En nuestra página, estamos comprometidos con la accesibilidad y hemos implementado varias características para asegurar que todos los usuarios puedan navegar eficientemente y con comodidad:</p>
+    <ul>
+        <li><strong>Colores con Alto Contraste:</strong> Nuestra interfaz utiliza una paleta de colores con alto contraste para mejorar la legibilidad para usuarios con visión reducida.</li>
+        <li><strong>Resalto de Secciones al Pasar el Ratón:</strong> Las secciones importantes de la página se resaltan cuando el usuario pasa el ratón por encima, facilitando la identificación de áreas interactivas.</li>
+        <li><strong>Modo Noche:</strong> Ofrecemos un modo noche que reduce la luminosidad de la pantalla para disminuir la fatiga ocular en ambientes de baja luz.</li>
+        <li><strong>Modo de Alto Contraste:</strong> Además del esquema de colores por defecto, los usuarios pueden seleccionar un modo de alto contraste que aumenta la diferencia entre el fondo y el texto.</li>
+        <li><strong>Modo Lectura:</strong> Esta opción permite a los usuarios disfrutar de una vista simplificada de nuestra página, eliminando elementos distractores y centrando el contenido en el texto principal.</li>
+        <li><strong>Opciones de Tamaño de Fuente:</strong> Los usuarios pueden ajustar el tamaño de la fuente desde nuestra página de configuración, lo que facilita la lectura a quienes necesitan tamaños de letra más grandes.</li>
+    </ul>
+                
             </form>
         </section>
     </div>

@@ -1,0 +1,8 @@
+.settings-menu, .settings-details {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.settings-menu a {
+    color: #FFFF00; /* Amarillo */
+}

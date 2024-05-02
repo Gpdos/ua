@@ -15,10 +15,10 @@ body {
   
   .login-container {
     margin-top: 50px; /* Agrega un margen superior de 50px */
-    background: linear-gradient(to bottom, #0f3057, #26a0da);
+    background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     position: relative;
     width: 450px;
     height: 400px;
@@ -72,8 +72,12 @@ body {
     margin-right: 10px;
   }
 
+  .form-group input[type="email"],
+  .form-group input[type="password"],
   .form-group2 input[type="email"],
   .form-group2 input[type="password"] {
+  color: white;
+  font-size: 20px;
   width: calc(100% - 40px);
   height: 40px;
   padding: 10px;
@@ -86,6 +90,10 @@ body {
     display: flex;
     align-items: center;
   }
+
+  .checkbox label {
+    color: white;
+  }
   
   .checkbox input[type="checkbox"] {
     margin-right: 10px;
@@ -96,15 +104,26 @@ body {
     text-decoration: none;
     color: white;
   }
+
+  .checkbox a {
+    color: white; /* Color del enlace */
+    text-decoration: underline; /* Subrayado del enlace */
+  }
+  
+  .checkbox a:hover {
+    color: lightblue; /* Color al pasar el ratón sobre el enlace */
+  }
   
   .login-btn {
     background-color: #0f3057;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 20px 40px;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    font-size: 30px;
+    margin-top: 40px;
   }
   
   .login-btn:hover {
@@ -123,3 +142,18 @@ body {
     z-index: -1; /* Mueve el círculo detrás de los demás elementos */
   }
   
+
+  .register-link {
+    text-align: center; /* Centra el texto */
+    margin-top: 40px; /* Espacio superior */
+    color:white; /* Color del texto */
+  }
+  
+  .register-link a {
+    color: white; /* Color del enlace */
+    text-decoration: underline; /* Subrayado del enlace */
+  }
+  
+  .register-link a:hover {
+    color: #86c1ff; /* Color al pasar el ratón sobre el enlace */
+  }
