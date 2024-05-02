@@ -29,14 +29,14 @@ body {
 /* //////////////////////////// */
 
 /* HEADER */
-
+/*
 header{
     justify-content: space-around;
     display: flex;
-    /* background-color: aquamarine; */
+    
     padding-block: 20px;
     padding-inline: 15px;
-}
+}*/
 
 #izq{
     float: left;
@@ -75,7 +75,7 @@ header{
     text-shadow:2px 2px 4px rgb(56, 56, 56);
     line-height: 10px;
 }
-
+/*
 ul {
     display: none;
 }
@@ -86,8 +86,8 @@ input:checked~ul {
 
 input {
     display: none;
-}
-
+}*/
+/*
 label {
     box-sizing: border-box;
     display: inline-block;
@@ -110,7 +110,7 @@ li {
     width:fit-content;
     list-style: none;
     border-bottom: 1px solid grey;
-}
+}*/
 
 
 /* _HEADER_ */
