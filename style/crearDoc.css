@@ -16,6 +16,14 @@ main{
     height: auto;
     padding: 5px;
     background-color: var(--azulOscuro);
+    h2{
+        color: white;
+        margin-left: 40px;
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+
+
     /* margin-right: 5px; */
 }
 
@@ -29,6 +37,18 @@ main{
 #publicacion{
     /* background-color: violet; */
     padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    i{
+        color: white;
+        margin-left: 770px;
+        margin-top: 335px;
+        /* margin-right: 45px; */
+        font-size: 100px;
+    }
 
 }
 
@@ -91,8 +111,16 @@ main{
     justify-content: space-around;
     background-color: var(--azulOscuro);
     padding: 8px;
-    div > div{
+    /* div > div{
         margin: 10px;
-    }
+    } */
 }
 
+.editar_datos{
+    display: flex;
+    height: 32px;
+    margin-block: 5px;
+    p{
+        margin-right: 40px;
+    }
+}

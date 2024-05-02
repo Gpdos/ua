@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>publicacion</title>
-    <link rel="stylesheet" href="style/documento.css">
+    <link rel="stylesheet" href="style/crearDoc.css">
     <!-- <link rel="stylesheet" href="style/style.css"> -->
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
@@ -53,23 +53,8 @@
             <h2>Titulo publicacion</h2>
 
             <div id="publicacion">
-                <div id="publicacion_arr">
-                    <img src="fotos/gato.jpg" alt="Imagen publicacion" class="sombra">
-                    <div id="descripcion" class="sombra">
-                        <p>Descripcion</p>
-                        <p>Valoracion media:</p>
-                        <div class="stars">
-                            <span>⭐⭐⭐</span>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div id="publicacion_abj">
-                    <img src="fotos/gato.jpg" alt="Imagen publicacion" class="sombra">
-                    <img src="fotos/gato.jpg" alt="Imagen publicacion" class="sombra">
-                    <img src="fotos/gato.jpg" alt="Imagen publicacion" class="sombra">
-                    <img src="fotos/gato.jpg" alt="Imagen publicacion" class="sombra">
-                </div>
+                
+                <i class="fa-regular fa-folder-open"></i>
             </div>
 
         </div>
@@ -90,16 +75,29 @@
             </div>
             <div id="body_abj">
                 <div id="contenedorTexto">
-                    <p>Autor: Pepe Viyuela</p>
-                    <p>Estudio: Ingeniería Multimedia</p>
-                    <p>Tipo de recurso: TFG</p>
-                    <p>Fecha de publicacion: 21/7/1989</p>
-                    <p>Bibliografia: </p>
-                    <ul>
-                        <li>Esto</li>
-                        <li>Lo otro</li>
-                        <li>Lo de más allá </li>
-                    </ul>
+                    <div class="editar_datos">
+                        <p>Autor:</p>
+                        <textarea name="textarea" rows="1" cols="30">Autor...</textarea>
+                    </div>
+                    <div class="editar_datos">
+                        <p>Estudio:</p>
+                        <textarea name="textarea" rows="1" cols="30">Estudio...</textarea>
+                    </div>
+
+                    <div class="editar_datos">
+                        <p>Tipo de recurso:</p>
+                        <textarea name="textarea" rows="1" cols="30">Tipo de recurso...</textarea>
+                    </div>
+
+                    <div class="editar_datos">
+                        <p>Fecha de publicacion:</p>
+                        <textarea name="textarea" rows="1" cols="30">Fecha de publicacion...</textarea>
+                    </div>
+
+                    <div class="editar_datos">
+                        <p>Bibliografia:</p>
+                        <textarea name="textarea" rows="1" cols="30">Bibliografia...</textarea>
+                    </div>
                 </div>
 
             </div>
