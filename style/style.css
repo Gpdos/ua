@@ -1,0 +1,26 @@
+img{
+    border-radius: 10px;
+
+}
+
+div{
+    border-radius: 10px;
+
+}
+
+:root {
+    --main-bg-color: brown;
+    --azulOscuro: #003366;
+    --azulNormal: #336699;
+    --blancoHueso: antiquewhite;
+}
+
+.sombra{
+    box-shadow: 5px 5px 10px rgb(23, 23, 23);
+}
+
+body{
+    font-family: Helvetica, sans-serif;
+    background-color: #F5F5DC;
+}
+  
