@@ -46,7 +46,6 @@ footer {
 header{
     background-color: #003366;
     color: white;
-    /* padding: 10px 20px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -119,6 +118,9 @@ header nav a i {
     line-height: 10px;
 }
 
+ul {
+    display: none;
+}
 
 input:checked~ul {
     display: block;
