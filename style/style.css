@@ -32,12 +32,37 @@ body {
 /* HEADER */
 
 header{
-    justify-content: space-around;
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: fit-content;
     padding-block: 20px;
     padding-inline: 15px;
 }
+
+/* Estilos base para los enlaces en el nav */
+header nav a {
+    display: inline-block;  /* O puedes usar flex si los enlaces están en un flex container */
+    padding: 10px 15px;     /* Ajusta el padding según el diseño */
+    color: #ffffff;         /* Asumiendo texto blanco */
+    text-decoration: none;  /* Elimina subrayado de enlaces */
+    transition: background-color 0.3s ease; /* Transición suave del fondo */
+    border-radius: 10px;
+}
+
+/* Estilos para hover */
+header nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Color más claro en el fondo */
+}
+
+/* Opcional: estilos para los iconos si son parte de un sprite o fuente de iconos */
+header nav a i {
+    margin-right: 5px;  /* Espacio entre el icono y el texto, si necesario */
+}
+
 
 #izq{
     float: left;
