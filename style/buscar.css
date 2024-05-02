@@ -41,16 +41,75 @@ nav a {
     color: white;
     border-radius: 5px;
     margin-right: 20px;
+    height: fit-content;
 }
 
 .search-results {
     flex-grow: 1;
-    background-color: #ffffff;
-    padding: 10px;
+    color: white;
+    background-color: #204060;
     border-radius: 5px;
+    height: fit-content;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+
+    
 }
 
 .result img {
     width: 100%;
     height: auto;
+}
+
+.card {
+    background-color: rgb(48, 188, 239);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    width: 20%;
+
+    flex: 0 1 30%; /* Each card will take up roughly 30% of the container's width, allowing for three cards per row */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.card a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+
+    
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-content h2 {
+    margin-top: 0;
+}
+
+.card-content .stars {
+    color: orange;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .filters,
+    .search-results {
+        width: 100%;
+    }
 }
