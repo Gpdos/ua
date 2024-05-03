@@ -22,6 +22,7 @@ main {
     /* background-color: yellow; */
 }
 
+
 #div_arr {
     width: auto;
     height: 66%;
@@ -50,6 +51,12 @@ main {
         padding-left: 30px;
         line-height: 0;
         color: white;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+    
     }
 }
 
@@ -87,6 +94,12 @@ main {
             color: white;
             text-shadow: 1px 1px 8px black;
         }
+    }
+
+    a{
+        text-decoration: none;
+        color: white;
+    
     }
 }
 
