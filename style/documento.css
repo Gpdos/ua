@@ -99,3 +99,8 @@ header {
     }
 }
 
+#titulo{
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+}
