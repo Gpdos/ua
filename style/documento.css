@@ -9,6 +9,9 @@ main{
     display: flex;
     justify-content: space-around;
 }
+header {
+    margin-bottom: 20px; /* Adjust the value as needed */
+}
 
 #body_izq{
     float: left;
