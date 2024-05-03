@@ -72,11 +72,17 @@ label {
     cursor: pointer;
     width: 100%;
     font-size: 30px;
-  }
+}
 
 .registro-btn:hover {
     background-color: #007bff;
 }
+
+.registro-btn a {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
 
 .login-link {
     margin-top: 20px;

@@ -1,0 +1,158 @@
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+nav {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.container {
+    display: flex;
+}
+
+.left-container,
+.right-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.guardados {
+    background-color: #092239;
+    color: white;
+    padding: 20px;
+    height: auto; /* Ajusta automáticamente la altura del contenedor según su contenido */
+    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado largo */
+}
+
+
+.card {
+    background-color: #BDD8FF; /* Cambiar color de fondo */
+    border-radius: 5px;
+    margin-top: 20px; /* Mantener el margen superior entre las tarjetas */
+    margin-right: 10px; /* Agregar margen derecho para espacio entre tarjetas */
+    width: calc(33.33% - 10px); /* Calcula el ancho de la tarjeta considerando 3 en una fila */
+    float: left; /* Hacer que las tarjetas floten a la izquierda */
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Estilos adicionales para las nuevas tarjetas */
+.card:nth-child(n+3) {
+    clear: left; /* Asegura que las nuevas tarjetas comiencen en una nueva fila */
+}
+
+.card-wrapper {
+    padding: 20px; /* Aumentar el espacio interno */
+}
+
+.card-image {
+    width: 150px; /* Cambiar el ancho de la imagen */
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.card-content h2 {
+    margin-top: 10px; /* Ajustar margen superior del título */
+    margin-bottom: 5px; /* Ajustar margen inferior del título */
+    font-size: 18px;
+}
+
+.card-content p {
+    margin: 5px 0;
+    font-size: 13px; /* Ajustar tamaño de fuente del autor, carrera y fecha */
+}
+
+.stars {
+    margin-top: 5px;
+}
+
+.stars span {
+    font-size: 20px;
+}
+
+
+/* Estilos para el contenedor derecho */
+.right-container {
+    background-color: #092239; /* Color de fondo del contenedor derecho */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white; /* Color del texto */
+    padding: 20px; /* Espaciado interno */
+    flex: 1; /* Ocupa todo el espacio disponible */
+}
+
+/* Estilos para el título de las colecciones */
+.colecciones {
+    background-color: #092239;
+    color: white;
+    padding: 10px;
+    height: auto; /* Ajusta automáticamente la altura del contenedor según su contenido */
+    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado largo */
+}
+
+.right-container {
+    /* Estilos existentes del contenedor derecho */
+    position: relative; /* Necesario para el posicionamiento absoluto */
+}
+
+.rectangulo {
+    background-color: #BDD8FF; /* Color del rectángulo */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 0; /* Ubicación superior */
+    left: 0; /* Ubicación izquierda */
+    width: 100%; /* Ancho igual al contenedor derecho */
+    padding: 20px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluir el padding en el ancho */
+    z-index: 1; /* Asegura que esté encima del contenido del contenedor */
+    display: flex;
+}
+
+.rectangulo2 {
+    background-color: #BDD8FF; /* Color del rectángulo */
+    margin-top: 300px;
+    top: 0; /* Ubicación superior */
+    left: 0; /* Ubicación izquierda */
+    width: 100%; /* Ancho igual al contenedor derecho */
+    padding: 20px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluir el padding en el ancho */
+    z-index: 1; /* Asegura que esté encima del contenido del contenedor */
+    display: flex;
+}
+
+.card {
+    background-color: #fff; /* Color de fondo de los cards */
+    border-radius: 5px; /* Borde redondeado */
+    margin-bottom: 20px; /* Espacio entre cards */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra */
+    margin-right: 10px;
+}
+
+.cards-container {
+    display: flex; /* Mostrar los cards en una fila */
+    flex-wrap: wrap; /* Permitir que los cards se envuelvan si no caben en una sola fila */
+    justify-content: space-between; /* Distribuir los cards de manera uniforme a lo largo del contenedor */
+}
+
+.coleccion-titulo {
+    font-size: 20px; /* Tamaño de fuente del título */
+    color: black; /* Cambiar el color de la fuente a negro */
+    margin-bottom: 10px; /* Espacio inferior entre el título y los cards */
+}
+
+.guardados-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+
