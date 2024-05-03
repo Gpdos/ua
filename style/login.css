@@ -7,14 +7,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  .container {
+.container {
     position: relative;
-  }
+}
   
-  .login-container {
-    margin-top: 50px; /* Agrega un margen superior de 50px */
+.login-container {
+    margin-top: 50px;
     background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
     border-radius: 10px;
     padding: 20px;
@@ -22,99 +22,89 @@ body {
     position: relative;
     width: 450px;
     height: 400px;
-  }
+}
   
-  .login-header {
+.login-header {
     position: absolute;
     top: -50px;
     left: 50%;
     transform: translateX(-50%);
-  }
+}
   
-  .login-header img {
+.login-header img {
     width: 150px;
-  }
+}
   
-  
-  .form-group {
+.form-group {
     margin-bottom: 20px;
     margin-top: 100px;
     display: flex;
-  align-items: center; 
-  }
-
+    align-items: center; 
+}
   
-  .form-group img {
+.form-group img {
     width: 30px;
     margin-right: 10px;
-  }
-
-  .form-group input[type="email"],
-  .form-group input[type="password"] {
-  width: calc(100% - 40px);
-  height: 40px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #1E5E99;
-  }
+}
   
-
-  .form-group2 {
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: calc(100% - 40px);
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1E5E99;
+    color: white; /* Color del texto */
+    font-size: 20px;
+}
+  
+.form-group2 {
     margin-bottom: 20px;
     margin-top: 25px;
     display: flex;
-  align-items: center; 
-  }
-
-  .form-group2 img {
+    align-items: center; 
+}
+  
+.form-group2 img {
     width: 30px;
     margin-right: 10px;
-  }
-
-  .form-group input[type="email"],
-  .form-group input[type="password"],
-  .form-group2 input[type="email"],
-  .form-group2 input[type="password"] {
-  color: white;
-  font-size: 20px;
-  width: calc(100% - 40px);
-  height: 40px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #1E5E99;
-  }
-
-  .checkbox {
+}
+  
+.form-group2 input[type="email"],
+.form-group2 input[type="password"] {
+    width: calc(100% - 40px);
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1E5E99;
+    color: white; /* Color del texto */
+    font-size: 20px;
+}
+  
+.checkbox {
     display: flex;
     align-items: center;
-  }
-
-  .checkbox label {
-    color: white;
-  }
+    color: white; /* Color del texto */
+}
   
-  .checkbox input[type="checkbox"] {
+.checkbox label {
     margin-right: 10px;
-  }
+}
   
-  .checkbox a {
+.checkbox a {
     margin-left: auto;
     text-decoration: none;
-    color: white;
-  }
-
-  .checkbox a {
-    color: white; /* Color del enlace */
-    text-decoration: underline; /* Subrayado del enlace */
-  }
+    color: white; /* Color del texto */
+}
   
-  .checkbox a:hover {
+.checkbox a:hover {
     color: lightblue; /* Color al pasar el ratón sobre el enlace */
-  }
+    text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
+}
   
-  .login-btn {
+.login-btn {
     background-color: #0f3057;
     color: white;
     border: none;
@@ -124,36 +114,42 @@ body {
     width: 100%;
     font-size: 30px;
     margin-top: 40px;
-  }
-  
-  .login-btn:hover {
-    background-color: #007bff;
-  }
-  
-  .circle {
-    position: absolute;
-    width: 106px; /* Ajusta el tamaño del círculo según sea necesario */
-    height: 106px; /* Ajusta el tamaño del círculo según sea necesario */
-    border-radius: 50%;
-    background: linear-gradient(to right, #007bff, #cfd8dc); /* Mismo degradado que el fondo */
-    bottom: 25px; /* Ajusta la posición vertical del círculo */
-    left: 50%;
-    transform: translateX(-50%); /* Centra el círculo horizontalmente */
-    z-index: -1; /* Mueve el círculo detrás de los demás elementos */
-  }
-  
+    text-decoration: none; /* Elimina el subrayado del texto */
+}
 
-  .register-link {
-    text-align: center; /* Centra el texto */
-    margin-top: 40px; /* Espacio superior */
-    color:white; /* Color del texto */
-  }
+.login-btn:hover {
+    background-color: #007bff;
+}
+
+.login-btn a {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
   
-  .register-link a {
+.circle {
+    position: absolute;
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #007bff, #cfd8dc);
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+  
+.register-link {
+    text-align: center;
+    margin-top: 40px;
+    color: white; /* Color del texto */
+}
+  
+.register-link a {
     color: white; /* Color del enlace */
     text-decoration: underline; /* Subrayado del enlace */
-  }
+}
   
-  .register-link a:hover {
+.register-link a:hover {
     color: #86c1ff; /* Color al pasar el ratón sobre el enlace */
-  }
+}
