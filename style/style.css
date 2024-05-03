@@ -42,6 +42,7 @@ header{
     height: fit-content;
     padding-block: 20px;
     padding-inline: 15px;
+    margin-bottom: 10px;
 }
 
 /* Estilos base para los enlaces en el nav */
