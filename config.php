@@ -15,35 +15,55 @@
 <body>
     <header>
         <div id="izq">
-            <nav>
-                <input type="checkbox" id="menu">
-                <label for="menu"><i class="fa-solid fa-bars" id="label_header"></i></label>
-                <ul id="ul_menu">
-                    <li class="link_menu">Link 1</li>
-                    <li class="link_menu">Link 2</li>
-                    <li class="link_menu">Link 3</li>
-                    <li class="link_menu">Link 4</li>
-                </ul>
-            </nav>
-
+        
             <img src="fotos/gato.jpg" alt="logo" id="logo">
 
+            <!-- Menú desplegable -->
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-bars"></i></button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-user"></i> Mi Perfil</a>
+                    <a href="colecciones.php"><i class="fas fa-folder"></i> Mis Colecciones</a>
+                    <a href="ajustes.php"><i class="fas fa-cog"></i> Configuración</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
+                </div>
+            </div>
         </div>
 
         <div id="cen">
-            <i class="fa-solid fa-house"></i>
+            <a href="index.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-house"></i>
+                <span style="display: block; font-size: 12px;">Inicio</span>
+            </a>
 
-            <i class="fa-solid fa-compass"></i>
+            <a href="buscar.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-compass"></i>
+                <span style="display: block; font-size: 12px;">Buscar</span>
+            </a>
 
-            <i class="fa-solid fa-user"></i>
+            <a href="subidos.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-file-alt"></i>
+                <span style="display: block; font-size: 12px;">Mis archivos</span>
+            </a>
 
-            <i class="fa-solid fa-plus"></i>
+
+            <a href="crearDoc.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-plus"></i>
+                <span style="display: block; font-size: 12px;">Nuevo</span>
+            </a>
+
+            <a href="login.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-sign-in-alt"></i>
+                <span style="display: block; font-size: 12px;">Cerrar Sesión</span>
+            </a>
 
         </div>
+
         <div id="dch">
             <p>Mosaicua</p>
         </div>
     </header>
+
     <div class="main-content">
         <div class="profile-container">
             <img src="fotos/gato.jpg" alt="Foto de perfil" class="profile-pic">
@@ -51,7 +71,7 @@
             <aside class="settings-menu">
                 <h2>Configuración</h2>
                 <ul>
-                    <li><a href="ajustes.html">Ajustes de cuenta</a></li>
+                    <li><a href="ajustes.php">Ajustes de cuenta</a></li>
                     <li><a href="#seguridad">Seguridad</a></li>
                     <li><a href="#privacidad">Privacidad</a></li>
                     <li><a href="#accesibilidad">Accesibilidad</a></li>
@@ -94,5 +114,10 @@
             </form>
         </section>
     </div>
+
+    <footer>
+        <p>© 2024 Mosaícoa. Todos los derechos reservados.</p>
+    </footer>
+    
 </body>
 </html>

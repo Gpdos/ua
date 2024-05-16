@@ -142,9 +142,10 @@ header nav a i {
     height: 80px;
     line-height: 80px;
     font-weight: bold;
-    font-size: 55px;
     text-align: center;
     user-select: none;
+    font-size: 54px; /* Tamaño de las rayas */
+
 }
 
 .link_menu {
@@ -158,4 +159,49 @@ header nav a i {
 }
 
 
-/* _HEADER_ */
+
+.fa-solid {
+    color: white !important;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent; /* Color de fondo del botón */
+    color: black; /* Color del texto del botón */
+    font-size: 40px; /* Tamaño del texto del botón */
+    border: none; /* Borde del botón */
+    cursor: pointer; /* Cursor al pasar sobre el botón */
+    padding: 15px; /* Espaciado interno del botón */
+}
+
+/* Estilos para el contenido del menú desplegable */
+.dropdown-content {
+    display: none; /* Ocultar el contenido por defecto */
+    position: absolute; /* Posición absoluta para superponer */
+    background-color: #f9f9f9; /* Color de fondo del contenido */
+    min-width: 200px; /* Ancho mínimo del contenido */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra del contenido */
+    z-index: 1; /* Z-index para estar sobre otros elementos */
+}
+
+.dropdown-content a {
+    color: black; /* Color del texto de los enlaces */
+    padding: 20px; /* Espaciado interno de los enlaces */
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+    display: block; /* Mostrar en bloque para ocupar todo el ancho */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar sobre los enlaces */
+}
+
+/* Mostrar el contenido cuando se pasa el ratón sobre el botón */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+

@@ -17,45 +17,54 @@
 <body>
     <header>
         <div id="izq">
-            <nav>
-                <input type="checkbox" id="menu">
-                <label for="menu"><i class="fa-solid fa-bars" id="label_header"></i></label>
-                <ul id="ul_menu">
-                    <li class="link_menu">Link 1</li>
-                    <li class="link_menu">Link 2</li>
-                    <li class="link_menu">Link 3</li>
-                    <li class="link_menu">Link 4</li>
-                </ul>
-            </nav>
-
+        
             <img src="fotos/gato.jpg" alt="logo" id="logo">
 
+            <!-- Menú desplegable -->
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-bars"></i></button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-user"></i> Mi Perfil</a>
+                    <a href="colecciones.php"><i class="fas fa-folder"></i> Mis Colecciones</a>
+                    <a href="ajustes.php"><i class="fas fa-cog"></i> Configuración</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
+                </div>
+            </div>
         </div>
 
         <div id="cen">
-            <i class="fa-solid fa-house"></i>
+            <a href="index.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-house"></i>
+                <span style="display: block; font-size: 12px;">Inicio</span>
+            </a>
 
-            <i class="fa-solid fa-compass"></i>
+            <a href="buscar.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-compass"></i>
+                <span style="display: block; font-size: 12px;">Buscar</span>
+            </a>
 
-            <i class="fa-solid fa-user"></i>
+            <a href="subidos.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-file-alt"></i>
+                <span style="display: block; font-size: 12px;">Mis archivos</span>
+            </a>
 
-            <i class="fa-solid fa-plus"></i>
+
+            <a href="crearDoc.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-plus"></i>
+                <span style="display: block; font-size: 12px;">Nuevo</span>
+            </a>
+
+            <a href="login.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-sign-in-alt"></i>
+                <span style="display: block; font-size: 12px;">Cerrar Sesión</span>
+            </a>
 
         </div>
+
         <div id="dch">
             <p>Mosaicua</p>
         </div>
     </header>
-<header>
-    <div class="logo">logo</div>
-    <nav>
-        <a href="index.html"><i class="icon-home-1"></i>Inicio</a>
-        <a href="buscar.html"><i class="icon-search"></i>Buscar</a>
-        <a href="nuevo.html"><i class="icon-new"></i>Crear publicación</a>
-        <a href="login.html"><i class="icon-user-plus"></i>Iniciar sesión</a>
-        <a href="ajustes.html"><i class="icon-user"></i>Mi perfil</a>
-    </nav>
-</header>
 
 <div class="container">
     <div class="tabs">
@@ -70,7 +79,7 @@
 <div class="group-works">
     <h3>Trabajos en grupo:</h3>
     <div class="carousel">
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -82,7 +91,7 @@
         </a>
 
         <!-- Más trabajos aquí -->
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -94,7 +103,7 @@
         </a>
         <!-- Más trabajos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -106,7 +115,7 @@
         </a>
         <!-- Más trabajos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -126,7 +135,7 @@
 <div class="group-works model-3d">
     <h3>Modelos 3D:</h3>
     <div class="carousel">
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -138,7 +147,7 @@
         </a>
         <!-- Más modelos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -150,7 +159,7 @@
         </a>
         <!-- Más modelos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -162,7 +171,7 @@
         </a>
         <!-- Más modelos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -174,7 +183,7 @@
         </a>
         <!-- Más modelos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -186,7 +195,7 @@
         </a>
         <!-- Más modelos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -198,7 +207,7 @@
         </a>
         <!-- Más modelos aquí -->
 
-        <a href="documento.html" class="work">
+        <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
                 <h4>Trabajo de botánica</h4>
@@ -211,3 +220,10 @@
         <!-- Más modelos aquí -->
     </div>
 </div>
+
+    <footer>
+        <p>© 2024 Mosaícoa. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+

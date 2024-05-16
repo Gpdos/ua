@@ -21,140 +21,121 @@ nav a {
     display: flex;
 }
 
-.left-container,
-.right-container {
+
+.left-column,
+.right-column {
     flex: 1;
+    height: 100vh; /* Establece la altura al 100% del viewport */
+    margin: 0 10px; /* Ajusta el margen horizontal dentro de cada columna */
     padding: 20px;
 }
 
-.guardados {
-    background-color: #092239;
-    color: white;
-    padding: 20px;
-    height: auto; /* Ajusta automáticamente la altura del contenedor según su contenido */
-    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado largo */
+.left-column {
+    background-color: #003366; /* Color del rectángulo izquierdo */
+    max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
+    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
+    scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
-
-.card {
-    background-color: #BDD8FF; /* Cambiar color de fondo */
-    border-radius: 5px;
-    margin-top: 20px; /* Mantener el margen superior entre las tarjetas */
-    margin-right: 10px; /* Agregar margen derecho para espacio entre tarjetas */
-    width: calc(33.33% - 10px); /* Calcula el ancho de la tarjeta considerando 3 en una fila */
-    float: left; /* Hacer que las tarjetas floten a la izquierda */
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.left-column:hover {
+    overflow-y: scroll; /* Muestra la barra de desplazamiento vertical al pasar el ratón */
 }
 
-/* Estilos adicionales para las nuevas tarjetas */
-.card:nth-child(n+3) {
-    clear: left; /* Asegura que las nuevas tarjetas comiencen en una nueva fila */
+.right-column {
+    background-color: #003366; /* Color del rectángulo derecho */
+    max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
+    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
+    scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
-.card-wrapper {
-    padding: 20px; /* Aumentar el espacio interno */
+.right-column:hover {
+    overflow-y: scroll; /* Muestra la barra de desplazamiento vertical al pasar el ratón */
 }
 
-.card-image {
-    width: 150px; /* Cambiar el ancho de la imagen */
-    height: auto;
-    border-bottom: 1px solid #ddd;
-}
-
-.card-content h2 {
-    margin-top: 10px; /* Ajustar margen superior del título */
-    margin-bottom: 5px; /* Ajustar margen inferior del título */
-    font-size: 18px;
-}
-
-.card-content p {
-    margin: 5px 0;
-    font-size: 13px; /* Ajustar tamaño de fuente del autor, carrera y fecha */
-}
-
-.stars {
-    margin-top: 5px;
-}
-
-.stars span {
-    font-size: 20px;
-}
-
-
-/* Estilos para el contenedor derecho */
-.right-container {
-    background-color: #092239; /* Color de fondo del contenedor derecho */
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: white; /* Color del texto */
-    padding: 20px; /* Espaciado interno */
-    flex: 1; /* Ocupa todo el espacio disponible */
-}
-
-/* Estilos para el título de las colecciones */
-.colecciones {
-    background-color: #092239;
-    color: white;
-    padding: 10px;
-    height: auto; /* Ajusta automáticamente la altura del contenedor según su contenido */
-    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado largo */
-}
-
-.right-container {
-    /* Estilos existentes del contenedor derecho */
-    position: relative; /* Necesario para el posicionamiento absoluto */
-}
-
-.rectangulo {
-    background-color: #BDD8FF; /* Color del rectángulo */
-    position: absolute; /* Posicionamiento absoluto */
-    top: 0; /* Ubicación superior */
-    left: 0; /* Ubicación izquierda */
-    width: 100%; /* Ancho igual al contenedor derecho */
-    padding: 20px; /* Espaciado interno */
-    box-sizing: border-box; /* Incluir el padding en el ancho */
-    z-index: 1; /* Asegura que esté encima del contenido del contenedor */
+.documents {
     display: flex;
+    flex-wrap: wrap; /* Permite que los documentos se envuelvan en varias filas */
 }
 
-.rectangulo2 {
-    background-color: #BDD8FF; /* Color del rectángulo */
-    margin-top: 300px;
-    top: 0; /* Ubicación superior */
-    left: 0; /* Ubicación izquierda */
-    width: 100%; /* Ancho igual al contenedor derecho */
-    padding: 20px; /* Espaciado interno */
-    box-sizing: border-box; /* Incluir el padding en el ancho */
-    z-index: 1; /* Asegura que esté encima del contenido del contenedor */
-    display: flex;
+.carousel-wrapper {
+    margin-bottom: 20px; /* Espacio entre los dos carruseles */
 }
 
-.card {
-    background-color: #fff; /* Color de fondo de los cards */
-    border-radius: 5px; /* Borde redondeado */
-    margin-bottom: 20px; /* Espacio entre cards */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra */
-    margin-right: 10px;
+.carousel {
+    display: flex; /* Permite que los documentos se desplacen horizontalmente */
+    overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    scroll-snap-type: x mandatory; /* Establece el desplazamiento de desplazamiento horizontal */
+    -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento fluido en iOS */
+    scroll-behavior: smooth; /* Habilita el desplazamiento suave */
+}
+/* Estilos para las colecciones */
+.collection {
+    margin-bottom: 20px; /* Espacio entre las colecciones */
+    padding: 20px; /* Espacio interior de cada colección */
+    border-radius: 8px; /* Borde redondeado para las colecciones */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para las colecciones */
+    max-width: calc(100% - 40px); /* Ancho máximo igual al ancho del contenedor menos el espacio del padding */
+    max-height: calc(100vh - 120px); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados y el padding */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+    overflow-y: auto; /* Añade una barra de desplazamiento vertical si el contenido excede la altura máxima */
 }
 
-.cards-container {
-    display: flex; /* Mostrar los cards en una fila */
-    flex-wrap: wrap; /* Permitir que los cards se envuelvan si no caben en una sola fila */
-    justify-content: space-between; /* Distribuir los cards de manera uniforme a lo largo del contenedor */
+.collection.collection-1 {
+    background-color: #dbdf6e; /* Color de fondo para la colección 1 */
 }
 
-.coleccion-titulo {
-    font-size: 20px; /* Tamaño de fuente del título */
-    color: black; /* Cambiar el color de la fuente a negro */
-    margin-bottom: 10px; /* Espacio inferior entre el título y los cards */
+.collection.collection-2 {
+    background-color: #69ca71; /* Color de fondo para la colección 2 */
 }
 
-.guardados-header {
-    display: flex;
-    justify-content: flex-end;
+.collection.collection-3 {
+    background-color: #d18dc5; /* Color de fondo para la colección 2 */
 }
 
+.collection h3 {
+    margin-top: 0; /* Elimina el margen superior del nombre de la colección */
+}
 
+/* Estilos para los documentos dentro de cada colección */
+.documents {
+    display: flex; /* Permite que los documentos se muestren en línea */
+    flex-wrap: wrap; /* Permite que los documentos se envuelvan en varias filas */
+    max-width: calc(100% - 40px); /* Ajusta el ancho máximo de los documentos al ancho del contenedor menos el espacio del padding */
+}
 
+.work {
+    flex: 0 0 calc(33.33% - 20px); /* Establece el ancho de cada documento en aproximadamente un tercio del contenedor (con espacio entre ellos) */
+    margin-right: 20px; /* Espacio entre los documentos */
+    margin-bottom: 20px; /* Espacio entre los documentos y el siguiente renglón */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: inherit; /* Hereda el color del texto */
+    max-width: calc(33.33% - 20px); /* Ajusta el ancho máximo de cada documento */
+}
 
+.work:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último documento en cada fila */
+}
+
+.work img {
+    width: 100%; /* Ajusta la imagen para que ocupe todo el ancho del contenedor */
+    border-radius: 8px; /* Borde redondeado para las imágenes */
+}
+
+.work-details {
+    padding: 10px; /* Espacio interior del contenedor de detalles del trabajo */
+    background-color: #fff; /* Color de fondo del contenedor de detalles del trabajo */
+    border-radius: 8px; /* Borde redondeado para el contenedor de detalles del trabajo */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenedor de detalles del trabajo */
+}
+
+.work-details h4 {
+    margin-top: 0; /* Elimina el margen superior del título del trabajo */
+}
+
+.work-details p {
+    margin: 5px 0; /* Espacio entre los párrafos dentro del contenedor de detalles del trabajo */
+}
+
+.documents .work.hidden {
+    display: none;
+}

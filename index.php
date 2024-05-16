@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Inicio</title>
     <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/styles.css">
+
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
 
@@ -19,35 +21,55 @@
 <body>
     <header>
         <div id="izq">
-            <nav>
-                <input type="checkbox" id="menu">
-                <label for="menu"><i class="fa-solid fa-bars" id="label_header"></i></label>
-                <ul id="ul_menu">
-                    <li class="link_menu">Link 1</li>
-                    <li class="link_menu">Link 2</li>
-                    <li class="link_menu">Link 3</li>
-                    <li class="link_menu">Link 4</li>
-                </ul>
-            </nav>
-
+        
             <img src="fotos/gato.jpg" alt="logo" id="logo">
 
+            <!-- Menú desplegable -->
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-bars"></i></button>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fas fa-user"></i> Mi Perfil</a>
+                    <a href="colecciones.php"><i class="fas fa-folder"></i> Mis Colecciones</a>
+                    <a href="ajustes.php"><i class="fas fa-cog"></i> Configuración</a>
+                    <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
+                </div>
+            </div>
         </div>
 
         <div id="cen">
-            <i class="fa-solid fa-house"></i>
+            <a href="index.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-house"></i>
+                <span style="display: block; font-size: 12px;">Inicio</span>
+            </a>
 
-            <i class="fa-solid fa-compass"></i>
+            <a href="buscar.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-compass"></i>
+                <span style="display: block; font-size: 12px;">Buscar</span>
+            </a>
 
-            <i class="fa-solid fa-user"></i>
+            <a href="subidos.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-file-alt"></i>
+                <span style="display: block; font-size: 12px;">Mis archivos</span>
+            </a>
 
-            <i class="fa-solid fa-plus"></i>
+
+            <a href="crearDoc.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-plus"></i>
+                <span style="display: block; font-size: 12px;">Nuevo</span>
+            </a>
+
+            <a href="login.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+                <i class="fa-solid fa-sign-in-alt"></i>
+                <span style="display: block; font-size: 12px;">Cerrar Sesión</span>
+            </a>
 
         </div>
+
         <div id="dch">
             <p>Mosaicua</p>
         </div>
     </header>
+
     <main>
         <div id="body_izq">
             <div class="section-header">
@@ -85,7 +107,7 @@
                 <h2 class="titulo">Recientes</h2>
 
                 <div class="card">
-                    <a href="documento.html">
+                    <a href="documento.php">
                         <img src="https://picsum.photos/600/400?random=1" alt="Arquitectura" class="card-image">
                         <div class="card-content">
                             <h2>TFG Arquitectura</h2>
@@ -99,7 +121,7 @@
 
                 </div>
                 <div class="card">
-                    <a href="documento.html">
+                    <a href="documento.php">
                         <img src="https://picsum.photos/600/400?random=2" alt="Arquitectura" class="card-image">
                         <div class="card-content">
                             <h2>TFG Arquitectura</h2>
@@ -112,7 +134,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="documento.html">
+                    <a href="documento.php">
                         <img src="https://picsum.photos/600/400?random=3" alt="Arquitectura" class="card-image">
                         <div class="card-content">
                             <h2>TFG Arquitectura</h2>
@@ -125,7 +147,7 @@
                     </a>
                 </div>
                 <div class="card">
-                    <a href="documento.html">
+                    <a href="documento.php">
                         <img src="https://picsum.photos/600/400?random=4" alt="Arquitectura" class="card-image">
                         <div class="card-content">
                             <h2>TFG Arquitectura</h2>
@@ -144,7 +166,7 @@
 
             <div id="div_abj">
                 <div>
-                    <a href="buscar.html">
+                    <a href="buscar.php">
                         <div>
                             <h2>TFG's</h2>
                         </div>
@@ -152,7 +174,7 @@
                 </div>
 
                 <div>
-                    <a href="buscar.html">
+                    <a href="buscar.php">
                         <div>
                             <h2>ABP</h2>
                         </div>
@@ -160,7 +182,7 @@
                 </div>
 
                 <div>
-                    <a href="buscar.html">
+                    <a href="buscar.php">
                         <div>
                             <h2>Memorias</h2>
                         </div>
@@ -168,7 +190,7 @@
                 </div>
 
                 <div>
-                    <a href="buscar.html">
+                    <a href="buscar.php">
                         <div>
                             <h2>Portfolio</h2>
                         </div>
@@ -176,7 +198,7 @@
                 </div>
 
                 <div>
-                    <a href="buscar.html">
+                    <a href="buscar.php">
                         <div>
                             <h2>Proyectos</h2>
                         </div>
@@ -184,7 +206,7 @@
                 </div>
 
                 <div>
-                    <a href="buscar.html">
+                    <a href="buscar.php">
                         <div>
                             <h2>Presentaciones</h2>
                         </div>

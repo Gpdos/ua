@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<link rel="stylesheet" href="style/login.css">
+<title>Registro</title>
+<link rel="stylesheet" href="style/registro.css">
 
 <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
@@ -13,11 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
-
-
 </head>
 <body>
-
+<!--
   <header>
     <div id="izq">
         <nav>
@@ -49,30 +47,36 @@
         <p>Mosaicua</p>
     </div>
 </header>
+-->
+
 <div class="container">
-  <div class="login-container">
-    <div class="login-header">
-      <img src="fotos/foto usuario.webp" alt="foto usuario">
-      <div class="circle"></div>
-    </div>
+  <h1 class="bienvenido">¡Bienvenido!</h1>
+  <p class="mensaje">Por favor, ingresa tus datos personales.</p>
+  <div class="registro-container">
     <form action="#" method="post">
       <div class="form-group">
-        <img src="fotos/perfil usuario 2.png" alt="Usuario">
-        <input type="email" name="email" placeholder="Email ID" required>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
       </div>
-      <div class="form-group2">
-        <img src="fotos/candado.png" alt="Contraseña">
-        <input type="password" name="password" placeholder="Contraseña" required>
+      <div class="form-group">
+        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
       </div>
-      <div class="checkbox">
-        <input type="checkbox" id="remember">
-        <label for="remember">Recuérdame</label>
-        <a href="#">¿Olvidaste tu contraseña?</a>
+      <div class="form-group">
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
       </div>
-      <button type="submit" class="login-btn"><a href="index.html">Iniciar Sesión</a></button>
+      <div class="form-group">
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar contraseña" required>
+      </div>
+      <div class="form-group checkbox">
+        <input type="checkbox" id="aceptar" required>
+        <label for="aceptar">Aceptar términos y condiciones</label>
+      </div>
+      <button type="submit" class="registro-btn"><a href="index.php">Registrarse</a></button>
     </form>
-    <p class="register-link">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>
   </div>
+  <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 </div>
 </body>
 </html>
