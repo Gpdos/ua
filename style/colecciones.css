@@ -70,6 +70,7 @@ nav a {
 }
 /* Estilos para las colecciones */
 .collection {
+    background-color: #4b7eaa;
     margin-bottom: 20px; /* Espacio entre las colecciones */
     padding: 20px; /* Espacio interior de cada colección */
     border-radius: 8px; /* Borde redondeado para las colecciones */
@@ -80,17 +81,6 @@ nav a {
     overflow-y: auto; /* Añade una barra de desplazamiento vertical si el contenido excede la altura máxima */
 }
 
-.collection.collection-1 {
-    background-color: #dbdf6e; /* Color de fondo para la colección 1 */
-}
-
-.collection.collection-2 {
-    background-color: #69ca71; /* Color de fondo para la colección 2 */
-}
-
-.collection.collection-3 {
-    background-color: #d18dc5; /* Color de fondo para la colección 2 */
-}
 
 .collection h3 {
     margin-top: 0; /* Elimina el margen superior del nombre de la colección */
