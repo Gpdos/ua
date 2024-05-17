@@ -219,9 +219,7 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>© 2024 Mosaicua. Todos los derechos reservados.</p>
-    </footer>
+    <?php require_once 'pie.php' ?>
 </body>
 
 </html>

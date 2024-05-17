@@ -78,5 +78,8 @@
   </div>
   <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 </div>
+
+  <?php require_once 'pie.php' ?>
+
 </body>
 </html>
