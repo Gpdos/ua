@@ -1,4 +1,21 @@
-@import "style.css";
+@font-face {
+    font-family: titulos;
+    src: url(../letras/letra_titulo.ttf);
+}
+
+/* Fuente texto */
+@font-face {
+    font-family: texto;
+    src: url(../letras/Texto.ttf);
+}
+
+.paginacentral{
+    text-align: center;
+}
+
+
+
+
 
 img {
     border-radius: 10px;
@@ -37,6 +54,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
+    
 }
 
 
@@ -96,6 +114,7 @@ header nav a i {
     justify-content: space-around;
     align-items: center;
     
+    
 
 
     img{
@@ -121,8 +140,8 @@ header nav a i {
     /* background-color:darkred; */
     width: 15%;
     text-align: center;
-    font-family: "Poetsen One", sans-serif;
-    font-size: 40px;
+    font-family: titulos ;
+    font-size: 20px;
     text-shadow:2px 2px 4px rgb(56, 56, 56);
     line-height: 10px;
 }
