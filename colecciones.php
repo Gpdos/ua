@@ -190,7 +190,7 @@
 
 
         <div class="right-column">
-            <div class="collection collection-1">
+            <div class="collection">
                 <h3>COLECCIÓN 1</h3>
                 <div class="documents">
                     <a href="documento.php" class="work">
@@ -228,7 +228,7 @@
                 </div>
             </div>
 
-            <div class="collection collection-2">
+            <div class="collection">
                 <h3>COLECCIÓN 2</h3>
                 <div class="documents">
                     <a href="documento.php" class="work">
@@ -266,7 +266,7 @@
                 </div>
             </div>
 
-            <div class="collection collection-3">
+            <div class="collection">
                 <h3>COLECCIÓN 3</h3>
                 <div class="documents">
                     <a href="documento.php" class="work">

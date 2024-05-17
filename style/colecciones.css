@@ -84,6 +84,7 @@ nav a {
 
 .collection h3 {
     margin-top: 0; /* Elimina el margen superior del nombre de la colección */
+    color: #fff;
 }
 
 /* Estilos para los documentos dentro de cada colección */
