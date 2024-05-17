@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2024 a las 12:21:55
+-- Tiempo de generación: 17-05-2024 a las 12:27:47
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -62,12 +62,12 @@ CREATE TABLE `foto` (
 --
 
 INSERT INTO `foto` (`idFoto`, `archivo`, `idPubli`) VALUES
-(1, '1.jpeg', 0),
-(2, '2.jpeg', 0),
-(3, '3.jpeg', 0),
-(4, '4.jpeg', 0),
-(5, '5.jpeg', 0),
-(6, '6.jpeg', 0);
+(1, '1.jpeg', 1),
+(2, '2.jpeg', 1),
+(3, '3.jpeg', 1),
+(4, '4.jpeg', 1),
+(5, '5.jpeg', 2),
+(6, '6.jpeg', 2);
 
 -- --------------------------------------------------------
 
@@ -84,6 +84,13 @@ CREATE TABLE `publicacion` (
   `fecha` float NOT NULL,
   `autor` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `publicacion`
+--
+
+INSERT INTO `publicacion` (`idPubliocacion`, `Nombre`, `carrera`, `tipo`, `valoracion`, `fecha`, `autor`) VALUES
+(1, 'TFG Daniel Fernández', 1, 1, 3, 4.02, 'Daniel Fernández ');
 
 -- --------------------------------------------------------
 
@@ -187,7 +194,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPubliocacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPubliocacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tipotrabajo`
