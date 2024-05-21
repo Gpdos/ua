@@ -33,7 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['
         // Credenciales correctas, iniciar sesión
         session_start();
         $_SESSION['username'] = $user;
-        header("Location: index.php");
+
+        // Generar un script JavaScript para guardar el username en sessionStorage
+        echo "<script>
+            sessionStorage.setItem('username', '$user');
+            window.location.href = 'index.php';
+        </script>";
         exit;
     } else {
         // Credenciales incorrectas, mostrar mensaje de error
