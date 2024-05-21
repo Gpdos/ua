@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['
         // Generar un script JavaScript para guardar el username en sessionStorage
         echo "<script>
             sessionStorage.setItem('username', '$user');
-            window.location.href = 'index.php';
+            window.location.href = 'indexReg.php';
         </script>";
         exit;
     } else {

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style/config.css">
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
@@ -96,31 +95,55 @@
                 
                 <fieldset>
                     <legend>Estilo visual:</legend>
-                    <input type="radio" id="default-style" name="style" checked>
+                    <input type="radio" id="default-style" name="style" value="default" checked>
                     <label for="default-style">Por defecto</label>
-                    <input type="radio" id="night-mode" name="style">
+                    <input type="radio" id="night-mode" name="style" value="style/funcionales/noche.css">
                     <label for="night-mode">Modo noche</label>
-                    <input type="radio" id="high-contrast" name="style">
+                    <input type="radio" id="high-contrast" name="style" value="style/funcionales/contraste.css">
                     <label for="high-contrast">Alto contraste</label>
-                    <input type="radio" id="read-mode" name="style">
+                    <input type="radio" id="read-mode" name="style" value="style/funcionales/lectura.css">
                     <label for="read-mode">Modo lectura (sin distracciones)</label>
                 </fieldset>
-                <p>En nuestra página, estamos comprometidos con la accesibilidad y hemos implementado varias características para asegurar que todos los usuarios puedan navegar eficientemente y con comodidad:</p>
-    <ul>
-        <li><strong>Colores con Alto Contraste:</strong> Nuestra interfaz utiliza una paleta de colores con alto contraste para mejorar la legibilidad para usuarios con visión reducida.</li>
-        <li><strong>Resalto de Secciones al Pasar el Ratón:</strong> Las secciones importantes de la página se resaltan cuando el usuario pasa el ratón por encima, facilitando la identificación de áreas interactivas.</li>
-        <li><strong>Modo Noche:</strong> Ofrecemos un modo noche que reduce la luminosidad de la pantalla para disminuir la fatiga ocular en ambientes de baja luz.</li>
-        <li><strong>Modo de Alto Contraste:</strong> Además del esquema de colores por defecto, los usuarios pueden seleccionar un modo de alto contraste que aumenta la diferencia entre el fondo y el texto.</li>
-        <li><strong>Modo Lectura:</strong> Esta opción permite a los usuarios disfrutar de una vista simplificada de nuestra página, eliminando elementos distractores y centrando el contenido en el texto principal.</li>
-        <li><strong>Opciones de Tamaño de Fuente:</strong> Los usuarios pueden ajustar el tamaño de la fuente desde nuestra página de configuración, lo que facilita la lectura a quienes necesitan tamaños de letra más grandes.</li>
-    </ul>
+
+                <button type="button" onclick="saveSettings()">Guardar configuración</button>
                 
+                <p>En nuestra página, estamos comprometidos con la accesibilidad y hemos implementado varias características para asegurar que todos los usuarios puedan navegar eficientemente y con comodidad:</p>
+                <ul>
+                    <li><strong>Colores con Alto Contraste:</strong> Nuestra interfaz utiliza una paleta de colores con alto contraste para mejorar la legibilidad para usuarios con visión reducida.</li>
+                    <li><strong>Resalto de Secciones al Pasar el Ratón:</strong> Las secciones importantes de la página se resaltan cuando el usuario pasa el ratón por encima, facilitando la identificación de áreas interactivas.</li>
+                    <li><strong>Modo Noche:</strong> Ofrecemos un modo noche que reduce la luminosidad de la pantalla para disminuir la fatiga ocular en ambientes de baja luz.</li>
+                    <li><strong>Modo de Alto Contraste:</strong> Además del esquema de colores por defecto, los usuarios pueden seleccionar un modo de alto contraste que aumenta la diferencia entre el fondo y el texto.</li>
+                    <li><strong>Modo Lectura:</strong> Esta opción permite a los usuarios disfrutar de una vista simplificada de nuestra página, eliminando elementos distractores y centrando el contenido en el texto principal.</li>
+                    <li><strong>Opciones de Tamaño de Fuente:</strong> Los usuarios pueden ajustar el tamaño de la fuente desde nuestra página de configuración, lo que facilita la lectura a quienes necesitan tamaños de letra más grandes.</li>
+                </ul>
             </form>
         </section>
     </div>
 
     <?php require_once 'pie.php' ?>
 
-    
+    <script>
+        function saveSettings() {
+            // Obtener el tamaño de la fuente seleccionado
+            const fontSize = document.getElementById('font-size').value;
+            // Obtener el estilo visual seleccionado
+            const style = document.querySelector('input[name="style"]:checked').value;
+
+            // Guardar en sessionStorage
+            sessionStorage.setItem('fontSize', fontSize);
+            sessionStorage.setItem('style', style);
+        }
+
+        // Función para aplicar configuración desde sessionStorage
+        function applySettings() {
+            const fontSize = sessionStorage.getItem('fontSize');
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
+            }
+        }
+
+        // Aplicar configuración cuando la página se carga
+        window.onload = applySettings;
+    </script>
 </body>
 </html>
