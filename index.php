@@ -1,3 +1,39 @@
+<?php
+// Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$dbname = "ua";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Inicializar un array para almacenar los datos de las publicaciones
+$publicaciones = array();
+
+// Realizar la consulta SQL para obtener todas las publicaciones
+$sql = "SELECT * FROM publicacion";
+$result = $conn->query($sql);
+
+// Comprobar si la consulta devuelve algún resultado
+if ($result->num_rows > 0) {
+    // Almacenar los datos de cada publicación en el array
+    while ($row = $result->fetch_assoc()) {
+        $publicaciones[] = $row;
+    }
+} else {
+    echo "No se encontraron publicaciones.";
+}
+
+// Cerrar la conexión
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,6 +58,7 @@
 
 <body>
     <?php require_once 'encabezadosinreg.php' ?>
+
 
     <main>
         <div id="body_izq">
@@ -59,21 +96,48 @@
             <div id="div_arr">
                 <h2 class="titulo">Recientes</h2>
 
-                <div class="card">
-                    <a href="documento.php">
-                        <img src="https://picsum.photos/600/400?random=1" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
+                    <div class="publicaciones">
+                        <h2>Detalles de las Publicaciones</h2>
+                        <?php 
+                        foreach ($publicaciones as $publicacion) {
+                            // Verificar si las claves existen antes de utilizarlas
+                            $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
+                            $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
+                            $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
+                            $carrera = isset($publicacion['carrera']) ? $publicacion['carrera'] : 'Carrera no disponible';
+                            $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
 
-                </div>
-                <div class="card">
+                            echo '<div class="card">';
+                            echo '<a href="documento.php?idPublicacion=' . htmlspecialchars($idPublicacion) . '">';
+                            echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                            echo '<div class="card-content">';
+                            echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
+                            echo '<p>' . htmlspecialchars($autor) . '</p>';
+                            switch ($carrera) {
+                                case '1':
+                                    $carrera = 'Ingeniería Multimedia';
+                                    break;
+                                case '3':
+                                    $carrera = 'Arquitectura';
+                                    break;
+                                case '2':
+                                    $carrera = 'Economia';
+                                    break;
+                                default:
+                                    $carrera = 'Carrera no disponible';
+                                    break;
+                            }
+                            echo '<p>' . htmlspecialchars($carrera) . '</p>';
+                            echo '<div class="stars">';
+                            echo '<span>' . str_repeat('⭐', htmlspecialchars($valoracion)) . '</span>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</a>';
+                            echo '</div>';
+                        }
+                        ?>
+                    </div>
+                <!-- <div class="card">
                     <a href="documento.php">
                         <img src="https://picsum.photos/600/400?random=2" alt="Arquitectura" class="card-image">
                         <div class="card-content">
@@ -111,7 +175,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div> -->
                 <!-- <div id="div_flecha"> -->
                     <i class="fa-solid fa-circle-right"></i>
                 <!-- </div> -->
