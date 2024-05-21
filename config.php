@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Configuración</title>
-    <link rel="stylesheet" href="style/config.css">
+    <link id="default-stylesheet" rel="stylesheet" href="style/config.css">
+    <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche.css" disabled>
+    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,11 +100,11 @@
                     <legend>Estilo visual:</legend>
                     <input type="radio" id="default-style" name="style" value="default" checked>
                     <label for="default-style">Por defecto</label>
-                    <input type="radio" id="night-mode" name="style" value="style/funcionales/noche.css">
+                    <input type="radio" id="night-mode" name="style" value="night">
                     <label for="night-mode">Modo noche</label>
-                    <input type="radio" id="high-contrast" name="style" value="style/funcionales/contraste.css">
+                    <input type="radio" id="high-contrast" name="style" value="high-contrast">
                     <label for="high-contrast">Alto contraste</label>
-                    <input type="radio" id="read-mode" name="style" value="style/funcionales/lectura.css">
+                    <input type="radio" id="read-mode" name="style" value="read-mode">
                     <label for="read-mode">Modo lectura (sin distracciones)</label>
                 </fieldset>
 
@@ -116,6 +119,7 @@
                     <li><strong>Modo Lectura:</strong> Esta opción permite a los usuarios disfrutar de una vista simplificada de nuestra página, eliminando elementos distractores y centrando el contenido en el texto principal.</li>
                     <li><strong>Opciones de Tamaño de Fuente:</strong> Los usuarios pueden ajustar el tamaño de la fuente desde nuestra página de configuración, lo que facilita la lectura a quienes necesitan tamaños de letra más grandes.</li>
                 </ul>
+                
             </form>
         </section>
     </div>
@@ -123,22 +127,52 @@
     <?php require_once 'pie.php' ?>
 
     <script>
-        function saveSettings() {
-            // Obtener el tamaño de la fuente seleccionado
-            const fontSize = document.getElementById('font-size').value;
-            // Obtener el estilo visual seleccionado
-            const style = document.querySelector('input[name="style"]:checked').value;
+       function saveSettings() {
+    // Obtener el tamaño de la fuente seleccionado
+    const fontSize = document.getElementById('font-size').value;
+    // Obtener el estilo visual seleccionado
+    const style = document.querySelector('input[name="style"]:checked').value;
 
-            // Guardar en sessionStorage
-            sessionStorage.setItem('fontSize', fontSize);
-            sessionStorage.setItem('style', style);
-        }
+    // Guardar en sessionStorage
+    sessionStorage.setItem('fontSize', fontSize);
+    sessionStorage.setItem('style', style);
+
+    // Recargar la página
+    window.location.reload();
+}
+
 
         // Función para aplicar configuración desde sessionStorage
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
+            const style = sessionStorage.getItem('style');
+
             if (fontSize) {
                 document.documentElement.style.fontSize = fontSize;
+            }
+
+            if (style) {
+                // Deshabilitar todas las hojas de estilo primero
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
+
+                // Habilitar la hoja de estilo seleccionada
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
             }
         }
 
