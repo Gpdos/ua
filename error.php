@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio</title>
-    <link rel="stylesheet" href="style/index.css">
-    <link rel="stylesheet" href="style/styles.css">
+    <link id="default-stylesheet" rel="stylesheet" href="style/index.css">
+    <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche.css" disabled>
+    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
 
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
