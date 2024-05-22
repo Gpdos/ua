@@ -16,18 +16,35 @@ if ($conn->connect_error) {
 // Inicializar un array para almacenar los datos de las publicaciones
 $publicaciones = array();
 
+// Inicializar un array para almacenar los nombres únicos del estudio
+$estudios = array();
+
 // Realizar la consulta SQL para obtener todas las publicaciones
-$sql = "SELECT * FROM publicacion";
-$result = $conn->query($sql);
+$sql_publicaciones = "SELECT * FROM publicacion";
+$result_publicaciones = $conn->query($sql_publicaciones);
 
 // Comprobar si la consulta devuelve algún resultado
-if ($result->num_rows > 0) {
+if ($result_publicaciones->num_rows > 0) {
     // Almacenar los datos de cada publicación en el array
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $result_publicaciones->fetch_assoc()) {
         $publicaciones[] = $row;
     }
 } else {
     echo "No se encontraron publicaciones.";
+}
+
+// Realizar la consulta SQL para obtener los nombres únicos de la tabla estudio
+$sql_estudios = "SELECT DISTINCT Nombre FROM estudio";
+$result_estudios = $conn->query($sql_estudios);
+
+// Comprobar si la consulta devuelve algún resultado
+if ($result_estudios->num_rows > 0) {
+    // Almacenar los nombres únicos en el array
+    while ($row = $result_estudios->fetch_assoc()) {
+        $estudios[] = $row['Nombre'];
+    }
+} else {
+    echo "No se encontraron estudios.";
 }
 
 // Cerrar la conexión
@@ -36,7 +53,6 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <title>Inicio</title>
@@ -46,35 +62,31 @@ $conn->close();
     <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
 
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
-
-
 </head>
 
 <body>
     <?php require_once 'encabezadosinreg.php' ?>
 
-
     <main>
         <div id="body_izq">
             <div class="section-header">
-                <!-- <label for="lang">Lenguaje</label> -->
                 <select name="lenguajes" id="lang">
-                    <option value="#">Ingeniería Multimedia</option>
-                    <option value="#">Arquitectura</option>
-                    <option value="#">Derecho</option>
+                    <?php
+                    // Generar las opciones del selector dinámicamente con los nombres de la tabla estudio
+                    foreach ($estudios as $estudio) {
+                        echo '<option value="#">' . htmlspecialchars($estudio) . '</option>';
+                    }
+                    ?>
                 </select>
-                <!-- <input type="submit" value="Enviar" /> -->
             </div>
 
             <div class="content">
                 <div class="content-block">
-                    <img src="https://picsum.photos/600/400?random=4" alt="Práctica 1" >
+                    <img src="https://picsum.photos/600/400?random=4" alt="Práctica 1">
                     <span>UA: Práctica 1</span>
                 </div>
                 <div class="content-block">
@@ -123,48 +135,7 @@ $conn->close();
                     }
                     ?>
                 </div>
-                <!-- <div class="card">
-                    <a href="documento.php">
-                        <img src="https://picsum.photos/600/400?random=2" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="documento.php">
-                        <img src="https://picsum.photos/600/400?random=3" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="documento.php">
-                        <img src="https://picsum.photos/600/400?random=4" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
-                </div> -->
-                <!-- <div id="div_flecha"> -->
-                    <i class="fa-solid fa-circle-right"></i>
-                <!-- </div> -->
+                <i class="fa-solid fa-circle-right"></i>
             </div>
 
             <div id="div_abj">
@@ -221,8 +192,6 @@ $conn->close();
     <?php require_once 'pie.php' ?>
 
     <script>
-       
-
         // Función para aplicar configuración desde sessionStorage
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
@@ -261,5 +230,4 @@ $conn->close();
         window.onload = applySettings;
     </script>
 </body>
-
 </html>
