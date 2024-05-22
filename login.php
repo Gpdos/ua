@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['
         echo "<script>
           sessionStorage.setItem('username', '$user');
           sessionStorage.setItem('userId', '$userId');
-            window.location.href = 'indexReg.php';
+            window.location.href = 'index.php';
         </script>";
         exit;
     } else {

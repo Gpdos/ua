@@ -1,7 +1,7 @@
 <header>
 
         <div id="cen">
-            <a href="indexreg.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+            <a href="index.php" style="text-decoration: none; color: white; text-align: center; display: block;">
                 <i class="fa-solid fa-house"></i>
                 <span style="display: block; font-size: 12px;">Inicio</span>
             </a>

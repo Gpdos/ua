@@ -120,8 +120,7 @@ $conn->close();
     <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
 <body>
-<?php require_once 'encabezadosinreg.php' ?>
-    <?php require_once 'encabezado.php' ?>
+<div id="header-container"></div>
     <main>
         <div id="body_izq">
             <h2 id="titulo"><?php echo htmlspecialchars($nombre); ?></h2>
@@ -216,10 +215,37 @@ $conn->close();
             }
         }
 
+        function loadHeader() {
+            const userId = sessionStorage.getItem('userId');
+            const headerContainer = document.getElementById('header-container');
+
+            if (userId) {
+                fetch('encabezado.php')
+                    .then(response => response.text())
+                    .then(data => headerContainer.innerHTML = data)
+                    .catch(error => console.error('Error cargando encabezado:', error));
+            } else {
+                fetch('encabezadosinreg.php')
+                    .then(response => response.text())
+                    .then(data => headerContainer.innerHTML = data)
+                    .catch(error => console.error('Error cargando encabezadosinreg:', error));
+            }
+        }
+
+        function logout() {
+                // Eliminar los elementos del sessionStorage
+                sessionStorage.removeItem('userId');
+                sessionStorage.removeItem('username');
+                window.location.href = 'index.php';
+            }
+
+            
+        
+
         // Aplicar configuración cuando la página se carga
         window.onload = function() {
             applySettings();
-
+            loadHeader();
             // Obtener userId desde sessionStorage y asignarlo al campo oculto autorComentario
             const userId = sessionStorage.getItem('userId');
             if (userId) {
