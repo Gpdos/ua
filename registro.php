@@ -28,8 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Ejecutar la declaración
     if ($stmt->execute()) {
-        echo "Registro exitoso.";
-        header("Location: index.php");
+        // Obtener el id del nuevo usuario
+        $userId = $stmt->insert_id;
+
+        // Generar un script JavaScript para guardar el id del usuario en sessionStorage
+        echo "<script>
+        sessionStorage.setItem('username', '$nombre');
+            sessionStorage.setItem('userId', '$userId');
+            window.location.href = 'index.php';
+        </script>";
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
