@@ -70,6 +70,7 @@ $conn->close();
 
 <body>
     <?php require_once 'encabezadosinreg.php' ?>
+    <?php require_once 'encabezado.php' ?>
 
     <main>
         <div id="body_izq">
