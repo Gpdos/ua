@@ -34,14 +34,14 @@ if ($result_publicaciones->num_rows > 0) {
 }
 
 // Realizar la consulta SQL para obtener los nombres únicos de la tabla estudio
-$sql_estudios = "SELECT DISTINCT Nombre FROM estudio";
+$sql_estudios = "SELECT DISTINCT idEstudio, Nombre FROM estudio";
 $result_estudios = $conn->query($sql_estudios);
 
 // Comprobar si la consulta devuelve algún resultado
 if ($result_estudios->num_rows > 0) {
     // Almacenar los nombres únicos en el array
     while ($row = $result_estudios->fetch_assoc()) {
-        $estudios[] = $row['Nombre'];
+        $estudios[] = $row;
     }
 } else {
     echo "No se encontraron estudios.";
@@ -74,33 +74,32 @@ $conn->close();
     <main>
         <div id="body_izq">
             <div class="section-header">
-                <select name="lenguajes" id="lang">
+                <select name="lenguajes" id="lang" onchange="filtrarPublicaciones()">
+                    <option value="0">Seleccione un estudio</option>
                     <?php
                     // Generar las opciones del selector dinámicamente con los nombres de la tabla estudio
                     foreach ($estudios as $estudio) {
-                        echo '<option value="#">' . htmlspecialchars($estudio) . '</option>';
+                        echo '<option value="' . htmlspecialchars($estudio['idEstudio']) . '">' . htmlspecialchars($estudio['Nombre']) . '</option>';
                     }
                     ?>
                 </select>
             </div>
 
-            <div class="content">
-                <div class="content-block">
-                    <img src="https://picsum.photos/600/400?random=4" alt="Práctica 1">
-                    <span>UA: Práctica 1</span>
-                </div>
-                <div class="content-block">
-                    <img src="https://picsum.photos/600/400?random=3" alt="Prototipo Movimiento">
-                    <span>FV: Prototipo movimiento</span>
-                </div>
-                <div class="content-block">
-                    <img src="https://picsum.photos/600/400?random=2" alt="Prototipo Torreta">
-                    <span>FV: Prototipo torreta</span>
-                </div>
-                <div class="content-block">
-                    <img src="https://picsum.photos/600/400?random=1" alt="Hito 2">
-                    <span>FV: Hito 2</span>
-                </div>  
+            <div class="content" id="content">
+                <?php 
+                foreach ($publicaciones as $publicacion) {
+                    $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
+                    $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
+                    $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
+                    $carrera = isset($publicacion['carrera']) ? $publicacion['carrera'] : 'Carrera no disponible';
+                    $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
+
+                    echo '<div class="content-block" data-carrera="' . htmlspecialchars($carrera) . '">';
+                    echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '">';
+                    echo '<span>UA: ' . htmlspecialchars($nombre) . '</span>';
+                    echo '</div>';
+                }
+                ?>
             </div>
         </div>
 
@@ -112,7 +111,6 @@ $conn->close();
                     <h2>Detalles de las Publicaciones</h2>
                     <?php 
                     foreach ($publicaciones as $publicacion) {
-                        // Verificar si las claves existen antes de utilizarlas
                         $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
                         $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
                         $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
@@ -192,6 +190,20 @@ $conn->close();
     <?php require_once 'pie.php' ?>
 
     <script>
+        function filtrarPublicaciones() {
+            const select = document.getElementById('lang');
+            const selectedCarrera = select.value;
+            const contentBlocks = document.querySelectorAll('.content-block');
+
+            contentBlocks.forEach(block => {
+                if (selectedCarrera === "0" || block.dataset.carrera === selectedCarrera) {
+                    block.style.display = "block";
+                } else {
+                    block.style.display = "none";
+                }
+            });
+        }
+
         // Función para aplicar configuración desde sessionStorage
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
