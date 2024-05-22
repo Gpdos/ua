@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2024 a las 16:22:17
+-- Tiempo de generación: 22-05-2024 a las 19:01:09
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -81,7 +81,7 @@ CREATE TABLE `publicacion` (
   `carrera` int(11) NOT NULL,
   `tipo` int(11) NOT NULL,
   `valoracion` int(11) NOT NULL,
-  `fecha` float NOT NULL,
+  `fecha` date NOT NULL,
   `autor` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -90,8 +90,10 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`idPublicacion`, `Nombre`, `carrera`, `tipo`, `valoracion`, `fecha`, `autor`) VALUES
-(1, 'Memoria Arquitectura', 3, 1, 4, 10, 'Javier'),
-(2, 'TFG Economico', 2, 1, 2, 300, 'Fran');
+(1, 'Memoria Arquitectura', 3, 1, 4, '0000-00-00', 'Javier'),
+(2, 'TFG Economico', 2, 1, 2, '0000-00-00', 'Francisco'),
+(3, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos'),
+(4, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos');
 
 -- --------------------------------------------------------
 
@@ -195,7 +197,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipotrabajo`
