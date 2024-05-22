@@ -142,7 +142,7 @@ $conn->close();
 
             <div id="div_abj">
                 <div>
-                    <a href="buscar.php">
+                    <a href="buscar.php?1">
                         <div>
                             <h2>TFG's</h2>
                         </div>
@@ -150,7 +150,15 @@ $conn->close();
                 </div>
 
                 <div>
-                    <a href="buscar.php">
+                    <a href="buscar.php?2">
+                        <div>
+                            <h2>TFM</h2>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="buscar.php?3">
                         <div>
                             <h2>ABP</h2>
                         </div>
@@ -158,33 +166,25 @@ $conn->close();
                 </div>
 
                 <div>
-                    <a href="buscar.php">
+                    <a href="buscar.php?4">
                         <div>
-                            <h2>Memorias</h2>
+                            <h2>Presentacion</h2>
                         </div>
                     </a>
                 </div>
 
                 <div>
-                    <a href="buscar.php">
+                    <a href="buscar.php?5">
                         <div>
-                            <h2>Portfolio</h2>
+                            <h2>Modelo 3D</h2>
                         </div>
                     </a>
                 </div>
 
                 <div>
-                    <a href="buscar.php">
+                    <a href="buscar.php?6">
                         <div>
-                            <h2>Proyectos</h2>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="buscar.php">
-                        <div>
-                            <h2>Presentaciones</h2>
+                            <h2>Memoria</h2>
                         </div>
                     </a>
                 </div>
