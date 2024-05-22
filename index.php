@@ -94,12 +94,17 @@ $conn->close();
                     $carrera = isset($publicacion['nombreCarrera']) ? $publicacion['nombreCarrera'] : 'Carrera no disponible';
                     $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
 
-                    echo '<div class="content-block" data-carrera="' . htmlspecialchars($carrera) . '">';
+                    echo '<div class="content-block" data-carrera="' . htmlspecialchars($publicacion['carrera']) . '">';
                     echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '">';
                     echo '<span>UA: ' . htmlspecialchars($nombre) . '</span>';
                     echo '</div>';
                 }
                 ?>
+            </div>
+
+            <div class="content" id="filtered-content" style="display: none;">
+                <h3>Publicaciones relacionadas:</h3>
+                <div id="related-publications"></div>
             </div>
         </div>
 
@@ -193,14 +198,35 @@ $conn->close();
             const select = document.getElementById('lang');
             const selectedCarrera = select.value;
             const contentBlocks = document.querySelectorAll('.content-block');
+            const relatedContainer = document.getElementById('related-publications');
+            const filteredContent = document.getElementById('filtered-content');
+            let hasExactMatch = false;
+
+            relatedContainer.innerHTML = ''; // Limpiar publicaciones relacionadas previas
+            filteredContent.style.display = 'none';
 
             contentBlocks.forEach(block => {
                 if (selectedCarrera === "0" || block.dataset.carrera === selectedCarrera) {
                     block.style.display = "block";
+                    if (block.dataset.carrera === selectedCarrera) {
+                        hasExactMatch = true;
+                    }
                 } else {
                     block.style.display = "none";
+                    if (block.dataset.carrera === selectedCarrera) {
+                        const idPublicacion = block.querySelector('img').src.split('random=')[1]; // Extraer idPublicacion del src
+                        const publicationName = block.querySelector('span').innerText;
+                        const publicationLink = document.createElement('a');
+                        publicationLink.href = `documento.php?idPublicacion=${idPublicacion}`;
+                        publicationLink.innerText = publicationName;
+                        relatedContainer.appendChild(publicationLink);
+                    }
                 }
             });
+
+            if (!hasExactMatch && relatedContainer.childElementCount > 0) {
+                filteredContent.style.display = 'block';
+            }
         }
 
         // Función para aplicar configuración desde sessionStorage
