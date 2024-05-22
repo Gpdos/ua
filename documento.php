@@ -58,6 +58,48 @@ if (isset($_GET['idPublicacion'])) {
     echo "No se proporcionó un ID de publicación.";
 }
 
+// Manejar la solicitud POST para agregar un comentario
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comentario']) && !empty($_POST['comentario']) && isset($_POST['idPublicacion']) && !empty($_POST['idPublicacion'])) {
+    // Obtener los datos del formulario
+    $comentario = $_POST['comentario'];
+    $valoracionComentario = $_POST['valoracionComentario'];
+    $idPublicacion = $_POST['idPublicacion'];
+    $autorComentario = isset($_POST['autorComentario']) ? $_POST['autorComentario'] : 'Anonimo';
+
+    // Preparar y ejecutar la consulta SQL para insertar el comentario
+    $sql = $conn->prepare("INSERT INTO comentario (publicacion, texto, autor, valoracion) VALUES (?, ?, ?, ?)");
+    $sql->bind_param("issi", $idPublicacion, $comentario, $autorComentario, $valoracionComentario);
+
+    if ($sql->execute()) {
+        echo "Comentario añadido con éxito.";
+    } else {
+        echo "Error al añadir el comentario: " . $conn->error;
+    }
+
+    // Cerrar la consulta
+    $sql->close();
+}
+
+// Obtener los comentarios existentes para la publicación
+$comentarios = [];
+$sql_comentarios = $conn->prepare("
+    SELECT c.*, u.Usuario AS autorNombre 
+    FROM comentario c 
+    JOIN usuarios u ON c.autor = u.id 
+    WHERE c.publicacion = ?
+");
+$sql_comentarios->bind_param("i", $idPublicacion);
+$sql_comentarios->execute();
+$result_comentarios = $sql_comentarios->get_result();
+
+if ($result_comentarios->num_rows > 0) {
+    while ($row = $result_comentarios->fetch_assoc()) {
+        $comentarios[] = $row;
+    }
+}
+
+$sql_comentarios->close();
+
 // Cerrar la conexión
 $conn->close();
 ?>
@@ -129,37 +171,40 @@ $conn->close();
                 <div id="publicacion_arr">
                     <img src="https://picsum.photos/600/400?random=<?php echo htmlspecialchars($idPublicacion); ?>" alt="Imagen publicacion" class="sombra">
                     <div id="descripcion" class="sombra">
-                        <p><?php echo htmlspecialchars($tipo); ?></p>
-                        <p>Valoracion media:</p>
-                        <div class="stars">
-                            <span><?php echo str_repeat('⭐', htmlspecialchars($valoracion)); ?></span>
-                        </div>
-                        <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
-                            <button>Editar</button>
-                        </a>
+                        <h3>Comentarios:</h3>
+                        <?php foreach ($comentarios as $comentario): ?>
+                            <div class="comentario">
+                                <p><strong><?php echo htmlspecialchars($comentario['autorNombre']); ?>:</strong> <?php echo htmlspecialchars($comentario['texto']); ?></p>
+                                <div class="stars">
+                                    <span><?php echo str_repeat('⭐', htmlspecialchars($comentario['valoracion'])); ?></span>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                </div>
-                <hr>
-                <div id="publicacion_abj">
-                    <img src="https://picsum.photos/600/400?random=4" alt="Imagen publicacion" class="sombra">
-                    <img src="https://picsum.photos/600/400?random=1" alt="Imagen publicacion" class="sombra">
-                    <img src="https://picsum.photos/600/400?random=2" alt="Imagen publicacion" class="sombra">
-                    <img src="https://picsum.photos/600/400?random=3" alt="Imagen publicacion" class="sombra">
                 </div>
             </div>
         </div>
         <div id="body_dch">
             <div id="body_arr">
+
                 <div id="contenedorTexto">
                     <p>Comentarios: </p>
-                    <textarea name="textarea" rows="10" cols="50">Escribe algo interesante</textarea>
-                    <p>Valoracion: </p>
-                    <div>
-                        <div class="stars">
-                            <span><?php echo str_repeat('⭐', htmlspecialchars($valoracion)); ?></span>
+                    <form id="comentarioForm" method="POST" action="">
+                        <textarea name="comentario" rows="10" cols="50" required>Escribe algo interesante</textarea>
+                        <input type="hidden" name="idPublicacion" value="<?php echo htmlspecialchars($idPublicacion); ?>">
+                        <input type="hidden" name="autorComentario" id="autorComentario" value="">
+                        <p>Valoracion: </p>
+                        <div>
+                            <select name="valoracionComentario" required>
+                                <option value="1">⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                            </select>
+                            <button type="submit">Enviar</button>
                         </div>
-                        <button>Enviar</button>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div id="body_abj">
@@ -173,6 +218,9 @@ $conn->close();
                         <li>Referencias</li>
                         <li>Lazarillo de Tormes</li>
                     </ul>
+                    <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
+                    <button>Editar</button>
+                </a>
                 </div>
             </div>
         </div>
@@ -209,8 +257,17 @@ $conn->close();
                 }
             }
         }
+
         // Aplicar configuración cuando la página se carga
-        window.onload = applySettings;
+        window.onload = function() {
+            applySettings();
+
+            // Obtener userId desde sessionStorage y asignarlo al campo oculto autorComentario
+            const userId = sessionStorage.getItem('userId');
+            if (userId) {
+                document.getElementById('autorComentario').value = userId;
+            }
+        };
     </script>
 </body>
 </html>
