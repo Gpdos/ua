@@ -7,28 +7,6 @@ body {
     padding: 0;
 }
 
-header {
-    background-color: #003366; /* Mantenemos este color azul oscuro */
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
-    background-color: #003366;
-
-    padding: 0;
-    display: flex; /* Asegura que los elementos del nav se alineen horizontalmente */
-    align-items: center; /* Centra los elementos del nav verticalmente */
-}
-
-li {
-   
-    background-color: #003366;
-    color: white
-}
 
 a {
     color: white;

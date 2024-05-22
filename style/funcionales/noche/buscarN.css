@@ -1,8 +1,137 @@
+@import "styleN.css";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Fondo oscuro */
+    color: #eaeaea; /* Texto claro */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1f1f1f; /* Fondo oscuro para el encabezado */
+    color: #eaeaea; /* Texto claro para el encabezado */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    color: #eaeaea; /* Texto claro para los enlaces */
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.main-content {
+    display: flex;
+    padding: 20px;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-basis: 20%;
+    background-color: #1f1f1f; /* Fondo oscuro para los filtros */
+    padding: 10px;
+    color: #eaeaea; /* Texto claro para los filtros */
+    border-radius: 5px;
+    margin-right: 20px;
+    height: 600px;
+    overflow: auto;
+}
+
+.filters > div, .filters > h2, .filters > h3 {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.filters label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filters input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.search-results {
+    flex-grow: 1;
+    color: #eaeaea; /* Texto claro para los resultados */
+    background-color: #1f1f1f; /* Fondo oscuro para los resultados */
+    border-radius: 5px;
+    height: fit-content;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#seccionesCen {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ajusta esto según tus necesidades */
+}
+
+.result img {
+    width: 100%;
+    height: auto;
+}
+
 .card {
-    background-color: #1E1E1E; /* Gris oscuro para las tarjetas */
-    color: #E0E0E0;
+    background-color: #2e2e2e; /* Fondo oscuro para las tarjetas */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    width: 20%;
+    flex: 0 1 30%;
+    transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-    background-color: #333333; /* Un gris un poco más claro para hover */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.card a {
+    color: #eaeaea; /* Texto claro para los enlaces en las tarjetas */
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-content h2 {
+    margin-top: 0;
+}
+
+.card-content .stars {
+    color: orange;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .filters,
+    .search-results {
+        width: 100%;
+    }
 }
