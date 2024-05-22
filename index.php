@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 $publicaciones = array();
 
 // Realizar la consulta SQL para obtener todas las publicaciones
-$sql = "SELECT * FROM publicacion";
+$sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
 $result = $conn->query($sql);
 
 // Comprobar si la consulta devuelve algún resultado
@@ -97,14 +97,13 @@ $conn->close();
                 <h2 class="titulo">Recientes</h2>
 
                 <div class="publicaciones">
-                    <h2>Detalles de las Publicaciones</h2>
                     <?php 
                     foreach ($publicaciones as $publicacion) {
                         // Verificar si las claves existen antes de utilizarlas
                         $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
                         $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
                         $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
-                        $carrera = isset($publicacion['carrera']) ? $publicacion['carrera'] : 'Carrera no disponible';
+                        $carrera = isset($publicacion['nombreCarrera']) ? $publicacion['nombreCarrera'] : 'Carrera no disponible';
                         $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
 
                         echo '<div class="card">';
@@ -123,48 +122,7 @@ $conn->close();
                     }
                     ?>
                 </div>
-                <!-- <div class="card">
-                    <a href="documento.php">
-                        <img src="https://picsum.photos/600/400?random=2" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="documento.php">
-                        <img src="https://picsum.photos/600/400?random=3" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="documento.php">
-                        <img src="https://picsum.photos/600/400?random=4" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
-                </div> -->
-                <!-- <div id="div_flecha"> -->
-                    <i class="fa-solid fa-circle-right"></i>
-                <!-- </div> -->
+                <i class="fa-solid fa-circle-right"></i>
             </div>
 
             <div id="div_abj">
@@ -221,8 +179,6 @@ $conn->close();
     <?php require_once 'pie.php' ?>
 
     <script>
-       
-
         // Función para aplicar configuración desde sessionStorage
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');

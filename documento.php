@@ -26,8 +26,14 @@ $autor = "";
 if (isset($_GET['idPublicacion'])) {
     $idPublicacion = $_GET['idPublicacion'];
 
-    // Preparar y ejecutar la consulta SQL para obtener los datos de la publicación
-    $sql = $conn->prepare("SELECT * FROM publicacion WHERE idPublicacion = ?");
+    // Preparar y ejecutar la consulta SQL para obtener los datos de la publicación junto con el nombre de la carrera y el tipo de trabajo
+    $sql = $conn->prepare("
+        SELECT p.*, e.Nombre AS nombreCarrera, t.Nombre AS nombreTipo
+        FROM publicacion p
+        JOIN estudio e ON p.carrera = e.idEstudio
+        JOIN tipotrabajo t ON p.tipo = t.idTipo
+        WHERE p.idPublicacion = ?
+    ");
     $sql->bind_param("i", $idPublicacion);
     $sql->execute();
     $result = $sql->get_result();
@@ -37,8 +43,8 @@ if (isset($_GET['idPublicacion'])) {
         // Obtener los datos de la publicación
         $row = $result->fetch_assoc();
         $nombre = $row['Nombre'];
-        $carrera = $row['carrera'];
-        $tipo = $row['tipo'];
+        $carrera = $row['nombreCarrera'];
+        $tipo = $row['nombreTipo'];
         $valoracion = $row['valoracion'];
         $fecha = $row['fecha'];
         $autor = $row['autor'];
