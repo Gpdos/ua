@@ -96,47 +96,33 @@ $conn->close();
             <div id="div_arr">
                 <h2 class="titulo">Recientes</h2>
 
-                    <div class="publicaciones">
-                        <h2>Detalles de las Publicaciones</h2>
-                        <?php 
-                        foreach ($publicaciones as $publicacion) {
-                            // Verificar si las claves existen antes de utilizarlas
-                            $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
-                            $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
-                            $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
-                            $carrera = isset($publicacion['carrera']) ? $publicacion['carrera'] : 'Carrera no disponible';
-                            $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
+                <div class="publicaciones">
+                    <h2>Detalles de las Publicaciones</h2>
+                    <?php 
+                    foreach ($publicaciones as $publicacion) {
+                        // Verificar si las claves existen antes de utilizarlas
+                        $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
+                        $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
+                        $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
+                        $carrera = isset($publicacion['carrera']) ? $publicacion['carrera'] : 'Carrera no disponible';
+                        $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
 
-                            echo '<div class="card">';
-                            echo '<a href="documento.php?idPublicacion=' . htmlspecialchars($idPublicacion) . '">';
-                            echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
-                            echo '<div class="card-content">';
-                            echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
-                            echo '<p>' . htmlspecialchars($autor) . '</p>';
-                            switch ($carrera) {
-                                case '1':
-                                    $carrera = 'Ingeniería Multimedia';
-                                    break;
-                                case '3':
-                                    $carrera = 'Arquitectura';
-                                    break;
-                                case '2':
-                                    $carrera = 'Economia';
-                                    break;
-                                default:
-                                    $carrera = 'Carrera no disponible';
-                                    break;
-                            }
-                            echo '<p>' . htmlspecialchars($carrera) . '</p>';
-                            echo '<div class="stars">';
-                            echo '<span>' . str_repeat('⭐', htmlspecialchars($valoracion)) . '</span>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</a>';
-                            echo '</div>';
-                        }
-                        ?>
-                    </div>
+                        echo '<div class="card">';
+                        echo '<a href="documento.php?idPublicacion=' . htmlspecialchars($idPublicacion) . '">';
+                        echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                        echo '<div class="card-content">';
+                        echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
+                        echo '<p>' . htmlspecialchars($autor) . '</p>';
+                        echo '<p>' . htmlspecialchars($carrera) . '</p>';
+                        echo '<div class="stars">';
+                        echo '<span>' . str_repeat('⭐', htmlspecialchars($valoracion)) . '</span>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</a>';
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
                 <!-- <div class="card">
                     <a href="documento.php">
                         <img src="https://picsum.photos/600/400?random=2" alt="Arquitectura" class="card-image">

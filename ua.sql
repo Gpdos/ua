@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2024 a las 12:27:47
+-- Tiempo de generación: 22-05-2024 a las 16:22:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -62,12 +62,12 @@ CREATE TABLE `foto` (
 --
 
 INSERT INTO `foto` (`idFoto`, `archivo`, `idPubli`) VALUES
-(1, '1.jpeg', 1),
-(2, '2.jpeg', 1),
-(3, '3.jpeg', 1),
-(4, '4.jpeg', 1),
-(5, '5.jpeg', 2),
-(6, '6.jpeg', 2);
+(1, '1.jpeg', 0),
+(2, '2.jpeg', 0),
+(3, '3.jpeg', 0),
+(4, '4.jpeg', 0),
+(5, '5.jpeg', 0),
+(6, '6.jpeg', 0);
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ INSERT INTO `foto` (`idFoto`, `archivo`, `idPubli`) VALUES
 --
 
 CREATE TABLE `publicacion` (
-  `idPubliocacion` int(11) NOT NULL,
+  `idPublicacion` int(11) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `carrera` int(11) NOT NULL,
   `tipo` int(11) NOT NULL,
@@ -89,8 +89,9 @@ CREATE TABLE `publicacion` (
 -- Volcado de datos para la tabla `publicacion`
 --
 
-INSERT INTO `publicacion` (`idPubliocacion`, `Nombre`, `carrera`, `tipo`, `valoracion`, `fecha`, `autor`) VALUES
-(1, 'TFG Daniel Fernández', 1, 1, 3, 4.02, 'Daniel Fernández ');
+INSERT INTO `publicacion` (`idPublicacion`, `Nombre`, `carrera`, `tipo`, `valoracion`, `fecha`, `autor`) VALUES
+(1, 'Memoria Arquitectura', 3, 1, 4, 10, 'Javier'),
+(2, 'TFG Economico', 2, 1, 2, 300, 'Fran');
 
 -- --------------------------------------------------------
 
@@ -160,7 +161,7 @@ ALTER TABLE `foto`
 -- Indices de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  ADD PRIMARY KEY (`idPubliocacion`);
+  ADD PRIMARY KEY (`idPublicacion`);
 
 --
 -- Indices de la tabla `tipotrabajo`
@@ -194,7 +195,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPubliocacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipotrabajo`

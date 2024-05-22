@@ -128,7 +128,7 @@ $conn->close();
                         <div class="stars">
                             <span><?php echo str_repeat('⭐', htmlspecialchars($valoracion)); ?></span>
                         </div>
-                        <a href="editarDoc.php">
+                        <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
                             <button>Editar</button>
                         </a>
                     </div>
@@ -159,22 +159,6 @@ $conn->close();
             <div id="body_abj">
                 <div id="contenedorTexto">
                     <p>Autor: <?php echo htmlspecialchars($autor); ?></p>
-                    <?php
-                    switch ($carrera) {
-                                case '1':
-                                    $carrera = 'Ingeniería Multimedia';
-                                    break;
-                                case '3':
-                                    $carrera = 'Arquitectura';
-                                    break;
-                                case '2':
-                                    $carrera = 'Economia';
-                                    break;
-                                default:
-                                    $carrera = 'Carrera no disponible';
-                                    break;
-                            }
-                    ?>
                     <p>Estudio: <?php echo htmlspecialchars($carrera); ?></p>
                     <p>Tipo de recurso: <?php echo htmlspecialchars($tipo); ?></p>
                     <p>Fecha de publicacion: <?php echo htmlspecialchars($fecha); ?></p>
