@@ -86,6 +86,7 @@ $conn->close();
 </head>
 
 <body>
+<<<<<<< Updated upstream
 
     <header>
         <div id="izq">
@@ -132,6 +133,10 @@ $conn->close();
             <p>Mosaicua</p>
         </div>
     </header>
+=======
+    <?php require_once 'encabezadosinreg.php' ?>
+    <?php require_once 'encabezado.php' ?>
+>>>>>>> Stashed changes
 
     <main>
         <div id="body_izq">

@@ -1,0 +1,140 @@
+@import "funcionales/noche/styleN.css";
+
+
+body {
+    background-color: #121212; /* Fondo oscuro */
+    color: #eaeaea; /* Texto claro */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+    color: #eaeaea; /* Texto claro para el logo */
+}
+
+nav {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav a {
+    color: #eaeaea; /* Texto claro para los enlaces de navegación */
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.container {
+    display: flex;
+}
+
+.left-column,
+.right-column {
+    flex: 1;
+    height: 100vh; /* Establece la altura al 100% del viewport */
+    margin: 0 10px; /* Ajusta el margen horizontal dentro de cada columna */
+    padding: 20px;
+}
+
+.left-column {
+    background-color: #1f1f1f; /* Color del rectángulo izquierdo */
+    max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
+    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+.left-column:hover {
+    overflow-y: scroll; /* Muestra la barra de desplazamiento vertical al pasar el ratón */
+}
+
+.right-column {
+    background-color: #1f1f1f; /* Color del rectángulo derecho */
+    max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
+    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+.right-column:hover {
+    overflow-y: scroll; /* Muestra la barra de desplazamiento vertical al pasar el ratón */
+}
+
+.documents {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los documentos se envuelvan en varias filas */
+}
+
+.carousel-wrapper {
+    margin-bottom: 20px; /* Espacio entre los dos carruseles */
+}
+
+.carousel {
+    display: flex; /* Permite que los documentos se desplacen horizontalmente */
+    overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    scroll-snap-type: x mandatory; /* Establece el desplazamiento de desplazamiento horizontal */
+    -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento fluido en iOS */
+    scroll-behavior: smooth; /* Habilita el desplazamiento suave */
+}
+
+/* Estilos para las colecciones */
+.collection {
+    background-color: #333333; /* Color de fondo más oscuro para las colecciones */
+    margin-bottom: 20px; /* Espacio entre las colecciones */
+    padding: 20px; /* Espacio interior de cada colección */
+    border-radius: 8px; /* Borde redondeado para las colecciones */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para las colecciones */
+    max-width: calc(100% - 40px); /* Ancho máximo igual al ancho del contenedor menos el espacio del padding */
+    max-height: calc(100vh - 120px); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados y el padding */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+    overflow-y: auto; /* Añade una barra de desplazamiento vertical si el contenido excede la altura máxima */
+    color: #eaeaea; /* Texto claro para las colecciones */
+}
+
+.collection h3 {
+    margin-top: 0; /* Elimina el margen superior del nombre de la colección */
+    color: #eaeaea; /* Texto claro para el nombre de la colección */
+}
+
+/* Estilos para los documentos dentro de cada colección */
+.documents {
+    display: flex; /* Permite que los documentos se muestren en línea */
+    flex-wrap: wrap; /* Permite que los documentos se envuelvan en varias filas */
+    max-width: calc(100% - 40px); /* Ajusta el ancho máximo de los documentos al ancho del contenedor menos el espacio del padding */
+}
+
+.work {
+    flex: 0 0 calc(33.33% - 20px); /* Establece el ancho de cada documento en aproximadamente un tercio del contenedor (con espacio entre ellos) */
+    margin-right: 20px; /* Espacio entre los documentos */
+    margin-bottom: 20px; /* Espacio entre los documentos y el siguiente renglón */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    color: #eaeaea; /* Texto claro para los documentos */
+    max-width: calc(33.33% - 20px); /* Ajusta el ancho máximo de cada documento */
+}
+
+.work:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último documento en cada fila */
+}
+
+.work img {
+    width: 100%; /* Ajusta la imagen para que ocupe todo el ancho del contenedor */
+    border-radius: 8px; /* Borde redondeado para las imágenes */
+}
+
+.work-details {
+    padding: 10px; /* Espacio interior del contenedor de detalles del trabajo */
+    background-color: #2b2b2b; /* Color de fondo más oscuro para el contenedor de detalles del trabajo */
+    border-radius: 8px; /* Borde redondeado para el contenedor de detalles del trabajo */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenedor de detalles del trabajo */
+    color: #eaeaea; /* Texto claro para los detalles del trabajo */
+}
+
+.work-details h4 {
+    margin-top: 0; /* Elimina el margen superior del título del trabajo */
+}
+
+.work-details p {
+    margin: 5px 0; /* Espacio entre los párrafos dentro del contenedor de detalles del trabajo */
+}
+
+.documents .work.hidden {
+    display: none;
+}
