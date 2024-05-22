@@ -23,20 +23,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['
     $pass = $_GET['password'];
 
     // Preparar y ejecutar la consulta SQL para verificar las credenciales
-    $sql = $conn->prepare("SELECT * FROM usuarios WHERE Usuario = ? AND Contraseña = ?");
+    $sql = $conn->prepare("SELECT id, Usuario FROM usuarios WHERE Usuario = ? AND Contraseña = ?");
     $sql->bind_param("ss", $user, $pass);
     $sql->execute();
     $result = $sql->get_result();
 
     // Comprobar si la consulta devuelve algún resultado
     if ($result->num_rows > 0) {
-        // Credenciales correctas, iniciar sesión
-        session_start();
-        $_SESSION['username'] = $user;
+        // Credenciales correctas, obtener el id del usuario
+        $row = $result->fetch_assoc();
+        $userId = $row['id'];
+        $username = $row['Usuario'];
 
-        // Generar un script JavaScript para guardar el username en sessionStorage
+        // Iniciar sesión
+        session_start();
+        $_SESSION['username'] = $username;
+
+        // Generar un script JavaScript para guardar el id del usuario en sessionStorage
         echo "<script>
-            sessionStorage.setItem('username', '$user');
+            sessionStorage.setItem('userId', '$userId');
             window.location.href = 'indexReg.php';
         </script>";
         exit;
@@ -52,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['
 // Cerrar la conexión
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
