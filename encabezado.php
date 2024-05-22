@@ -1,6 +1,13 @@
-<header>
+
+    <script>
+        function logout() {
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+        }
+    </script>
+    <header>
         <div id="izq">
-        
             <a href="ajustes.php"><img src="fotos/gato.jpg" alt="logo" id="logo"></a>
 
             <!-- Menú desplegable -->
@@ -12,7 +19,6 @@
                     <a href="config.php"><i class="fas fa-cog"></i> Configuración</a>
                     <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
                 </div>
-
             </div>
         </div>
 
@@ -42,14 +48,14 @@
                 <span style="display: block; font-size: 12px;">Mi Perfil</span>
             </a>
 
-            <a href="login.php" style="text-decoration: none; color: white; text-align: center; display: block;">
+            <a href="index.php" id="logoutButton" style="text-decoration: none; color: white; text-align: center; display: block;" onclick="logout()">
                 <i class="fa-solid fa-sign-in-alt"></i>
                 <span style="display: block; font-size: 12px;">Cerrar Sesión</span>
             </a>
-
         </div>
 
         <div id="dch">
             <p>Mosaicua</p>
         </div>
     </header>
+
