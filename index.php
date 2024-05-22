@@ -24,9 +24,9 @@ $sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e 
 $result = $conn->query($sql);
 
 // Comprobar si la consulta devuelve algún resultado
-if ($result_publicaciones->num_rows > 0) {
+if ($result->num_rows > 0) {
     // Almacenar los datos de cada publicación en el array
-    while ($row = $result_publicaciones->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         $publicaciones[] = $row;
     }
 } else {
@@ -91,7 +91,7 @@ $conn->close();
                     $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
                     $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
                     $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
-                    $carrera = isset($publicacion['carrera']) ? $publicacion['carrera'] : 'Carrera no disponible';
+                    $carrera = isset($publicacion['nombreCarrera']) ? $publicacion['nombreCarrera'] : 'Carrera no disponible';
                     $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
 
                     echo '<div class="content-block" data-carrera="' . htmlspecialchars($carrera) . '">';
