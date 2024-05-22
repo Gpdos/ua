@@ -1,3 +1,46 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
+    $servername = "localhost";
+    $username = "admin";
+    $password = "admin";
+    $dbname = "ua";
+
+    // Crear conexión
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verificar conexión
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
+
+    // Obtener los datos del formulario
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['email'];
+    $contrasena = $_POST['password'];
+
+    // Insertar los datos en la tabla usuarios
+    $sql = "INSERT INTO usuarios (Usuario, Correo, Contraseña) VALUES (?, ?, ?)";
+
+    // Preparar la declaración
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $nombre, $correo, $contrasena);
+
+    // Ejecutar la declaración
+    if ($stmt->execute()) {
+        echo "Registro exitoso.";
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Cerrar la conexión
+    $stmt->close();
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,12 +48,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registro</title>
 <link id="default-stylesheet" rel="stylesheet" href="style/registro.css">
-    <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche.css" disabled>
-    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+<link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche.css" disabled>
+<link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste.css" disabled>
+<link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
 
 <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
-
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,40 +60,6 @@
 <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
 <body>
-<!--
-  <header>
-    <div id="izq">
-        <nav>
-            <input type="checkbox" id="menu">
-            <label for="menu"><i class="fa-solid fa-bars" id="label_header"></i></label>
-            <ul id="ul_menu">
-                <li class="link_menu">Link 1</li>
-                <li class="link_menu">Link 2</li>
-                <li class="link_menu">Link 3</li>
-                <li class="link_menu">Link 4</li>
-            </ul>
-        </nav>
-
-        <img src="fotos/gato.jpg" alt="logo" id="logo">
-
-    </div>
-
-    <div id="cen">
-        <i class="fa-solid fa-house"></i>
-
-        <i class="fa-solid fa-compass"></i>
-
-        <i class="fa-solid fa-user"></i>
-
-        <i class="fa-solid fa-plus"></i>
-
-    </div>
-    <div id="dch">
-        <p>Mosaicua</p>
-    </div>
-</header>
--->
-
 <div class="container">
   <h1 class="bienvenido">¡Bienvenido!</h1>
   <p class="mensaje">Por favor, ingresa tus datos personales.</p>
@@ -76,52 +84,49 @@
         <input type="checkbox" id="aceptar" required>
         <label for="aceptar">Aceptar términos y condiciones</label>
       </div>
-      <button type="submit" class="registro-btn"><a href="index.php">Registrarse</a></button>
+      <button type="submit" class="registro-btn">Registrarse</button>
     </form>
   </div>
   <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 </div>
 <script>
-       
+    // Función para aplicar configuración desde sessionStorage
+    function applySettings() {
+        const fontSize = sessionStorage.getItem('fontSize');
+        const style = sessionStorage.getItem('style');
 
-        // Función para aplicar configuración desde sessionStorage
-        function applySettings() {
-            const fontSize = sessionStorage.getItem('fontSize');
-            const style = sessionStorage.getItem('style');
-
-            if (fontSize) {
-                document.documentElement.style.fontSize = fontSize;
-            }
-
-            if (style) {
-                // Deshabilitar todas las hojas de estilo primero
-                document.getElementById('default-stylesheet').disabled = true;
-                document.getElementById('night-stylesheet').disabled = true;
-                document.getElementById('high-contrast-stylesheet').disabled = true;
-                document.getElementById('read-mode-stylesheet').disabled = true;
-
-                // Habilitar la hoja de estilo seleccionada
-                switch (style) {
-                    case 'night':
-                        document.getElementById('night-stylesheet').disabled = false;
-                        break;
-                    case 'high-contrast':
-                        document.getElementById('high-contrast-stylesheet').disabled = false;
-                        break;
-                    case 'read-mode':
-                        document.getElementById('read-mode-stylesheet').disabled = false;
-                        break;
-                    default:
-                        document.getElementById('default-stylesheet').disabled = false;
-                        break;
-                }
-            }
+        if (fontSize) {
+            document.documentElement.style.fontSize = fontSize;
         }
 
-        // Aplicar configuración cuando la página se carga
-        window.onload = applySettings;
-    </script>
+        if (style) {
+            // Deshabilitar todas las hojas de estilo primero
+            document.getElementById('default-stylesheet').disabled = true;
+            document.getElementById('night-stylesheet').disabled = true;
+            document.getElementById('high-contrast-stylesheet').disabled = true;
+            document.getElementById('read-mode-stylesheet').disabled = true;
 
+            // Habilitar la hoja de estilo seleccionada
+            switch (style) {
+                case 'night':
+                    document.getElementById('night-stylesheet').disabled = false;
+                    break;
+                case 'high-contrast':
+                    document.getElementById('high-contrast-stylesheet').disabled = false;
+                    break;
+                case 'read-mode':
+                    document.getElementById('read-mode-stylesheet').disabled = false;
+                    break;
+                default:
+                    document.getElementById('default-stylesheet').disabled = false;
+                    break;
+            }
+        }
+    }
+
+    // Aplicar configuración cuando la página se carga
+    window.onload = applySettings;
+</script>
 
 </body>
 </html>
