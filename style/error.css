@@ -1,0 +1,39 @@
+@import "style.css";
+
+.paginacentral {
+    text-align: center;
+    margin-top: 50px; /* Ajusta el margen superior según sea necesario */
+}
+
+.paginacentral form {
+    margin-bottom: 20px; /* Agrega un margen inferior entre formularios */
+}
+
+.paginacentral h2 {
+    font-size: 36px; /* Tamaño del título */
+    margin-bottom: 20px; /* Agrega un margen inferior */
+}
+
+.paginacentral h4 {
+    font-size: 24px; /* Tamaño del subtítulo */
+    margin-bottom: 30px; /* Agrega un margen inferior */
+}
+
+.boton {
+    margin-top: 40px; /* Agrega un margen superior entre botones */
+}
+
+.boton input[type="submit"] {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Elimina el borde del botón */
+    padding: 20px 40px; /* Ajusta el relleno según sea necesario */
+    font-size: 24px; /* Tamaño del texto del botón */
+    border-radius: 5px; /* Añade bordes redondeados al botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Agrega una transición suave al color de fondo */
+}
+
+.boton input[type="submit"]:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+}

@@ -1,8 +1,137 @@
+@import "styleC.css";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black; /* Fondo negro */
+    margin: 0;
+    padding: 0;
+    color: white; /* Texto blanco */
+}
+
+header {
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    color: white; /* Texto blanco */
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.main-content {
+    display: flex;
+    padding: 20px;
+}
+
+.filters {
+    display: flex;            /* Habilita Flexbox */
+    flex-direction: column;   /* Alinea los hijos en columnas (verticalmente) */
+    align-items: flex-start;  /* Alinea los items al inicio de la dirección transversal (izquierda) */
+    justify-content: flex-start; /* Alinea los items al inicio de la dirección principal (arriba) */
+    flex-basis: 20%;          /* Base del tamaño del contenedor */
+    background-color: rgb(20, 20, 20);
+    padding: 10px;            /* Espaciado interno */
+    color: white;             /* Texto blanco */
+    border-radius: 5px;       /* Borde redondeado */
+    margin-right: 20px;       /* Margen derecho */
+    height: 600px;            /* Altura fija */
+    overflow: auto;           /* Permite scroll si el contenido excede la altura */
+}
+
+.filters > div, .filters > h2, .filters > h3 {
+    width: 100%;              /* Asegura que los hijos ocupen todo el ancho disponible */
+    margin-bottom: 10px;      /* Espacio entre cada item */
+}
+
+.filters label {
+    display: block;           /* Asegura que cada label ocupe su propia línea */
+    margin-bottom: 5px;       /* Espacio después de cada label */
+}
+
+.filters input[type="checkbox"] {
+    margin-right: 5px;        /* Espacio a la derecha de cada checkbox */
+}
+
+.search-results {
+    flex-grow: 1;
+    color: white;             /* Texto blanco */
+    background-color: rgb(20, 20, 20); 
+    border-radius: 5px;
+    height: fit-content;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+#seccionesCen {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ajusta esto según tus necesidades */
+}
+
+.result img {
+    width: 100%;
+    height: auto;
+}
+
 .card {
-    background-color: #000000; /* Negro */
-    color: #FFFFFF; /* Blanco */
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 0 5px white; /* Sombra blanca */
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    width: 20%;
+    flex: 0 1 30%;
 }
 
 .card:hover {
-    background-color: #333333; /* Gris oscuro para hover */
+    box-shadow: 0 0 10px white; /* Sombra blanca */
+}
+
+.card a {
+    color: white; /* Texto blanco */
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-content h2 {
+    margin-top: 0;
+    color: white; /* Texto blanco */
+}
+
+.card-content .stars {
+    color: white; /* Texto blanco */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .filters,
+    .search-results {
+        width: 100%;
+    }
 }

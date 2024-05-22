@@ -1,0 +1,87 @@
+@import "styleN.css";
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab-btn {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 20px; /* Añadir bordes curvos */
+    margin: 0 10px; /* Añadir margen entre los botones */
+    
+}
+
+.tab-btn.active {
+    background-color: #aeaeae;
+    color: #000000;
+}
+
+.tab-btn:hover {
+    background-color: #353434;
+    color: aliceblue;
+}
+
+.group-works,
+.model-3d {
+    color: rgb(255, 255, 255); /* Color del texto negro */
+    font-size: 18px;
+    margin-top: 20px; /* Añadir margen superior */
+    margin-left: 20px; /* Añadir margen izquierdo */
+}
+
+.group-works h3,
+.model-3d h3 {
+    color: aliceblue;
+}
+
+.carousel,
+.model-3d .carousel {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* Oculta la barra de desplazamiento horizontal */
+    -ms-overflow-style: none; /* Oculta la barra de desplazamiento horizontal para IE y Edge */
+}
+
+.carousel::-webkit-scrollbar,
+.model-3d .carousel::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento horizontal en WebKit (Chrome, Safari, etc.) */
+}
+
+.work,
+.model-3d .work {
+    background-color: #000000;
+    color: white;
+    border-radius: 10px;
+    margin-right: 20px;
+    flex: 0 0 auto; /* Evita que los trabajos se redimensionen */
+    width: 250px; /* Ancho de cada trabajo */
+    height: 300px; /* Altura de cada trabajo */
+}
+
+.work img,
+.model-3d .work img {
+    display: block; /* Para que la imagen sea tratada como un bloque */
+    margin: 10px auto 0; /* Centra la imagen horizontalmente y agrega margen superior */
+    width: 90%; /* Ancho de la imagen */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.work-details,
+.model-3d .work-details {
+    padding: 10px;
+    margin-top: -15px;
+    font-size: 14px;
+}
+
+.model-3d .work-title {
+    font-weight: bold; /* Aplica negrita al título del trabajo */
+}

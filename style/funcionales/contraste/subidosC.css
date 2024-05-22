@@ -1,0 +1,127 @@
+@import "styleC.css";
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab-btn {
+    background-color: #000000; /* Cambio a negro */
+    color: #ffffff; /* Cambio a blanco */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 20px; /* Añadir bordes curvos */
+    margin: 0 10px; /* Añadir margen entre los botones */
+    box-shadow: 0 0 0 0.75px #ffff00; /* Añadir sombra amarilla */
+}
+
+
+.tab-btn.active {
+    background-color: #ffffff; /* Cambio a blanco */
+    color: #000000; /* Cambio a negro */
+}
+
+.tab-btn:hover {
+    background-color: #ffffff; /* Cambio a blanco */
+    color: #000000; /* Cambio a negro */
+}
+
+.group-works {
+    color: #ffffff; /* Cambio a blanco */
+    font-size: 18px;
+    margin-top: 20px; /* Añadir margen superior */
+    margin-left: 20px; /* Añadir margen izquierdo */
+}
+
+.group-works h3 {
+    color: #ffffff; /* Cambio a blanco */
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* Oculta la barra de desplazamiento horizontal */
+    -ms-overflow-style: none; /* Oculta la barra de desplazamiento horizontal para IE y Edge */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento horizontal en WebKit (Chrome, Safari, etc.) */
+}
+
+.work {
+    background-color: rgb(20, 20, 20);
+    color: #ffffff; /* Cambio a blanco */
+    border-radius: 10px;
+    margin-right: 20px;
+    flex: 0 0 auto; /* Evita que los trabajos se redimensionen */
+    width: 250px; /* Ancho de cada trabajo */
+    height: 300px; /* Altura de cada trabajo */
+}
+
+.work img {
+    display: block; /* Para que la imagen sea tratada como un bloque */
+    margin: 10px auto 0; /* Centra la imagen horizontalmente y agrega margen superior */
+    width: 90%; /* Ancho de la imagen */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.work-details {
+    padding: 10px;
+    margin-top: -15px;
+    font-size: 14px;
+}
+
+.model-3d {
+    color: #ffffff; /* Cambio a blanco */
+    font-size: 18px;
+    margin-top: 20px; /* Añadir margen superior */
+    margin-left: 20px; /* Añadir margen izquierdo */
+}
+
+.model-3d h3 {
+    color: #ffffff; /* Cambio a blanco */
+}
+
+.model-3d .carousel {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* Oculta la barra de desplazamiento horizontal */
+    -ms-overflow-style: none; /* Oculta la barra de desplazamiento horizontal para IE y Edge */
+}
+
+.model-3d .carousel::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento horizontal en WebKit (Chrome, Safari, etc.) */
+}
+
+.model-3d .work {
+    background-color: rgb(20, 20, 20);
+    color: #ffffff; /* Cambio a blanco */
+    border-radius: 10px;
+    margin-right: 20px;
+    flex: 0 0 auto; /* Evita que los trabajos se redimensionen */
+    width: 250px; /* Ancho de cada trabajo */
+    height: 300px; /* Altura de cada trabajo */
+}
+
+.model-3d .work img {
+    display: block; /* Para que la imagen sea tratada como un bloque */
+    margin: 10px auto 0; /* Centra la imagen horizontalmente y agrega margen superior */
+    width: 90%; /* Ancho de la imagen */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.model-3d .work-details {
+    padding: 10px;
+    margin-top: -15px;
+    font-size: 13px;
+}
+
+.model-3d .work-title {
+    font-weight: bold; /* Aplica negrita al título del trabajo */
+}

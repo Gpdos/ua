@@ -1,12 +1,209 @@
+@font-face {
+    font-family: titulos;
+    src: url(../letras/letra_titulo.ttf);
+}
+
+/* Fuente texto */
+@font-face {
+    font-family: texto;
+    src: url(../letras/Texto.ttf);
+}
+
+.paginacentral {
+    text-align: center;
+}
+
+img {
+    border-radius: 10px;
+}
+
+div {
+    border-radius: 10px;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+}
+
+:root {
+    --main-bg-color: black; /* Fondo negro */
+    --azulOscuro: black; /* Negro */
+    --azulNormal: black; /* Negro */
+    --azulClaro: white; /* Blanco */
+    --blancoHueso: white; /* Blanco puro */
+}
+
+.sombra {
+    box-shadow: 5px 5px 10px white; /* Sombra blanca */
+}
+
 body {
-    background-color: #000000; /* Negro */
-    color: #FFFFFF; /* Blanco */
+    font-family: Helvetica, sans-serif;
+    background: linear-gradient(to bottom, #000000, #000000); /* Fondo negro */
+    height: 100%;
+    color: white; /* Texto en blanco */
 }
 
+footer {
+    margin-top: 10px;
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* HEADER */
 header {
-    background-color: #000000; /* Negro */
+    background-color: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding-block: 20px;
+    padding-inline: 15px;
+    border-radius: 20px;
+    margin-block: 10px;
+    margin-inline: 20px;
+    ul {
+        display: none;
+    }
+    
+    input:checked~ul {
+        display: block;
+    }
 }
 
-nav a {
-    color: #FFFF00; /* Amarillo */
+/* Estilos base para los enlaces en el nav */
+header nav a {
+    display: inline-block;  /* O puedes usar flex si los enlaces están en un flex container */
+    padding: 10px 15px;     /* Ajusta el padding según el diseño */
+    color: white;           /* Texto blanco */
+    text-decoration: none;  /* Elimina subrayado de enlaces */
+    transition: background-color 0.3s ease; /* Transición suave del fondo */
+    border-radius: 10px;
+}
+
+/* Estilos para hover */
+header nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo claro al pasar el ratón */
+}
+
+/* Opcional: estilos para los iconos si son parte de un sprite o fuente de iconos */
+header nav a i {
+    margin-right: 5px;  /* Espacio entre el icono y el texto, si necesario */
+}
+
+#izq {
+    float: left;
+    width: 10%;
+    display: flex;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+}
+
+#cen {
+    float: center;
+    background-color: var(--azulNormal); /* Negro */
+    width: 70%;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-block: 20px;
+    font-size: 35px;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.453); /* Sombra blanca */
+}
+
+#dch {
+    float: right;
+    width: 15%;
+    text-align: center;
+    font-family: titulos;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px white; /* Sombra blanca */
+    line-height: 10px;
+}
+
+#menu {
+    display: none;
+}
+
+#label_header {
+    box-sizing: border-box;
+    display: inline-block;
+    border: 3px solid white; /* Borde blanco */
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    font-size: 54px; /* Tamaño de las rayas */
+    color: white; /* Texto blanco */
+}
+
+.link_menu {
+    display: block;
+    background: black; /* Fondo negro */
+    color: white; /* Texto blanco */
+    margin: 0;
+    padding: 10px;
+    width: fit-content;
+    list-style: none;
+    border-bottom: 1px solid white; /* Borde blanco */
+}
+
+.fa-solid {
+    color: white !important; /* Texto blanco */
+}
+
+/* Estilos para el menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Texto blanco */
+    font-size: 40px; /* Tamaño del texto */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de puntero */
+    padding: 15px; /* Espaciado interno */
+}
+
+/* Estilos para el contenido del menú desplegable */
+.dropdown-content {
+    display: none; /* Ocultar contenido por defecto */
+    position: absolute; /* Posición absoluta */
+    background-color: black; /* Fondo negro */
+    min-width: 200px; /* Ancho mínimo */
+    box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.2); /* Sombra blanca */
+    z-index: 1; /* Z-index */
+}
+
+.dropdown-content a {
+    color: white; /* Texto blanco */
+    padding: 20px; /* Espaciado interno */
+    text-decoration: none; /* Quitar subrayado */
+    display: block; /* Mostrar en bloque */
+}
+
+.dropdown-content a:hover {
+    background-color: #444444; /* Fondo gris al pasar el ratón */
+}
+
+/* Mostrar el contenido cuando se pasa el ratón sobre el botón */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
