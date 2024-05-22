@@ -41,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['
 
         // Generar un script JavaScript para guardar el id del usuario en sessionStorage
         echo "<script>
-            sessionStorage.setItem('userId', '$userId');
+          sessionStorage.setItem('username', '$user');
+          sessionStorage.setItem('userId', '$userId');
             window.location.href = 'indexReg.php';
         </script>";
         exit;
