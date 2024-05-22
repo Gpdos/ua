@@ -99,7 +99,6 @@ $conn->close();
     <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
 <body>
-<<<<<<< Updated upstream
     <header>
         <div id="izq">
             <a href="ajustes.php"><img src="fotos/gato.jpg" alt="logo" id="logo"></a>
@@ -144,11 +143,6 @@ $conn->close();
             <p>Mosaicua</p>
         </div>
     </header>
-=======
-
-    <?php require_once 'encabezadosinreg.php' ?>
-    <?php require_once 'encabezado.php' ?>
->>>>>>> Stashed changes
     <main>
         <!-- <div id="global"> -->
         <div id="body_izq">

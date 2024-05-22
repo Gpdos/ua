@@ -70,10 +70,6 @@ $conn->close();
 
 <body>
     <?php require_once 'encabezadosinreg.php' ?>
-<<<<<<< Updated upstream
-=======
-    <?php require_once 'encabezado.php' ?>
->>>>>>> Stashed changes
 
     <main>
         <div id="body_izq">
