@@ -49,13 +49,9 @@ $conn->close();
         <aside class="settings-menu">
             <h2>Ajustes de cuenta</h2>
             <ul>
-                <li><a href="#editar">Editar Perfil</a></li>
+
                 <li><a href="colecciones.php">Mis Colecciones</a></li>
-                <li><a href="#cuenta">Ajustes de Cuenta</a></li>
-                <li><a href="#seguridad">Seguridad</a></li>
-                <li><a href="#privacidad">Privacidad</a></li>
                 <li><a href="config.php">Accesibilidad</a></li>
-                <li><a href="#sesion">Cerrar Sesión</a></li>
             </ul>
         </aside>
     </div>

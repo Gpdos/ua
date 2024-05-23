@@ -24,11 +24,9 @@
             <aside class="settings-menu">
                 <h2>Configuración</h2>
                 <ul>
-                    <li><a href="ajustes.php">Ajustes de cuenta</a></li>
-                    <li><a href="#seguridad">Seguridad</a></li>
-                    <li><a href="#privacidad">Privacidad</a></li>
-                    <li><a href="#accesibilidad">Accesibilidad</a></li>
-                    <li><a href="#sesion">Cerrar sesión</a></li>
+                    <li><a href="ajustes.php">Volver</a></li>
+
+                    <li><a href="#sesion" onclick=logout()>Cerrar sesión</a></li>
                 </ul>
             </aside>
         </div>
