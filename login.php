@@ -86,11 +86,11 @@ $conn->close();
     </div>
     <form action="login.php" method="get">
       <div class="form-group">
-        <img src="fotos/perfil usuario 2.png" alt="Usuario">
+        <img src="fotos/perfil usuario 2.png" alt="Usuario" class="icon-img">
         <input type="text" name="user" placeholder="user" required>
       </div>
       <div class="form-group2">
-        <img src="fotos/candado.png" alt="Contraseña">
+        <img src="fotos/candado.png" alt="Contraseña" class="icon-img">
         <input type="password" name="password" placeholder="Contraseña" required>
       </div>
       <div class="checkbox">

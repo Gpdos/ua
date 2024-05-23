@@ -231,3 +231,8 @@ body.login-body {
 .register-link a:hover {
     color: #86c1ff; /* Color al pasar el ratón sobre el enlace */
 }
+
+.icon-img {
+    filter: brightness(0) invert(1);
+}
+
