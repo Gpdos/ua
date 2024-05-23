@@ -98,3 +98,23 @@ label {
 .login-link a:hover {
     color: #86c1ff;
 }
+
+
+button[type="submit"] {
+    display: block; /* Hace que el botón ocupe toda la línea */
+    width: 80%; /* Ajusta el ancho del botón */
+    margin: 20px auto; /* Centra el botón horizontalmente y añade margen arriba y abajo */
+    padding: 10px 0; /* Añade padding vertical para hacer el botón más alto */
+    font-size: 18px; /* Ajusta el tamaño del texto dentro del botón */
+    font-weight: bold; /* Hace el texto del botón en negrita */
+    color: #fff; /* Color del texto */
+    background-color: #007BFF; /* Color de fondo del botón */
+    border: none; /* Elimina el borde */
+    border-radius: 20px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima */
+    transition: background-color 0.3s; /* Suaviza la transición del color de fondo */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Cambia el color de fondo cuando se pasa el cursor por encima */
+}
