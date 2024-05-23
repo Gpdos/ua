@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2024 a las 19:01:09
+-- Tiempo de generación: 23-05-2024 a las 16:58:25
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -53,7 +53,7 @@ INSERT INTO `estudio` (`idEstudio`, `Nombre`, `Universidad`) VALUES
 
 CREATE TABLE `foto` (
   `idFoto` int(11) NOT NULL,
-  `archivo` varchar(20) NOT NULL,
+  `archivo` varchar(2000) NOT NULL,
   `idPubli` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -62,12 +62,12 @@ CREATE TABLE `foto` (
 --
 
 INSERT INTO `foto` (`idFoto`, `archivo`, `idPubli`) VALUES
-(1, '1.jpeg', 0),
-(2, '2.jpeg', 0),
-(3, '3.jpeg', 0),
-(4, '4.jpeg', 0),
-(5, '5.jpeg', 0),
-(6, '6.jpeg', 0);
+(1, 'https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2019/12/2019-had-its-share-delightfully-strange-moments.jpg?tf=3840x', 1),
+(2, 'https://picsum.photos/600/400?random=2', 1),
+(3, 'https://picsum.photos/600/400?random=3', 2),
+(4, 'https://picsum.photos/600/400?random=4', 3),
+(5, 'https://picsum.photos/600/400?random=5', 3),
+(6, 'https://picsum.photos/600/400?random=6', 4);
 
 -- --------------------------------------------------------
 

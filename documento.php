@@ -21,6 +21,7 @@ $tipo = "";
 $valoracion = "";
 $fecha = "";
 $autor = "";
+$imagen = "";
 
 // Comprobar si se ha enviado un ID de publicación
 if (isset($_GET['idPublicacion'])) {
@@ -54,6 +55,20 @@ if (isset($_GET['idPublicacion'])) {
 
     // Cerrar la consulta
     $sql->close();
+
+    // Obtener la imagen asociada con la publicación
+    $sql_imagen = $conn->prepare("SELECT archivo FROM foto WHERE idPubli = ?");
+    $sql_imagen->bind_param("i", $idPublicacion);
+    $sql_imagen->execute();
+    $result_imagen = $sql_imagen->get_result();
+
+    if ($result_imagen->num_rows > 0) {
+        $row_imagen = $result_imagen->fetch_assoc();
+        $imagen = $row_imagen['archivo'];
+    } else {
+        $imagen = "https://picsum.photos/600/400?random=" . htmlspecialchars($idPublicacion); // Imagen por defecto si no se encuentra una específica
+    }
+    $sql_imagen->close();
 } else {
     echo "No se proporcionó un ID de publicación.";
 }
@@ -126,7 +141,7 @@ $conn->close();
             <h2 id="titulo"><?php echo htmlspecialchars($nombre); ?></h2>
             <div id="publicacion">
                 <div id="publicacion_arr">
-                    <img src="https://picsum.photos/600/400?random=<?php echo htmlspecialchars($idPublicacion); ?>" alt="Imagen publicacion" class="sombra">
+                    <img src="<?php echo htmlspecialchars($imagen); ?>" alt="Imagen publicacion" class="sombra">
                     <div id="descripcion" class="sombra">
                         <h3>Comentarios:</h3>
                         <?php foreach ($comentarios as $comentario): ?>
@@ -143,7 +158,9 @@ $conn->close();
         </div>
         <div id="body_dch">
             <div id="body_arr">
-
+                <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
+                    <button>Editar</button>
+                </a>
                 <div id="contenedorTexto">
                     <p>Comentarios: </p>
                     <form id="comentarioForm" method="POST" action="">
@@ -175,9 +192,6 @@ $conn->close();
                         <li>Referencias</li>
                         <li>Lazarillo de Tormes</li>
                     </ul>
-                    <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
-                    <button>Editar</button>
-                </a>
                 </div>
             </div>
         </div>
@@ -233,14 +247,11 @@ $conn->close();
         }
 
         function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
-
-            
-        
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
 
         // Aplicar configuración cuando la página se carga
         window.onload = function() {
