@@ -9,7 +9,7 @@ main {
     float: left;
     width: 34%;
     padding: 15px;
-    background-color: var(--azulOscuro);
+    background-color: rgb(15, 15, 15);
     margin-right: 20px;
 }
 
@@ -23,7 +23,7 @@ main {
 #div_arr {
     width: auto;
     height: 66%;
-    background-color: var(--azulOscuro);
+    background-color:rgb(15, 15, 15);
     padding-inline: 18px;
     padding-block: 10px;
     justify-content: space-around;
@@ -31,7 +31,7 @@ main {
 }
 
 #div_arr #div_flecha {
-    background-color: black;
+    background-color: #ffffff; /* Blanco */
     width: 70px;
     height: auto;
 }
@@ -39,19 +39,19 @@ main {
 #div_arr i {
     font-size: 70px;
     padding-top: 100px;
-    color: white;
+    color: black; /* Negro */
 }
 
 #div_arr .titulo {
     font-size: 30px;
     padding-left: 30px;
     line-height: 0;
-    color: white;
+    color: rgb(255, 255, 255); /* Negro */
 }
 
 #div_arr a {
     text-decoration: none;
-    color: black;
+    color: white; /* Blanco */
 }
 
 #div_abj {
@@ -66,13 +66,13 @@ main {
 #div_abj div {
     margin-inline: 40px;
     margin-block: 10px;
-    background-color: var(--azulOscuro);
+    background-color: #ffffff; /* Blanco */
     width: 20%;
     padding: 10px;
 }
 
 #div_abj div > div {
-    background-color: var(--azulClaro);
+    background-color: #000000; /* Negro */
     width: auto;
     height: 50px;
     margin-inline: auto;
@@ -83,13 +83,13 @@ main {
     margin-block: 5px;
     margin-inline: 65px;
     line-height: 38px;
-    color: white;
-    text-shadow: 1px 1px 8px black;
+    color: black; /* Negro */
+    text-shadow: 1px 1px 8px white; /* Blanco */
 }
 
 #div_abj a {
     text-decoration: none;
-    color: white;
+    color: black; /* Negro */
 }
 
 #lang {
@@ -100,6 +100,7 @@ main {
     text-decoration: none;
     font-size: 30px;
     margin-bottom: 10px;
+    color: black; /* Negro */
 }
 
 .content {
@@ -113,6 +114,7 @@ main {
     padding-block: 10px;
     padding-inline: 20px;
     line-height: 50px;
+    color: black; /* Negro */
 }
 
 .content-block img {
@@ -124,9 +126,9 @@ main {
 .content-block span {
     position: absolute;
     transform: translate(0%, 0%);
-    color: white;
+    color: black; /* Negro */
     font-size: 30px;
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 1px 1px 2px white; /* Blanco */
 }
 
 .content-block {
@@ -147,7 +149,7 @@ main {
     display: inline-block;
     margin-inline: 10px;
     padding: 10px;
-    background-color: var(--azulClaro);
+    background-color: #ffffff; /* Blanco */
 }
 
 .card-image {
@@ -158,12 +160,13 @@ main {
 
 .card-content {
     padding: 10px;
-    background-color: #f8f8f8;
+    background-color: #000000; /* Negro */
 }
 
 .card-content h2 {
     margin-top: 0;
     font-size: 16px;
+    color: white; /* Blanco */
 }
 
 .card-content p {

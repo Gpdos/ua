@@ -73,7 +73,7 @@ $conn->close();
 <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 <link id="default-stylesheet" rel="stylesheet" href="style/login.css">
 <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/loginN.css" disabled>
-<link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste.css" disabled>
+<link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/loginC.css" disabled>
 <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
 </head>
 <body class="login-body">

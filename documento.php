@@ -111,7 +111,7 @@ $conn->close();
     <title>Publicacion</title>
     <link id="default-stylesheet" rel="stylesheet" href="style/documento.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/documentoN.css" disabled>
-    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste.css" disabled>
+    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/documentoC.css" disabled>
     <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">

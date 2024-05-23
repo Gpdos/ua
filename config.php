@@ -5,7 +5,7 @@
     <title>Configuración</title>
     <link id="default-stylesheet" rel="stylesheet" href="style/config.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/configN.css" disabled>
-    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste.css" disabled>
+    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/configC.css" disabled>
     <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
