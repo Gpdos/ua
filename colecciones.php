@@ -1,266 +1,170 @@
+<?php
+// Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$dbname = "ua";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Inicializar un array para almacenar los datos de las publicaciones
+$publicaciones = array();
+
+// Inicializar un array para almacenar los nombres únicos del estudio
+$estudios = array();
+
+// Realizar la consulta SQL para obtener todas las publicaciones
+$sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
+$result = $conn->query($sql);
+
+// Comprobar si la consulta devuelve algún resultado
+if ($result->num_rows > 0) {
+    // Almacenar los datos de cada publicación en el array
+    while ($row = $result->fetch_assoc()) {
+        $publicaciones[] = $row;
+    }
+} else {
+    echo "No se encontraron publicaciones.";
+}
+
+// Realizar la consulta SQL para obtener los nombres únicos de la tabla estudio
+$sql_estudios = "SELECT DISTINCT idEstudio, Nombre FROM estudio";
+$result_estudios = $conn->query($sql_estudios);
+
+// Comprobar si la consulta devuelve algún resultado
+if ($result_estudios->num_rows > 0) {
+    // Almacenar los nombres únicos en el array
+    while ($row = $result_estudios->fetch_assoc()) {
+        $estudios[] = $row;
+    }
+} else {
+    echo "No se encontraron estudios.";
+}
+
+// Cerrar la conexión
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mis Colecciones</title>
-
 <link id="default-stylesheet" rel="stylesheet" href="style/colecciones.css">
 <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/coleccionesN.css" disabled>
-    <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/coleccionesC.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+<link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/coleccionesC.css" disabled>
+<link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
 <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
-
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
-
 </head>
 <body>
 <div id="header-container"></div>
 
-
-    <div class="container">
-        <div class="left-column">
+<div class="container">
+    <div class="left-column">
         <h3 style="color: lightblue;">GUARDADOS:</h3>
         <h4 style="color: lightblue; text-align: right;">Último mes:</h4>
-            <div class="carousel-wrapper">
-                <div class="carousel" style="margin-bottom: 30px;">
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-                    <!-- Agrega más documentos aquí -->
-                </div>
-            </div>
-
-        <h4 style="color: lightblue; text-align: right;">Anteriormente:</h4>
-            <div class="carousel-wrapper">
-                <div class="carousel">
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                            <p>Ing. Agrónoma</p>
-                            <p>⭐⭐⭐</p>
-                            <p>01/01/2024</p>
-                        </div>
-                    </a>
-                </div>
+        <div class="carousel-wrapper">
+            <div class="carousel" style="margin-bottom: 30px;">
+                <!-- PHP Code to Fetch Documents for Last Month -->
+                <?php
+                $found = false;
+                foreach ($publicaciones as $publicacion) {
+                    if ($publicacion['carrera'] == 1) {
+                        $found = true;
+                        echo '<a href="documento.php" class="work">
+                                <img src="fotos/'.$publicacion['image'].'">
+                                <div class="work-details">
+                                    <h4>'.$publicacion['title'].'</h4>
+                                    <p>'.$publicacion['author'].'</p>
+                                    <p>'.$publicacion['nombreCarrera'].'</p>
+                                    <p>⭐⭐⭐</p>
+                                    <p>'.$publicacion['date'].'</p>
+                                </div>
+                              </a>';
+                    }
+                }
+                if (!$found) {
+                    echo "<p>No se encontraron publicaciones guardadas para el último mes.</p>";
+                }
+                ?>
             </div>
         </div>
-
-
-        <div class="right-column">
-            <div class="collection">
-                <h3>COLECCIÓN 1</h3>
-                <div class="documents">
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work hidden">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-                    <!-- Agrega más documentos aquí -->
-                </div>
+        <h4 style="color: lightblue; text-align:right;">Anteriormente:</h4>
+        <div class="carousel-wrapper">
+            <div class="carousel">
+                <!-- PHP Code to Fetch Documents for Previous Months -->
+                <?php
+                $found = false;
+                foreach ($publicaciones as $publicacion) {
+                    if ($publicacion['carrera'] == 2) {
+                        $found = true;
+                        echo '<a href="documento.php" class="work">
+                                <img src="fotos/'.$publicacion['image'].'">
+                                <div class="work-details">
+                                    <h4>'.$publicacion['title'].'</h4>
+                                    <p>'.$publicacion['author'].'</p>
+                                    <p>'.$publicacion['nombreCarrera'].'</p>
+                                    <p>⭐⭐⭐</p>
+                                    <p>'.$publicacion['date'].'</p>
+                                </div>
+                              </a>';
+                    }
+                }
+                if (!$found) {
+                    echo "<p>No se encontraron publicaciones anteriores.</p>";
+                }
+                ?>
             </div>
-
-            <div class="collection">
-                <h3>COLECCIÓN 2</h3>
-                <div class="documents">
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work hidden">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-                    <!-- Agrega más documentos aquí -->
-                </div>
-            </div>
-
-            <div class="collection">
-                <h3>COLECCIÓN 3</h3>
-                <div class="documents">
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-
-                    <a href="documento.php" class="work hidden">
-                        <img src="fotos/arquitectura.jpg">
-                        <div class="work-details">
-                            <h4>Trabajo de botánica</h4>
-                            <p>Jose Ramón</p>
-                        </div>
-                    </a>
-                    <!-- Agrega más documentos aquí -->
-                </div>
-            </div>
-
-            
-
-            
-            <!-- Agrega más colecciones aquí -->
         </div>
-
     </div>
+    <div class="right-column">
+        <h3 style="color: lightblue;">FILTRADOS POR CARRERA:</h3>
+        <?php
+        $carreras = [
+            3 => "Derecho y RI",
+            4 => "Arquitectura",
+            5 => "Gastronomía"
+        ];
+        foreach ($carreras as $carrera => $nombreCarrera) {
+            echo '<h4 style="color: lightblue;">Carrera: '.$nombreCarrera.'</h4>';
+            echo '<div class="carousel-wrapper"><div class="carousel">';
+            $found = false;
+            foreach ($publicaciones as $publicacion) {
+                if ($publicacion['carrera'] == $carrera) {
+                    $found = true;
+                    echo '<a href="documento.php" class="work">
+                          
+                            <div class="work-details">
+                                <h4>'.$publicacion['Nombre'].'</h4>
+                                <p>'.$publicacion['autor'].'</p>
+                                
+                                <p>⭐⭐⭐</p>
+                                <p>'.$publicacion['fecha'].'</p>
+                            </div>
+                          </a>';
+                }
+            }
+            if (!$found) {
+                echo "<p>No se encontraron publicaciones para la carrera $nombreCarrera.</p>";
+            }
+            echo '</div></div>';
+        }
+        ?>
+    </div>
+</div>
 
-    <?php require_once 'pie.php' ?>
+<?php require_once 'pie.php' ?>
 
 
     <script>
