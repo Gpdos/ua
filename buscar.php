@@ -98,16 +98,25 @@ $conn->close();
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Consulta SQL para obtener todas las publicaciones
         $sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
-
+        $conditions = [];
+        
         if (!empty($_GET['tipo'])) {
-            $tipoFiltros = array_map('intval', $_GET['tipo']); // Asegurar que los valores son enteros
-            $tipoFiltros = implode(',', $tipoFiltros); // Convertir el array en una lista separada por comas
-            $sql .= " WHERE p.tipo IN ($tipoFiltros)"; // Añadir condiciones de tipo a la consulta SQL
+            $tipoFiltros = array_map('intval', $_GET['tipo']);
+            $conditions[] = "p.tipo IN (" . implode(',', $tipoFiltros) . ")";
         }
-
+        
+        if (!empty($_GET['carrera'])) {
+            $carreraFiltros = array_map('intval', $_GET['carrera']);
+            $conditions[] = "p.carrera IN (" . implode(',', $carreraFiltros) . ")";
+        }
+        
+        if (!empty($conditions)) {
+            $sql .= " WHERE " . implode(' AND ', $conditions);
+        }
+        
         $result = $conn->query($sql);
+        
 
         if ($result->num_rows > 0) {
             // Almacenar y mostrar los datos de cada publicación
