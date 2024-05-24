@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-05-2024 a las 16:58:25
+-- Tiempo de generación: 24-05-2024 a las 11:19:36
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ua`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(200) NOT NULL,
+  `texto` varchar(200) NOT NULL,
+  `autor` int(11) NOT NULL,
+  `valoracion` int(11) NOT NULL,
+  `publicacion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id`, `titulo`, `texto`, `autor`, `valoracion`, `publicacion`) VALUES
+(1, '', 'no veas que difisi', 1, 0, 1),
+(2, '', 'no veas que difisi', 1, 0, 1),
+(3, '', 'no veas que difisi', 1, 0, 1),
+(4, '', 'algo malo va a pasar', 0, 0, 1),
+(5, '', 'ahora si que si', 3, 0, 1),
+(6, '', 'sin identificar', 0, 1, 1),
+(7, '', 'sin identificar', 0, 1, 1),
+(8, '', 'Prueba usabilidad', 0, 5, 1),
+(9, '', 'Prueba 2', 1, 1, 1),
+(10, '', 'prueba 3', 1, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +95,7 @@ CREATE TABLE `foto` (
 INSERT INTO `foto` (`idFoto`, `archivo`, `idPubli`) VALUES
 (1, 'https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2019/12/2019-had-its-share-delightfully-strange-moments.jpg?tf=3840x', 1),
 (2, 'https://picsum.photos/600/400?random=2', 1),
-(3, 'https://picsum.photos/600/400?random=3', 2),
+(3, 'https://cdn.pixabay.com/photo/2024/02/26/19/39/monochrome-image-8598798_640.jpg', 2),
 (4, 'https://picsum.photos/600/400?random=4', 3),
 (5, 'https://picsum.photos/600/400?random=5', 3),
 (6, 'https://picsum.photos/600/400?random=6', 4);
@@ -93,7 +124,8 @@ INSERT INTO `publicacion` (`idPublicacion`, `Nombre`, `carrera`, `tipo`, `valora
 (1, 'Memoria Arquitectura', 3, 1, 4, '0000-00-00', 'Javier'),
 (2, 'TFG Economico', 2, 1, 2, '0000-00-00', 'Francisco'),
 (3, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos'),
-(4, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos');
+(4, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos'),
+(5, 'Prueba', 1, 1, 2, '2024-05-29', 'Javier');
 
 -- --------------------------------------------------------
 
@@ -117,6 +149,18 @@ INSERT INTO `tipotrabajo` (`idTipo`, `Nombre`) VALUES
 (4, 'Presentacion'),
 (5, 'Modelado 3D'),
 (6, 'Memoria');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `trabajo`
+--
+
+CREATE TABLE `trabajo` (
+  `id` int(11) NOT NULL,
+  `idPubli` int(11) NOT NULL,
+  `contenido` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -148,6 +192,12 @@ INSERT INTO `usuarios` (`Id`, `Usuario`, `Contraseña`, `Correo`) VALUES
 --
 
 --
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `estudio`
 --
 ALTER TABLE `estudio`
@@ -172,6 +222,12 @@ ALTER TABLE `tipotrabajo`
   ADD PRIMARY KEY (`idTipo`);
 
 --
+-- Indices de la tabla `trabajo`
+--
+ALTER TABLE `trabajo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -180,6 +236,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `estudio`
@@ -197,13 +259,19 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tipotrabajo`
 --
 ALTER TABLE `tipotrabajo`
   MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `trabajo`
+--
+ALTER TABLE `trabajo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
