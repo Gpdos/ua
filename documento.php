@@ -21,7 +21,6 @@ $tipo = "";
 $valoracion = "";
 $fecha = "";
 $autor = "";
-$imagen = "";
 
 // Comprobar si se ha enviado un ID de publicación
 if (isset($_GET['idPublicacion'])) {
@@ -55,20 +54,6 @@ if (isset($_GET['idPublicacion'])) {
 
     // Cerrar la consulta
     $sql->close();
-
-    // Obtener la imagen asociada con la publicación
-    $sql_imagen = $conn->prepare("SELECT archivo FROM foto WHERE idPubli = ?");
-    $sql_imagen->bind_param("i", $idPublicacion);
-    $sql_imagen->execute();
-    $result_imagen = $sql_imagen->get_result();
-
-    if ($result_imagen->num_rows > 0) {
-        $row_imagen = $result_imagen->fetch_assoc();
-        $imagen = $row_imagen['archivo'];
-    } else {
-        $imagen = "https://picsum.photos/600/400?random=" . htmlspecialchars($idPublicacion); // Imagen por defecto si no se encuentra una específica
-    }
-    $sql_imagen->close();
 } else {
     echo "No se proporcionó un ID de publicación.";
 }
@@ -127,7 +112,7 @@ $conn->close();
     <link id="default-stylesheet" rel="stylesheet" href="style/documento.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/documentoN.css" disabled>
     <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/documentoC.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/documentoS.css" disabled>
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,7 +126,7 @@ $conn->close();
             <h2 id="titulo"><?php echo htmlspecialchars($nombre); ?></h2>
             <div id="publicacion">
                 <div id="publicacion_arr">
-                    <img src="<?php echo htmlspecialchars($imagen); ?>" alt="Imagen publicacion" class="sombra">
+                    <img src="https://picsum.photos/600/400?random=<?php echo htmlspecialchars($idPublicacion); ?>" alt="Imagen publicacion" class="sombra">
                     <div id="descripcion" class="sombra">
                         <h3>Comentarios:</h3>
                         <?php foreach ($comentarios as $comentario): ?>
@@ -158,9 +143,7 @@ $conn->close();
         </div>
         <div id="body_dch">
             <div id="body_arr">
-                <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
-                    <button>Editar</button>
-                </a>
+
                 <div id="contenedorTexto">
                     <p>Comentarios: </p>
                     <form id="comentarioForm" method="POST" action="">
@@ -192,6 +175,9 @@ $conn->close();
                         <li>Referencias</li>
                         <li>Lazarillo de Tormes</li>
                     </ul>
+                    <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
+                    <button>Editar</button>
+                </a>
                 </div>
             </div>
         </div>
@@ -199,76 +185,35 @@ $conn->close();
     <?php require_once 'pie.php' ?>
     <script>
         // Función para aplicar configuración desde sessionStorage
-        
-function applySettings() {
-    const fontSize = sessionStorage.getItem('fontSize');
-    const style = sessionStorage.getItem('style');
-    const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
-
-    if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-    }
-
-    if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
-
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-            case 'night':
-                document.getElementById('night-stylesheet').disabled = false;
-                break;
-            case 'high-contrast':
-                document.getElementById('high-contrast-stylesheet').disabled = false;
-                break;
-            case 'read-mode':
-                document.getElementById('read-mode-stylesheet').disabled = false;
-                break;
-            default:
-                document.getElementById('default-stylesheet').disabled = false;
-                break;
-        }
-    }
-
-    // Si hay un idioma guardado, traducir el contenido de la página
-    if (language) {
-        translatePageContent(language);
-    }
-}
-
-function translatePageContent(targetLanguage) {
-    const apiKey = 'AIzaSyCpfO9GfEIIsm_I96ZrgRAxe9ZYsFJ3Xx8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
-
-    textElements.forEach(element => {
-        const text = element.textContent;
-        const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-        const data = {
-            q: text,
-            target: targetLanguage,
-            format: 'text' // Asegúrate de especificar el formato si es necesario
-        };
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.translations.length > 0) {
-                element.textContent = data.data.translations[0].translatedText;
+        function applySettings() {
+            const fontSize = sessionStorage.getItem('fontSize');
+            const style = sessionStorage.getItem('style');
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
             }
-        })
-        .catch(error => console.error('Error in translation:', error));
-    });
-}
+            if (style) {
+                // Deshabilitar todas las hojas de estilo primero
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
+                // Habilitar la hoja de estilo seleccionada
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
+            }
+        }
 
         function loadHeader() {
             const userId = sessionStorage.getItem('userId');
@@ -288,11 +233,14 @@ function translatePageContent(targetLanguage) {
         }
 
         function logout() {
-            // Eliminar los elementos del sessionStorage
-            sessionStorage.removeItem('userId');
-            sessionStorage.removeItem('username');
-            window.location.href = 'index.php';
-        }
+                // Eliminar los elementos del sessionStorage
+                sessionStorage.removeItem('userId');
+                sessionStorage.removeItem('username');
+                window.location.href = 'index.php';
+            }
+
+            
+        
 
         // Aplicar configuración cuando la página se carga
         window.onload = function() {
