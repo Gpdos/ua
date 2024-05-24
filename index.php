@@ -113,11 +113,6 @@ $conn->close();
             }
             ?>
         </div>
-
-        <div class="content" id="filtered-content" style="display: none;">
-            <h3>Publicaciones relacionadas:</h3>
-            <div id="related-publications"></div>
-        </div>
     </div>
 
     <div id="body_der">
@@ -154,56 +149,6 @@ $conn->close();
                 ?>
             </div>
             <i class="fa-solid fa-circle-right"></i>
-        </div>
-
-        <div id="div_abj">
-            <div>
-                <a href="buscar.php?1">
-                    <div>
-                        <h2>TFG's</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?2">
-                    <div>
-                        <h2>TFM</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?3">
-                    <div>
-                        <h2>ABP</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?4">
-                    <div>
-                        <h2>Presentacion</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?5">
-                    <div>
-                        <h2>Modelo 3D</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?6">
-                    <div>
-                        <h2>Memoria</h2>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 </main>
