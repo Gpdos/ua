@@ -1,0 +1,250 @@
+@font-face {
+    font-family: titulos;
+    src: url(../letras/letra_titulo.ttf);
+}
+
+/* Fuente texto */
+@font-face {
+    font-family: texto;
+    src: url(../letras/Texto.ttf);
+}
+
+.paginacentral{
+    text-align: center;
+}
+
+
+
+
+
+img {
+    border-radius: 10px;
+}
+
+div {
+    border-radius: 10px;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+}
+
+:root {
+    --main-bg-color: brown;
+    --azulOscuro: #003366;
+    --azulNormal: #336699;
+    --azulClaro: #73b7ff;
+    --blancoHueso: antiquewhite;
+}
+
+.sombra {
+    box-shadow: 5px 5px 10px rgb(23, 23, 23);
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    background: linear-gradient(to bottom, #1E5E99, #737373);
+    height: 100%;
+}
+
+footer {
+    margin-top: 10px;
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    
+}
+
+
+
+/* //////////////////////////// */
+
+/* HEADER */
+
+header{
+    background-color: #003366;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding-block: 20px;
+    padding-inline: 15px;
+    border-radius: 20px;
+    margin-block: 10px;
+    margin-inline: 20px;
+    ul {
+        display: none;
+    }
+    
+    input:checked~ul {
+        display: block;
+    }
+}
+
+/* Estilos base para los enlaces en el nav */
+header nav a {
+    display: inline-block;  /* O puedes usar flex si los enlaces están en un flex container */
+    padding: 10px 15px;     /* Ajusta el padding según el diseño */
+    color: #ffffff;         /* Asumiendo texto blanco */
+    text-decoration: none;  /* Elimina subrayado de enlaces */
+    transition: background-color 0.3s ease; /* Transición suave del fondo */
+    border-radius: 10px;
+}
+
+/* Estilos para hover */
+header nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Color más claro en el fondo */
+}
+
+/* Opcional: estilos para los iconos si son parte de un sprite o fuente de iconos */
+header nav a i {
+    margin-right: 5px;  /* Espacio entre el icono y el texto, si necesario */
+}
+
+
+#izq{
+    float: left;
+    /* background-color: chartreuse; */
+    width: 10%;
+    display: flex;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+    
+    
+
+
+    img{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+}
+#cen{
+    float: center;
+    background-color: var(--azulNormal);
+    width: 70%;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-block: 20px;
+    font-size: 35px;
+    text-shadow:0px 0px 5px rgba(255, 255, 255, 0.453);
+}
+#dch{
+    float: right;
+    /* background-color:darkred; */
+    width: 15%;
+    text-align: center;
+    font-family: titulos ;
+    font-size: 55px;
+    text-shadow:2px 2px 4px rgb(56, 56, 56);
+    line-height: 10px;
+}
+
+
+
+#menu {
+    display: none;
+}
+
+#label_header {
+    box-sizing: border-box;
+    display: inline-block;
+    border: 3px solid black;
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-weight: bold;
+    text-align: center;
+    user-select: none;
+    font-size: 54px; /* Tamaño de las rayas */
+
+}
+
+.link_menu {
+    display: block;
+    background: lightgrey;
+    margin: 0;
+    padding: 10px;
+    width:fit-content;
+    list-style: none;
+    border-bottom: 1px solid grey;
+}
+
+
+
+.fa-solid {
+    color: white !important;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent; /* Color de fondo del botón */
+    color: black; /* Color del texto del botón */
+    font-size: 40px; /* Tamaño del texto del botón */
+    border: none; /* Borde del botón */
+    cursor: pointer; /* Cursor al pasar sobre el botón */
+    padding: 15px; /* Espaciado interno del botón */
+}
+
+/* Estilos para el contenido del menú desplegable */
+.dropdown-content {
+    display: none; /* Ocultar el contenido por defecto */
+    position: absolute; /* Posición absoluta para superponer */
+    background-color: #f9f9f9; /* Color de fondo del contenido */
+    min-width: 200px; /* Ancho mínimo del contenido */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra del contenido */
+    z-index: 1; /* Z-index para estar sobre otros elementos */
+}
+
+.dropdown-content a {
+    color: black; /* Color del texto de los enlaces */
+    padding: 20px; /* Espaciado interno de los enlaces */
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+    display: block; /* Mostrar en bloque para ocupar todo el ancho */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar sobre los enlaces */
+}
+
+/* Mostrar el contenido cuando se pasa el ratón sobre el botón */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#cen a span {
+    font-size: 30px !important; /* Ajusta el tamaño de la fuente según lo necesites */
+}
+
+#logoutButton {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 30px; /* Ajusta el tamaño de la fuente según lo necesites */
+}
+
+#logoutButton span {
+    display: block;
+    font-size: 30px !important; /* Ajusta el tamaño de la fuente según lo necesites */
+}
+
+#cen .fa-solid {
+    display: none;
+}
+

@@ -1,0 +1,124 @@
+@import "style.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #1E5E99, #737373);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    color: white;
+}
+
+.bienvenido {
+    font-size: 42px; /* Aumenta el tamaño del texto */
+    margin-bottom: 10px;
+}
+
+.mensaje {
+    font-size: 22px; /* Aumenta el tamaño del texto */
+    margin-bottom: 30px;
+}
+
+.registro-container {
+    background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    width: 600px;
+    margin: 0 auto;
+    min-height: 500px; /* Asegúrate de que haya suficiente espacio para todos los elementos */
+    max-height: auto; /* Permite que el contenedor crezca */
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 20px); /* Ajusta el ancho para incluir el padding */
+    color: white;
+    font-size: 20px; /* Aumenta el tamaño del texto */
+    width: 100%; /* Cambiamos el ancho */
+    height: 50px; /* Aumenta la altura */
+    padding: 10px; /* Aumenta el relleno */
+    margin-bottom: 15px; /* Aumenta el margen inferior */
+    border: none;
+    border-radius: 5px;
+    background-color: #1E5E99;
+    box-sizing: border-box;
+}
+
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 10px; /* Aumenta el margen inferior */
+}
+
+.registro-btn {
+    background-color: #0f3057;
+    color: white;
+    border: none;
+    padding: 25px 40px; /* Aumenta el relleno */
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 35px; /* Aumenta el tamaño del texto */
+}
+
+.registro-btn:hover {
+    background-color: #007bff;
+}
+
+.registro-btn a {
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+
+.login-link {
+    margin-top: 20px;
+}
+
+.login-link a {
+    color: white;
+    text-decoration: underline;
+}
+
+.login-link a:hover {
+    color: #86c1ff;
+}
+
+
+.registro-btn {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 15px 0; /* Aumenta el relleno */
+    font-size: 24px; /* Aumenta el tamaño del texto */
+    font-weight: bold;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registro-btn:hover {
+    background-color: #0056b3;
+}
