@@ -113,6 +113,10 @@ $conn->close();
             }
             ?>
         </div>
+        <div class="content" id="filtered-content" style="display: none;">
+            <h3>Publicaciones relacionadas:</h3>
+            <div id="related-publications"></div>
+        </div>
     </div>
 
     <div id="body_der">
