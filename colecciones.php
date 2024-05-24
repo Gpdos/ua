@@ -82,14 +82,14 @@ $conn->close();
                 foreach ($publicaciones as $publicacion) {
                     if ($publicacion['carrera'] == 1) {
                         $found = true;
+                        $found = true;
                         echo '<a href="documento.php" class="work">
                                 <img src="fotos/'.$publicacion['image'].'">
                                 <div class="work-details">
-                                    <h4>'.$publicacion['title'].'</h4>
-                                    <p>'.$publicacion['author'].'</p>
-                                    <p>'.$publicacion['nombreCarrera'].'</p>
-                                    <p>⭐⭐⭐</p>
-                                    <p>'.$publicacion['date'].'</p>
+                                    <h4>'.$publicacion['Nombre'].'</h4>
+                                    <p>'.$publicacion['autor'].'</p>
+                                    
+                                    <p>'.$publicacion['fecha'].'</p>
                                 </div>
                               </a>';
                     }
@@ -112,11 +112,10 @@ $conn->close();
                         echo '<a href="documento.php" class="work">
                                 <img src="fotos/'.$publicacion['image'].'">
                                 <div class="work-details">
-                                    <h4>'.$publicacion['title'].'</h4>
-                                    <p>'.$publicacion['author'].'</p>
-                                    <p>'.$publicacion['nombreCarrera'].'</p>
-                                    <p>⭐⭐⭐</p>
-                                    <p>'.$publicacion['date'].'</p>
+                                    <h4>'.$publicacion['Nombre'].'</h4>
+                                    <p>'.$publicacion['autor'].'</p>
+                                    
+                                    <p>'.$publicacion['fecha'].'</p>
                                 </div>
                               </a>';
                     }
@@ -143,16 +142,16 @@ $conn->close();
             foreach ($publicaciones as $publicacion) {
                 if ($publicacion['carrera'] == $carrera) {
                     $found = true;
-                    echo '<a href="documento.php" class="work">
-                          
-                            <div class="work-details">
-                                <h4>'.$publicacion['Nombre'].'</h4>
-                                <p>'.$publicacion['autor'].'</p>
-                                
-                                <p>⭐⭐⭐</p>
-                                <p>'.$publicacion['fecha'].'</p>
-                            </div>
-                          </a>';
+                    $found = true;
+                        echo '<a href="documento.php" class="work">
+                                <img src="fotos/'.$publicacion['image'].'">
+                                <div class="work-details">
+                                    <h4>'.$publicacion['Nombre'].'</h4>
+                                    <p>'.$publicacion['autor'].'</p>
+                                    
+                                    <p>'.$publicacion['fecha'].'</p>
+                                </div>
+                              </a>';
                 }
             }
             if (!$found) {
@@ -201,10 +200,6 @@ $conn->close();
     });
 }
 
-// Escuchar cambios en el selector de idioma
-document.getElementById('language-selector').addEventListener('change', function() {
-    translatePageContent(this.value);
-});
 
 
 

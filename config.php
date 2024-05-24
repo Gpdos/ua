@@ -128,10 +128,7 @@ function translatePageContent(targetLanguage) {
     });
 }
 
-// Escuchar cambios en el selector de idioma
-document.getElementById('language-selector').addEventListener('change', function() {
-    translatePageContent(this.value);
-});
+
 
 
 

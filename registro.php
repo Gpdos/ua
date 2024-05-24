@@ -128,10 +128,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     });
 }
 
-// Escuchar cambios en el selector de idioma
-document.getElementById('language-selector').addEventListener('change', function() {
-    translatePageContent(this.value);
-});
 
 
 
