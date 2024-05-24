@@ -307,6 +307,9 @@ $conn->close();
             if (userId) {
                 document.getElementById('autorComentario').value = userId;
             }
+            else{
+                window.location.href = 'index.php';
+            }
         };
     </script>
 </body>
