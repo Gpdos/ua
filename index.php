@@ -13,19 +13,16 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar un array para almacenar los datos de las publicaciones
+// Inicializar arrays
 $publicaciones = array();
-
-// Inicializar un array para almacenar los nombres únicos del estudio
 $estudios = array();
+$imagenes = array();
 
-// Realizar la consulta SQL para obtener todas las publicaciones
+// Obtener todas las publicaciones
 $sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
 $result = $conn->query($sql);
 
-// Comprobar si la consulta devuelve algún resultado
 if ($result->num_rows > 0) {
-    // Almacenar los datos de cada publicación en el array
     while ($row = $result->fetch_assoc()) {
         $publicaciones[] = $row;
     }
@@ -33,18 +30,30 @@ if ($result->num_rows > 0) {
     echo "No se encontraron publicaciones.";
 }
 
-// Realizar la consulta SQL para obtener los nombres únicos de la tabla estudio
+// Obtener los nombres únicos de la tabla estudio
 $sql_estudios = "SELECT DISTINCT idEstudio, Nombre FROM estudio";
 $result_estudios = $conn->query($sql_estudios);
 
-// Comprobar si la consulta devuelve algún resultado
 if ($result_estudios->num_rows > 0) {
-    // Almacenar los nombres únicos en el array
     while ($row = $result_estudios->fetch_assoc()) {
         $estudios[] = $row;
     }
 } else {
     echo "No se encontraron estudios.";
+}
+
+// Obtener las imágenes de las publicaciones
+$sql_imagenes = "SELECT idPubli, archivo FROM foto";
+$result_imagenes = $conn->query($sql_imagenes);
+
+if ($result_imagenes->num_rows > 0) {
+    while ($row = $result_imagenes->fetch_assoc()) {
+        if (!isset($imagenes[$row['idPubli']])) {
+            $imagenes[$row['idPubli']] = $row['archivo'];
+        }
+    }
+} else {
+    echo "No se encontraron imágenes.";
 }
 
 // Cerrar la conexión
@@ -77,7 +86,6 @@ $conn->close();
             <select name="lenguajes" id="lang" onchange="filtrarPublicaciones()">
                 <option value="0">Seleccione un estudio</option>
                 <?php
-                // Generar las opciones del selector dinámicamente con los nombres de la tabla estudio
                 foreach ($estudios as $estudio) {
                     echo '<option value="' . htmlspecialchars($estudio['idEstudio']) . '">' . htmlspecialchars($estudio['Nombre']) . '</option>';
                 }
@@ -95,7 +103,11 @@ $conn->close();
                 $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
 
                 echo '<div class="content-block" data-carrera="' . htmlspecialchars($publicacion['carrera']) . '">';
-                echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '">';
+                if (isset($imagenes[$idPublicacion])) {
+                    echo '<img src="' . htmlspecialchars($imagenes[$idPublicacion]) . '" alt="' . htmlspecialchars($nombre) . '">';
+                } else {
+                    echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '">';
+                }
                 echo '<span>UA: ' . htmlspecialchars($nombre) . '</span>';
                 echo '</div>';
             }
@@ -123,7 +135,11 @@ $conn->close();
 
                     echo '<div class="card">';
                     echo '<a href="documento.php?idPublicacion=' . htmlspecialchars($idPublicacion) . '">';
-                    echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    if (isset($imagenes[$idPublicacion])) {
+                        echo '<img src="' . htmlspecialchars($imagenes[$idPublicacion]) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    } else {
+                        echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    }
                     echo '<div class="card-content">';
                     echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
                     echo '<p>' . htmlspecialchars($autor) . '</p>';
@@ -229,76 +245,76 @@ $conn->close();
         }
     }
 
-    
-function applySettings() {
-    const fontSize = sessionStorage.getItem('fontSize');
-    const style = sessionStorage.getItem('style');
-    const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+    function applySettings() {
+        const fontSize = sessionStorage.getItem('fontSize');
+        const style = sessionStorage.getItem('style');
+        const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
 
-    if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-    }
+        if (fontSize) {
+            document.documentElement.style.fontSize = fontSize;
+        }
 
-    if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
+        if (style) {
+            // Deshabilitar todas las hojas de estilo primero
+            document.getElementById('default-stylesheet').disabled = true;
+            document.getElementById('night-stylesheet').disabled = true;
+            document.getElementById('high-contrast-stylesheet').disabled = true;
+            document.getElementById('read-mode-stylesheet').disabled = true;
 
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-            case 'night':
-                document.getElementById('night-stylesheet').disabled = false;
-                break;
-            case 'high-contrast':
-                document.getElementById('high-contrast-stylesheet').disabled = false;
-                break;
-            case 'read-mode':
-                document.getElementById('read-mode-stylesheet').disabled = false;
-                break;
-            default:
-                document.getElementById('default-stylesheet').disabled = false;
-                break;
+            // Habilitar la hoja de estilo seleccionada
+            switch (style) {
+                case 'night':
+                    document.getElementById('night-stylesheet').disabled = false;
+                    break;
+                case 'high-contrast':
+                    document.getElementById('high-contrast-stylesheet').disabled = false;
+                    break;
+                case 'read-mode':
+                    document.getElementById('read-mode-stylesheet').disabled = false;
+                    break;
+                default:
+                    document.getElementById('default-stylesheet').disabled = false;
+                    break;
+            }
+        }
+
+        // Si hay un idioma guardado, traducir el contenido de la página
+        if (language) {
+            translatePageContent(language);
         }
     }
 
-    // Si hay un idioma guardado, traducir el contenido de la página
-    if (language) {
-        translatePageContent(language);
+    function translatePageContent(targetLanguage) {
+        const apiKey = 'AIzaSyCpfO9GfEIIsm_I96ZrgRAxe9ZYsFJ3Xx8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+        const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
+
+        textElements.forEach(element => {
+            const text = element.textContent;
+            const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+            const data = {
+                q: text,
+                target: targetLanguage,
+                format: 'text' // Asegúrate de especificar el formato si es necesario
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.data && data.data.translations.length > 0) {
+                    element.textContent = data.data.translations[0].translatedText;
+                }
+            })
+            .catch(error => console.error('Error in translation:', error));
+        });
     }
-}
 
-function translatePageContent(targetLanguage) {
-    const apiKey = 'AIzaSyCpfO9GfEIIsm_I96ZrgRAxe9ZYsFJ3Xx8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
-
-    textElements.forEach(element => {
-        const text = element.textContent;
-        const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-        const data = {
-            q: text,
-            target: targetLanguage,
-            format: 'text' // Asegúrate de especificar el formato si es necesario
-        };
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.translations.length > 0) {
-                element.textContent = data.data.translations[0].translatedText;
-            }
-        })
-        .catch(error => console.error('Error in translation:', error));
-    });
-}
     function loadHeader() {
         const userId = sessionStorage.getItem('userId');
         const headerContainer = document.getElementById('header-container');
@@ -317,11 +333,11 @@ function translatePageContent(targetLanguage) {
     }
 
     function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
+        // Eliminar los elementos del sessionStorage
+        sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('username');
+        window.location.href = 'index.php';
+    }
 
     // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
     window.onload = function() {
