@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2024 a las 11:19:36
+-- Tiempo de generación: 24-05-2024 a las 13:33:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,16 +41,15 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id`, `titulo`, `texto`, `autor`, `valoracion`, `publicacion`) VALUES
-(1, '', 'no veas que difisi', 1, 0, 1),
-(2, '', 'no veas que difisi', 1, 0, 1),
-(3, '', 'no veas que difisi', 1, 0, 1),
-(4, '', 'algo malo va a pasar', 0, 0, 1),
-(5, '', 'ahora si que si', 3, 0, 1),
-(6, '', 'sin identificar', 0, 1, 1),
-(7, '', 'sin identificar', 0, 1, 1),
-(8, '', 'Prueba usabilidad', 0, 5, 1),
-(9, '', 'Prueba 2', 1, 1, 1),
-(10, '', 'prueba 3', 1, 4, 1);
+(1, 'Recomendado', 'Esta muy bien', 1, 0, 1),
+(2, 'No me gusta', 'Muy escaso', 2, 0, 2),
+(3, 'Inentndible', 'No comprendo nada', 3, 0, 3),
+(4, 'Genial!!', 'Ayuda mucho', 7, 0, 4),
+(5, 'Que hambre!!!', 'Me entran ganas de comer solo de leerlo', 3, 0, 5),
+(6, 'zzzzzzzzzzzz', 'zzzzzzzzzzzzzzz', 0, 1, 7),
+(7, 'Chulisimo', 'Muy vistoso', 4, 5, 9),
+(8, 'Muy interesante ', 'Me ha resultado muy util', 2, 4, 11),
+(9, 'Muy mal', 'Fatal estructurado', 1, 1, 12);
 
 -- --------------------------------------------------------
 
@@ -121,11 +120,15 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`idPublicacion`, `Nombre`, `carrera`, `tipo`, `valoracion`, `fecha`, `autor`) VALUES
-(1, 'Memoria Arquitectura', 3, 1, 4, '0000-00-00', 'Javier'),
-(2, 'TFG Economico', 2, 1, 2, '0000-00-00', 'Francisco'),
-(3, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos'),
-(4, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos'),
-(5, 'Prueba', 1, 1, 2, '2024-05-29', 'Javier');
+(1, 'Memoria Arquitectura', 4, 6, 4, '0000-00-00', 'Javier'),
+(2, 'TFG Matemáticas', 2, 1, 2, '0000-00-00', 'Francisco'),
+(3, 'TFM Diseño grafico', 6, 2, 3, '0000-00-00', 'Perez Galdos'),
+(4, 'ABP Web', 1, 3, 3, '0000-00-00', 'Perez Galdos'),
+(5, 'Presentacion menu', 5, 4, 2, '2024-05-29', 'Javier'),
+(7, 'TFM estadistica', 2, 2, 2, '0000-00-00', 'Dani'),
+(9, 'Diseño 3D', 6, 5, 5, '0000-00-00', 'Yus'),
+(11, 'Legislacion Bélgica', 3, 4, 1, '2024-05-15', 'Samuel'),
+(12, 'TFG Arquitectura', 4, 1, 1, '2024-05-01', 'Miguel');
 
 -- --------------------------------------------------------
 
@@ -161,6 +164,21 @@ CREATE TABLE `trabajo` (
   `idPubli` int(11) NOT NULL,
   `contenido` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `trabajo`
+--
+
+INSERT INTO `trabajo` (`id`, `idPubli`, `contenido`) VALUES
+(1, 1, '\r\n                https://online.publuu.com/519294/1163817'),
+(2, 2, '\r\n                https://online.publuu.com/519294/1163874'),
+(3, 3, '\r\n                https://online.publuu.com/519294/1163959'),
+(4, 4, '\r\n                https://online.publuu.com/519294/1163964'),
+(5, 5, '\r\n                https://online.publuu.com/519294/1163965'),
+(6, 7, '\r\n                https://online.publuu.com/519294/1163967'),
+(7, 9, '\r\n                https://online.publuu.com/519294/1163967'),
+(8, 11, '\r\n                https://online.publuu.com/519294/1163969'),
+(9, 12, '\r\n                https://online.publuu.com/519294/1163972');
 
 -- --------------------------------------------------------
 
@@ -259,7 +277,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `tipotrabajo`
@@ -271,7 +289,7 @@ ALTER TABLE `tipotrabajo`
 -- AUTO_INCREMENT de la tabla `trabajo`
 --
 ALTER TABLE `trabajo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
