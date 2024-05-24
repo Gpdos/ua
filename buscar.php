@@ -1,3 +1,38 @@
+<?php
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$dbname = "ua";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
+
+$conditions = [];
+
+if (!empty($_GET['tipo'])) {
+    $tipoFiltros = array_map('intval', $_GET['tipo']);
+    $conditions[] = "p.tipo IN (" . implode(',', $tipoFiltros) . ")";
+}
+
+if (!empty($_GET['carrera'])) {
+    $carreraFiltros = array_map('intval', $_GET['carrera']);
+    $conditions[] = "p.carrera IN (" . implode(',', $carreraFiltros) . ")";
+}
+
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(' AND ', $conditions);
+}
+
+$result = $conn->query($sql);
+
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,58 +57,82 @@
    
     <div class="main-content">
         
-        <aside class="filters">
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar...">
-            </div>
-            <h2>Filtros de búsqueda</h2>
-            <div>
-                <h3>Categoría</h3>
-                <label><input type="checkbox"> Proyectos</label>
-                <label><input type="checkbox"> Fin de grado</label>
-                <label><input type="checkbox"> Prácticas</label>
-                <label><input type="checkbox"> Más</label>
-            </div>
-            <div>
-                <h3>Grado</h3>
-                <label><input type="checkbox"> Ingeniería Civil</label>
-                <label><input type="checkbox"> Ingeniería Multimedia</label>
-                <label><input type="checkbox"> Arquitectura técnica</label>
-                <label><input type="checkbox"> Más</label>
-            </div>
-            <div>
-                <h3>Curso</h3>
-                <label><input type="checkbox"> 1º</label>
-                <label><input type="checkbox"> 2º</label>
-                <label><input type="checkbox"> 3º</label>
-                <label><input type="checkbox"> 4º</label>
-                <label><input type="checkbox"> Máster</label>
-            </div>
-            <div>
-                <h3>Formato</h3>
-                <label><input type="checkbox"> PDF</label>
-                <label><input type="checkbox"> Excel</label>
-                <label><input type="checkbox"> PowerPoint</label>
-                <label><input type="checkbox"> Más</label>
-            </div>
-        </aside>
+    <div class="main-content">
+    <form action="buscar.php" method="GET">
+    <aside class="filters">
+        <div>
+            <h3>Categoría</h3>
+            <label><input type="checkbox" name="tipo[]" value="1"> TFG</label>
+            <label><input type="checkbox" name="tipo[]" value="2"> TFM</label>
+            <label><input type="checkbox" name="tipo[]" value="3"> ABP</label>
+            <label><input type="checkbox" name="tipo[]" value="4"> Presentacion</label>
+            <label><input type="checkbox" name="tipo[]" value="5"> Modelado 3D</label>
+            <label><input type="checkbox" name="tipo[]" value="6"> Memoria</label>
+        </div>
+        <div>
+            <h3>Carrera</h3>
+            <label><input type="checkbox" name="carrera[]" value="1"> Ingeniería Multimedia</label>
+            <label><input type="checkbox" name="carrera[]" value="2"> Matemáticas</label>
+            <label><input type="checkbox" name="carrera[]" value="3"> Derecho y RI</label>
+            <label><input type="checkbox" name="carrera[]" value="4"> Arquitectura</label>
+            <label><input type="checkbox" name="carrera[]" value="5"> Gastronomía</label>
+            <label><input type="checkbox" name="carrera[]" value="6"> Diseño</label>
+        </div>
+        <button type="submit">Aplicar filtros</button>
+    </aside>
+</form>
+
         <section class="search-results">
-           
-            <?php for ($i = 0; $i < 4; $i++): ?>
-                <div class="card">
-                    <a href="documento.php">
-                        <img src="fotos/arquitectura.jpg" alt="Arquitectura" class="card-image">
-                        <div class="card-content">
-                            <h2>TFG Arquitectura</h2>
-                            <p>Pepe Viyuela</p>
-                            <p>Ing. Multimedia</p>
-                            <div class="stars">
-                                <span>⭐⭐⭐</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            <?php endfor; ?>
+        <?php
+        // Parámetros de conexión a la base de datos
+        $servername = "localhost";
+        $username = "admin";
+        $password = "admin";
+        $dbname = "ua";
+
+        // Crear conexión
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verificar conexión
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Consulta SQL para obtener todas las publicaciones
+        $sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
+
+        if (!empty($_GET['tipo'])) {
+            $tipoFiltros = array_map('intval', $_GET['tipo']); // Asegurar que los valores son enteros
+            $tipoFiltros = implode(',', $tipoFiltros); // Convertir el array en una lista separada por comas
+            $sql .= " WHERE p.tipo IN ($tipoFiltros)"; // Añadir condiciones de tipo a la consulta SQL
+        }
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Almacenar y mostrar los datos de cada publicación
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="card">';
+                echo '<a href="documento.php?idPublicacion=' . htmlspecialchars($row['idPublicacion']) . '">';
+                echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($row['idPublicacion']) . '" alt="' . htmlspecialchars($row['Nombre']) . '" class="card-image">';
+                echo '<div class="card-content">';
+                echo '<h2>' . htmlspecialchars($row['Nombre']) . '</h2>';
+                echo '<p>' . htmlspecialchars($row['autor']) . '</p>';
+                echo '<p>' . htmlspecialchars($row['nombreCarrera']) . '</p>';
+                echo '<div class="stars">';
+                echo '<span>' . str_repeat('⭐', htmlspecialchars($row['valoracion'])) . '</span>';
+                echo '</div>';
+                echo '</div>';
+                echo '</a>';
+                echo '</div>';
+            }
+        } else {
+            echo "<p>No se encontraron resultados.</p>";
+        }
+
+        // Cerrar conexión
+        $conn->close();
+        ?>
             
         </section>
     </div>
