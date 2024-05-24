@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar variables para almacenar los datos de la publicación
+// Inicializar variables para almacenar los datos de la publicación y opciones
 $idPublicacion = "";
 $nombre = "";
 $carrera = "";
@@ -21,6 +21,26 @@ $tipo = "";
 $valoracion = "";
 $fecha = "";
 $autor = "";
+$archivo = "";
+$estudios = [];
+$tipos = [];
+
+// Obtener las opciones de estudio y tipo de trabajo para los selectores
+$sql_estudios = "SELECT idEstudio, Nombre FROM estudio";
+$result_estudios = $conn->query($sql_estudios);
+if ($result_estudios->num_rows > 0) {
+    while ($row = $result_estudios->fetch_assoc()) {
+        $estudios[] = $row;
+    }
+}
+
+$sql_tipos = "SELECT idTipo, Nombre FROM tipotrabajo";
+$result_tipos = $conn->query($sql_tipos);
+if ($result_tipos->num_rows > 0) {
+    while ($row = $result_tipos->fetch_assoc()) {
+        $tipos[] = $row;
+    }
+}
 
 // Comprobar si se ha enviado un ID de publicación
 if (isset($_GET['idPublicacion'])) {
@@ -140,31 +160,45 @@ $conn->close();
                     <form method="POST" action="editarDoc.php">
                         <input type="hidden" name="idPublicacion" value="<?php echo htmlspecialchars($idPublicacion); ?>">
                         <div class="editar_datos">
-                            <p>Nombre:</p>
-                            <textarea name="nombre" rows="1" cols="30"><?php echo htmlspecialchars($nombre); ?></textarea>
-                        </div>
-                        <div class="editar_datos">
-                            <p>Carrera:</p>
-                            <textarea name="carrera" rows="1" cols="30"><?php echo htmlspecialchars($carrera); ?></textarea>
-                        </div>
-                        <div class="editar_datos">
-                            <p>Tipo de recurso:</p>
-                            <textarea name="tipo" rows="1" cols="30"><?php echo htmlspecialchars($tipo); ?></textarea>
-                        </div>
-                        <div class="editar_datos">
-                            <p>Valoración:</p>
-                            <textarea name="valoracion" rows="1" cols="30"><?php echo htmlspecialchars($valoracion); ?></textarea>
-                        </div>
-                        <div class="editar_datos">
-                            <p>Fecha de publicación:</p>
-                            <textarea name="fecha" rows="1" cols="30"><?php echo htmlspecialchars($fecha); ?></textarea>
+                            <p>Nombre de la Publicación:</p>
+                            <textarea name="nombre" rows="1" cols="30" required><?php echo htmlspecialchars($nombre); ?></textarea>
                         </div>
                         <div class="editar_datos">
                             <p>Autor:</p>
-                            <textarea name="autor" rows="1" cols="30"><?php echo htmlspecialchars($autor); ?></textarea>
+                            <textarea name="autor" rows="1" cols="30" required><?php echo htmlspecialchars($autor); ?></textarea>
                         </div>
                         <div class="editar_datos">
-                            <button type="submit">Actualizar</button>
+                            <p>Estudio:</p>
+                            <select name="carrera" required>
+                                <?php
+                                foreach ($estudios as $estudio) {
+                                    $selected = ($estudio['idEstudio'] == $carrera) ? "selected" : "";
+                                    echo '<option value="' . htmlspecialchars($estudio['idEstudio']) . '" ' . $selected . '>' . htmlspecialchars($estudio['Nombre']) . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="editar_datos">
+                            <p>Tipo de Recurso:</p>
+                            <select name="tipo" required>
+                                <?php
+                                foreach ($tipos as $tipo) {
+                                    $selected = ($tipo['idTipo'] == $tipo) ? "selected" : "";
+                                    echo '<option value="' . htmlspecialchars($tipo['idTipo']) . '" ' . $selected . '>' . htmlspecialchars($tipo['Nombre']) . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="editar_datos">
+                            <p>Valoración:</p>
+                            <input type="number" name="valoracion" min="0" max="5" required value="<?php echo htmlspecialchars($valoracion); ?>">
+                        </div>
+                        <div class="editar_datos">
+                            <p>Fecha de Publicación:</p>
+                            <input type="date" name="fecha" required value="<?php echo htmlspecialchars($fecha); ?>">
+                        </div>
+                        <div>
+                            <button type="submit">Actualizar Publicación</button>
                         </div>
                     </form>
                 </div>
@@ -176,77 +210,75 @@ $conn->close();
     <?php require_once 'pie.php' ?>
 
     <script>
-       function translatePageContent(targetLanguage) {
-    const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
+        function translatePageContent(targetLanguage) {
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
 
-    textElements.forEach(element => {
-        const text = element.textContent;
-        const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+            textElements.forEach(element => {
+                const text = element.textContent;
+                const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
-        const data = {
-            q: text,
-            target: targetLanguage,
-            format: 'text' // Asegúrate de especificar el formato si es necesario
-        };
+                const data = {
+                    q: text,
+                    target: targetLanguage,
+                    format: 'text' // Asegúrate de especificar el formato si es necesario
+                };
 
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.translations.length > 0) {
-                element.textContent = data.data.translations[0].translatedText;
-            }
-        })
-        .catch(error => console.error('Error in translation:', error));
-    });
-}
-
-
-
-function applySettings() {
-    const fontSize = sessionStorage.getItem('fontSize');
-    const style = sessionStorage.getItem('style');
-    const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
-
-    if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-    }
-
-    if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
-
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-            case 'night':
-                document.getElementById('night-stylesheet').disabled = false;
-                break;
-            case 'high-contrast':
-                document.getElementById('high-contrast-stylesheet').disabled = false;
-                break;
-            case 'read-mode':
-                document.getElementById('read-mode-stylesheet').disabled = false;
-                break;
-            default:
-                document.getElementById('default-stylesheet').disabled = false;
-                break;
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.translations.length > 0) {
+                        element.textContent = data.data.translations[0].translatedText;
+                    }
+                })
+                .catch(error => console.error('Error in translation:', error));
+            });
         }
-    }
 
-    // Si hay un idioma guardado, traducir el contenido de la página
-    if (language) {
-        translatePageContent(language);
-    }
-}
+        function applySettings() {
+            const fontSize = sessionStorage.getItem('fontSize');
+            const style = sessionStorage.getItem('style');
+            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
+            }
+
+            if (style) {
+                // Deshabilitar todas las hojas de estilo primero
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
+
+                // Habilitar la hoja de estilo seleccionada
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
+            }
+
+            // Si hay un idioma guardado, traducir el contenido de la página
+            if (language) {
+                translatePageContent(language);
+            }
+        }
 
         function loadHeader() {
             const userId = sessionStorage.getItem('userId');
@@ -266,11 +298,11 @@ function applySettings() {
         }
 
         function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
 
         // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
         window.onload = function() {

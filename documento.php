@@ -21,6 +21,7 @@ $tipo = "";
 $valoracion = "";
 $fecha = "";
 $autor = "";
+$archivo = "";
 
 // Comprobar si se ha enviado un ID de publicación
 if (isset($_GET['idPublicacion'])) {
@@ -54,6 +55,20 @@ if (isset($_GET['idPublicacion'])) {
 
     // Cerrar la consulta
     $sql->close();
+
+    // Obtener el archivo asociado con la publicación
+    $sql_archivo = $conn->prepare("SELECT contenido FROM trabajo WHERE idPubli = ?");
+    $sql_archivo->bind_param("i", $idPublicacion);
+    $sql_archivo->execute();
+    $result_archivo = $sql_archivo->get_result();
+
+    if ($result_archivo->num_rows > 0) {
+        $row_archivo = $result_archivo->fetch_assoc();
+        $archivo = $row_archivo['contenido'];
+    } else {
+        $archivo = ""; // No hay archivo asociado
+    }
+    $sql_archivo->close();
 } else {
     echo "No se proporcionó un ID de publicación.";
 }
@@ -176,8 +191,13 @@ $conn->close();
                         <li>Lazarillo de Tormes</li>
                     </ul>
                     <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>">
-                    <button>Editar</button>
-                </a>
+                        <button>Editar</button>
+                    </a>
+                    <?php if ($archivo): ?>
+                        <a href="<?php echo htmlspecialchars($archivo); ?>" target="_blank">
+                            <button>Abrir Archivo</button>
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -185,77 +205,75 @@ $conn->close();
     <?php require_once 'pie.php' ?>
     <script>
         function translatePageContent(targetLanguage) {
-    const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
 
-    textElements.forEach(element => {
-        const text = element.textContent;
-        const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+            textElements.forEach(element => {
+                const text = element.textContent;
+                const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
-        const data = {
-            q: text,
-            target: targetLanguage,
-            format: 'text' // Asegúrate de especificar el formato si es necesario
-        };
+                const data = {
+                    q: text,
+                    target: targetLanguage,
+                    format: 'text' // Asegúrate de especificar el formato si es necesario
+                };
 
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.translations.length > 0) {
-                element.textContent = data.data.translations[0].translatedText;
-            }
-        })
-        .catch(error => console.error('Error in translation:', error));
-    });
-}
-
-
-
-
-function applySettings() {
-    const fontSize = sessionStorage.getItem('fontSize');
-    const style = sessionStorage.getItem('style');
-    const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
-
-    if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-    }
-
-    if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
-
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-            case 'night':
-                document.getElementById('night-stylesheet').disabled = false;
-                break;
-            case 'high-contrast':
-                document.getElementById('high-contrast-stylesheet').disabled = false;
-                break;
-            case 'read-mode':
-                document.getElementById('read-mode-stylesheet').disabled = false;
-                break;
-            default:
-                document.getElementById('default-stylesheet').disabled = false;
-                break;
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.translations.length > 0) {
+                        element.textContent = data.data.translations[0].translatedText;
+                    }
+                })
+                .catch(error => console.error('Error in translation:', error));
+            });
         }
-    }
 
-    // Si hay un idioma guardado, traducir el contenido de la página
-    if (language) {
-        translatePageContent(language);
-    }
-}
+        function applySettings() {
+            const fontSize = sessionStorage.getItem('fontSize');
+            const style = sessionStorage.getItem('style');
+            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
+            }
+
+            if (style) {
+                // Deshabilitar todas las hojas de estilo primero
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
+
+                // Habilitar la hoja de estilo seleccionada
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
+            }
+
+            // Si hay un idioma guardado, traducir el contenido de la página
+            if (language) {
+                translatePageContent(language);
+            }
+        }
+
         function loadHeader() {
             const userId = sessionStorage.getItem('userId');
             const headerContainer = document.getElementById('header-container');
@@ -274,14 +292,11 @@ function applySettings() {
         }
 
         function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
-
-            
-        
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
 
         // Aplicar configuración cuando la página se carga
         window.onload = function() {
