@@ -55,6 +55,7 @@ $conn->close();
             </ul>
         </aside>
     </div>
+    
     <div class="seccionesCen">
         <section class="settings-details">
             <h2 id="user-name">USUARIO01</h2>
@@ -62,132 +63,142 @@ $conn->close();
             <p>Grado en Ingeniería Multimedia</p>
             <p>Universidad de Alicante</p>
         </section>
-        <section class="publications">
-            <?php if ($number_of_posts > 0): ?>
-                <?php while($row = $result->fetch_assoc()): ?>
-                    <div class="card">
-                        
-                                <h2><?php echo $row['Nombre']; ?></h2>
-                                <p><?php echo $row['autor']; ?></p>
-                               
-                            </div>
-                        </a>
-                    </div>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <p>No se encontraron publicaciones.</p>
-            <?php endif; ?>
-        </section>
+        
     </div>
+
+    <div class="publications">
+        <h2>Publicaciones:</h2>
+        <?php if ($number_of_posts > 0): ?>
+            <?php while($row = $result->fetch_assoc()): ?>
+                <div class="publication-card"> <!-- Agregamos un div para cada publicación -->
+                    <h2><?php echo $row['Nombre']; ?></h2>
+                    <p>Autor: <?php echo $row['autor']; ?></p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No se encontraron publicaciones.</p>
+        <?php endif; ?>
+    </div>
+
 </div>
 
     <?php require_once 'pie.php' ?>
     <script>
-    function translatePageContent(targetLanguage) {
-    const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
+        function translatePageContent(targetLanguage) {
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const textNodes = [];
 
-    textElements.forEach(element => {
-        const text = element.textContent;
-        const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-        const data = {
-            q: text,
-            target: targetLanguage,
-            format: 'text' // Asegúrate de especificar el formato si es necesario
-        };
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.translations.length > 0) {
-                element.textContent = data.data.translations[0].translatedText;
+            function extractTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.trim() !== '') {
+                        textNodes.push(node);
+                    }
+                } else {
+                    node.childNodes.forEach(extractTextNodes);
+                }
             }
-        })
-        .catch(error => console.error('Error in translation:', error));
-    });
-}
 
+            const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+            elementsToTranslate.forEach(extractTextNodes);
 
+            textNodes.forEach(node => {
+                const text = node.textContent;
+                const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
+                const data = {
+                    q: text,
+                    target: targetLanguage,
+                    format: 'text'
+                };
 
-
-function applySettings() {
-    const fontSize = sessionStorage.getItem('fontSize');
-    const style = sessionStorage.getItem('style');
-    const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
-
-    if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-    }
-
-    if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
-
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-            case 'night':
-                document.getElementById('night-stylesheet').disabled = false;
-                break;
-            case 'high-contrast':
-                document.getElementById('high-contrast-stylesheet').disabled = false;
-                break;
-            case 'read-mode':
-                document.getElementById('read-mode-stylesheet').disabled = false;
-                break;
-            default:
-                document.getElementById('default-stylesheet').disabled = false;
-                break;
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.translations.length > 0) {
+                        node.textContent = data.data.translations[0].translatedText;
+                    }
+                })
+                .catch(error => console.error('Error in translation:', error));
+            });
         }
-    }
 
-    // Si hay un idioma guardado, traducir el contenido de la página
-    if (language) {
-        translatePageContent(language);
-    }
-}
 
-    function loadHeader() {
-        const userId = sessionStorage.getItem('userId');
-        const headerContainer = document.getElementById('header-container');
+        function applySettings() {
+            const fontSize = sessionStorage.getItem('fontSize');
+            const style = sessionStorage.getItem('style');
+            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
 
-        if (userId) {
-            fetch('encabezado.php')
-                .then(response => response.text())
-                .then(data => headerContainer.innerHTML = data)
-                .catch(error => console.error('Error cargando encabezado:', error));
-        } else {
-            fetch('encabezadosinreg.php')
-                .then(response => response.text())
-                .then(data => headerContainer.innerHTML = data)
-                .catch(error => console.error('Error cargando encabezadosinreg:', error));
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
+            }
+
+            if (style) {
+                // Deshabilitar todas las hojas de estilo primero
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
+
+                // Habilitar la hoja de estilo seleccionada
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
+            }
+
+            // Si hay un idioma guardado, traducir el contenido de la página
+            if (language) {
+                translatePageContent(language);
+            }
         }
-    }
 
-    function logout() {
-        // Eliminar los elementos del sessionStorage
-        sessionStorage.removeItem('userId');
-        sessionStorage.removeItem('username');
-        window.location.href = 'index.php';
-    }
+        function loadHeader() {
+            const userId = sessionStorage.getItem('userId');
+            const headerContainer = document.getElementById('header-container');
 
-    // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
-    window.onload = function() {
-        applySettings();
-        loadHeader();
-        document.getElementById('user-name').textContent = sessionStorage.getItem('username') || 'USUARIO01';
-        document.getElementById('post-count').textContent = 'Publicaciones: <?php echo $number_of_posts; ?>';
-    };
+            if (userId) {
+                fetch('encabezado.php')
+                    .then(response => response.text())
+                    .then(data => headerContainer.innerHTML = data)
+                    .catch(error => console.error('Error cargando encabezado:', error));
+            } else {
+                fetch('encabezadosinreg.php')
+                    .then(response => response.text())
+                    .then(data => headerContainer.innerHTML = data)
+                    .catch(error => console.error('Error cargando encabezadosinreg:', error));
+            }
+        }
+
+        function logout() {
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
+
+        // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
+        window.onload = function() {
+            applySettings();
+            loadHeader();
+            document.getElementById('user-name').textContent = sessionStorage.getItem('username') || 'USUARIO01';
+            document.getElementById('post-count').textContent = 'Publicaciones: <?php echo $number_of_posts; ?>';
+        };
 </script>
 
 </body>

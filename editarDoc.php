@@ -151,7 +151,7 @@ $conn->close();
                         <div class="stars">
                             <span>⭐⭐⭐</span>
                         </div>
-                        <button>Enviar</button>
+                        <button class="button" type="submit">Enviar</button>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@ $conn->close();
                             <input type="date" name="fecha" required value="<?php echo htmlspecialchars($fecha); ?>">
                         </div>
                         <div>
-                            <button type="submit">Actualizar Publicación</button>
+                            <button class="button" type="submit">Actualizar Publicacion</button>
                         </div>
                     </form>
                 </div>
@@ -212,16 +212,29 @@ $conn->close();
     <script>
         function translatePageContent(targetLanguage) {
             const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-            const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
+            const textNodes = [];
 
-            textElements.forEach(element => {
-                const text = element.textContent;
+            function extractTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.trim() !== '') {
+                        textNodes.push(node);
+                    }
+                } else {
+                    node.childNodes.forEach(extractTextNodes);
+                }
+            }
+
+            const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+            elementsToTranslate.forEach(extractTextNodes);
+
+            textNodes.forEach(node => {
+                const text = node.textContent;
                 const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
                 const data = {
                     q: text,
                     target: targetLanguage,
-                    format: 'text' // Asegúrate de especificar el formato si es necesario
+                    format: 'text'
                 };
 
                 fetch(url, {
@@ -234,12 +247,13 @@ $conn->close();
                 .then(response => response.json())
                 .then(data => {
                     if (data.data && data.data.translations.length > 0) {
-                        element.textContent = data.data.translations[0].translatedText;
+                        node.textContent = data.data.translations[0].translatedText;
                     }
                 })
                 .catch(error => console.error('Error in translation:', error));
             });
         }
+
 
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');

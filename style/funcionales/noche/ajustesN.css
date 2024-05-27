@@ -1,145 +1,134 @@
 @import "styleN.css";
 
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Fondo oscuro para el modo noche */
-    color: #eaeaea; /* Texto claro para mejor legibilidad */
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111; /* Color de fondo oscuro */
+    color: #fff; /* Color de texto blanco */
 }
 
-header {
-    background-color: #1f1f1f; /* Color de fondo oscuro para el header */
-    color: #ffffff; /* Texto blanco */
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
-    background-color: #1f1f1f;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-li {
-    background-color: #1f1f1f;
-    color: #ffffff;
-}
-
-a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.logo {
-    font-size: 24px;
-}
-
-.main-content {
-    display: flex;
-    padding: 20px;
-}
-
-.settings-menu {
-    flex-basis: 250px;
-    background-color: #333333; /* Fondo ligeramente más claro para diferenciar secciones */
-    color: #eaeaea;
-    border-radius: 5px;
-    margin-right: 20px;
-    width: 100px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.settings-details {
-    flex-grow: 1;
-    background-color: #2c2c2c; /* Fondo gris oscuro */
-    color: #eaeaea;
-    padding: 20px;
-    border-radius: 5px;
-    overflow: auto;
-}
-
+/* Estilos del perfil */
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 250px;
-    padding-right: 20px;
+    width: 300px;
+    background-color: #151515; /* Color de fondo del perfil en modo nocturno */
+    padding: 20px;
+    box-sizing: border-box;
+    float: left; /* Agregado para alinear a la izquierda */
+    margin-right: 20px;
+    margin-left: 0;
+    color: aquamarine; /* Mantenido el color original para el texto */
 }
 
 .settings-menu {
-    background-color: #333333;
-    padding: 20px;
-    color: #eaeaea;
-    border-radius: 5px;
-    width: 200px;
     margin-top: 20px;
-    margin-left: 30px;
 }
 
-.settings-details, .publications {
-    flex-grow: 1;
-    background-color: #2c2c2c;
+.settings-menu h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.settings-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.settings-menu li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+}
+
+.settings-menu a {
+    color: #bbb; /* Color de texto gris claro */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.settings-menu ul li a {
+    color: #fff; /* Color de texto blanco */
+    text-decoration: none; /* Quita el subrayado del enlace */
+}
+
+.settings-menu a:hover {
+    color: #007bff;
+}
+
+/* Estilos de secciones centrales */
+.seccionesCen {
     padding: 20px;
-    border-radius: 5px;
-    color: #eaeaea;
-    width: 1150px;
-    margin-left: 20px;
+    background-color: #151515; /* Color de fondo de seccionesCen en modo nocturno */
+    box-sizing: border-box;
+    margin-left: 340px; /* Espacio para el perfil */
+    margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
+    color: #fff;
 }
 
+/* Estilos de los detalles de configuración */
+.settings-details h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.settings-details p {
+    margin-bottom: 10px; /* Espacio entre párrafos */
+    font-size: 20px;
+}
+
+/* Estilos de las publicaciones */
 .publications {
-    flex-grow: 1;
-    color: #eaeaea;
-    background-color: #2c2c2c;
-    border-radius: 5px;
-    height: 450px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     padding: 20px;
-    margin-top: 25px;
+    background-color: #151515; /* Color de fondo de publications en modo nocturno */
+    box-sizing: border-box;
+    margin-left: 340px; /* Espacio para el perfil */
+    margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
+    font-size: 20px;
+    color: #fff;
 }
 
-.result img {
-    width: 100%;
-    height: auto;
+/* Estilos de las tarjetas de publicación */
+.publication-card {
+    background-color: #333; /* Color de fondo de la tarjeta en modo nocturno */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio entre tarjetas */
+    font-size: 15px;
+    color: #fff;
 }
 
 .card {
-    background-color: #444444; /* Fondo de tarjeta oscuro */
-    box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Sombra más pronunciada */
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s ease;
-    width: 20%;
-    flex: 0 1 30%;
+    background-color: #333; /* Color de fondo de la tarjeta en modo nocturno */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px; /* Espacio entre tarjetas */
 }
 
-.card:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.7); /* Sombra más pronunciada al hacer hover */
+.card h2 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
 }
 
-.card a {
-    color: #ffffff;
+.card p {
+    margin-bottom: 10px; /* Espacio entre párrafos */
+}
+
+/* Estilos del pie de página */
+#footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#footer p {
+    font-size: 0.8em;
+    color: #777;
+}
+
+#footer a {
+    color: #007bff;
     text-decoration: none;
-    display: block;
-    padding: 10px;
 }
 
-.card-image {
-    width: 100%;
-    height: auto;
-}
-
-.card-content h2 {
-    margin-top: 0;
-}
-
-.card-content .stars {
-    color: orange;
+#footer a:hover {
+    text-decoration: underline;
 }

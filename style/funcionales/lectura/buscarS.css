@@ -1,12 +1,17 @@
 @import "styleS.css";
-
-/* Estilos del cuerpo */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
-    font-size: 19px; /* Tamaño de fuente más grande */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece la altura mínima del cuerpo como el 100% de la altura de la ventana */
+    font-size: 20px; /* Aumento del tamaño de la letra */
+}
+
+.container {
+    flex-grow: 1; /* Hace que el contenedor principal ocupe el espacio restante */
 }
 
 header {
@@ -39,51 +44,50 @@ nav a {
 }
 
 .filters {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-basis: 20%;
+    display: flex;            
+    flex-direction: column;   
+    align-items: flex-start;  
+    justify-content: flex-start; 
+    flex-basis: 20%;          
     background-color: #003366;
-    padding: 10px;
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-    height: 600px;
-    overflow: auto;
+    padding: 10px;            
+    color: white;             
+    border-radius: 5px;       
+    margin-right: 20px;       
+    height: 600px;            
+    overflow: auto;           
 }
 
 .filters > div, .filters > h2, .filters > h3 {
-    width: 100%;
-    margin-bottom: 10px;
+    width: 100%;              
+    margin-bottom: 10px;      
 }
 
 .filters label {
-    display: block;
-    margin-bottom: 5px;
+    display: block;           
+    margin-bottom: 5px;       
 }
 
 .filters input[type="checkbox"] {
-    margin-right: 5px;
+    margin-right: 5px;        
 }
 
+
+/* Estilos de los resultados de búsqueda */
 .search-results {
-    flex-grow: 1;
-    color: white;
-    background-color: #003366;
-    border-radius: 5px;
-    height: fit-content;
-    width: 800px;
+    width: 100%; /* Ocupa todo el ancho disponible */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px;  
+    padding: 20px;
+    background-color: #003366;
 }
+
 
 #seccionesCen {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100%; 
 }
 
 .result img {
@@ -110,7 +114,7 @@ nav a {
     color: rgb(255, 255, 255);
     text-decoration: none;
     display: block;
-    padding: 10px;
+    padding: 10px;   
 }
 
 .card-image {
@@ -126,14 +130,20 @@ nav a {
     color: orange;
 }
 
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-    }
+/* Estilos del pie de página */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+}
 
-    .filters,
-    .search-results {
-        width: 100%;
-    }
+/* Estilos del formulario de búsqueda */
+form {
+    height: 100%;
+    width: 25%; /* Ancho del formulario */
+    margin: auto; /* Centrar el formulario horizontalmente */
+    padding: 10px; /* Añadir un espacio interno al formulario */
 }

@@ -1,151 +1,134 @@
 @import "styleC.css";
 
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: black; /* Fondo negro */
     margin: 0;
     padding: 0;
-    color: white; /* Texto blanco */
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000; /* Texto negro */
 }
 
-header {
-    background-color: black; /* Fondo negro */
-    color: white; /* Texto blanco */
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
-    background-color: black; /* Fondo negro */
-    padding: 0;
-    display: flex; /* Asegura que los elementos del nav se alineen horizontalmente */
-    align-items: center; /* Centra los elementos del nav verticalmente */
-}
-
-li {
-    background-color: rgb(20, 20, 20);
-    color: white; /* Texto blanco */
-}
-
-a {
-    color: white; /* Texto blanco */
-    text-decoration: none;
-}
-
-.logo {
-    font-size: 24px; /* Sin cambios aquí, ya es prominente */
-}
-
-.main-content {
-    display: flex;
+/* Estilos del perfil */
+.profile-container {
+    width: 300px;
+    background-color: #ffffff; /* Fondo negro */
     padding: 20px;
-}
-
-.settings-menu {
-    flex-basis: 250px; /* Especificamos un ancho fijo para consistencia */
-    background-color: rgb(20, 20, 20);
-    color: white; /* Texto blanco */
-    border-radius: 5px;
+    box-sizing: border-box;
+    float: left; /* Alinear a la izquierda */
     margin-right: 20px;
-    width: 100px;
-    height: 600px;
-    display: flex; /* Añadimos flex para alinear los elementos internos */
-    flex-direction: column; /* Elementos internos en columna */
-    align-items: center; /* Centrar los elementos en el eje cruzado */
-}
-
-.settings-details {
-    flex-grow: 1;
-    background-color: white; /* Fondo blanco para detalles */
-    color: rgb(0, 0, 0); /* Texto negro */
-    padding: 20px; /* Aumentamos el padding para más espacio */
-    border-radius: 5px;
-    overflow: auto; /* Añadimos auto overflow para manejar contenido excesivo */
-}
-
-.main-content {
-    padding: 20px;
-}
-
-.profile-container { /* Contenedor para la foto y el menú de ajustes */
-    display: flex;
-    flex-direction: column; /* Organizar la foto y el menú en columna */
-    align-items: center; /* Centrar elementos horizontalmente */
-    width: 250px; /* Definir un ancho fijo para la sección lateral */
-    padding-right: 20px; /* Espaciado entre este contenedor y los detalles */
+    margin-left: 0;
+    color: #000000; /* Texto blanco */
 }
 
 .settings-menu {
-    background-color: rgb(20, 20, 20);  /* Fondo negro */
-    padding: 20px;
-    color: white; /* Texto blanco */
-    border-radius: 5px;
-    width: 200px; /* Ajusta el ancho al contenedor */
-    margin-top: 20px; /* Espacio después de la foto de perfil */
-    margin-left: 30px;
+    margin-top: 20px;
 }
 
-.settings-details, .publications {
-    flex-grow: 1;
-    background-color: rgb(20, 20, 20); /* Fondo negro */
-    padding: 20px;
-    border-radius: 5px;
-    color: white; /* Texto blanco */
-    width: 1150px;
-    margin-left: 20px; /* Espacio a la izquierda para separar del menú */
+.settings-menu h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
 
+.settings-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.settings-menu li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+}
+
+.settings-menu a {
+    color: #000000; /* Texto blanco */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.settings-menu ul li a {
+    color: #000000; /* Texto blanco */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.settings-menu a:hover {
+    color: #007bff; /* Enlace en azul */
+}
+
+/* Estilos de secciones centrales */
+.seccionesCen {
+    padding: 20px;
+    background-color: #ffffff; /* Fondo negro */
+    box-sizing: border-box;
+    margin-left: 340px; /* Espacio para el perfil */
+    margin-bottom: 20px; /* Espacio entre secciones y publicaciones */
+    color: #000000; /* Texto blanco */
+}
+
+/* Estilos de los detalles de configuración */
+.settings-details h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.settings-details p {
+    margin-bottom: 10px; /* Espacio entre párrafos */
+    font-size: 20px;
+}
+
+/* Estilos de las publicaciones */
 .publications {
-    flex-grow: 1;
-    color: white; /* Texto blanco */
-    background-color: rgb(20, 20, 20); /* Fondo negro */
-    border-radius: 5px;
-    height: 450px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     padding: 20px;
-    margin-top: 25px; /* Espacio entre detalles y publicaciones si están en la misma columna */
+    background-color: #ffffff; /* Fondo negro */
+    box-sizing: border-box;
+    margin-left: 340px; /* Espacio para el perfil */
+    margin-bottom: 20px; /* Espacio entre secciones y publicaciones */
+    font-size: 20px;
+    color: #000000; /* Texto blanco */
 }
 
-.result img {
-    width: 100%;
-    height: auto;
+/* Estilos de las tarjetas de publicación */
+.publication-card {
+    background-color: #131313; /* Fondo blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espacio entre tarjetas */
+    font-size: 15px;
+    color: #ffffff; /* Texto negro */
 }
 
 .card {
-    background-color: rgb(0, 0, 0); /* Fondo negro */
-    box-shadow: 0 0 5px white; /* Sombra blanca */
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s ease;
-    width: 20%;
-    flex: 0 1 30%;
-    transition: box-shadow 0.3s ease;
+    background-color: #000000; /* Fondo blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 20px; /* Espacio entre tarjetas */
 }
 
-.card:hover {
-    box-shadow: 0 0 10px white; /* Sombra blanca */
+.card h2 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
 }
 
-.card a {
-    color: white; /* Texto blanco */
+.card p {
+    margin-bottom: 10px; /* Espacio entre párrafos */
+}
+
+/* Estilos del pie de página */
+#footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#footer p {
+    font-size: 0.8em;
+    color: #777;
+}
+
+#footer a {
+    color: #007bff;
     text-decoration: none;
-    display: block;
-    padding: 10px;
 }
 
-.card-image {
-    width: 100%;
-    height: auto;
-}
-
-.card-content h2 {
-    margin-top: 0;
-    color: white; /* Texto blanco */
-}
-
-.card-content .stars {
-    color: white; /* Texto blanco */
+#footer a:hover {
+    text-decoration: underline;
 }

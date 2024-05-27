@@ -80,96 +80,102 @@
 
     <script>
        function saveSettings() {
-    // Obtener el tamaño de la fuente seleccionado
-    const fontSize = document.getElementById('font-size').value;
-    // Obtener el estilo visual seleccionado
-    const style = document.querySelector('input[name="style"]:checked').value;
-    // Obtener el idioma seleccionado
-    const language = document.getElementById('language-selector').value;
+            const fontSize = document.getElementById('font-size').value;
+            const style = document.querySelector('input[name="style"]:checked').value;
+            const language = document.getElementById('language-selector').value;
 
-    // Guardar en sessionStorage
-    sessionStorage.setItem('fontSize', fontSize);
-    sessionStorage.setItem('style', style);
-    sessionStorage.setItem('language', language); // Guardar el idioma seleccionado
+            sessionStorage.setItem('fontSize', fontSize);
+            sessionStorage.setItem('style', style);
+            sessionStorage.setItem('language', language);
 
-    // Recargar la página
-    window.location.reload();
-}
-
-
-function translatePageContent(targetLanguage) {
-    const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
-
-    textElements.forEach(element => {
-        const text = element.textContent;
-        const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-        const data = {
-            q: text,
-            target: targetLanguage,
-            format: 'text' // Asegúrate de especificar el formato si es necesario
-        };
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.translations.length > 0) {
-                element.textContent = data.data.translations[0].translatedText;
-            }
-        })
-        .catch(error => console.error('Error in translation:', error));
-    });
-}
-
-
-
-
-
-function applySettings() {
-    const fontSize = sessionStorage.getItem('fontSize');
-    const style = sessionStorage.getItem('style');
-    const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
-
-    if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-    }
-
-    if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
-
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-            case 'night':
-                document.getElementById('night-stylesheet').disabled = false;
-                break;
-            case 'high-contrast':
-                document.getElementById('high-contrast-stylesheet').disabled = false;
-                break;
-            case 'read-mode':
-                document.getElementById('read-mode-stylesheet').disabled = false;
-                break;
-            default:
-                document.getElementById('default-stylesheet').disabled = false;
-                break;
+            window.location.reload();
         }
-    }
 
-    // Si hay un idioma guardado, traducir el contenido de la página
-    if (language) {
-        translatePageContent(language);
-    }
-}
+
+        function translatePageContent(targetLanguage) {
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const textNodes = [];
+
+            function extractTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.trim() !== '') {
+                        textNodes.push(node);
+                    }
+                } else {
+                    node.childNodes.forEach(extractTextNodes);
+                }
+            }
+
+            const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+            elementsToTranslate.forEach(extractTextNodes);
+
+            textNodes.forEach(node => {
+                const text = node.textContent;
+                const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+                const data = {
+                    q: text,
+                    target: targetLanguage,
+                    format: 'text'
+                };
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.translations.length > 0) {
+                        node.textContent = data.data.translations[0].translatedText;
+                    }
+                })
+                .catch(error => console.error('Error in translation:', error));
+            });
+        }
+
+
+
+
+
+
+        function applySettings() {
+            const fontSize = sessionStorage.getItem('fontSize');
+            const style = sessionStorage.getItem('style');
+            const language = sessionStorage.getItem('language');
+
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
+            }
+
+            if (style) {
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
+
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
+            }
+
+            if (language) {
+                translatePageContent(language);
+            }
+        }
 
 
         function loadHeader() {
@@ -190,13 +196,11 @@ function applySettings() {
         }
 
         function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
 
-        // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
         window.onload = function() {
             applySettings();
             loadHeader();

@@ -78,24 +78,22 @@ $conn->close();
             <div class="carousel" style="margin-bottom: 30px;">
                 <!-- PHP Code to Fetch Documents for Last Month -->
                 <?php
-                $found = false;
                 foreach ($publicaciones as $publicacion) {
-                    if ($publicacion['carrera'] == 1) {
-                        $found = true;
-                        $found = true;
-                        echo '<a href="documento.php" class="work">
-                               
-                                <div class="work-details">
-                                    <h4>'.$publicacion['Nombre'].'</h4>
-                                    <p>'.$publicacion['autor'].'</p>
-                                    
-                                    <p>'.$publicacion['fecha'].'</p>
-                                </div>
-                              </a>';
-                    }
-                }
-                if (!$found) {
-                    echo "<p>No se encontraron publicaciones guardadas para el último mes.</p>";
+                    $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
+                    $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
+                    $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
+                    $carrera = isset($publicacion['nombreCarrera']) ? $publicacion['nombreCarrera'] : 'Carrera no disponible';
+                    $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
+
+                    echo '<div class="card">';
+                    echo '<img src="' . (isset($imagenes[$idPublicacion]) ? htmlspecialchars($imagenes[$idPublicacion]) : 'https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion)) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    echo '<div class="card-content">';
+                    echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
+                    echo '<p>Autor: ' . htmlspecialchars($autor) . '</p>';
+                    echo '<p>Carrera: ' . htmlspecialchars($carrera) . '</p>';
+                    echo '<div class="stars" data-valoracion="' . htmlspecialchars($valoracion) . '"></div>'; // Agrega aquí la lógica para mostrar las estrellas de valoración si es necesario
+                    echo '</div>'; // Cierra card-content
+                    echo '</div>'; // Cierra card
                 }
                 ?>
             </div>
@@ -105,23 +103,22 @@ $conn->close();
             <div class="carousel">
                 <!-- PHP Code to Fetch Documents for Previous Months -->
                 <?php
-                $found = false;
                 foreach ($publicaciones as $publicacion) {
-                    if ($publicacion['carrera'] == 2) {
-                        $found = true;
-                        echo '<a href="documento.php" class="work">
-                                
-                                <div class="work-details">
-                                    <h4>'.$publicacion['Nombre'].'</h4>
-                                    <p>'.$publicacion['autor'].'</p>
-                                    
-                                    <p>'.$publicacion['fecha'].'</p>
-                                </div>
-                              </a>';
-                    }
-                }
-                if (!$found) {
-                    echo "<p>No se encontraron publicaciones anteriores.</p>";
+                    $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
+                    $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
+                    $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
+                    $carrera = isset($publicacion['nombreCarrera']) ? $publicacion['nombreCarrera'] : 'Carrera no disponible';
+                    $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
+
+                    echo '<div class="card">';
+                    echo '<img src="' . (isset($imagenes[$idPublicacion]) ? htmlspecialchars($imagenes[$idPublicacion]) : 'https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion)) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    echo '<div class="card-content">';
+                    echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
+                    echo '<p>Autor: ' . htmlspecialchars($autor) . '</p>';
+                    echo '<p>Carrera: ' . htmlspecialchars($carrera) . '</p>';
+                    echo '<div class="stars" data-valoracion="' . htmlspecialchars($valoracion) . '"></div>'; // Agrega aquí la lógica para mostrar las estrellas de valoración si es necesario
+                    echo '</div>'; // Cierra card-content
+                    echo '</div>'; // Cierra card
                 }
                 ?>
             </div>
@@ -130,36 +127,25 @@ $conn->close();
     <div class="right-column">
         <h3 style="color: lightblue;">FILTRADOS POR CARRERA:</h3>
         <?php
-        $carreras = [
-            3 => "Derecho y RI",
-            4 => "Arquitectura",
-            5 => "Gastronomía"
-        ];
-        foreach ($carreras as $carrera => $nombreCarrera) {
-            echo '<h4 style="color: lightblue;">Carrera: '.$nombreCarrera.'</h4>';
-            echo '<div class="carousel-wrapper"><div class="carousel">';
-            $found = false;
-            foreach ($publicaciones as $publicacion) {
-                if ($publicacion['carrera'] == $carrera) {
-                    $found = true;
-                    $found = true;
-                        echo '<a href="documento.php" class="work">
-                                
-                                <div class="work-details">
-                                    <h4>'.$publicacion['Nombre'].'</h4>
-                                    <p>'.$publicacion['autor'].'</p>
-                                    
-                                    <p>'.$publicacion['fecha'].'</p>
-                                </div>
-                              </a>';
-                }
-            }
-            if (!$found) {
-                echo "<p>No se encontraron publicaciones para la carrera $nombreCarrera.</p>";
-            }
-            echo '</div></div>';
+        foreach ($publicaciones as $publicacion) {
+            $idPublicacion = isset($publicacion['idPublicacion']) ? $publicacion['idPublicacion'] : '';
+            $nombre = isset($publicacion['Nombre']) ? $publicacion['Nombre'] : 'Nombre no disponible';
+            $autor = isset($publicacion['autor']) ? $publicacion['autor'] : 'Autor no disponible';
+            $carrera = isset($publicacion['nombreCarrera']) ? $publicacion['nombreCarrera'] : 'Carrera no disponible';
+            $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
+
+            echo '<div class="card">';
+            echo '<img src="' . (isset($imagenes[$idPublicacion]) ? htmlspecialchars($imagenes[$idPublicacion]) : 'https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion)) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+            echo '<div class="card-content">';
+            echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
+            echo '<p>Autor: ' . htmlspecialchars($autor) . '</p>';
+            echo '<p>Carrera: ' . htmlspecialchars($carrera) . '</p>';
+            echo '<div class="stars" data-valoracion="' . htmlspecialchars($valoracion) . '"></div>'; // Agrega aquí la lógica para mostrar las estrellas de valoración si es necesario
+            echo '</div>'; // Cierra card-content
+            echo '</div>'; // Cierra card
         }
         ?>
+
     </div>
 </div>
 
@@ -168,79 +154,94 @@ $conn->close();
 
     <script>
        
+        function translatePageContent(targetLanguage) {
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const textNodes = [];
 
-       function translatePageContent(targetLanguage) {
-    const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
-
-    textElements.forEach(element => {
-        const text = element.textContent;
-        const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-        const data = {
-            q: text,
-            target: targetLanguage,
-            format: 'text' // Asegúrate de especificar el formato si es necesario
-        };
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.data && data.data.translations.length > 0) {
-                element.textContent = data.data.translations[0].translatedText;
+            function extractTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.trim() !== '') {
+                        textNodes.push(node);
+                    }
+                } else {
+                    node.childNodes.forEach(extractTextNodes);
+                }
             }
-        })
-        .catch(error => console.error('Error in translation:', error));
-    });
-}
 
+            const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+            elementsToTranslate.forEach(extractTextNodes);
 
+            textNodes.forEach(node => {
+                const text = node.textContent;
+                const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
+                const data = {
+                    q: text,
+                    target: targetLanguage,
+                    format: 'text'
+                };
 
-function applySettings() {
-    const fontSize = sessionStorage.getItem('fontSize');
-    const style = sessionStorage.getItem('style');
-    const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
-
-    if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-    }
-
-    if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
-
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-            case 'night':
-                document.getElementById('night-stylesheet').disabled = false;
-                break;
-            case 'high-contrast':
-                document.getElementById('high-contrast-stylesheet').disabled = false;
-                break;
-            case 'read-mode':
-                document.getElementById('read-mode-stylesheet').disabled = false;
-                break;
-            default:
-                document.getElementById('default-stylesheet').disabled = false;
-                break;
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.translations.length > 0) {
+                        node.textContent = data.data.translations[0].translatedText;
+                    }
+                })
+                .catch(error => console.error('Error in translation:', error));
+            });
         }
-    }
 
-    // Si hay un idioma guardado, traducir el contenido de la página
-    if (language) {
-        translatePageContent(language);
-    }
-}
+
+
+
+
+        function applySettings() {
+            const fontSize = sessionStorage.getItem('fontSize');
+            const style = sessionStorage.getItem('style');
+            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
+            }
+
+            if (style) {
+                // Deshabilitar todas las hojas de estilo primero
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
+
+                // Habilitar la hoja de estilo seleccionada
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
+            }
+
+            // Si hay un idioma guardado, traducir el contenido de la página
+            if (language) {
+                translatePageContent(language);
+            }
+        }
+
+
         function loadHeader() {
             const userId = sessionStorage.getItem('userId');
             const headerContainer = document.getElementById('header-container');
@@ -258,6 +259,7 @@ function applySettings() {
             }
         }
 
+
         function logout() {
                 // Eliminar los elementos del sessionStorage
                 sessionStorage.removeItem('userId');
@@ -270,8 +272,8 @@ function applySettings() {
             applySettings();
             loadHeader();
         };
-    </script>
 
+    </script>
     
 </body>
 </html>

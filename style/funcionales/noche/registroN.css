@@ -1,10 +1,9 @@
-@import "styleN.css";
 
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1E5E99, #737373);
+    background: linear-gradient(to bottom, #0f0f3d, #1a1a2e); /* Gradiente oscuro para el fondo */
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,7 +12,7 @@ body {
 
 .container {
     text-align: center;
-    color: white;
+    color: #ffffff; /* Texto blanco */
 }
 
 .bienvenido {
@@ -27,13 +26,14 @@ body {
 }
 
 .registro-container {
-    background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
+    background: linear-gradient(to bottom, #21262d, #30363d, #484f58); /* Gradiente oscuro para el contenedor */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     width: 600px;
     margin: 0 auto;
-    height: 500px;
+    min-height: 500px; /* Asegúrate de que haya suficiente espacio para todos los elementos */
+    max-height: auto; /* Permite que el contenedor crezca */
 }
 
 .form-group {
@@ -43,7 +43,8 @@ body {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    color: white;
+    width: calc(100% - 20px); /* Ajusta el ancho para incluir el padding */
+    color: #ffffff; /* Texto blanco */
     font-size: 16px;
     width: 100%; /* Cambiamos el ancho */
     height: 40px; /* Cambiamos la altura */
@@ -51,10 +52,9 @@ input[type="password"] {
     margin-bottom: 10px; /* Agregamos un margen inferior */
     border: none;
     border-radius: 5px;
-    background-color: #1E5E99;
+    background-color: #1c2128; /* Fondo oscuro para los campos de entrada */
     box-sizing: border-box;
 }
-
 
 input[type="checkbox"] {
     margin-right: 10px;
@@ -63,11 +63,12 @@ input[type="checkbox"] {
 label {
     display: inline-block;
     margin-bottom: 5px;
+    color: #ffffff; /* Texto blanco */
 }
 
 .registro-btn {
-    background-color: #0f3057;
-    color: white;
+    background-color: #238636; /* Fondo verde oscuro */
+    color: #ffffff; /* Texto blanco */
     border: none;
     padding: 20px 40px;
     border-radius: 5px;
@@ -77,24 +78,42 @@ label {
 }
 
 .registro-btn:hover {
-    background-color: #007bff;
+    background-color: #2ea043; /* Fondo verde más claro en hover */
 }
 
 .registro-btn a {
-    color: white; /* Color del texto */
+    color: #ffffff; /* Color del texto */
     text-decoration: none; /* Elimina el subrayado */
 }
-
 
 .login-link {
     margin-top: 20px;
 }
 
 .login-link a {
-    color: white;
+    color: #ffffff; /* Texto blanco */
     text-decoration: underline;
 }
 
 .login-link a:hover {
-    color: #86c1ff;
+    color: #58a6ff; /* Azul claro en hover */
+}
+
+.registro-btn {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff; /* Texto blanco */
+    background-color: #238636; /* Fondo verde oscuro */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registro-btn:hover {
+    background-color: #2ea043; /* Fondo verde más claro en hover */
 }

@@ -68,7 +68,7 @@ $conn->close();
     <link id="default-stylesheet" rel="stylesheet" href="style/index.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/indexN.css" disabled>
     <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/indexC.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/indexS.css" disabled>
 
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -197,20 +197,18 @@ $conn->close();
     function applySettings() {
         const fontSize = sessionStorage.getItem('fontSize');
         const style = sessionStorage.getItem('style');
-        const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+        const language = sessionStorage.getItem('language');
 
         if (fontSize) {
             document.documentElement.style.fontSize = fontSize;
         }
 
         if (style) {
-            // Deshabilitar todas las hojas de estilo primero
             document.getElementById('default-stylesheet').disabled = true;
             document.getElementById('night-stylesheet').disabled = true;
             document.getElementById('high-contrast-stylesheet').disabled = true;
             document.getElementById('read-mode-stylesheet').disabled = true;
 
-            // Habilitar la hoja de estilo seleccionada
             switch (style) {
                 case 'night':
                     document.getElementById('night-stylesheet').disabled = false;
@@ -227,24 +225,36 @@ $conn->close();
             }
         }
 
-        // Si hay un idioma guardado, traducir el contenido de la página
         if (language) {
             translatePageContent(language);
         }
     }
 
     function translatePageContent(targetLanguage) {
-        const apiKey = 'AIzaSyCpfO9GfEIIsm_I96ZrgRAxe9ZYsFJ3Xx8'; // Sustituye 'TU_API_KEY' con tu clave de API real
-        const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li'); // Selecciona los elementos que deseas traducir
+        const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+        const textNodes = [];
 
-        textElements.forEach(element => {
-            const text = element.textContent;
+        function extractTextNodes(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (node.textContent.trim() !== '') {
+                    textNodes.push(node);
+                }
+            } else {
+                node.childNodes.forEach(extractTextNodes);
+            }
+        }
+
+        const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+        elementsToTranslate.forEach(extractTextNodes);
+
+        textNodes.forEach(node => {
+            const text = node.textContent;
             const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
             const data = {
                 q: text,
                 target: targetLanguage,
-                format: 'text' // Asegúrate de especificar el formato si es necesario
+                format: 'text'
             };
 
             fetch(url, {
@@ -257,12 +267,13 @@ $conn->close();
             .then(response => response.json())
             .then(data => {
                 if (data.data && data.data.translations.length > 0) {
-                    element.textContent = data.data.translations[0].translatedText;
+                    node.textContent = data.data.translations[0].translatedText;
                 }
             })
             .catch(error => console.error('Error in translation:', error));
         });
     }
+
 
     function loadHeader() {
         const userId = sessionStorage.getItem('userId');
@@ -282,17 +293,16 @@ $conn->close();
     }
 
     function logout() {
-        // Eliminar los elementos del sessionStorage
         sessionStorage.removeItem('userId');
         sessionStorage.removeItem('username');
         window.location.href = 'index.php';
     }
 
-    // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
     window.onload = function() {
         applySettings();
         loadHeader();
     };
+
 </script>
 </body>
 </html>

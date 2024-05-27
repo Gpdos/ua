@@ -58,7 +58,7 @@ a {
 }
 
 .settings-menu {
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(8, 8, 8);
     padding: 20px;
     color: white; /* Texto blanco */
     border-radius: 5px;
@@ -69,7 +69,7 @@ a {
 
 .settings-details, .publications {
     flex-grow: 1;
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(8, 8, 8);
     padding: 20px;
     border-radius: 5px;
     color: white; /* Texto blanco */
