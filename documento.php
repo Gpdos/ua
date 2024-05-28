@@ -162,7 +162,7 @@ $conn->close();
                 <div id="contenedorTexto">
                     <p>Comentarios: </p>
                     <form id="comentarioForm" method="POST" action="">
-                        <textarea name="comentario" rows="10" cols="50" required>Escribe algo interesante</textarea>
+                        <textarea name="comentario" rows="10" cols="50" required placeholder="Escribe algo interesante"></textarea>
                         <input type="hidden" name="idPublicacion" value="<?php echo htmlspecialchars($idPublicacion); ?>">
                         <input type="hidden" name="autorComentario" id="autorComentario" value="">
                         <p>Valoracion: </p>

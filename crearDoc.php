@@ -101,7 +101,7 @@ $conn->close();
             <div id="body_arr">
                 <div id="contenedorTexto">
                     <p>Comentarios: </p>
-                    <textarea name="textarea" rows="10" cols="50">Escribe algo interesante</textarea>
+                    <textarea name="textarea" rows="10" cols="50" placeholder="Escribe algo interesante"></textarea>
                     <p>Valoracion: </p>
                     <div>
                         <div class="stars">
