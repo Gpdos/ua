@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 </div>
 <script>
-    // Función para aplicar configuración desde sessionStorage
+    // Función para aplicar configuración desde sessionStorage lol
     function applySettings() {
         const fontSize = sessionStorage.getItem('fontSize');
         const style = sessionStorage.getItem('style');
