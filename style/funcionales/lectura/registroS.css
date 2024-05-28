@@ -1,9 +1,10 @@
+@import "style.css";
 
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #0f0f3d, #1a1a2e); /* Gradiente oscuro para el fondo */
+    background: linear-gradient(to bottom, #1E5E99, #737373);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,21 +13,21 @@ body {
 
 .container {
     text-align: center;
-    color: #ffffff; /* Texto blanco */
+    color: white;
 }
 
 .bienvenido {
-    font-size: 36px;
+    font-size: 42px; /* Aumenta el tamaño del texto */
     margin-bottom: 10px;
 }
 
 .mensaje {
-    font-size: 18px;
+    font-size: 22px; /* Aumenta el tamaño del texto */
     margin-bottom: 30px;
 }
 
 .registro-container {
-    background: linear-gradient(to bottom, #21262d, #30363d, #484f58); /* Gradiente oscuro para el contenedor */
+    background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
@@ -36,25 +37,28 @@ body {
     max-height: auto; /* Permite que el contenedor crezca */
 }
 
+
 .form-group {
     margin-bottom: 20px;
 }
+
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: calc(100% - 20px); /* Ajusta el ancho para incluir el padding */
-    color: #ffffff; /* Texto blanco */
-    font-size: 16px;
+    color: white;
+    font-size: 20px; /* Aumenta el tamaño del texto */
     width: 100%; /* Cambiamos el ancho */
-    height: 40px; /* Cambiamos la altura */
-    padding: 5px;
-    margin-bottom: 10px; /* Agregamos un margen inferior */
+    height: 50px; /* Aumenta la altura */
+    padding: 10px; /* Aumenta el relleno */
+    margin-bottom: 15px; /* Aumenta el margen inferior */
     border: none;
     border-radius: 5px;
-    background-color: #1c2128; /* Fondo oscuro para los campos de entrada */
+    background-color: #1E5E99;
     box-sizing: border-box;
 }
+
 
 input[type="checkbox"] {
     margin-right: 10px;
@@ -62,52 +66,53 @@ input[type="checkbox"] {
 
 label {
     display: inline-block;
-    margin-bottom: 5px;
-    color: #ffffff; /* Texto blanco */
+    margin-bottom: 10px; /* Aumenta el margen inferior */
 }
 
 .registro-btn {
-    background-color: #238636; /* Fondo verde oscuro */
-    color: #ffffff; /* Texto blanco */
+    background-color: #0f3057;
+    color: white;
     border: none;
-    padding: 20px 40px;
+    padding: 25px 40px; /* Aumenta el relleno */
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    font-size: 30px;
+    font-size: 35px; /* Aumenta el tamaño del texto */
 }
 
 .registro-btn:hover {
-    background-color: #2ea043; /* Fondo verde más claro en hover */
+    background-color: #007bff;
 }
 
 .registro-btn a {
-    color: #ffffff; /* Color del texto */
+    color: white; /* Color del texto */
     text-decoration: none; /* Elimina el subrayado */
 }
+
 
 .login-link {
     margin-top: 20px;
 }
 
 .login-link a {
-    color: #ffffff; /* Texto blanco */
+    color: white;
     text-decoration: underline;
 }
 
 .login-link a:hover {
-    color: #58a6ff; /* Azul claro en hover */
+    color: #86c1ff;
 }
+
 
 .registro-btn {
     display: block;
     width: 80%;
     margin: 20px auto;
-    padding: 10px 0;
-    font-size: 18px;
+    padding: 15px 0; /* Aumenta el relleno */
+    font-size: 24px; /* Aumenta el tamaño del texto */
     font-weight: bold;
-    color: #ffffff; /* Texto blanco */
-    background-color: #238636; /* Fondo verde oscuro */
+    color: #fff;
+    background-color: #007BFF;
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -115,5 +120,5 @@ label {
 }
 
 .registro-btn:hover {
-    background-color: #2ea043; /* Fondo verde más claro en hover */
+    background-color: #0056b3;
 }

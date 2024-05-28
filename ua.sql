@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2024 a las 19:01:09
+-- Tiempo de generación: 24-05-2024 a las 13:33:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ua`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(200) NOT NULL,
+  `texto` varchar(200) NOT NULL,
+  `autor` int(11) NOT NULL,
+  `valoracion` int(11) NOT NULL,
+  `publicacion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`id`, `titulo`, `texto`, `autor`, `valoracion`, `publicacion`) VALUES
+(1, 'Recomendado', 'Esta muy bien', 1, 0, 1),
+(2, 'No me gusta', 'Muy escaso', 2, 0, 2),
+(3, 'Inentndible', 'No comprendo nada', 3, 0, 3),
+(4, 'Genial!!', 'Ayuda mucho', 7, 0, 4),
+(5, 'Que hambre!!!', 'Me entran ganas de comer solo de leerlo', 3, 0, 5),
+(6, 'zzzzzzzzzzzz', 'zzzzzzzzzzzzzzz', 0, 1, 7),
+(7, 'Chulisimo', 'Muy vistoso', 4, 5, 9),
+(8, 'Muy interesante ', 'Me ha resultado muy util', 2, 4, 11),
+(9, 'Muy mal', 'Fatal estructurado', 1, 1, 12);
 
 -- --------------------------------------------------------
 
@@ -53,7 +83,7 @@ INSERT INTO `estudio` (`idEstudio`, `Nombre`, `Universidad`) VALUES
 
 CREATE TABLE `foto` (
   `idFoto` int(11) NOT NULL,
-  `archivo` varchar(20) NOT NULL,
+  `archivo` varchar(2000) NOT NULL,
   `idPubli` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -62,12 +92,12 @@ CREATE TABLE `foto` (
 --
 
 INSERT INTO `foto` (`idFoto`, `archivo`, `idPubli`) VALUES
-(1, '1.jpeg', 0),
-(2, '2.jpeg', 0),
-(3, '3.jpeg', 0),
-(4, '4.jpeg', 0),
-(5, '5.jpeg', 0),
-(6, '6.jpeg', 0);
+(1, 'https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2019/12/2019-had-its-share-delightfully-strange-moments.jpg?tf=3840x', 1),
+(2, 'https://picsum.photos/600/400?random=2', 1),
+(3, 'https://cdn.pixabay.com/photo/2024/02/26/19/39/monochrome-image-8598798_640.jpg', 2),
+(4, 'https://picsum.photos/600/400?random=4', 3),
+(5, 'https://picsum.photos/600/400?random=5', 3),
+(6, 'https://picsum.photos/600/400?random=6', 4);
 
 -- --------------------------------------------------------
 
@@ -90,10 +120,15 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`idPublicacion`, `Nombre`, `carrera`, `tipo`, `valoracion`, `fecha`, `autor`) VALUES
-(1, 'Memoria Arquitectura', 3, 1, 4, '0000-00-00', 'Javier'),
-(2, 'TFG Economico', 2, 1, 2, '0000-00-00', 'Francisco'),
-(3, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos'),
-(4, 'Samuelada', 3, 3, 3, '0000-00-00', 'Perez Galdos');
+(1, 'Memoria Arquitectura', 4, 6, 4, '0000-00-00', 'Javier'),
+(2, 'TFG Matemáticas', 2, 1, 2, '0000-00-00', 'Francisco'),
+(3, 'TFM Diseño grafico', 6, 2, 3, '0000-00-00', 'Perez Galdos'),
+(4, 'ABP Web', 1, 3, 3, '0000-00-00', 'Perez Galdos'),
+(5, 'Presentacion menu', 5, 4, 2, '2024-05-29', 'Javier'),
+(7, 'TFM estadistica', 2, 2, 2, '0000-00-00', 'Dani'),
+(9, 'Diseño 3D', 6, 5, 5, '0000-00-00', 'Yus'),
+(11, 'Legislacion Bélgica', 3, 4, 1, '2024-05-15', 'Samuel'),
+(12, 'TFG Arquitectura', 4, 1, 1, '2024-05-01', 'Miguel');
 
 -- --------------------------------------------------------
 
@@ -117,6 +152,33 @@ INSERT INTO `tipotrabajo` (`idTipo`, `Nombre`) VALUES
 (4, 'Presentacion'),
 (5, 'Modelado 3D'),
 (6, 'Memoria');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `trabajo`
+--
+
+CREATE TABLE `trabajo` (
+  `id` int(11) NOT NULL,
+  `idPubli` int(11) NOT NULL,
+  `contenido` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `trabajo`
+--
+
+INSERT INTO `trabajo` (`id`, `idPubli`, `contenido`) VALUES
+(1, 1, '\r\n                https://online.publuu.com/519294/1163817'),
+(2, 2, '\r\n                https://online.publuu.com/519294/1163874'),
+(3, 3, '\r\n                https://online.publuu.com/519294/1163959'),
+(4, 4, '\r\n                https://online.publuu.com/519294/1163964'),
+(5, 5, '\r\n                https://online.publuu.com/519294/1163965'),
+(6, 7, '\r\n                https://online.publuu.com/519294/1163967'),
+(7, 9, '\r\n                https://online.publuu.com/519294/1163967'),
+(8, 11, '\r\n                https://online.publuu.com/519294/1163969'),
+(9, 12, '\r\n                https://online.publuu.com/519294/1163972');
 
 -- --------------------------------------------------------
 
@@ -148,6 +210,12 @@ INSERT INTO `usuarios` (`Id`, `Usuario`, `Contraseña`, `Correo`) VALUES
 --
 
 --
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `estudio`
 --
 ALTER TABLE `estudio`
@@ -172,6 +240,12 @@ ALTER TABLE `tipotrabajo`
   ADD PRIMARY KEY (`idTipo`);
 
 --
+-- Indices de la tabla `trabajo`
+--
+ALTER TABLE `trabajo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -180,6 +254,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `estudio`
@@ -197,13 +277,19 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `tipotrabajo`
 --
 ALTER TABLE `tipotrabajo`
   MODIFY `idTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `trabajo`
+--
+ALTER TABLE `trabajo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

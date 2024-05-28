@@ -1,16 +1,22 @@
 @import "styleC.css";
-
 body {
     font-family: Arial, sans-serif;
-    background-color: black; /* Fondo negro */
+    background-color: #000000; /* Fondo negro puro */
+    color: #ffffff; /* Texto blanco puro */
     margin: 0;
     padding: 0;
-    color: white; /* Texto blanco */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece la altura mínima del cuerpo como el 100% de la altura de la ventana */
+}
+
+.container {
+    flex-grow: 1; /* Hace que el contenedor principal ocupe el espacio restante */
 }
 
 header {
-    background-color: black; /* Fondo negro */
-    color: white; /* Texto blanco */
+    background-color: #000000; /* Fondo negro puro */
+    color: #ffffff; /* Texto blanco puro */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -23,7 +29,7 @@ nav ul {
 }
 
 nav a {
-    color: white; /* Texto blanco */
+    color: #ffffff; /* Texto blanco puro */
     text-decoration: none;
     margin: 0 15px;
 }
@@ -38,51 +44,48 @@ nav a {
 }
 
 .filters {
-    display: flex;            /* Habilita Flexbox */
-    flex-direction: column;   /* Alinea los hijos en columnas (verticalmente) */
-    align-items: flex-start;  /* Alinea los items al inicio de la dirección transversal (izquierda) */
-    justify-content: flex-start; /* Alinea los items al inicio de la dirección principal (arriba) */
-    flex-basis: 20%;          /* Base del tamaño del contenedor */
-    background-color: rgb(20, 20, 20);
-    padding: 10px;            /* Espaciado interno */
-    color: white;             /* Texto blanco */
-    border-radius: 5px;       /* Borde redondeado */
-    margin-right: 20px;       /* Margen derecho */
-    height: 600px;            /* Altura fija */
-    overflow: auto;           /* Permite scroll si el contenido excede la altura */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-basis: 20%;
+    background-color: #000000; /* Fondo negro puro */
+    padding: 10px;
+    color: #ffffff; /* Texto blanco puro */
+    border-radius: 5px;
+    margin-right: 20px;
+    height: 600px;
+    overflow: auto;
 }
 
 .filters > div, .filters > h2, .filters > h3 {
-    width: 100%;              /* Asegura que los hijos ocupen todo el ancho disponible */
-    margin-bottom: 10px;      /* Espacio entre cada item */
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .filters label {
-    display: block;           /* Asegura que cada label ocupe su propia línea */
-    margin-bottom: 5px;       /* Espacio después de cada label */
+    display: block;
+    margin-bottom: 5px;
 }
 
 .filters input[type="checkbox"] {
-    margin-right: 5px;        /* Espacio a la derecha de cada checkbox */
+    margin-right: 5px;
 }
 
+/* Estilos de los resultados de búsqueda */
 .search-results {
-    flex-grow: 1;
-    color: white;             /* Texto blanco */
-    background-color: rgb(20, 20, 20); 
-    border-radius: 5px;
-    height: fit-content;
-    width: 800px;
+    width: 100%; /* Ocupa todo el ancho disponible */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;
+    background-color: #000000; /* Fondo negro puro */
 }
 
 #seccionesCen {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Ajusta esto según tus necesidades */
+    width: 100%;
 }
 
 .result img {
@@ -91,20 +94,22 @@ nav a {
 }
 
 .card {
-    background-color: rgb(0, 0, 0);
-    box-shadow: 0 0 5px white; /* Sombra blanca */
+    background-color: #ffffff; /* Fondo blanco puro */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
     margin-bottom: 20px;
     transition: box-shadow 0.3s ease;
     width: 20%;
     flex: 0 1 30%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-    box-shadow: 0 0 10px white; /* Sombra blanca */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .card a {
-    color: white; /* Texto blanco */
+    color: #000000; /* Texto negro puro */
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -117,21 +122,26 @@ nav a {
 
 .card-content h2 {
     margin-top: 0;
-    color: white; /* Texto blanco */
 }
 
 .card-content .stars {
-    color: white; /* Texto blanco */
+    color: orange; /* Cambiar color de estrellas si es necesario */
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-    }
+/* Estilos del pie de página */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000; /* Fondo negro puro */
+    color: #ffffff; /* Texto blanco puro */
+    padding: 10px 20px;
+}
 
-    .filters,
-    .search-results {
-        width: 100%;
-    }
+/* Estilos del formulario de búsqueda */
+form {
+    height: 100%;
+    width: 25%; /* Ancho del formulario */
+    margin: auto; /* Centrar el formulario horizontalmente */
+    padding: 10px; /* Añadir un espacio interno al formulario */
 }

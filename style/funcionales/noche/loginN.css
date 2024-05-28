@@ -1,11 +1,10 @@
-@import "styleN.css";
 
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: calc(100% - 40px); /* Resta 40px del ancho total para dejar un margen a cada lado */
-    background-color: #003366;
+    background-color: #1a1a2e; /* Color de fondo más oscuro */
     color: white;
     display: flex;
     justify-content: space-between;
@@ -28,7 +27,7 @@ header {
 }
 
 #cen {
-    background-color: var(--azulNormal);
+    background-color: #162447; /* Fondo más oscuro */
     padding: 20px;
     display: flex;
     justify-content: space-around;
@@ -52,7 +51,7 @@ header {
 #label_header {
     box-sizing: border-box;
     display: inline-block;
-    border: 3px solid black;
+    border: 3px solid white; /* Borde blanco para mayor contraste */
     border-radius: 40px;
     width: 80px;
     height: 80px;
@@ -61,11 +60,12 @@ header {
     font-size: 55px;
     text-align: center;
     user-select: none;
+    color: white; /* Color de texto blanco */
 }
 
 .link_menu {
     display: block;
-    background: lightgrey;
+    background: #2e2e2e; /* Fondo gris oscuro */
     margin: 0;
     padding: 10px;
     width: fit-content;
@@ -81,46 +81,56 @@ body.login-body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1E5E99, #737373);
+    background: linear-gradient(to bottom, #0f0f3d, #1a1a1d); /* Gradiente más oscuro */
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-  
+
 .container {
     position: relative;
 }
-  
+
 .login-container {
     margin-top: 50px;
-    background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
+    background: linear-gradient(to bottom, #1b1b2f, #1e3c72, #2a5298); /* Gradiente oscuro */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     position: relative;
     width: 450px;
-    height: 400px;
+    min-height: 400px; /* Cambia 'height' por 'min-height' */
 }
-  
+
+.error-message {
+    color: white; /* Cambia el color del texto a blanco */
+    background-color: #e60000; /* Fondo rojo oscuro para el mensaje de error */
+    text-align: center;
+    padding: 10px;
+    font-size: 16px; /* Puedes ajustar el tamaño del texto según prefieras */
+    border-radius: 5px; /* Bordes redondeados para el mensaje */
+    margin: 10px 0; /* Agrega un margen arriba y abajo para separarlo de otros elementos */
+}
+
 .login-header {
     position: absolute;
     top: -50px;
     left: 50%;
     transform: translateX(-50%);
 }
-  
+
 .login-header img {
     width: 150px;
 }
-  
+
 .form-group {
     margin-bottom: 20px;
     margin-top: 100px;
     display: flex;
     align-items: center; 
 }
-  
+
 .form-group img {
     width: 30px;
     margin-right: 10px;
@@ -133,7 +143,7 @@ body.login-body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #1E5E99;
+    background-color: #1a1a2e; /* Fondo oscuro */
     color: white; /* Color del texto */
     font-size: 20px;
 }
@@ -144,12 +154,12 @@ body.login-body {
     display: flex;
     align-items: center; 
 }
-  
+
 .form-group2 img {
     width: 30px;
     margin-right: 10px;
 }
-  
+
 .form-group2 input[type="email"],
 .form-group2 input[type="password"] {
     width: calc(100% - 40px);
@@ -157,35 +167,36 @@ body.login-body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #1E5E99;
+    background-color: #1a1a2e; /* Fondo oscuro */
     color: white; /* Color del texto */
     font-size: 20px;
 }
-  
+
 .checkbox {
     display: flex;
     align-items: center;
     color: white; /* Color del texto */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    margin-top: 10px; /* Agrega un poco de espacio arriba del enlace */
 }
-  
+
 .checkbox label {
     margin-right: 10px;
 }
-  
+
 .checkbox a {
     margin-left: auto;
     text-decoration: none;
     color: white; /* Color del texto */
 }
-  
+
 .checkbox a:hover {
     color: lightblue; /* Color al pasar el ratón sobre el enlace */
     text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
 }
-  
-/* Estilos para el botón de inicio de sesión */
+
 .login-btn {
-    background-color: #0f3057;
+    background-color: #1a1a2e; /* Fondo oscuro */
     color: white;
     border: none;
     padding: 20px 40px;
@@ -198,7 +209,7 @@ body.login-body {
 }
 
 .login-btn:hover {
-    background-color: #007bff;
+    background-color: #4e4e6f; /* Fondo más claro al pasar el ratón */
 }
 
 .login-btn a {
@@ -206,13 +217,12 @@ body.login-body {
     text-decoration: none; /* Elimina el subrayado */
 }
 
-
 .circle {
     position: absolute;
     width: 106px;
     height: 106px;
     border-radius: 50%;
-    background: linear-gradient(to right, #007bff, #cfd8dc);
+    background: linear-gradient(to right, #3a3a52, #cfd8dc); /* Gradiente de noche */
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
@@ -224,12 +234,35 @@ body.login-body {
     margin-top: 40px;
     color: white; /* Color del texto */
 }
-  
+
 .register-link a {
     color: white; /* Color del enlace */
     text-decoration: underline; /* Subrayado del enlace */
 }
-  
+
 .register-link a:hover {
     color: #86c1ff; /* Color al pasar el ratón sobre el enlace */
+}
+
+.icon-img {
+    filter: brightness(0) invert(1);
+}
+
+button[type="submit"] {
+    display: block; /* Hace que el botón ocupe toda la línea */
+    width: 80%; /* Ajusta el ancho del botón */
+    margin: 20px auto; /* Centra el botón horizontalmente y añade margen arriba y abajo */
+    padding: 10px 0; /* Añade padding vertical para hacer el botón más alto */
+    font-size: 18px; /* Ajusta el tamaño del texto dentro del botón */
+    font-weight: bold; /* Hace el texto del botón en negrita */
+    color: #fff; /* Color del texto */
+    background-color: #007BFF; /* Color de fondo del botón */
+    border: none; /* Elimina el borde */
+    border-radius: 20px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima */
+    transition: background-color 0.3s; /* Suaviza la transición del color de fondo */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Cambia el color de fondo cuando se pasa el cursor por encima */
 }

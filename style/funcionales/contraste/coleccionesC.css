@@ -4,7 +4,7 @@
     font-size: 24px;
     font-weight: bold;
     margin-left: 20px;
-    color: #FFFF00; /* Texto en amarillo para alto contraste */
+    color: black; /* Color del texto */
 }
 
 nav {
@@ -13,7 +13,7 @@ nav {
 }
 
 nav a {
-    color: #FFFF00; /* Enlaces en amarillo para alto contraste */
+    color: black; /* Color del texto */
     text-decoration: none;
     margin-right: 20px;
 }
@@ -22,18 +22,17 @@ nav a {
     display: flex;
 }
 
+
 .left-column,
 .right-column {
     flex: 1;
     height: 100vh; /* Establece la altura al 100% del viewport */
     margin: 0 10px; /* Ajusta el margen horizontal dentro de cada columna */
     padding: 20px;
-    background-color: #000000; /* Fondo negro para alto contraste */
-    color: #FFFFFF; /* Texto blanco para alto contraste */
 }
 
 .left-column {
-    background-color: #333333; /* Color del rectángulo izquierdo en negro */
+    background-color: #000000; /* Blanco */
     max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
     overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
     scroll-behavior: smooth; /* Desplazamiento suave */
@@ -44,15 +43,16 @@ nav a {
 }
 
 .right-column {
-    background-color: #000000; /* Color del rectángulo derecho en negro */
+    background-color: #000000; /* Blanco */
     max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
     overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
     scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 .right-column:hover {
-    overflow-y: scroll; /* Muestra la barra de desplazamiento vertical al pasar el ratón */
+    overflow-y: scroll;
 }
+
 
 .documents {
     display: flex;
@@ -72,11 +72,11 @@ nav a {
 }
 /* Estilos para las colecciones */
 .collection {
-    background-color: #333333; /* Fondo gris oscuro para alto contraste */
+    background-color: black; /* Negro */
     margin-bottom: 20px; /* Espacio entre las colecciones */
     padding: 20px; /* Espacio interior de cada colección */
     border-radius: 8px; /* Borde redondeado para las colecciones */
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Sombra blanca suave para alto contraste */
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Sombra suave para las colecciones */
     max-width: calc(100% - 40px); /* Ancho máximo igual al ancho del contenedor menos el espacio del padding */
     max-height: calc(100vh - 120px); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados y el padding */
     overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
@@ -85,7 +85,7 @@ nav a {
 
 .collection h3 {
     margin-top: 0; /* Elimina el margen superior del nombre de la colección */
-    color: #ffffff; /* Texto en amarillo para alto contraste */
+    color: black; /* Color del texto */
 }
 
 /* Estilos para los documentos dentro de cada colección */
@@ -100,7 +100,7 @@ nav a {
     margin-right: 20px; /* Espacio entre los documentos */
     margin-bottom: 20px; /* Espacio entre los documentos y el siguiente renglón */
     text-decoration: none; /* Quita el subrayado de los enlaces */
-    color: inherit; /* Hereda el color del texto */
+    color: black; /* Color del texto */
     max-width: calc(33.33% - 20px); /* Ajusta el ancho máximo de cada documento */
 }
 
@@ -111,27 +111,65 @@ nav a {
 .work img {
     width: 100%; /* Ajusta la imagen para que ocupe todo el ancho del contenedor */
     border-radius: 8px; /* Borde redondeado para las imágenes */
-    border: 2px solid #b1b100; /* Borde amarillo para alto contraste */
 }
 
 .work-details {
     padding: 10px; /* Espacio interior del contenedor de detalles del trabajo */
-    background-color: #000000; /* Fondo negro para alto contraste */
+    background-color: black; /* Negro */
     border-radius: 8px; /* Borde redondeado para el contenedor de detalles del trabajo */
-    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5); /* Sombra blanca suave para alto contraste */
-    color: #FFFFFF; /* Texto blanco para alto contraste */
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.1); /* Sombra suave para el contenedor de detalles del trabajo */
 }
 
 .work-details h4 {
     margin-top: 0; /* Elimina el margen superior del título del trabajo */
-    color: #ffff00; /* Texto en amarillo para alto contraste */
 }
 
 .work-details p {
     margin: 5px 0; /* Espacio entre los párrafos dentro del contenedor de detalles del trabajo */
-    color: #ffffff; /* Texto blanco para alto contraste */
 }
 
 .documents .work.hidden {
     display: none;
+}
+
+.card {
+    background-color: rgb(255, 255, 255); /* Blanco */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    width: 750px; 
+    margin-right: 20px; /* Agrega margen derecho para separar las tarjetas */
+    color: #000000;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.card a {
+    color: rgb(0, 0, 0); /* Color del texto */
+    text-decoration: none;
+    display: block;
+    padding: 10px;   
+}
+
+.card-image {
+    height: auto;
+}
+
+.card-content {
+    padding: 10px; /* Añade un poco de espacio interno */
+}
+
+.card-content h2 {
+    margin-top: 0;
+}
+
+.card-content .stars {
+    color: orange;
+}
+
+.right-column .card {
+    width: 600px; /* Ajusta el ancho de las tarjetas dentro de right-column */
+    margin-right: 20px; /* Agrega margen derecho para separar las tarjetas */
 }

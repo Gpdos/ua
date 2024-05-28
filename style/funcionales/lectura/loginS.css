@@ -1,11 +1,12 @@
+@import "style.css";
 
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: calc(100% - 40px); /* Resta 40px del ancho total para dejar un margen a cada lado */
-    background-color: #000000; /* Fondo negro puro */
-    color: #FFFFFF; /* Texto blanco puro */
+    background-color: #003366;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,20 +28,20 @@ header {
 }
 
 #cen {
-    background-color: #000000; /* Fondo negro puro */
+    background-color: var(--azulNormal);
     padding: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 35px;
+    font-size: 40px; /* Aumenta el tamaño del texto */
     text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.453);
 }
 
 #dch {
     text-align: center;
     font-family: "Poetsen One", sans-serif;
-    font-size: 40px;
-    text-shadow: 2px 2px 4px #000000; /* Sombra negra */
+    font-size: 45px; /* Aumenta el tamaño del texto */
+    text-shadow: 2px 2px 4px rgb(56, 56, 56);
     line-height: 10px;
 }
 
@@ -51,86 +52,88 @@ header {
 #label_header {
     box-sizing: border-box;
     display: inline-block;
-    border: 3px solid #FFFFFF; /* Borde blanco */
+    border: 3px solid black;
     border-radius: 40px;
     width: 80px;
     height: 80px;
     line-height: 80px;
     font-weight: bold;
-    font-size: 55px;
+    font-size: 65px; /* Aumenta el tamaño del texto */
     text-align: center;
     user-select: none;
-    color: #FFFFFF; /* Color de texto blanco */
 }
 
 .link_menu {
     display: block;
-    background: #000000; /* Fondo negro */
+    background: lightgrey;
     margin: 0;
     padding: 10px;
     width: fit-content;
     list-style: none;
-    border-bottom: 1px solid #FFFFFF; /* Borde blanco */
+    border-bottom: 1px solid grey;
 }
 
 .fa-solid {
-    color: #FFFFFF !important; /* Color blanco */
+    color: white !important;
 }
 
 body.login-body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #000000, #333333); /* Gradiente de negro a gris oscuro */
+    background: linear-gradient(to bottom, #1E5E99, #737373);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+  
 .container {
     position: relative;
 }
-
+  
 .login-container {
     margin-top: 50px;
-    background: linear-gradient(to bottom, #000000, #1a1a1a, #333333); /* Gradiente oscuro */
+    background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     position: relative;
     width: 450px;
     min-height: 400px; /* Cambia 'height' por 'min-height' */
+    
 }
 
 .error-message {
-    color: #FFFFFF; /* Cambia el color del texto a blanco */
-    background-color: #FF0000; /* Fondo rojo puro para el mensaje de error */
+    color: white; /* Cambia el color del texto a blanco */
+    background-color: red; /* Fondo rojo para el mensaje de error */
     text-align: center;
     padding: 10px;
-    font-size: 16px; /* Puedes ajustar el tamaño del texto según prefieras */
+    font-size: 20px; /* Puedes ajustar el tamaño del texto según prefieras */
     border-radius: 5px; /* Bordes redondeados para el mensaje */
     margin: 10px 0; /* Agrega un margen arriba y abajo para separarlo de otros elementos */
 }
 
+
+  
 .login-header {
     position: absolute;
     top: -50px;
     left: 50%;
     transform: translateX(-50%);
 }
-
+  
 .login-header img {
     width: 150px;
 }
-
+  
 .form-group {
     margin-bottom: 20px;
     margin-top: 100px;
     display: flex;
     align-items: center; 
 }
-
+  
 .form-group img {
     width: 30px;
     margin-right: 10px;
@@ -143,9 +146,9 @@ body.login-body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #000000; /* Fondo negro */
-    color: #FFFFFF; /* Color del texto blanco */
-    font-size: 20px;
+    background-color: #1E5E99;
+    color: white; /* Color del texto */
+    font-size: 24px; /* Aumenta el tamaño del texto */
 }
 
 .form-group2 {
@@ -154,12 +157,12 @@ body.login-body {
     display: flex;
     align-items: center; 
 }
-
+  
 .form-group2 img {
     width: 30px;
     margin-right: 10px;
 }
-
+  
 .form-group2 input[type="email"],
 .form-group2 input[type="password"] {
     width: calc(100% - 40px);
@@ -167,53 +170,54 @@ body.login-body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #000000; /* Fondo negro */
-    color: #FFFFFF; /* Color del texto blanco */
-    font-size: 20px;
+    background-color: #1E5E99;
+    color: white; /* Color del texto */
+    font-size: 24px; /* Aumenta el tamaño del texto */
 }
-
+  
 .checkbox {
     display: flex;
     align-items: center;
-    color: #FFFFFF; /* Color del texto blanco */
+    color: white; /* Color del texto */
     justify-content: center; /* Centra el contenido horizontalmente */
     margin-top: 10px; /* Agrega un poco de espacio arriba del enlace */
-}
 
+}
+  
 .checkbox label {
     margin-right: 10px;
 }
-
+  
 .checkbox a {
     margin-left: auto;
     text-decoration: none;
-    color: #FFFFFF; /* Color del texto blanco */
+    color: white; /* Color del texto */
 }
-
+  
 .checkbox a:hover {
-    color: #CCCCCC; /* Color gris claro al pasar el ratón sobre el enlace */
+    color: lightblue; /* Color al pasar el ratón sobre el enlace */
     text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
 }
-
+  
 .login-btn {
-    background-color: #000000; /* Fondo negro */
-    color: #FFFFFF; /* Color del texto blanco */
+    background-color: #0f3057;
+    color: white;
     border: none;
     padding: 20px 40px;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    font-size: 30px;
+    font-size: 35px; /* Aumenta el tamaño del texto */
     margin-top: 40px;
     text-decoration: none; /* Elimina el subrayado del texto */
 }
 
 .login-btn:hover {
-    background-color: #333333; /* Fondo gris oscuro al pasar el ratón */
+    background-color: #007bff;
 }
 
 .login-btn a {
-    color: #FFFFFF; /* Color del texto blanco */
+    color: white; /* Color del texto */
     text-decoration: none; /* Elimina el subrayado */
 }
 
@@ -222,7 +226,7 @@ body.login-body {
     width: 106px;
     height: 106px;
     border-radius: 50%;
-    background: linear-gradient(to right, #000000, #FFFFFF); /* Gradiente de negro a blanco */
+    background: linear-gradient(to right, #007bff, #cfd8dc);
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
@@ -232,16 +236,16 @@ body.login-body {
 .register-link {
     text-align: center;
     margin-top: 40px;
-    color: #FFFFFF; /* Color del texto blanco */
+    color: white; /* Color del texto */
 }
-
+  
 .register-link a {
-    color: #FFFFFF; /* Color del enlace blanco */
+    color: white; /* Color del enlace */
     text-decoration: underline; /* Subrayado del enlace */
 }
-
+  
 .register-link a:hover {
-    color: #CCCCCC; /* Color gris claro al pasar el ratón sobre el enlace */
+    color: #86c1ff; /* Color al pasar el ratón sobre el enlace */
 }
 
 .icon-img {
@@ -252,11 +256,11 @@ button[type="submit"] {
     display: block; /* Hace que el botón ocupe toda la línea */
     width: 80%; /* Ajusta el ancho del botón */
     margin: 20px auto; /* Centra el botón horizontalmente y añade margen arriba y abajo */
-    padding: 10px 0; /* Añade padding vertical para hacer el botón más alto */
-    font-size: 18px; /* Ajusta el tamaño del texto dentro del botón */
+    padding: 20px 0; /* Añade padding vertical para hacer el botón más alto */
+    font-size: 24px; /* Ajusta el tamaño del texto dentro del botón */
     font-weight: bold; /* Hace el texto del botón en negrita */
-    color: #FFFFFF; /* Color del texto blanco */
-    background-color: #000000; /* Color de fondo negro */
+    color: #fff; /* Color del texto */
+    background-color: #007BFF; /* Color de fondo del botón */
     border: none; /* Elimina el borde */
     border-radius: 20px; /* Redondea las esquinas del botón */
     cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima */
@@ -264,5 +268,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #333333; /* Cambia el color de fondo a gris oscuro cuando se pasa el cursor por encima */
+    background-color: #0056b3; /* Cambia el color de fondo cuando se pasa el cursor por encima */
 }
+
+

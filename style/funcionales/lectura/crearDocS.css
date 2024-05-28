@@ -1,9 +1,9 @@
-@import "styleC.css";
+@import "styleS.css";
 
 main {
     width: auto;
     height: auto;
-    padding-inline: 0; 
+    padding-inline: 0;
     display: flex;
     justify-content: space-around;
 }
@@ -19,7 +19,7 @@ main {
 #body_izq h2 {
     color: white;
     margin-left: 40px;
-    font-size: 30px;
+    font-size: 50px;
     margin-bottom: 0;
 }
 
@@ -28,7 +28,7 @@ main {
     width: 40%;
     padding: 5px;
     margin-left: 5px;
-    background-color: rgb(20, 20, 20);
+    font-size: 20;
 }
 
 #publicacion {
@@ -39,17 +39,10 @@ main {
     flex-wrap: wrap;
 }
 
-#publicacion img {
-    margin-inline: 30px;
-    width: 150px;
-    height: 130px;
-    margin-block: 12px;
-}
-
 #publicacion i {
-
-    margin-left: 45px;
-    margin-right: 45px;
+    color: white;
+    margin-left: 75%;
+    margin-top: 50%;
     font-size: 100px;
 }
 
@@ -92,7 +85,6 @@ main {
     background-color: var(--azulOscuro);
     padding: 8px;
     margin-bottom: 10px;
-
 }
 
 #body_arr > div > div {
@@ -102,22 +94,16 @@ main {
 
 #contenedorTexto {
     background-color: var(--blancoHueso);
-    justify-content: space-around;
     padding-block: 10px;
     padding-inline: 20px;
-    background-color: rgb(20, 20, 20);
-
+    justify-content: space-around;
 }
 
-#body_abj { 
+#body_abj {
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: var(--azulOscuro);
     padding: 8px;
-}
-
-#body_abj > div > div {
-    margin: 10px;
 }
 
 .editar_datos {
@@ -130,9 +116,10 @@ main {
     margin-right: 40px;
 }
 
+/* Estilo para el botón */
 .button {
     display: inline-block;
-    background-color:black;
+    background-color: var(--azulOscuro); /* Color de fondo */
     color: white; /* Color del texto */
     font-size: 16px;
     padding: 12px 24px; /* Espaciado interno */
@@ -145,13 +132,6 @@ main {
 
 /* Estilo para cuando se pasa el ratón sobre el botón */
 .button:hover {
-    background-color: #ffffff; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
-    color: rgb(0, 0, 0); /* Cambio de color del texto a blanco */
-}
-
-/* Estilo específico para el botón en la página de editar documento */
-#body_dch .button {
-    display: block;
-    margin-top: 20px; /* Añadir margen superior para separar el botón */
-    width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+    background-color: #001f3f; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
+    color: white; /* Cambio de color del texto a blanco */
 }

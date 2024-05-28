@@ -6,98 +6,133 @@
     <link id="default-stylesheet" rel="stylesheet" href="style/ajustes.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/ajustesN.css" disabled>
     <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/ajustesC.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/ajustesS.css" disabled>
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
-
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
 <body>
+
+<?php
+// Realizar la conexión a la base de datos
+$servername = "localhost";
+$username = "admin"; // Asegúrate de cambiar 'admin' por el nombre de usuario real
+$password = "admin"; // Asegúrate de cambiar 'admin' por la contraseña real
+$dbname = "ua";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Suponiendo que el nombre de usuario se obtiene y se asigna a la variable $username de alguna forma segura
+$username = 'Javier'; // Esta línea debe ser ajustada para obtener el nombre de usuario de forma segura
+
+// Consulta SQL para recuperar publicaciones del usuario
+$sql = "SELECT * FROM publicacion WHERE autor = '" . $username . "'";
+$result = $conn->query($sql);
+
+$number_of_posts = $result->num_rows; // Número de publicaciones
+
+// Cerrar la conexión
+$conn->close();
+?>
 <div id="header-container"></div>
 
+<div class="main-content">
+    <div class="profile-container">
+        <img src="fotos/gato.jpg" alt="Foto de perfil" class="profile-pic">
+        <aside class="settings-menu">
+            <h2>Ajustes de cuenta</h2>
+            <ul>
 
-    <div class="main-content">
-        <div class="profile-container">
-            <img src="fotos/gato.jpg" alt="Foto de perfil" class="profile-pic">
-            <aside class="settings-menu">
-                <h2>Ajustes de cuenta</h2>
-                <ul>
-                    <li><a href="#editar">Editar Perfil</a></li>
-                    <li><a href="colecciones.php">Mis Colecciones</a></li>
-                    <li><a href="#cuenta">Ajustes de Cuenta</a></li>
-                    <li><a href="#seguridad">Seguridad</a></li>
-                    <li><a href="#privacidad">Privacidad</a></li>
-                    <li><a href="config.php">Accesibilidad</a></li>
-                    <li><a href="#sesion">Cerrar Sesión</a></li>
-                </ul>
-            </aside>
-        </div>
-        <div class="seccionesCen">
+                <li><a href="colecciones.php">Mis Colecciones</a></li>
+                <li><a href="config.php">Accesibilidad</a></li>
+            </ul>
+        </aside>
+    </div>
+    
+    <div class="seccionesCen">
         <section class="settings-details">
-            <h2>USUARIO01</h2>
-            <p>13 publicaciones</p>
+            <h2 id="user-name">USUARIO01</h2>
+            <p id="post-count">Publicaciones: <?php echo $number_of_posts; ?></p>
             <p>Grado en Ingeniería Multimedia</p>
             <p>Universidad de Alicante</p>
         </section>
-        <section class="publications">
-            <div class="card">
-                <a href="documento.php">
-                <img src="fotos/arquitectura.jpg" alt="Arquitectura" class="card-image">
-                <div class="card-content">
-                    <h2>TFG Arquitectura</h2>
-                    <p>Pepe Viyuela</p>
-                    <p>Ing. Multimedia</p>
-                    <div class="stars">
-                        <span>⭐⭐⭐</span>
-                    </div>
-                    <p>10/06/2003</p>
-                </div>
-            </a>
-            </div>
-            <div class="card">
-                <a href="documento.php">
-                <img src="fotos/arquitectura.jpg" alt="Arquitectura" class="card-image">
-                <div class="card-content">
-                    <h2>TFG Arquitectura</h2>
-                    <p>Pepe Viyuela</p>
-                    <p>Ing. Multimedia</p>
-                    <div class="stars">
-                        <span>⭐⭐⭐</span>
-                    </div>
-                    <p>10/06/2003</p>
-                </div>
-            </a>
-            </div>
-            <div class="card">
-                <a href="documento.php">
-                <img src="fotos/arquitectura.jpg" alt="Arquitectura" class="card-image">
-                <div class="card-content">
-                    <h2>TFG Arquitectura</h2>
-                    <p>Pepe Viyuela</p>
-                    <p>Ing. Multimedia</p>
-                    <div class="stars">
-                        <span>⭐⭐⭐</span>
-                    </div>
-                    <p>10/06/2003</p>
-                </div>
-            </a>
-            </div><!-- Aquí puede ir el contenido de las publicaciones del usuario -->
-        </section>
+        
+    </div>
 
+    <div class="publications">
+        <h2>Publicaciones:</h2>
+        <?php if ($number_of_posts > 0): ?>
+            <?php while($row = $result->fetch_assoc()): ?>
+                <div class="publication-card"> <!-- Agregamos un div para cada publicación -->
+                    <h2><?php echo $row['Nombre']; ?></h2>
+                    <p>Autor: <?php echo $row['autor']; ?></p>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No se encontraron publicaciones.</p>
+        <?php endif; ?>
     </div>
-    </div>
+
+</div>
 
     <?php require_once 'pie.php' ?>
     <script>
-       
+        function translatePageContent(targetLanguage) {
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const textNodes = [];
 
-        // Función para aplicar configuración desde sessionStorage
+            function extractTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.trim() !== '') {
+                        textNodes.push(node);
+                    }
+                } else {
+                    node.childNodes.forEach(extractTextNodes);
+                }
+            }
+
+            const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+            elementsToTranslate.forEach(extractTextNodes);
+
+            textNodes.forEach(node => {
+                const text = node.textContent;
+                const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+                const data = {
+                    q: text,
+                    target: targetLanguage,
+                    format: 'text'
+                };
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.translations.length > 0) {
+                        node.textContent = data.data.translations[0].translatedText;
+                    }
+                })
+                .catch(error => console.error('Error in translation:', error));
+            });
+        }
+
+
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
             const style = sessionStorage.getItem('style');
+            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
 
             if (fontSize) {
                 document.documentElement.style.fontSize = fontSize;
@@ -126,6 +161,11 @@
                         break;
                 }
             }
+
+            // Si hay un idioma guardado, traducir el contenido de la página
+            if (language) {
+                translatePageContent(language);
+            }
         }
 
         function loadHeader() {
@@ -146,18 +186,20 @@
         }
 
         function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
 
         // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
         window.onload = function() {
             applySettings();
             loadHeader();
+            document.getElementById('user-name').textContent = sessionStorage.getItem('username') || 'USUARIO01';
+            document.getElementById('post-count').textContent = 'Publicaciones: <?php echo $number_of_posts; ?>';
         };
-    </script>
+</script>
 
 </body>
 </html>

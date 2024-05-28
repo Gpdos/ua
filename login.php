@@ -75,7 +75,7 @@ $conn->close();
   <link id="default-stylesheet" rel="stylesheet" href="style/login.css">
   <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/loginN.css" disabled>
   <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/loginC.css" disabled>
-  <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+  <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/loginS.css" disabled>
 </head>
 
 <body class="login-body">
@@ -111,38 +111,87 @@ $conn->close();
   <script>
 
 
-    // Función para aplicar configuración desde sessionStorage
-    function applySettings() {
-      const fontSize = sessionStorage.getItem('fontSize');
-      const style = sessionStorage.getItem('style');
+    function translatePageContent(targetLanguage) {
+        const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+        const textNodes = [];
 
-      if (fontSize) {
-        document.documentElement.style.fontSize = fontSize;
-      }
-
-      if (style) {
-        // Deshabilitar todas las hojas de estilo primero
-        document.getElementById('default-stylesheet').disabled = true;
-        document.getElementById('night-stylesheet').disabled = true;
-        document.getElementById('high-contrast-stylesheet').disabled = true;
-        document.getElementById('read-mode-stylesheet').disabled = true;
-
-        // Habilitar la hoja de estilo seleccionada
-        switch (style) {
-          case 'night':
-            document.getElementById('night-stylesheet').disabled = false;
-            break;
-          case 'high-contrast':
-            document.getElementById('high-contrast-stylesheet').disabled = false;
-            break;
-          case 'read-mode':
-            document.getElementById('read-mode-stylesheet').disabled = false;
-            break;
-          default:
-            document.getElementById('default-stylesheet').disabled = false;
-            break;
+        function extractTextNodes(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (node.textContent.trim() !== '') {
+                    textNodes.push(node);
+                }
+            } else {
+                node.childNodes.forEach(extractTextNodes);
+            }
         }
-      }
+
+        const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+        elementsToTranslate.forEach(extractTextNodes);
+
+        textNodes.forEach(node => {
+            const text = node.textContent;
+            const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+            const data = {
+                q: text,
+                target: targetLanguage,
+                format: 'text'
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.data && data.data.translations.length > 0) {
+                    node.textContent = data.data.translations[0].translatedText;
+                }
+            })
+            .catch(error => console.error('Error in translation:', error));
+        });
+    }
+
+    function applySettings() {
+        const fontSize = sessionStorage.getItem('fontSize');
+        const style = sessionStorage.getItem('style');
+        const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+
+        if (fontSize) {
+            document.documentElement.style.fontSize = fontSize;
+        }
+
+        if (style) {
+            // Deshabilitar todas las hojas de estilo primero
+            document.getElementById('default-stylesheet').disabled = true;
+            document.getElementById('night-stylesheet').disabled = true;
+            document.getElementById('high-contrast-stylesheet').disabled = true;
+            document.getElementById('read-mode-stylesheet').disabled = true;
+
+            // Habilitar la hoja de estilo seleccionada
+            switch (style) {
+                case 'night':
+                    document.getElementById('night-stylesheet').disabled = false;
+                    break;
+                case 'high-contrast':
+                    document.getElementById('high-contrast-stylesheet').disabled = false;
+                    break;
+                case 'read-mode':
+                    document.getElementById('read-mode-stylesheet').disabled = false;
+                    break;
+                default:
+                    document.getElementById('default-stylesheet').disabled = false;
+                    break;
+            }
+        }
+
+        // Si hay un idioma guardado, traducir el contenido de la página
+        if (language) {
+            translatePageContent(language);
+        }
     }
 
     // Aplicar configuración cuando la página se carga

@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <link id="default-stylesheet" rel="stylesheet" href="style/registro.css">
 <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/registroN.css" disabled>
 <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/registroC.css" disabled>
-<link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+<link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/registroS.css" disabled>
 
 <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
@@ -97,43 +97,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 </div>
 <script>
-    // Función para aplicar configuración desde sessionStorage lol
+    // Función para aplicar configuración desde sessionStorage
     function applySettings() {
         const fontSize = sessionStorage.getItem('fontSize');
         const style = sessionStorage.getItem('style');
 
-        if (fontSize) {
-            document.documentElement.style.fontSize = fontSize;
-        }
+            if (fontSize) {
+                document.documentElement.style.fontSize = fontSize;
+            }
 
-        if (style) {
-            // Deshabilitar todas las hojas de estilo primero
-            document.getElementById('default-stylesheet').disabled = true;
-            document.getElementById('night-stylesheet').disabled = true;
-            document.getElementById('high-contrast-stylesheet').disabled = true;
-            document.getElementById('read-mode-stylesheet').disabled = true;
+            if (style) {
+                // Deshabilitar todas las hojas de estilo primero
+                document.getElementById('default-stylesheet').disabled = true;
+                document.getElementById('night-stylesheet').disabled = true;
+                document.getElementById('high-contrast-stylesheet').disabled = true;
+                document.getElementById('read-mode-stylesheet').disabled = true;
 
-            // Habilitar la hoja de estilo seleccionada
-            switch (style) {
-                case 'night':
-                    document.getElementById('night-stylesheet').disabled = false;
-                    break;
-                case 'high-contrast':
-                    document.getElementById('high-contrast-stylesheet').disabled = false;
-                    break;
-                case 'read-mode':
-                    document.getElementById('read-mode-stylesheet').disabled = false;
-                    break;
-                default:
-                    document.getElementById('default-stylesheet').disabled = false;
-                    break;
+                // Habilitar la hoja de estilo seleccionada
+                switch (style) {
+                    case 'night':
+                        document.getElementById('night-stylesheet').disabled = false;
+                        break;
+                    case 'high-contrast':
+                        document.getElementById('high-contrast-stylesheet').disabled = false;
+                        break;
+                    case 'read-mode':
+                        document.getElementById('read-mode-stylesheet').disabled = false;
+                        break;
+                    default:
+                        document.getElementById('default-stylesheet').disabled = false;
+                        break;
+                }
+            }
+
+            // Si hay un idioma guardado, traducir el contenido de la página
+            if (language) {
+                translatePageContent(language);
             }
         }
-    }
 
-    // Aplicar configuración cuando la página se carga
-    window.onload = applySettings;
-</script>
+        // Aplicar configuración cuando la página se carga
+        window.onload = applySettings;
+    </script>
 
 </body>
 </html>

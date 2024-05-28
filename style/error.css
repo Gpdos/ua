@@ -1,8 +1,23 @@
 @import "style.css";
 
+body {
+    font-family: 'Poetsen One', sans-serif;
+    background-color: #f0f0f0; /* Color de fondo de la página */
+    color: #333; /* Color del texto */
+    margin: 0;
+    padding: 0;
+}
+
 .paginacentral {
     text-align: center;
     margin-top: 50px; /* Ajusta el margen superior según sea necesario */
+    background-color: white; /* Color de fondo del contenedor */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra al contenedor */
+    padding: 20px; /* Añade un relleno al contenedor */
+    border-radius: 8px; /* Añade bordes redondeados al contenedor */
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto; /* Centra el contenedor horizontalmente */
 }
 
 .paginacentral form {
@@ -27,8 +42,8 @@
     background-color: #007bff; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
     border: none; /* Elimina el borde del botón */
-    padding: 20px 40px; /* Ajusta el relleno según sea necesario */
-    font-size: 24px; /* Tamaño del texto del botón */
+    padding: 15px 30px; /* Ajusta el relleno según sea necesario */
+    font-size: 18px; /* Tamaño del texto del botón */
     border-radius: 5px; /* Añade bordes redondeados al botón */
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
     transition: background-color 0.3s ease; /* Agrega una transición suave al color de fondo */

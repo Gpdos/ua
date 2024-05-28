@@ -1,6 +1,4 @@
-@import "style.css";
-
-/* Estilos generales */
+@import "styleS.css";
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -9,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Establece la altura mínima del cuerpo como el 100% de la altura de la ventana */
+    font-size: 20px; /* Aumento del tamaño de la letra */
 }
 
 .container {
@@ -148,4 +147,3 @@ form {
     margin: auto; /* Centrar el formulario horizontalmente */
     padding: 10px; /* Añadir un espacio interno al formulario */
 }
-

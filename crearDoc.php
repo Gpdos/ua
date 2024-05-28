@@ -76,7 +76,7 @@ $conn->close();
     <link id="default-stylesheet" rel="stylesheet" href="style/crearDoc.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/crearDocN.css" disabled>
     <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/crearDocC.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/crearDocS.css" disabled>
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,7 +107,7 @@ $conn->close();
                         <div class="stars">
                             <span>⭐⭐⭐</span>
                         </div>
-                        <button>Enviar</button>
+                        <button type="submit" class="button">Enviar</button>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@ $conn->close();
                             <textarea name="bibliografia" rows="1" cols="30" required></textarea>
                         </div>
                         <div>
-                            <button type="submit">Crear Publicación</button>
+                            <button type="submit" class="button">Crear Publicación</button>
                         </div>
                     </form>
 
@@ -176,10 +176,54 @@ $conn->close();
     <?php require_once 'pie.php' ?>
 
     <script>
-        // Función para aplicar configuración desde sessionStorage
+        function translatePageContent(targetLanguage) {
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const textNodes = [];
+
+            function extractTextNodes(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    if (node.textContent.trim() !== '') {
+                        textNodes.push(node);
+                    }
+                } else {
+                    node.childNodes.forEach(extractTextNodes);
+                }
+            }
+
+            const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+            elementsToTranslate.forEach(extractTextNodes);
+
+            textNodes.forEach(node => {
+                const text = node.textContent;
+                const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+                const data = {
+                    q: text,
+                    target: targetLanguage,
+                    format: 'text'
+                };
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.data && data.data.translations.length > 0) {
+                        node.textContent = data.data.translations[0].translatedText;
+                    }
+                })
+                .catch(error => console.error('Error in translation:', error));
+            });
+        }
+
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
             const style = sessionStorage.getItem('style');
+            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
 
             if (fontSize) {
                 document.documentElement.style.fontSize = fontSize;
@@ -207,6 +251,11 @@ $conn->close();
                         document.getElementById('default-stylesheet').disabled = false;
                         break;
                 }
+            }
+
+            // Si hay un idioma guardado, traducir el contenido de la página
+            if (language) {
+                translatePageContent(language);
             }
         }
 
@@ -239,7 +288,7 @@ $conn->close();
             applySettings();
             loadHeader();
         };
+
     </script>
 </body>
-
 </html>

@@ -13,19 +13,16 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar un array para almacenar los datos de las publicaciones
+// Inicializar arrays
 $publicaciones = array();
-
-// Inicializar un array para almacenar los nombres únicos del estudio
 $estudios = array();
+$imagenes = array();
 
-// Realizar la consulta SQL para obtener todas las publicaciones
+// Obtener todas las publicaciones
 $sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
 $result = $conn->query($sql);
 
-// Comprobar si la consulta devuelve algún resultado
 if ($result->num_rows > 0) {
-    // Almacenar los datos de cada publicación en el array
     while ($row = $result->fetch_assoc()) {
         $publicaciones[] = $row;
     }
@@ -33,18 +30,30 @@ if ($result->num_rows > 0) {
     echo "No se encontraron publicaciones.";
 }
 
-// Realizar la consulta SQL para obtener los nombres únicos de la tabla estudio
+// Obtener los nombres únicos de la tabla estudio
 $sql_estudios = "SELECT DISTINCT idEstudio, Nombre FROM estudio";
 $result_estudios = $conn->query($sql_estudios);
 
-// Comprobar si la consulta devuelve algún resultado
 if ($result_estudios->num_rows > 0) {
-    // Almacenar los nombres únicos en el array
     while ($row = $result_estudios->fetch_assoc()) {
         $estudios[] = $row;
     }
 } else {
     echo "No se encontraron estudios.";
+}
+
+// Obtener las imágenes de las publicaciones
+$sql_imagenes = "SELECT idPubli, archivo FROM foto";
+$result_imagenes = $conn->query($sql_imagenes);
+
+if ($result_imagenes->num_rows > 0) {
+    while ($row = $result_imagenes->fetch_assoc()) {
+        if (!isset($imagenes[$row['idPubli']])) {
+            $imagenes[$row['idPubli']] = $row['archivo'];
+        }
+    }
+} else {
+    echo "No se encontraron imágenes.";
 }
 
 // Cerrar la conexión
@@ -59,7 +68,7 @@ $conn->close();
     <link id="default-stylesheet" rel="stylesheet" href="style/index.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/indexN.css" disabled>
     <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/indexC.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/indexS.css" disabled>
 
     <script src="https://kit.fontawesome.com/8f5be8334f.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,7 +86,6 @@ $conn->close();
             <select name="lenguajes" id="lang" onchange="filtrarPublicaciones()">
                 <option value="0">Seleccione un estudio</option>
                 <?php
-                // Generar las opciones del selector dinámicamente con los nombres de la tabla estudio
                 foreach ($estudios as $estudio) {
                     echo '<option value="' . htmlspecialchars($estudio['idEstudio']) . '">' . htmlspecialchars($estudio['Nombre']) . '</option>';
                 }
@@ -95,13 +103,16 @@ $conn->close();
                 $valoracion = isset($publicacion['valoracion']) ? $publicacion['valoracion'] : 0;
 
                 echo '<div class="content-block" data-carrera="' . htmlspecialchars($publicacion['carrera']) . '">';
-                echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '">';
+                if (isset($imagenes[$idPublicacion])) {
+                    echo '<img src="' . htmlspecialchars($imagenes[$idPublicacion]) . '" alt="' . htmlspecialchars($nombre) . '">';
+                } else {
+                    echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '">';
+                }
                 echo '<span>UA: ' . htmlspecialchars($nombre) . '</span>';
                 echo '</div>';
             }
             ?>
         </div>
-
         <div class="content" id="filtered-content" style="display: none;">
             <h3>Publicaciones relacionadas:</h3>
             <div id="related-publications"></div>
@@ -123,7 +134,11 @@ $conn->close();
 
                     echo '<div class="card">';
                     echo '<a href="documento.php?idPublicacion=' . htmlspecialchars($idPublicacion) . '">';
-                    echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    if (isset($imagenes[$idPublicacion])) {
+                        echo '<img src="' . htmlspecialchars($imagenes[$idPublicacion]) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    } else {
+                        echo '<img src="https://picsum.photos/600/400?random=' . htmlspecialchars($idPublicacion) . '" alt="' . htmlspecialchars($nombre) . '" class="card-image">';
+                    }
                     echo '<div class="card-content">';
                     echo '<h2>' . htmlspecialchars($nombre) . '</h2>';
                     echo '<p>' . htmlspecialchars($autor) . '</p>';
@@ -138,56 +153,6 @@ $conn->close();
                 ?>
             </div>
             <i class="fa-solid fa-circle-right"></i>
-        </div>
-
-        <div id="div_abj">
-            <div>
-                <a href="buscar.php?1">
-                    <div>
-                        <h2>TFG's</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?2">
-                    <div>
-                        <h2>TFM</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?3">
-                    <div>
-                        <h2>ABP</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?4">
-                    <div>
-                        <h2>Presentacion</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?5">
-                    <div>
-                        <h2>Modelo 3D</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="buscar.php?6">
-                    <div>
-                        <h2>Memoria</h2>
-                    </div>
-                </a>
-            </div>
         </div>
     </div>
 </main>
@@ -229,23 +194,21 @@ $conn->close();
         }
     }
 
-    // Función para aplicar configuración desde sessionStorage
     function applySettings() {
         const fontSize = sessionStorage.getItem('fontSize');
         const style = sessionStorage.getItem('style');
+        const language = sessionStorage.getItem('language');
 
         if (fontSize) {
             document.documentElement.style.fontSize = fontSize;
         }
 
         if (style) {
-            // Deshabilitar todas las hojas de estilo primero
             document.getElementById('default-stylesheet').disabled = true;
             document.getElementById('night-stylesheet').disabled = true;
             document.getElementById('high-contrast-stylesheet').disabled = true;
             document.getElementById('read-mode-stylesheet').disabled = true;
 
-            // Habilitar la hoja de estilo seleccionada
             switch (style) {
                 case 'night':
                     document.getElementById('night-stylesheet').disabled = false;
@@ -261,7 +224,56 @@ $conn->close();
                     break;
             }
         }
+
+        if (language) {
+            translatePageContent(language);
+        }
     }
+
+    function translatePageContent(targetLanguage) {
+        const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+        const textNodes = [];
+
+        function extractTextNodes(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (node.textContent.trim() !== '') {
+                    textNodes.push(node);
+                }
+            } else {
+                node.childNodes.forEach(extractTextNodes);
+            }
+        }
+
+        const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+        elementsToTranslate.forEach(extractTextNodes);
+
+        textNodes.forEach(node => {
+            const text = node.textContent;
+            const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+            const data = {
+                q: text,
+                target: targetLanguage,
+                format: 'text'
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.data && data.data.translations.length > 0) {
+                    node.textContent = data.data.translations[0].translatedText;
+                }
+            })
+            .catch(error => console.error('Error in translation:', error));
+        });
+    }
+
 
     function loadHeader() {
         const userId = sessionStorage.getItem('userId');
@@ -281,17 +293,16 @@ $conn->close();
     }
 
     function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
+        sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('username');
+        window.location.href = 'index.php';
+    }
 
-    // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
     window.onload = function() {
         applySettings();
         loadHeader();
     };
+
 </script>
 </body>
 </html>

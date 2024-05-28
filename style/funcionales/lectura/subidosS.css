@@ -1,0 +1,84 @@
+@import "styleS.css";
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab-btn {
+    background-color: #438ACC;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 12px 24px; /* Ajusté el relleno del botón */
+    font-size: 20px; /* Ajusté el tamaño del texto del botón */
+    cursor: pointer;
+    outline: none;
+    border-radius: 25px; /* Ajusté el radio de borde del botón */
+    margin: 0 15px; /* Ajusté el margen entre los botones */
+}
+
+.tab-btn.active {
+    background-color: #88ADCE;
+}
+
+.tab-btn:hover {
+    background-color: #5b9cf3;
+}
+
+.group-works,
+.model-3d {
+    color: black; /* Color del texto negro */
+    font-size: 20px; /* Ajusté el tamaño del texto */
+    margin-top: 30px; /* Ajusté el margen superior */
+    margin-left: 30px; /* Ajusté el margen izquierdo */
+}
+
+.group-works h3,
+.model-3d h3 {
+    color: black;
+}
+
+.carousel,
+.model-3d .carousel {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* Oculta la barra de desplazamiento horizontal */
+    -ms-overflow-style: none; /* Oculta la barra de desplazamiento horizontal para IE y Edge */
+}
+
+.carousel::-webkit-scrollbar,
+.model-3d .carousel::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento horizontal en WebKit (Chrome, Safari, etc.) */
+}
+
+.work,
+.model-3d .work {
+    background-color: #184B7A;
+    color: white;
+    border-radius: 15px; /* Ajusté el radio de borde */
+    margin-right: 15px; /* Ajusté el margen derecho */
+    flex: 0 0 auto; /* Evita que los trabajos se redimensionen */
+    width: 300px; /* Ajusté el ancho */
+    height: 350px; /* Ajusté la altura */
+}
+
+.work img,
+.model-3d .work img {
+    display: block; /* Para que la imagen sea tratada como un bloque */
+    margin: 15px auto 0; /* Ajusté el margen superior */
+    width: 95%; /* Ajusté el ancho de la imagen */
+    border-top-left-radius: 15px; /* Ajusté el radio de borde superior izquierdo */
+    border-top-right-radius: 15px; /* Ajusté el radio de borde superior derecho */
+}
+
+.work-details,
+.model-3d .work-details {
+    padding: 10px; /* Ajusté el padding */
+    margin-top: -20px; /* Ajusté el margen superior */
+    font-size: 16px; /* Ajusté el tamaño del texto */
+}
+
+.model-3d .work-title {
+    font-weight: bold; /* Aplica negrita al título del trabajo */
+}

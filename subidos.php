@@ -14,7 +14,7 @@
 <link id="default-stylesheet" rel="stylesheet" href="style/subidos.css">
     <link id="night-stylesheet" rel="stylesheet" href="style/funcionales/noche/subidosN.css" disabled>
     <link id="high-contrast-stylesheet" rel="stylesheet" href="style/funcionales/contraste/subidosC.css" disabled>
-    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura.css" disabled>
+    <link id="read-mode-stylesheet" rel="stylesheet" href="style/funcionales/lectura/subidosS.css" disabled>
 
 </head>
 <body>
@@ -178,73 +178,120 @@
 <?php require_once 'pie.php' ?>
 
 <script>
-       
+    function translatePageContent(targetLanguage) {
+        const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+        const textNodes = [];
 
-        // Función para aplicar configuración desde sessionStorage
-        function applySettings() {
-            const fontSize = sessionStorage.getItem('fontSize');
-            const style = sessionStorage.getItem('style');
-
-            if (fontSize) {
-                document.documentElement.style.fontSize = fontSize;
-            }
-
-            if (style) {
-                // Deshabilitar todas las hojas de estilo primero
-                document.getElementById('default-stylesheet').disabled = true;
-                document.getElementById('night-stylesheet').disabled = true;
-                document.getElementById('high-contrast-stylesheet').disabled = true;
-                document.getElementById('read-mode-stylesheet').disabled = true;
-
-                // Habilitar la hoja de estilo seleccionada
-                switch (style) {
-                    case 'night':
-                        document.getElementById('night-stylesheet').disabled = false;
-                        break;
-                    case 'high-contrast':
-                        document.getElementById('high-contrast-stylesheet').disabled = false;
-                        break;
-                    case 'read-mode':
-                        document.getElementById('read-mode-stylesheet').disabled = false;
-                        break;
-                    default:
-                        document.getElementById('default-stylesheet').disabled = false;
-                        break;
+        function extractTextNodes(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (node.textContent.trim() !== '') {
+                    textNodes.push(node);
                 }
-            }
-        }
-
-        function loadHeader() {
-            const userId = sessionStorage.getItem('userId');
-            const headerContainer = document.getElementById('header-container');
-
-            if (userId) {
-                fetch('encabezado.php')
-                    .then(response => response.text())
-                    .then(data => headerContainer.innerHTML = data)
-                    .catch(error => console.error('Error cargando encabezado:', error));
             } else {
-                fetch('encabezadosinreg.php')
-                    .then(response => response.text())
-                    .then(data => headerContainer.innerHTML = data)
-                    .catch(error => console.error('Error cargando encabezadosinreg:', error));
+                node.childNodes.forEach(extractTextNodes);
             }
         }
 
+        const elementsToTranslate = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, li');
+        elementsToTranslate.forEach(extractTextNodes);
 
-        function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
+        textNodes.forEach(node => {
+            const text = node.textContent;
+            const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+            const data = {
+                q: text,
+                target: targetLanguage,
+                format: 'text'
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.data && data.data.translations.length > 0) {
+                    node.textContent = data.data.translations[0].translatedText;
+                }
+            })
+            .catch(error => console.error('Error in translation:', error));
+        });
+    }
+
+    function applySettings() {
+        const fontSize = sessionStorage.getItem('fontSize');
+        const style = sessionStorage.getItem('style');
+        const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+
+        if (fontSize) {
+            document.documentElement.style.fontSize = fontSize;
+        }
+
+        if (style) {
+            // Deshabilitar todas las hojas de estilo primero
+            document.getElementById('default-stylesheet').disabled = true;
+            document.getElementById('night-stylesheet').disabled = true;
+            document.getElementById('high-contrast-stylesheet').disabled = true;
+            document.getElementById('read-mode-stylesheet').disabled = true;
+
+            // Habilitar la hoja de estilo seleccionada
+            switch (style) {
+                case 'night':
+                    document.getElementById('night-stylesheet').disabled = false;
+                    break;
+                case 'high-contrast':
+                    document.getElementById('high-contrast-stylesheet').disabled = false;
+                    break;
+                case 'read-mode':
+                    document.getElementById('read-mode-stylesheet').disabled = false;
+                    break;
+                default:
+                    document.getElementById('default-stylesheet').disabled = false;
+                    break;
             }
+        }
 
-        // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
-        window.onload = function() {
-            applySettings();
-            loadHeader();
-        };
-    </script>
+        // Si hay un idioma guardado, traducir el contenido de la página
+        if (language) {
+            translatePageContent(language);
+        }
+    }
+
+    function loadHeader() {
+        const userId = sessionStorage.getItem('userId');
+        const headerContainer = document.getElementById('header-container');
+
+        if (userId) {
+            fetch('encabezado.php')
+                .then(response => response.text())
+                .then(data => headerContainer.innerHTML = data)
+                .catch(error => console.error('Error cargando encabezado:', error));
+        } else {
+            fetch('encabezadosinreg.php')
+                .then(response => response.text())
+                .then(data => headerContainer.innerHTML = data)
+                .catch(error => console.error('Error cargando encabezadosinreg:', error));
+        }
+    }
+
+
+    function logout() {
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
+
+    // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
+    window.onload = function() {
+        applySettings();
+        loadHeader();
+    };
+</script>
 
 </body>
 </html>

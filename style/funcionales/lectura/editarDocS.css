@@ -1,4 +1,4 @@
-@import "styleC.css";
+@import "styleS.css";
 
 main {
     width: auto;
@@ -28,7 +28,7 @@ main {
     width: 40%;
     padding: 5px;
     margin-left: 5px;
-    background-color: rgb(20, 20, 20);
+    font-size: 19px;
 }
 
 #publicacion {
@@ -47,7 +47,7 @@ main {
 }
 
 #publicacion i {
-
+    color: white;
     margin-left: 45px;
     margin-right: 45px;
     font-size: 100px;
@@ -92,7 +92,6 @@ main {
     background-color: var(--azulOscuro);
     padding: 8px;
     margin-bottom: 10px;
-
 }
 
 #body_arr > div > div {
@@ -104,9 +103,7 @@ main {
     background-color: var(--blancoHueso);
     justify-content: space-around;
     padding-block: 10px;
-    padding-inline: 20px;
-    background-color: rgb(20, 20, 20);
-
+    padding-inline: 20px;   
 }
 
 #body_abj { 
@@ -132,7 +129,7 @@ main {
 
 .button {
     display: inline-block;
-    background-color:black;
+    background-color: var(--azulOscuro); /* Color de fondo */
     color: white; /* Color del texto */
     font-size: 16px;
     padding: 12px 24px; /* Espaciado interno */
@@ -145,8 +142,8 @@ main {
 
 /* Estilo para cuando se pasa el ratón sobre el botón */
 .button:hover {
-    background-color: #ffffff; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
-    color: rgb(0, 0, 0); /* Cambio de color del texto a blanco */
+    background-color: #001f3f; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
+    color: white; /* Cambio de color del texto a blanco */
 }
 
 /* Estilo específico para el botón en la página de editar documento */

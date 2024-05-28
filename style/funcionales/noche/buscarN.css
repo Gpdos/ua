@@ -1,16 +1,25 @@
 @import "styleN.css";
 
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #121212; /* Fondo oscuro */
-    color: #eaeaea; /* Texto claro */
+    background-color: #121212; /* Cambio de color de fondo */
+    color: #ffffff; /* Cambio de color del texto */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece la altura mínima del cuerpo como el 100% de la altura de la ventana */
+    font-size: 15px;
+}
+
+.container {
+    flex-grow: 1; /* Hace que el contenedor principal ocupe el espacio restante */
 }
 
 header {
-    background-color: #1f1f1f; /* Fondo oscuro para el encabezado */
-    color: #eaeaea; /* Texto claro para el encabezado */
+    background-color: #222; /* Nuevo color de fondo para el encabezado */
+    color: white;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -23,7 +32,7 @@ nav ul {
 }
 
 nav a {
-    color: #eaeaea; /* Texto claro para los enlaces */
+    color: white;
     text-decoration: none;
     margin: 0 15px;
 }
@@ -43,9 +52,9 @@ nav a {
     align-items: flex-start;
     justify-content: flex-start;
     flex-basis: 20%;
-    background-color: #1f1f1f; /* Fondo oscuro para los filtros */
+    background-color: #222; /* Nuevo color de fondo para los filtros */
     padding: 10px;
-    color: #eaeaea; /* Texto claro para los filtros */
+    color: white;
     border-radius: 5px;
     margin-right: 20px;
     height: 600px;
@@ -66,23 +75,20 @@ nav a {
     margin-right: 5px;
 }
 
+/* Estilos de los resultados de búsqueda */
 .search-results {
-    flex-grow: 1;
-    color: #eaeaea; /* Texto claro para los resultados */
-    background-color: #1f1f1f; /* Fondo oscuro para los resultados */
-    border-radius: 5px;
-    height: fit-content;
-    width: 800px;
+    width: 100%; /* Ocupa todo el ancho disponible */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;
+    background-color: #222; /* Nuevo color de fondo para los resultados */
 }
 
 #seccionesCen {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Ajusta esto según tus necesidades */
+    width: 100%;
 }
 
 .result img {
@@ -91,21 +97,22 @@ nav a {
 }
 
 .card {
-    background-color: #2e2e2e; /* Fondo oscuro para las tarjetas */
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    background-color: #444; /* Nuevo color de fondo para las tarjetas */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
     margin-bottom: 20px;
     transition: box-shadow 0.3s ease;
     width: 20%;
     flex: 0 1 30%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .card a {
-    color: #eaeaea; /* Texto claro para los enlaces en las tarjetas */
+    color: rgb(255, 255, 255);
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -124,14 +131,20 @@ nav a {
     color: orange;
 }
 
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .main-content {
-        flex-direction: column;
-    }
+/* Estilos del pie de página */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #222; /* Nuevo color de fondo para el pie de página */
+    color: white;
+    padding: 10px 20px;
+}
 
-    .filters,
-    .search-results {
-        width: 100%;
-    }
+/* Estilos del formulario de búsqueda */
+form {
+    height: 100%;
+    width: 25%; /* Ancho del formulario */
+    margin: auto; /* Centrar el formulario horizontalmente */
+    padding: 10px; /* Añadir un espacio interno al formulario */
 }

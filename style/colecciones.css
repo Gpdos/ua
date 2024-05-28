@@ -42,15 +42,16 @@ nav a {
 }
 
 .right-column {
-    background-color: #003366; /* Color del rectángulo derecho */
+    background-color: #003366; /* Color del rectángulo izquierdo */
     max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
     overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
     scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 .right-column:hover {
-    overflow-y: scroll; /* Muestra la barra de desplazamiento vertical al pasar el ratón */
+    overflow-y: scroll;
 }
+
 
 .documents {
     display: flex;
@@ -130,3 +131,46 @@ nav a {
 .documents .work.hidden {
     display: none;
 }
+
+.card {
+    background-color: rgb(48, 188, 239);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+    width: 750px; 
+    margin-right: 20px; /* Agrega margen derecho para separar las tarjetas */
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.card a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    padding: 10px;   
+}
+
+.card-image {
+    height: auto;
+}
+
+.card-content {
+    padding: 10px; /* Añade un poco de espacio interno */
+}
+
+.card-content h2 {
+    margin-top: 0;
+}
+
+.card-content .stars {
+    color: orange;
+}
+
+.right-column .card {
+    width: 600px; /* Ajusta el ancho de las tarjetas dentro de right-column */
+    margin-right: 20px; /* Agrega margen derecho para separar las tarjetas */
+}
+
+

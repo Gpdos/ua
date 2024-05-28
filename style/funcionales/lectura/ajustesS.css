@@ -1,24 +1,29 @@
-@import "styleN.css";
+@import "styleS.css";
 
 /* Estilos generales */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #111; /* Color de fondo oscuro */
-    color: #fff; /* Color de texto blanco */
+    font-size: 20px; /* Aumento del tamaño de la letra */
+}
+
+.main-content {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
 }
 
 /* Estilos del perfil */
 .profile-container {
     width: 300px;
-    background-color: #151515; /* Color de fondo del perfil en modo nocturno */
+    background-color: #003366;
     padding: 20px;
     box-sizing: border-box;
     float: left; /* Agregado para alinear a la izquierda */
     margin-right: 20px;
     margin-left: 0;
-    color: aquamarine; /* Mantenido el color original para el texto */
+    color: aquamarine;
 }
 
 .settings-menu {
@@ -40,13 +45,13 @@ body {
 }
 
 .settings-menu a {
-    color: #bbb; /* Color de texto gris claro */
+    color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .settings-menu ul li a {
-    color: #fff; /* Color de texto blanco */
+    color: rgb(255, 255, 255); /* Color del texto negro */
     text-decoration: none; /* Quita el subrayado del enlace */
 }
 
@@ -57,7 +62,7 @@ body {
 /* Estilos de secciones centrales */
 .seccionesCen {
     padding: 20px;
-    background-color: #151515; /* Color de fondo de seccionesCen en modo nocturno */
+    background-color: #003366;
     box-sizing: border-box;
     margin-left: 340px; /* Espacio para el perfil */
     margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
@@ -78,7 +83,7 @@ body {
 /* Estilos de las publicaciones */
 .publications {
     padding: 20px;
-    background-color: #151515; /* Color de fondo de publications en modo nocturno */
+    background-color: #003366;
     box-sizing: border-box;
     margin-left: 340px; /* Espacio para el perfil */
     margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
@@ -86,19 +91,20 @@ body {
     color: #fff;
 }
 
-/* Estilos de las tarjetas de publicación */
+/* Agrega estos estilos al final de tu archivo CSS */
+
 .publication-card {
-    background-color: #333; /* Color de fondo de la tarjeta en modo nocturno */
+    background-color: #bbefff; /* Color de fondo amarillo */
     border-radius: 5px; /* Bordes redondeados */
     padding: 15px; /* Espaciado interno */
     margin-bottom: 20px; /* Espacio entre tarjetas */
     font-size: 15px;
-    color: #fff;
+    color: #000;
 }
 
 .card {
-    background-color: #333; /* Color de fondo de la tarjeta en modo nocturno */
-    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff;
+    border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
     margin-bottom: 20px; /* Espacio entre tarjetas */
