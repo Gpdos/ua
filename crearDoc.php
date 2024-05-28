@@ -19,6 +19,24 @@ $success = "";
 
 // Manejar la solicitud POST cuando se envía el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Procesar archivo
+    if (isset($_FILES["fileToUpload"])) {
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) !== false) {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                $success = "El archivo ha sido subido.";
+            } else {
+                $error = "Error subiendo el archivo.";
+            }
+        } else {
+            $error = "El archivo no es una imagen.";
+        }
+    }
+
     // Obtener los datos del formulario
     $nombre = $_POST['nombre'];
     $autor = $_POST['autor'];
@@ -87,11 +105,11 @@ $conn->close();
 
 <body>
 
-<div id="header-container"></div>
+    <div id="header-container"></div>
 
     <main>
         <div id="body_izq">
-            <h2>Titulo publicacion</h2>
+            <h2>SUBE TUS TRABAJOS Y PERMITE A OTROS USUARIOS EMPAPARSE DE TU CONOCIMIENTO</h2>
             <div id="publicacion">
                 <i class="fa-regular fa-folder-open"></i>
             </div>
@@ -154,8 +172,13 @@ $conn->close();
                             <p>Bibliografía:</p>
                             <textarea name="bibliografia" rows="1" cols="30" required></textarea>
                         </div>
+                        <div class="editar_datos">
+                            <p>Subir Archivo:</p>
+                            <input type="file" name="fileToUpload">
+                        </div>
                         <div>
-                            <button type="submit" class="button">Crear Publicación</button>    <button type="button" class="button" onclick="resetForm()">Limpiar Campos</button>
+                            <button type="submit" class="button">Crear Publicación</button> <button type="button"
+                                class="button" onclick="resetForm()">Limpiar Campos</button>
 
                         </div>
                     </form>
@@ -211,15 +234,21 @@ $conn->close();
                     },
                     body: JSON.stringify(data)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.data && data.data.translations.length > 0) {
-                        node.textContent = data.data.translations[0].translatedText;
-                    }
-                })
-                .catch(error => console.error('Error in translation:', error));
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.data && data.data.translations.length > 0) {
+                            node.textContent = data.data.translations[0].translatedText;
+                        }
+                    })
+                    .catch(error => console.error('Error in translation:', error));
             });
         }
+
+
+        function resetForm() {
+            document.querySelector('form').reset();
+        }
+
 
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
@@ -278,18 +307,19 @@ $conn->close();
         }
 
         function logout() {
-                // Eliminar los elementos del sessionStorage
-                sessionStorage.removeItem('userId');
-                sessionStorage.removeItem('username');
-                window.location.href = 'index.php';
-            }
+            // Eliminar los elementos del sessionStorage
+            sessionStorage.removeItem('userId');
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.php';
+        }
 
         // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
-        window.onload = function() {
+        window.onload = function () {
             applySettings();
             loadHeader();
         };
 
     </script>
 </body>
+
 </html>

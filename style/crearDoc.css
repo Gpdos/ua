@@ -16,6 +16,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'titulos', serif; 
+    text-align: center;
+
 }
 
 main{
@@ -29,6 +31,7 @@ main{
 }
 
 #body_izq{
+
     float: left;
     width: 54%;
     height: auto;
@@ -39,10 +42,16 @@ main{
         margin-left: 40px;
         font-size: 30px;
         margin-bottom: 0;
+        text-align: center;
     }
+}
 
-
-    /* margin-right: 5px; */
+h2{
+    color: white;
+    margin-left: 40px;
+    font-size: 30px;
+    margin-bottom: 0;
+    text-align: center;
 }
 
 #body_dch{
@@ -56,6 +65,7 @@ main{
     /* background-color: violet; */
     padding: 5px;
     display: flex;
+    text-align: center;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
