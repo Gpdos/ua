@@ -93,8 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <button type="submit" class="registro-btn">Registrarse</button>
     </form>
+    <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
+
   </div>
-  <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Iniciar sesión</a></p>
 </div>
 <script>
     // Función para aplicar configuración desde sessionStorage

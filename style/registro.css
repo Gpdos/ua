@@ -34,6 +34,8 @@ body {
 .container {
     text-align: center;
     color: white;
+    font-family: 'texto' !important;
+
 }
 
 .bienvenido {
@@ -46,6 +48,8 @@ body {
     margin-bottom: 30px;
 }
 
+
+
 .registro-container {
     background: linear-gradient(to bottom, #152737, #00325E, #0481F0);
     border-radius: 10px;
@@ -55,12 +59,24 @@ body {
     margin: 0 auto;
     min-height: 500px; /* Asegúrate de que haya suficiente espacio para todos los elementos */
     max-height: auto; /* Permite que el contenedor crezca */
+    font-family: 'texto' !important;
+    overflow: hidden;  /* Evita que el contenido se desborde */
+
+
 
 }
 
 
+.login-link {
+    margin-top: 20px;
+    padding: 0 20px;  /* Agrega padding para mantener el texto dentro del contenedor */
+}
+
+
+
 .form-group {
     margin-bottom: 20px;
+    font-family: 'texto';
 }
 
 
@@ -78,11 +94,15 @@ input[type="password"] {
     border-radius: 5px;
     background-color: #1E5E99;
     box-sizing: border-box;
+    font-family: 'texto' !important;
+
 }
 
 
 input[type="checkbox"] {
     margin-right: 10px;
+    font-family: 'texto' !important;
+
 }
 
 label {
@@ -99,6 +119,8 @@ label {
     cursor: pointer;
     width: 100%;
     font-size: 30px;
+    font-family: 'texto' !important;
+
 }
 
 .registro-btn:hover {
@@ -108,6 +130,8 @@ label {
 .registro-btn a {
     color: white; /* Color del texto */
     text-decoration: none; /* Elimina el subrayado */
+    font-family: 'texto' !important;
+
 }
 
 
