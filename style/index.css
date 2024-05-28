@@ -1,9 +1,29 @@
 @import "style.css";
 
+@font-face {
+    font-family: titulos;
+    src: url(../letras/letra_titulo.ttf);
+}
+
+/* Fuente texto */
+@font-face {
+    font-family: texto;
+    src: url(../letras/Texto.ttf);
+}
+
 main {
     padding: 20px;
     display: flex;
 }
+
+body {
+    font-family: 'texto', sans-serif; /* Aplica tu fuente personalizada como principal y sans-serif como secundaria */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'titulos', serif; /* Especifica otra fuente para los títulos si ya la tienes definida */
+}
+
 
 #body_izq {
     float: left;
@@ -12,6 +32,7 @@ main {
     padding: 15px;
     background-color: var(--azulOscuro);
     margin-right: 20px;
+    font-family: texto;
 }
 
 #body_der {
@@ -47,6 +68,7 @@ main {
     }
 
     .titulo {
+        
         font-size: 30px;
         padding-left: 30px;
         line-height: 0;
@@ -56,6 +78,7 @@ main {
     a{
         text-decoration: none;
         color: black;
+
     
     }
 }

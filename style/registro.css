@@ -1,9 +1,29 @@
 @import "style.css";
 
+
+@font-face {
+    font-family: titulos;
+    src: url(../letras/letra_titulo.ttf);
+}
+
+/* Fuente texto */
+@font-face {
+    font-family: texto;
+    src: url(../letras/Texto.ttf);
+}
+
+body {
+    font-family: 'texto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'titulos', serif; 
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    /*font-family: Arial, sans-serif;*/
     background: linear-gradient(to bottom, #1E5E99, #737373);
     height: 100vh;
     display: flex;

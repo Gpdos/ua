@@ -9,6 +9,15 @@
     src: url(../letras/Texto.ttf);
 }
 
+body {
+    font-family: 'texto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'titulos', serif; 
+}
+
+
 .paginacentral{
     text-align: center;
 }

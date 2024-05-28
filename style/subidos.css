@@ -6,6 +6,26 @@
     margin-top: 20px;
 }
 
+@font-face {
+    font-family: titulos;
+    src: url(../letras/letra_titulo.ttf);
+}
+
+/* Fuente texto */
+@font-face {
+    font-family: texto;
+    src: url(../letras/Texto.ttf);
+}
+
+body, button {
+    font-family: 'texto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'titulos', serif; 
+}
+
+
 .tab-btn {
     background-color: #438ACC;
     color: rgb(0, 0, 0);

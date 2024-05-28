@@ -1,7 +1,25 @@
 @import "style.css";
+@font-face {
+    font-family: titulos;
+    src: url(../letras/letra_titulo.ttf);
+}
+
+/* Fuente texto */
+@font-face {
+    font-family: texto;
+    src: url(../letras/Texto.ttf);
+}
+
+body, button {
+    font-family: 'texto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'titulos', serif; 
+}
 
 body {
-    font-family: 'Poetsen One', sans-serif;
+    /*font-family: 'Poetsen One', sans-serif;*/
     background-color: #f0f0f0; /* Color de fondo de la página */
     color: #333; /* Color del texto */
     margin: 0;
@@ -36,9 +54,11 @@ body {
 
 .boton {
     margin-top: 40px; /* Agrega un margen superior entre botones */
+    font-family: 'texto', sans-serif;
 }
 
 .boton input[type="submit"] {
+    font-family: 'texto', sans-serif;
     background-color: #007bff; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
     border: none; /* Elimina el borde del botón */
@@ -51,4 +71,5 @@ body {
 
 .boton input[type="submit"]:hover {
     background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+    font-family: 'texto', sans-serif;
 }
