@@ -98,8 +98,8 @@ $conn->close();
         </div>
 
         <div id="body_dch">
-            <div id="body_arr">
-                <div id="contenedorTexto">
+            <!-- <div id="body_arr">
+                 <div id="contenedorTexto">
                     <p>Comentarios: </p>
                     <textarea name="textarea" rows="10" cols="50" placeholder="Escribe algo interesante"></textarea>
                     <p>Valoracion: </p>
@@ -109,8 +109,8 @@ $conn->close();
                         </div>
                         <button type="submit" class="button">Enviar</button>
                     </div>
-                </div>
-            </div>
+                </div> 
+            </div> -->
             <div id="body_abj">
                 <div id="contenedorTexto">
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -155,7 +155,8 @@ $conn->close();
                             <textarea name="bibliografia" rows="1" cols="30" required></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="button">Crear Publicación</button>
+                            <button type="submit" class="button">Crear Publicación</button>    <button type="button" class="button" onclick="resetForm()">Limpiar Campos</button>
+
                         </div>
                     </form>
 
