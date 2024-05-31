@@ -5,41 +5,31 @@ $username = "admin";
 $password = "admin";
 $dbname = "ua";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
   die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar variables para mensajes
 $loginError = "";
 
-// Comprobar si el formulario fue enviado usando GET
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['password'])) {
-  // Obtener las credenciales del formulario
   $user = $_GET['user'];
   $pass = $_GET['password'];
 
-  // Preparar y ejecutar la consulta SQL para verificar las credenciales
   $sql = $conn->prepare("SELECT id, Usuario FROM usuarios WHERE Usuario = ? AND Contraseña = ?");
   $sql->bind_param("ss", $user, $pass);
   $sql->execute();
   $result = $sql->get_result();
 
-  // Comprobar si la consulta devuelve algún resultado
   if ($result->num_rows > 0) {
-    // Credenciales correctas, obtener el id del usuario
     $row = $result->fetch_assoc();
     $userId = $row['id'];
     $username = $row['Usuario'];
 
-    // Iniciar sesión
     session_start();
     $_SESSION['username'] = $username;
 
-    // Generar un script JavaScript para guardar el id del usuario en sessionStorage
     echo "<script>
           sessionStorage.setItem('username', '$user');
           sessionStorage.setItem('userId', '$userId');
@@ -47,15 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['user']) && isset($_GET['
         </script>";
     exit;
   } else {
-    // Credenciales incorrectas, mostrar mensaje de error
     $loginError = "Error: Usuario o contraseña incorrectos.";
   }
 
-  // Cerrar la consulta
   $sql->close();
 }
 
-// Cerrar la conexión
 $conn->close();
 ?>
 
@@ -100,7 +87,6 @@ $conn->close();
         
       </form>
       <?php
-      // Mostrar mensaje de error si existe
       if ($loginError != "") {
         echo "<p class='error-message'>$loginError</p>";
       }

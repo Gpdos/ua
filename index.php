@@ -1,24 +1,19 @@
 <?php
-// Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
 $servername = "localhost";
 $username = "admin";
 $password = "admin";
 $dbname = "ua";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar arrays
 $publicaciones = array();
 $estudios = array();
 $imagenes = array();
 
-// Obtener todas las publicaciones
 $sql = "SELECT p.*, e.Nombre AS nombreCarrera FROM publicacion p JOIN estudio e ON p.carrera = e.idEstudio";
 $result = $conn->query($sql);
 
@@ -30,7 +25,6 @@ if ($result->num_rows > 0) {
     echo "No se encontraron publicaciones.";
 }
 
-// Obtener los nombres únicos de la tabla estudio
 $sql_estudios = "SELECT DISTINCT idEstudio, Nombre FROM estudio";
 $result_estudios = $conn->query($sql_estudios);
 
@@ -42,7 +36,6 @@ if ($result_estudios->num_rows > 0) {
     echo "No se encontraron estudios.";
 }
 
-// Obtener las imágenes de las publicaciones
 $sql_imagenes = "SELECT idPubli, archivo FROM foto";
 $result_imagenes = $conn->query($sql_imagenes);
 
@@ -56,7 +49,6 @@ if ($result_imagenes->num_rows > 0) {
     echo "No se encontraron imágenes.";
 }
 
-// Cerrar la conexión
 $conn->close();
 ?>
 
@@ -167,7 +159,7 @@ $conn->close();
         const filteredContent = document.getElementById('filtered-content');
         let hasExactMatch = false;
 
-        relatedContainer.innerHTML = ''; // Limpiar publicaciones relacionadas previas
+        relatedContainer.innerHTML = ''; 
         filteredContent.style.display = 'none';
 
         contentBlocks.forEach(block => {
@@ -179,7 +171,7 @@ $conn->close();
             } else {
                 block.style.display = "none";
                 if (block.dataset.carrera === selectedCarrera) {
-                    const idPublicacion = block.querySelector('img').src.split('random=')[1]; // Extraer idPublicacion del src
+                    const idPublicacion = block.querySelector('img').src.split('random=')[1]; 
                     const publicationName = block.querySelector('span').innerText;
                     const publicationLink = document.createElement('a');
                     publicationLink.href = `documento.php?idPublicacion=${idPublicacion}`;
@@ -231,7 +223,7 @@ $conn->close();
     }
 
     function translatePageContent(targetLanguage) {
-        const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+        const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; 
         const textNodes = [];
 
         function extractTextNodes(node) {

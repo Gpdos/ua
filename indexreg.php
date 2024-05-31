@@ -27,13 +27,11 @@
     <main>
         <div id="body_izq">
             <div class="section-header">
-                <!-- <label for="lang">Lenguaje</label> -->
                 <select name="lenguajes" id="lang">
                     <option value="#">Ingeniería Multimedia</option>
                     <option value="#">Arquitectura</option>
                     <option value="#">Derecho</option>
                 </select>
-                <!-- <input type="submit" value="Enviar" /> -->
             </div>
 
             <div class="content">
@@ -113,9 +111,7 @@
                         </div>
                     </a>
                 </div>
-                <!-- <div id="div_flecha"> -->
                     <i class="fa-solid fa-circle-right"></i>
-                <!-- </div> -->
             </div>
 
             <div id="div_abj">
