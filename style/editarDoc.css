@@ -5,7 +5,6 @@
     src: url(../letras/letra_titulo.ttf);
 }
 
-/* Fuente texto */
 @font-face {
     font-family: texto;
     src: url(../letras/Texto.ttf);
@@ -22,8 +21,6 @@ h1, h2, h3, h4, h5, h6 {
 main{
     width: auto;
     height: auto;
-    /* padding: 0;
-    margin: 0; */
     padding-inline: 0; 
     display: flex;
     justify-content: space-around;
@@ -43,7 +40,6 @@ main{
     }
 
 
-    /* margin-right: 5px; */
 }
 
 #body_dch{
@@ -54,7 +50,6 @@ main{
 }
 
 #publicacion{
-    /* background-color: violet; */
     padding: 5px;
     display: flex;
     justify-content: space-around;
@@ -103,7 +98,6 @@ main{
     width: 100%;
     height: 100%;
     padding: 0;
-    /* background-color: red; */
     margin-bottom: 10px;
     justify-content: space-around;
     display: flex;
@@ -154,29 +148,26 @@ main{
     }
 }
 
-/* Estilo para el botón */
 .button {
     display: inline-block;
-    background-color: var(--azulOscuro); /* Color de fondo */
-    color: white; /* Color del texto */
+    background-color: var(--azulOscuro); 
+    color: white; 
     font-size: 16px;
-    padding: 12px 24px; /* Espaciado interno */
+    padding: 12px 24px; 
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el color de fondo y el color del texto */
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Estilo para cuando se pasa el ratón sobre el botón */
 .button:hover {
-    background-color: #001f3f; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
-    color: white; /* Cambio de color del texto a blanco */
+    background-color: #001f3f; 
+    color: white;
 }
 
-/* Estilo específico para el botón en la página de editar documento */
 #body_dch .button {
     display: block;
-    margin-top: 20px; /* Añadir margen superior para separar el botón */
-    width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+    margin-top: 20px; 
+    width: 100%; 
 }

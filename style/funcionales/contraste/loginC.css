@@ -3,15 +3,15 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: calc(100% - 40px); /* Resta 40px del ancho total para dejar un margen a cada lado */
-    background-color: #000000; /* Fondo negro puro */
-    color: #FFFFFF; /* Texto blanco puro */
+    width: calc(100% - 40px); 
+    background-color: #000000; 
+    color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100px;
-    padding: 0 20px; /* Ajusta el relleno según sea necesario */
-    z-index: 1000; /* Ajusta el índice z según sea necesario */
+    padding: 0 20px; 
+    z-index: 1000; 
     border-radius: 20px;
 }
 
@@ -27,7 +27,7 @@ header {
 }
 
 #cen {
-    background-color: #000000; /* Fondo negro puro */
+    background-color: #000000; 
     padding: 20px;
     display: flex;
     justify-content: space-around;
@@ -40,7 +40,7 @@ header {
     text-align: center;
     font-family: "Poetsen One", sans-serif;
     font-size: 40px;
-    text-shadow: 2px 2px 4px #000000; /* Sombra negra */
+    text-shadow: 2px 2px 4px #000000; 
     line-height: 10px;
 }
 
@@ -51,7 +51,7 @@ header {
 #label_header {
     box-sizing: border-box;
     display: inline-block;
-    border: 3px solid #FFFFFF; /* Borde blanco */
+    border: 3px solid #FFFFFF; 
     border-radius: 40px;
     width: 80px;
     height: 80px;
@@ -60,28 +60,28 @@ header {
     font-size: 55px;
     text-align: center;
     user-select: none;
-    color: #FFFFFF; /* Color de texto blanco */
+    color: #FFFFFF; 
 }
 
 .link_menu {
     display: block;
-    background: #000000; /* Fondo negro */
+    background: #000000; 
     margin: 0;
     padding: 10px;
     width: fit-content;
     list-style: none;
-    border-bottom: 1px solid #FFFFFF; /* Borde blanco */
+    border-bottom: 1px solid #FFFFFF; 
 }
 
 .fa-solid {
-    color: #FFFFFF !important; /* Color blanco */
+    color: #FFFFFF !important;
 }
 
 body.login-body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #000000, #333333); /* Gradiente de negro a gris oscuro */
+    background: linear-gradient(to bottom, #000000, #333333); 
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -94,23 +94,23 @@ body.login-body {
 
 .login-container {
     margin-top: 50px;
-    background: linear-gradient(to bottom, #000000, #1a1a1a, #333333); /* Gradiente oscuro */
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #333333); 
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     position: relative;
     width: 450px;
-    min-height: 400px; /* Cambia 'height' por 'min-height' */
+    min-height: 400px; 
 }
 
 .error-message {
-    color: #FFFFFF; /* Cambia el color del texto a blanco */
-    background-color: #FF0000; /* Fondo rojo puro para el mensaje de error */
+    color: #FFFFFF; 
+    background-color: #FF0000; 
     text-align: center;
     padding: 10px;
-    font-size: 16px; /* Puedes ajustar el tamaño del texto según prefieras */
-    border-radius: 5px; /* Bordes redondeados para el mensaje */
-    margin: 10px 0; /* Agrega un margen arriba y abajo para separarlo de otros elementos */
+    font-size: 16px;
+    border-radius: 5px; 
+    margin: 10px 0; 
 }
 
 .login-header {
@@ -136,15 +136,14 @@ body.login-body {
     margin-right: 10px;
 }
 
-/* Estilos para el campo de entrada de usuario */
 .form-group input[type="text"] {
     width: calc(100% - 40px);
     height: 40px;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #000000; /* Fondo negro */
-    color: #FFFFFF; /* Color del texto blanco */
+    background-color: #000000; 
+    color: #FFFFFF;
     font-size: 20px;
 }
 
@@ -167,17 +166,17 @@ body.login-body {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #000000; /* Fondo negro */
-    color: #FFFFFF; /* Color del texto blanco */
+    background-color: #000000; 
+    color: #FFFFFF; 
     font-size: 20px;
 }
 
 .checkbox {
     display: flex;
     align-items: center;
-    color: #FFFFFF; /* Color del texto blanco */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    margin-top: 10px; /* Agrega un poco de espacio arriba del enlace */
+    color: #FFFFFF; 
+    justify-content: center; 
+    margin-top: 10px; 
 }
 
 .checkbox label {
@@ -187,17 +186,17 @@ body.login-body {
 .checkbox a {
     margin-left: auto;
     text-decoration: none;
-    color: #FFFFFF; /* Color del texto blanco */
+    color: #FFFFFF; 
 }
 
 .checkbox a:hover {
-    color: #CCCCCC; /* Color gris claro al pasar el ratón sobre el enlace */
-    text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
+    color: #CCCCCC; 
+    text-decoration: underline; 
 }
 
 .login-btn {
-    background-color: #000000; /* Fondo negro */
-    color: #FFFFFF; /* Color del texto blanco */
+    background-color: #000000; 
+    color: #FFFFFF; 
     border: none;
     padding: 20px 40px;
     border-radius: 5px;
@@ -205,16 +204,16 @@ body.login-body {
     width: 100%;
     font-size: 30px;
     margin-top: 40px;
-    text-decoration: none; /* Elimina el subrayado del texto */
+    text-decoration: none; 
 }
 
 .login-btn:hover {
-    background-color: #333333; /* Fondo gris oscuro al pasar el ratón */
+    background-color: #333333; 
 }
 
 .login-btn a {
-    color: #FFFFFF; /* Color del texto blanco */
-    text-decoration: none; /* Elimina el subrayado */
+    color: #FFFFFF; 
+    text-decoration: none; 
 }
 
 .circle {
@@ -222,7 +221,7 @@ body.login-body {
     width: 106px;
     height: 106px;
     border-radius: 50%;
-    background: linear-gradient(to right, #000000, #FFFFFF); /* Gradiente de negro a blanco */
+    background: linear-gradient(to right, #000000, #FFFFFF); 
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
@@ -232,16 +231,16 @@ body.login-body {
 .register-link {
     text-align: center;
     margin-top: 40px;
-    color: #FFFFFF; /* Color del texto blanco */
+    color: #FFFFFF; 
 }
 
 .register-link a {
-    color: #FFFFFF; /* Color del enlace blanco */
-    text-decoration: underline; /* Subrayado del enlace */
+    color: #FFFFFF; 
+    text-decoration: underline;
 }
 
 .register-link a:hover {
-    color: #CCCCCC; /* Color gris claro al pasar el ratón sobre el enlace */
+    color: #CCCCCC; 
 }
 
 .icon-img {
@@ -249,20 +248,20 @@ body.login-body {
 }
 
 button[type="submit"] {
-    display: block; /* Hace que el botón ocupe toda la línea */
-    width: 80%; /* Ajusta el ancho del botón */
-    margin: 20px auto; /* Centra el botón horizontalmente y añade margen arriba y abajo */
-    padding: 10px 0; /* Añade padding vertical para hacer el botón más alto */
-    font-size: 18px; /* Ajusta el tamaño del texto dentro del botón */
-    font-weight: bold; /* Hace el texto del botón en negrita */
-    color: #FFFFFF; /* Color del texto blanco */
-    background-color: #000000; /* Color de fondo negro */
-    border: none; /* Elimina el borde */
-    border-radius: 20px; /* Redondea las esquinas del botón */
-    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa por encima */
-    transition: background-color 0.3s; /* Suaviza la transición del color de fondo */
+    display: block; 
+    width: 80%; 
+    margin: 20px auto; 
+    padding: 10px 0; 
+    font-size: 18px; 
+    font-weight: bold; 
+    color: #FFFFFF; 
+    background-color: #000000; 
+    border: none; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
 }
 
 button[type="submit"]:hover {
-    background-color: #333333; /* Cambia el color de fondo a gris oscuro cuando se pasa el cursor por encima */
+    background-color: #333333; 
 }

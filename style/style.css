@@ -3,7 +3,6 @@
     src: url(../letras/letra_titulo.ttf);
 }
 
-/* Fuente texto */
 @font-face {
     font-family: texto;
     src: url(../letras/Texto.ttf);
@@ -68,8 +67,6 @@ footer {
 
 
 
-/* //////////////////////////// */
-
 /* HEADER */
 
 header{
@@ -93,30 +90,27 @@ header{
     }
 }
 
-/* Estilos base para los enlaces en el nav */
 header nav a {
-    display: inline-block;  /* O puedes usar flex si los enlaces están en un flex container */
-    padding: 10px 15px;     /* Ajusta el padding según el diseño */
-    color: #ffffff;         /* Asumiendo texto blanco */
-    text-decoration: none;  /* Elimina subrayado de enlaces */
-    transition: background-color 0.3s ease; /* Transición suave del fondo */
+    display: inline-block;  
+    padding: 10px 15px;     
+    color: #ffffff;         
+    text-decoration: none;  
+    transition: background-color 0.3s ease; 
     border-radius: 10px;
 }
 
-/* Estilos para hover */
 header nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Color más claro en el fondo */
+    background-color: rgba(255, 255, 255, 0.2); 
 }
 
-/* Opcional: estilos para los iconos si son parte de un sprite o fuente de iconos */
+
 header nav a i {
-    margin-right: 5px;  /* Espacio entre el icono y el texto, si necesario */
+    margin-right: 5px; 
 }
 
 
 #izq{
     float: left;
-    /* background-color: chartreuse; */
     width: 10%;
     display: flex;
     margin-right: auto;
@@ -146,7 +140,6 @@ header nav a i {
 }
 #dch{
     float: right;
-    /* background-color:darkred; */
     width: 15%;
     text-align: center;
     font-family: titulos ;
@@ -172,7 +165,7 @@ header nav a i {
     font-weight: bold;
     text-align: center;
     user-select: none;
-    font-size: 54px; /* Tamaño de las rayas */
+    font-size: 54px; 
 
 }
 
@@ -192,43 +185,40 @@ header nav a i {
     color: white !important;
 }
 
-/* Estilos para el menú desplegable */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropbtn {
-    background-color: transparent; /* Color de fondo del botón */
-    color: black; /* Color del texto del botón */
-    font-size: 40px; /* Tamaño del texto del botón */
-    border: none; /* Borde del botón */
-    cursor: pointer; /* Cursor al pasar sobre el botón */
-    padding: 15px; /* Espaciado interno del botón */
+    background-color: transparent; 
+    color: black;
+    font-size: 40px; 
+    border: none; 
+    cursor: pointer; 
+    padding: 15px; 
 }
 
-/* Estilos para el contenido del menú desplegable */
 .dropdown-content {
-    display: none; /* Ocultar el contenido por defecto */
-    position: absolute; /* Posición absoluta para superponer */
-    background-color: #f9f9f9; /* Color de fondo del contenido */
-    min-width: 200px; /* Ancho mínimo del contenido */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra del contenido */
-    z-index: 1; /* Z-index para estar sobre otros elementos */
+    display: none; 
+    position: absolute; 
+    background-color: #f9f9f9; 
+    min-width: 200px; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+    z-index: 1; 
 }
 
 .dropdown-content a {
-    color: black; /* Color del texto de los enlaces */
-    padding: 20px; /* Espaciado interno de los enlaces */
-    text-decoration: none; /* Quitar subrayado de los enlaces */
-    display: block; /* Mostrar en bloque para ocupar todo el ancho */
+    color: black; 
+    padding: 20px;
+    text-decoration: none; 
+    display: block; 
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1; /* Color de fondo al pasar sobre los enlaces */
+    background-color: #f1f1f1; 
 }
 
-/* Mostrar el contenido cuando se pasa el ratón sobre el botón */
 .dropdown:hover .dropdown-content {
     display: block;
 }

@@ -9,16 +9,13 @@ body {
     padding: 0;
 }
 
-
-
-
 a {
     color: white;
     text-decoration: none;
 }
 
 .logo {
-    font-size: 24px; /* Sin cambios aquí, ya es prominente */
+    font-size: 24px; 
 }
 
 .main-content {
@@ -27,67 +24,67 @@ a {
 }
 
 .settings-menu {
-    flex-basis: 250px; /* Especificamos un ancho fijo para consistencia */
-    background-color: #1f1f1f; /* Fondo oscuro */
-    color: #eaeaea; /* Texto claro */
+    flex-basis: 250px; 
+    background-color: #1f1f1f; 
+    color: #eaeaea;
     border-radius: 5px;
     margin-right: 20px;
     width: 100px;
     height: fit-content;
-    display: flex; /* Añadimos flex para alinear los elementos internos */
-    flex-direction: column; /* Elementos internos en columna */
-    align-items: center; /* Centrar los elementos en el eje cruzado */
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
 }
 
 .settings-details {
     flex-grow: 1;
-    background-color: #2b2b2b; /* Fondo oscuro para detalles */
-    color: #eaeaea; /* Texto claro */
-    padding: 20px; /* Aumentamos el padding para más espacio */
+    background-color: #2b2b2b;
+    color: #eaeaea; 
+    padding: 20px; 
     border-radius: 5px;
     height: 600px;
-    overflow: auto; /* Añadimos auto overflow para manejar contenido excesivo */
+    overflow: auto;
 }
 
-.profile-container { /* Contenedor para la foto y el menú de ajustes */
+.profile-container { 
     display: flex;
-    flex-direction: column; /* Organizar la foto y el menú en columna */
-    align-items: center; /* Centrar elementos horizontalmente */
-    width: 250px; /* Definir un ancho fijo para la sección lateral */
-    padding-right: 20px; /* Espaciado entre este contenedor y los detalles */
+    flex-direction: column; 
+    align-items: center; 
+    width: 250px;
+    padding-right: 20px; 
 }
 
 .settings-menu {
-    background-color: #1f1f1f; /* Fondo oscuro */
+    background-color: #1f1f1f; 
     padding: 20px;
     color: white;
     border-radius: 5px;
-    width: 200px; /* Ajusta el ancho al contenedor */
-    margin-top: 20px; /* Espacio después de la foto de perfil */
+    width: 200px; 
+    margin-top: 20px;
     margin-left: 30px;
 }
 
 .settings-details, .publications {
     flex-grow: 1;
-    background-color: #2b2b2b; /* Fondo oscuro */
-    color: #eaeaea; /* Texto claro */
+    background-color: #2b2b2b; 
+    color: #eaeaea;
     padding: 20px;
     border-radius: 5px;
     width: 1150px;
-    margin-left: 20px; /* Espacio a la izquierda para separar del menú */
+    margin-left: 20px; 
 }
 
 .publications {
     flex-grow: 1;
-    background-color: #2b2b2b; /* Fondo oscuro */
-    color: #eaeaea; /* Texto claro */
+    background-color: #2b2b2b; 
+    color: #eaeaea; 
     border-radius: 5px;
     height: 450px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;  
-    margin-top: 25px; /* Espacio entre detalles y publicaciones si están en la misma columna */
+    margin-top: 25px; 
 }
 
 img {
@@ -101,8 +98,8 @@ img {
 }
 
 .card {
-    background-color: #333333; /* Fondo oscuro para las tarjetas */
-    color: #eaeaea; /* Texto claro */
+    background-color: #333333; 
+    color: #eaeaea;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     margin-bottom: 20px;
     transition: box-shadow 0.3s ease;
@@ -115,7 +112,7 @@ img {
 }
 
 .card a {
-    color: #eaeaea; /* Texto claro para los enlaces en las tarjetas */
+    color: #eaeaea;
     text-decoration: none;
     display: block;
     padding: 10px;

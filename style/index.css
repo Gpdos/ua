@@ -17,28 +17,27 @@ main {
 }
 
 body {
-    font-family: 'texto', sans-serif; /* Aplica tu fuente personalizada como principal y sans-serif como secundaria */
-    user-select: none;  /* Evita que el texto sea seleccionable */
-    cursor: default;  /* Mantiene el cursor en forma predeterminada y no como cursor de texto */
+    font-family: 'texto', sans-serif; 
+    user-select: none;  
+    cursor: default;  
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'titulos', serif; /* Especifica otra fuente para los títulos si ya la tienes definida */
-    user-select: none;  /* Evita que el texto sea seleccionable */
-    cursor: default;  /* Mantiene el cursor en forma predeterminada y no como cursor de texto */
+    font-family: 'titulos', serif; 
+    user-select: none;  
+    cursor: default; 
 }
 
 
 #body_izq {
     float: left;
     width: 34%;
-    /* height: ; */
     padding: 15px;
     background-color: var(--azulOscuro);
     margin-right: 20px;
     font-family: texto;
-    user-select: none;  /* Evita que el texto sea seleccionable */
-    cursor: default;  /* Mantiene el cursor en forma predeterminada y no como cursor de texto */
+    user-select: none;  
+    cursor: default; 
 }
 
 #body_der {
@@ -46,9 +45,8 @@ h1, h2, h3, h4, h5, h6 {
     width: 66%;
     height: 100%;
     padding: 15px;
-    /* background-color: yellow; */
-    user-select: none;  /* Evita que el texto sea seleccionable */
-    cursor: default;  /* Mantiene el cursor en forma predeterminada y no como cursor de texto */
+    user-select: none;  
+    cursor: default;  
 }
 
 
@@ -72,7 +70,6 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 70px;
         padding-top: 100px;
         color: white;
-        /* height: 100%; */
     }
 
     .titulo {
@@ -96,14 +93,12 @@ h1, h2, h3, h4, h5, h6 {
 #div_abj {
     width: auto;
     height: 34%;
-    /* background-color: blue; */
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
     justify-content: space-around;
-    /* margin-right: 50px; */
-    user-select: none;  /* Evita que el texto sea seleccionable */
-    cursor: default;  /* Mantiene el cursor en forma predeterminada y no como cursor de texto */
+    user-select: none;  
+    cursor: default; 
 
     div {
         margin-inline: 40px;
@@ -144,8 +139,8 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     font-size: 30px;
     margin-bottom: 10px;
-    user-select: none;  /* Evita que el texto sea seleccionable */
-    cursor: default;  /* Mantiene el cursor en forma predeterminada y no como cursor de texto */
+    user-select: none;  
+    cursor: default; 
 }
 
 .content {
@@ -155,11 +150,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
     text-decoration: none;
     font-size: 20px;
-    /* background-color: var(--azulOscuro); */
     width: 80%;
     padding-block: 10px;
     padding-inline: 20px;
-    /* margin-block: ; */
     line-height: 50px;
 }
 
@@ -168,22 +161,21 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .content-block img {
-    width: 100%; /* Ajusta esto según necesites */
+    width: 100%; 
     height: 100px;
     filter: blur(2px);
 }
 
 .content-block span {
-    position: absolute; /* Posiciona el span de forma absoluta */
-    left: 0; /* Alinea el span a la izquierda */
-    top: 0; /* Opcional: Puedes ajustar esta propiedad según sea necesario */
+    position: absolute; 
+    left: 0; 
+    top: 0; 
     color: white;
-    font-size: 30px; /* Tamaño del texto */
-    text-shadow: 1px 1px 2px black; /* Opcional: sombra para mejorar la legibilidad */
+    font-size: 30px; 
+    text-shadow: 1px 1px 2px black; 
     user-select: none;
     cursor: default;
-    pointer-events: auto;  /* Habilita eventos de clic */
-
+    pointer-events: auto;  
 }
 
 .content-block {
@@ -196,26 +188,21 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgb(0, 203, 243);
     width: 100%;
     height: 100px;
-    /* padding-block: 10px;
-    padding-inline: 20px; */
     margin-block: 10px;
-    /* margin-inline: 0; */
     margin-block: 30px;
     user-select: none;
     cursor: default;
 }
 
 .left-align {
-    position: absolute; /* Posiciona el elemento de forma absoluta */
-    left: 0; /* Alinea el elemento a la izquierda */
-    top: 0; /* Opcional: puedes ajustar esto según sea necesario */
+    position: absolute; 
+    left: 0; 
+    top: 0; 
     color: white;
-    font-size: 30px; /* Tamaño del texto */
-    text-shadow: 1px 1px 2px black; /* Opcional: sombra para mejorar la legibilidad */
+    font-size: 30px; 
+    text-shadow: 1px 1px 2px black; 
 }
 
-
-/* EXTRAS */
 
 
 .card {
@@ -256,3 +243,16 @@ h1, h2, h3, h4, h5, h6 {
     color: gold;
     font-size: 16px;
 }
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .settings-menu,
+    .settings-details, 
+    .publications {
+        width: 100%;
+    }
+}
+ 

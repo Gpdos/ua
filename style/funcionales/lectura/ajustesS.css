@@ -1,11 +1,10 @@
 @import "styleS.css";
 
-/* Estilos generales */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    font-size: 20px; /* Aumento del tamaño de la letra */
+    font-size: 20px; 
 }
 
 .main-content {
@@ -14,13 +13,12 @@ body {
     padding: 20px;
 }
 
-/* Estilos del perfil */
 .profile-container {
     width: 300px;
     background-color: #003366;
     padding: 20px;
     box-sizing: border-box;
-    float: left; /* Agregado para alinear a la izquierda */
+    float: left; 
     margin-right: 20px;
     margin-left: 0;
     color: aquamarine;
@@ -41,7 +39,7 @@ body {
 }
 
 .settings-menu li {
-    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+    margin-bottom: 10px; 
 }
 
 .settings-menu a {
@@ -51,53 +49,49 @@ body {
 }
 
 .settings-menu ul li a {
-    color: rgb(255, 255, 255); /* Color del texto negro */
-    text-decoration: none; /* Quita el subrayado del enlace */
+    color: rgb(255, 255, 255); 
+    text-decoration: none; 
 }
 
 .settings-menu a:hover {
     color: #007bff;
 }
 
-/* Estilos de secciones centrales */
 .seccionesCen {
     padding: 20px;
     background-color: #003366;
     box-sizing: border-box;
-    margin-left: 340px; /* Espacio para el perfil */
-    margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
+    margin-left: 340px;
+    margin-bottom: 20px; 
     color: #fff;
 }
 
-/* Estilos de los detalles de configuración */
 .settings-details h2 {
     font-size: 40px;
     margin-bottom: 10px;
 }
 
 .settings-details p {
-    margin-bottom: 10px; /* Espacio entre párrafos */
+    margin-bottom: 10px; 
     font-size: 20px;
 }
 
-/* Estilos de las publicaciones */
 .publications {
     padding: 20px;
     background-color: #003366;
     box-sizing: border-box;
-    margin-left: 340px; /* Espacio para el perfil */
-    margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
+    margin-left: 340px; 
+    margin-bottom: 20px;
     font-size: 20px;
     color: #fff;
 }
 
-/* Agrega estos estilos al final de tu archivo CSS */
 
 .publication-card {
-    background-color: #bbefff; /* Color de fondo amarillo */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 15px; /* Espaciado interno */
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    background-color: #bbefff; 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin-bottom: 20px; 
     font-size: 15px;
     color: #000;
 }
@@ -107,7 +101,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    margin-bottom: 20px; 
 }
 
 .card h2 {
@@ -116,10 +110,9 @@ body {
 }
 
 .card p {
-    margin-bottom: 10px; /* Espacio entre párrafos */
+    margin-bottom: 10px; 
 }
 
-/* Estilos del pie de página */
 #footer {
     text-align: center;
     margin-top: 20px;

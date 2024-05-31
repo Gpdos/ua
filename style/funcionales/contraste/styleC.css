@@ -3,7 +3,6 @@
     src: url(../letras/letra_titulo.ttf);
 }
 
-/* Fuente texto */
 @font-face {
     font-family: texto;
     src: url(../letras/Texto.ttf);
@@ -27,36 +26,36 @@ main {
 }
 
 :root {
-    --main-bg-color: black; /* Fondo negro */
-    --azulOscuro: black; /* Negro */
-    --azulNormal: black; /* Negro */
-    --azulClaro: white; /* Blanco */
-    --blancoHueso: white; /* Blanco puro */
+    --main-bg-color: black; 
+    --azulOscuro: black; 
+    --azulNormal: black; 
+    --azulClaro: white; 
+    --blancoHueso: white; 
 }
 
 .sombra {
-    box-shadow: 5px 5px 10px white; /* Sombra blanca */
+    box-shadow: 5px 5px 10px white; 
 }
 
 body {
     font-family: Helvetica, sans-serif;
-    background: linear-gradient(to bottom, #000000, #000000); /* Fondo negro */
+    background: linear-gradient(to bottom, #000000, #000000); 
     height: 100%;
-    color: white; /* Texto en blanco */
+    color: white; 
 }
 
 footer {
     margin-top: 10px;
-    background-color: black; /* Fondo negro */
-    color: white; /* Texto blanco */
+    background-color: black; 
+    color: white; 
     text-align: center;
     padding: 10px 0;
 }
 
 /* HEADER */
 header {
-    background-color: black; /* Fondo negro */
-    color: white; /* Texto blanco */
+    background-color: black; 
+    color: white; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,24 +74,21 @@ header {
     }
 }
 
-/* Estilos base para los enlaces en el nav */
 header nav a {
-    display: inline-block;  /* O puedes usar flex si los enlaces están en un flex container */
-    padding: 10px 15px;     /* Ajusta el padding según el diseño */
-    color: white;           /* Texto blanco */
-    text-decoration: none;  /* Elimina subrayado de enlaces */
-    transition: background-color 0.3s ease; /* Transición suave del fondo */
+    display: inline-block;  
+    padding: 10px 15px;     
+    color: white;           
+    text-decoration: none;  
+    transition: background-color 0.3s ease; 
     border-radius: 10px;
 }
 
-/* Estilos para hover */
 header nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo claro al pasar el ratón */
+    background-color: rgba(255, 255, 255, 0.2); 
 }
 
-/* Opcional: estilos para los iconos si son parte de un sprite o fuente de iconos */
 header nav a i {
-    margin-right: 5px;  /* Espacio entre el icono y el texto, si necesario */
+    margin-right: 5px;  
 }
 
 #izq {
@@ -112,7 +108,7 @@ header nav a i {
 
 #cen {
     float: center;
-    background-color: var(--azulNormal); /* Negro */
+    background-color: var(--azulNormal);
     width: 70%;
     margin-right: auto;
     display: flex;
@@ -120,7 +116,7 @@ header nav a i {
     align-items: center;
     padding-block: 20px;
     font-size: 35px;
-    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.453); /* Sombra blanca */
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.453); 
 }
 
 #dch {
@@ -129,7 +125,7 @@ header nav a i {
     text-align: center;
     font-family: titulos;
     font-size: 20px;
-    text-shadow: 2px 2px 4px white; /* Sombra blanca */
+    text-shadow: 2px 2px 4px white; 
     line-height: 10px;
 }
 
@@ -140,7 +136,7 @@ header nav a i {
 #label_header {
     box-sizing: border-box;
     display: inline-block;
-    border: 3px solid white; /* Borde blanco */
+    border: 3px solid white; 
     border-radius: 40px;
     width: 80px;
     height: 80px;
@@ -148,62 +144,59 @@ header nav a i {
     font-weight: bold;
     text-align: center;
     user-select: none;
-    font-size: 54px; /* Tamaño de las rayas */
-    color: white; /* Texto blanco */
+    font-size: 54px; 
+    color: white; 
 }
 
 .link_menu {
     display: block;
-    background: black; /* Fondo negro */
-    color: white; /* Texto blanco */
+    background: black; 
+    color: white; 
     margin: 0;
     padding: 10px;
     width: fit-content;
     list-style: none;
-    border-bottom: 1px solid white; /* Borde blanco */
+    border-bottom: 1px solid white; 
 }
 
 .fa-solid {
-    color: white !important; /* Texto blanco */
+    color: white !important; 
 }
 
-/* Estilos para el menú desplegable */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropbtn {
-    background-color: transparent; /* Fondo transparente */
-    color: white; /* Texto blanco */
-    font-size: 40px; /* Tamaño del texto */
-    border: none; /* Sin borde */
-    cursor: pointer; /* Cursor de puntero */
-    padding: 15px; /* Espaciado interno */
+    background-color: transparent; 
+    color: white; 
+    font-size: 40px; 
+    border: none; 
+    cursor: pointer; 
+    padding: 15px; 
 }
 
-/* Estilos para el contenido del menú desplegable */
 .dropdown-content {
-    display: none; /* Ocultar contenido por defecto */
-    position: absolute; /* Posición absoluta */
-    background-color: black; /* Fondo negro */
-    min-width: 200px; /* Ancho mínimo */
-    box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.2); /* Sombra blanca */
-    z-index: 1; /* Z-index */
+    display: none; 
+    position: absolute; 
+    background-color: black; 
+    min-width: 200px; 
+    box-shadow: 0px 8px 16px 0px rgba(255, 255, 255, 0.2); 
+    z-index: 1; 
 }
 
 .dropdown-content a {
-    color: white; /* Texto blanco */
-    padding: 20px; /* Espaciado interno */
-    text-decoration: none; /* Quitar subrayado */
-    display: block; /* Mostrar en bloque */
+    color: white; 
+    padding: 20px; 
+    text-decoration: none; 
+    display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #444444; /* Fondo gris al pasar el ratón */
+    background-color: #444444; 
 }
 
-/* Mostrar el contenido cuando se pasa el ratón sobre el botón */
 .dropdown:hover .dropdown-content {
     display: block;
 }

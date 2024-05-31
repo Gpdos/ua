@@ -133,25 +133,23 @@ main {
 .button {
     display: inline-block;
     background-color:black;
-    color: white; /* Color del texto */
+    color: white; 
     font-size: 16px;
-    padding: 12px 24px; /* Espaciado interno */
+    padding: 12px 24px; 
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el color de fondo y el color del texto */
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Estilo para cuando se pasa el ratón sobre el botón */
 .button:hover {
-    background-color: #ffffff; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
-    color: rgb(0, 0, 0); /* Cambio de color del texto a blanco */
+    background-color: #ffffff; 
+    color: rgb(0, 0, 0); 
 }
 
-/* Estilo específico para el botón en la página de editar documento */
 #body_dch .button {
     display: block;
-    margin-top: 20px; /* Añadir margen superior para separar el botón */
-    width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+    margin-top: 20px; 
+    width: 100%; 
 }

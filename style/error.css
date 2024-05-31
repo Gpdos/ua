@@ -4,7 +4,6 @@
     src: url(../letras/letra_titulo.ttf);
 }
 
-/* Fuente texto */
 @font-face {
     font-family: texto;
     src: url(../letras/Texto.ttf);
@@ -19,57 +18,56 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    /*font-family: 'Poetsen One', sans-serif;*/
-    background-color: #f0f0f0; /* Color de fondo de la página */
-    color: #333; /* Color del texto */
+    background-color: #f0f0f0; 
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
 .paginacentral {
     text-align: center;
-    margin-top: 50px; /* Ajusta el margen superior según sea necesario */
-    background-color: white; /* Color de fondo del contenedor */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra al contenedor */
-    padding: 20px; /* Añade un relleno al contenedor */
-    border-radius: 8px; /* Añade bordes redondeados al contenedor */
+    margin-top: 50px; 
+    background-color: white; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    border-radius: 8px; 
     width: 80%;
     max-width: 600px;
-    margin: 50px auto; /* Centra el contenedor horizontalmente */
+    margin: 50px auto; 
 }
 
 .paginacentral form {
-    margin-bottom: 20px; /* Agrega un margen inferior entre formularios */
+    margin-bottom: 20px;
 }
 
 .paginacentral h2 {
-    font-size: 36px; /* Tamaño del título */
-    margin-bottom: 20px; /* Agrega un margen inferior */
+    font-size: 36px; 
+    margin-bottom: 20px; 
 }
 
 .paginacentral h4 {
-    font-size: 24px; /* Tamaño del subtítulo */
-    margin-bottom: 30px; /* Agrega un margen inferior */
+    font-size: 24px;
+    margin-bottom: 30px; 
 }
 
 .boton {
-    margin-top: 40px; /* Agrega un margen superior entre botones */
+    margin-top: 40px; 
     font-family: 'texto', sans-serif;
 }
 
 .boton input[type="submit"] {
     font-family: 'texto', sans-serif;
-    background-color: #007bff; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    border: none; /* Elimina el borde del botón */
-    padding: 15px 30px; /* Ajusta el relleno según sea necesario */
-    font-size: 18px; /* Tamaño del texto del botón */
-    border-radius: 5px; /* Añade bordes redondeados al botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.3s ease; /* Agrega una transición suave al color de fondo */
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    padding: 15px 30px; 
+    font-size: 18px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
 
 .boton input[type="submit"]:hover {
-    background-color: #0056b3; /* Cambia el color de fondo al pasar el ratón sobre el botón */
+    background-color: #0056b3; 
     font-family: 'texto', sans-serif;
 }

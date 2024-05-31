@@ -1,24 +1,22 @@
 @import "styleC.css";
 
-/* Estilos generales */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #ffffff; /* Fondo blanco */
-    color: #000; /* Texto negro */
+    background-color: #ffffff; 
+    color: #000; 
 }
 
-/* Estilos del perfil */
 .profile-container {
     width: 300px;
-    background-color: #ffffff; /* Fondo negro */
+    background-color: #ffffff; 
     padding: 20px;
     box-sizing: border-box;
-    float: left; /* Alinear a la izquierda */
+    float: left; 
     margin-right: 20px;
     margin-left: 0;
-    color: #000000; /* Texto blanco */
+    color: #000000; 
 }
 
 .settings-menu {
@@ -36,72 +34,68 @@ body {
 }
 
 .settings-menu li {
-    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+    margin-bottom: 10px; 
 }
 
 .settings-menu a {
-    color: #000000; /* Texto blanco */
+    color: #000000; 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .settings-menu ul li a {
-    color: #000000; /* Texto blanco */
-    text-decoration: none; /* Sin subrayado */
+    color: #000000; 
+    text-decoration: none; 
 }
 
 .settings-menu a:hover {
-    color: #007bff; /* Enlace en azul */
+    color: #007bff; 
 }
 
-/* Estilos de secciones centrales */
 .seccionesCen {
     padding: 20px;
-    background-color: #ffffff; /* Fondo negro */
+    background-color: #ffffff; 
     box-sizing: border-box;
-    margin-left: 340px; /* Espacio para el perfil */
-    margin-bottom: 20px; /* Espacio entre secciones y publicaciones */
-    color: #000000; /* Texto blanco */
+    margin-left: 340px; 
+    margin-bottom: 20px; 
+    color: #000000; 
 }
 
-/* Estilos de los detalles de configuración */
 .settings-details h2 {
     font-size: 40px;
     margin-bottom: 10px;
 }
 
 .settings-details p {
-    margin-bottom: 10px; /* Espacio entre párrafos */
+    margin-bottom: 10px; 
     font-size: 20px;
 }
 
-/* Estilos de las publicaciones */
 .publications {
     padding: 20px;
-    background-color: #ffffff; /* Fondo negro */
+    background-color: #ffffff;
     box-sizing: border-box;
-    margin-left: 340px; /* Espacio para el perfil */
-    margin-bottom: 20px; /* Espacio entre secciones y publicaciones */
+    margin-left: 340px; 
+    margin-bottom: 20px; 
     font-size: 20px;
-    color: #000000; /* Texto blanco */
+    color: #000000; 
 }
 
-/* Estilos de las tarjetas de publicación */
 .publication-card {
-    background-color: #131313; /* Fondo blanco */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 15px; /* Espaciado interno */
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    background-color: #131313; 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin-bottom: 20px; 
     font-size: 15px;
-    color: #ffffff; /* Texto negro */
+    color: #ffffff; 
 }
 
 .card {
-    background-color: #000000; /* Fondo blanco */
-    border-radius: 5px; /* Bordes redondeados */
+    background-color: #000000; 
+    border-radius: 5px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    margin-bottom: 20px; 
 }
 
 .card h2 {
@@ -110,10 +104,9 @@ body {
 }
 
 .card p {
-    margin-bottom: 10px; /* Espacio entre párrafos */
+    margin-bottom: 10px; 
 }
 
-/* Estilos del pie de página */
 #footer {
     text-align: center;
     margin-top: 20px;

@@ -1,22 +1,22 @@
 @import "styleC.css";
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000; /* Fondo negro puro */
-    color: #ffffff; /* Texto blanco puro */
+    background-color: #000000; 
+    color: #ffffff; 
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Establece la altura mínima del cuerpo como el 100% de la altura de la ventana */
+    min-height: 100vh; 
 }
 
 .container {
-    flex-grow: 1; /* Hace que el contenedor principal ocupe el espacio restante */
+    flex-grow: 1; 
 }
 
 header {
-    background-color: #000000; /* Fondo negro puro */
-    color: #ffffff; /* Texto blanco puro */
+    background-color: #000000; 
+    color: #ffffff; 
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -29,7 +29,7 @@ nav ul {
 }
 
 nav a {
-    color: #ffffff; /* Texto blanco puro */
+    color: #ffffff; 
     text-decoration: none;
     margin: 0 15px;
 }
@@ -49,9 +49,9 @@ nav a {
     align-items: flex-start;
     justify-content: flex-start;
     flex-basis: 20%;
-    background-color: #000000; /* Fondo negro puro */
+    background-color: #000000; 
     padding: 10px;
-    color: #ffffff; /* Texto blanco puro */
+    color: #ffffff; 
     border-radius: 5px;
     margin-right: 20px;
     height: 600px;
@@ -72,14 +72,13 @@ nav a {
     margin-right: 5px;
 }
 
-/* Estilos de los resultados de búsqueda */
 .search-results {
-    width: 100%; /* Ocupa todo el ancho disponible */
+    width: 100%; 
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;
-    background-color: #000000; /* Fondo negro puro */
+    background-color: #000000; 
 }
 
 #seccionesCen {
@@ -94,7 +93,7 @@ nav a {
 }
 
 .card {
-    background-color: #ffffff; /* Fondo blanco puro */
+    background-color: #ffffff; 
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     margin-bottom: 20px;
     transition: box-shadow 0.3s ease;
@@ -109,7 +108,7 @@ nav a {
 }
 
 .card a {
-    color: #000000; /* Texto negro puro */
+    color: #000000; 
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -125,23 +124,21 @@ nav a {
 }
 
 .card-content .stars {
-    color: orange; /* Cambiar color de estrellas si es necesario */
+    color: orange; 
 }
 
-/* Estilos del pie de página */
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #000000; /* Fondo negro puro */
-    color: #ffffff; /* Texto blanco puro */
+    background-color: #000000; 
+    color: #ffffff; 
     padding: 10px 20px;
 }
 
-/* Estilos del formulario de búsqueda */
 form {
     height: 100%;
-    width: 25%; /* Ancho del formulario */
-    margin: auto; /* Centrar el formulario horizontalmente */
-    padding: 10px; /* Añadir un espacio interno al formulario */
+    width: 25%; 
+    margin: auto; 
+    padding: 10px; 
 }

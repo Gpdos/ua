@@ -25,27 +25,27 @@ nav a {
 .left-column,
 .right-column {
     flex: 1;
-    height: 100vh; /* Establece la altura al 100% del viewport */
-    margin: 0 10px; /* Ajusta el margen horizontal dentro de cada columna */
+    height: 100vh; 
+    margin: 0 10px; 
     padding: 20px;
 }
 
 .left-column {
-    background-color: #003366; /* Color del rectángulo izquierdo */
-    max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
-    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
-    scroll-behavior: smooth; /* Desplazamiento suave */
+    background-color: #003366; 
+    max-height: calc(100vh); 
+    overflow-y: hidden; 
+    scroll-behavior: smooth; 
 }
 
 .left-column:hover {
-    overflow-y: scroll; /* Muestra la barra de desplazamiento vertical al pasar el ratón */
+    overflow-y: scroll; 
 }
 
 .right-column {
-    background-color: #003366; /* Color del rectángulo izquierdo */
-    max-height: calc(100vh); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados */
-    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
-    scroll-behavior: smooth; /* Desplazamiento suave */
+    background-color: #003366; 
+    max-height: calc(100vh); 
+    overflow-y: hidden; 
+    scroll-behavior: smooth; 
 }
 
 .right-column:hover {
@@ -55,77 +55,75 @@ nav a {
 
 .documents {
     display: flex;
-    flex-wrap: wrap; /* Permite que los documentos se envuelvan en varias filas */
+    flex-wrap: wrap;
 }
 
 .carousel-wrapper {
-    margin-bottom: 20px; /* Espacio entre los dos carruseles */
+    margin-bottom: 20px; 
 }
 
 .carousel {
-    display: flex; /* Permite que los documentos se desplacen horizontalmente */
-    overflow-x: auto; /* Habilita el desplazamiento horizontal */
-    scroll-snap-type: x mandatory; /* Establece el desplazamiento de desplazamiento horizontal */
-    -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento fluido en iOS */
-    scroll-behavior: smooth; /* Habilita el desplazamiento suave */
+    display: flex; 
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth; 
 }
-/* Estilos para las colecciones */
 .collection {
     background-color: #4b7eaa;
-    margin-bottom: 20px; /* Espacio entre las colecciones */
-    padding: 20px; /* Espacio interior de cada colección */
-    border-radius: 8px; /* Borde redondeado para las colecciones */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para las colecciones */
-    max-width: calc(100% - 40px); /* Ancho máximo igual al ancho del contenedor menos el espacio del padding */
-    max-height: calc(100vh - 120px); /* Altura máxima igual a la altura del viewport menos el espacio de los encabezados y el padding */
-    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
-    overflow-y: auto; /* Añade una barra de desplazamiento vertical si el contenido excede la altura máxima */
+    margin-bottom: 20px; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    max-width: calc(100% - 40px); 
+    max-height: calc(100vh - 120px); 
+    overflow-x: hidden; 
+    overflow-y: auto; 
 }
 
 
 .collection h3 {
-    margin-top: 0; /* Elimina el margen superior del nombre de la colección */
+    margin-top: 0; 
     color: #fff;
 }
 
-/* Estilos para los documentos dentro de cada colección */
 .documents {
-    display: flex; /* Permite que los documentos se muestren en línea */
-    flex-wrap: wrap; /* Permite que los documentos se envuelvan en varias filas */
-    max-width: calc(100% - 40px); /* Ajusta el ancho máximo de los documentos al ancho del contenedor menos el espacio del padding */
+    display: flex; 
+    flex-wrap: wrap; 
+    max-width: calc(100% - 40px); 
 }
 
 .work {
-    flex: 0 0 calc(33.33% - 20px); /* Establece el ancho de cada documento en aproximadamente un tercio del contenedor (con espacio entre ellos) */
-    margin-right: 20px; /* Espacio entre los documentos */
-    margin-bottom: 20px; /* Espacio entre los documentos y el siguiente renglón */
-    text-decoration: none; /* Quita el subrayado de los enlaces */
-    color: inherit; /* Hereda el color del texto */
-    max-width: calc(33.33% - 20px); /* Ajusta el ancho máximo de cada documento */
+    flex: 0 0 calc(33.33% - 20px); 
+    margin-right: 20px; 
+    margin-bottom: 20px; 
+    text-decoration: none; 
+    color: inherit; 
+    max-width: calc(33.33% - 20px);
 }
 
 .work:last-child {
-    margin-right: 0; /* Elimina el margen derecho del último documento en cada fila */
+    margin-right: 0; 
 }
 
 .work img {
-    width: 100%; /* Ajusta la imagen para que ocupe todo el ancho del contenedor */
-    border-radius: 8px; /* Borde redondeado para las imágenes */
+    width: 100%; 
+    border-radius: 8px; 
 }
 
 .work-details {
-    padding: 10px; /* Espacio interior del contenedor de detalles del trabajo */
-    background-color: #fff; /* Color de fondo del contenedor de detalles del trabajo */
-    border-radius: 8px; /* Borde redondeado para el contenedor de detalles del trabajo */
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenedor de detalles del trabajo */
+    padding: 10px; 
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .work-details h4 {
-    margin-top: 0; /* Elimina el margen superior del título del trabajo */
+    margin-top: 0; 
 }
 
 .work-details p {
-    margin: 5px 0; /* Espacio entre los párrafos dentro del contenedor de detalles del trabajo */
+    margin: 5px 0; 
 }
 
 .documents .work.hidden {
@@ -138,7 +136,7 @@ nav a {
     margin-bottom: 20px;
     transition: box-shadow 0.3s ease;
     width: 750px; 
-    margin-right: 20px; /* Agrega margen derecho para separar las tarjetas */
+    margin-right: 20px; 
 }
 
 .card:hover {
@@ -157,7 +155,7 @@ nav a {
 }
 
 .card-content {
-    padding: 10px; /* Añade un poco de espacio interno */
+    padding: 10px; 
     background-color:rgb(48, 188, 239);
 }
 
@@ -170,8 +168,8 @@ nav a {
 }
 
 .right-column .card {
-    width: 600px; /* Ajusta el ancho de las tarjetas dentro de right-column */
-    margin-right: 20px; /* Agrega margen derecho para separar las tarjetas */
+    width: 600px; 
+    margin-right: 20px; 
 }
 
 

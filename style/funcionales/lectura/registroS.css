@@ -17,12 +17,12 @@ body {
 }
 
 .bienvenido {
-    font-size: 42px; /* Aumenta el tamaño del texto */
+    font-size: 42px; 
     margin-bottom: 10px;
 }
 
 .mensaje {
-    font-size: 22px; /* Aumenta el tamaño del texto */
+    font-size: 22px; 
     margin-bottom: 30px;
 }
 
@@ -33,8 +33,8 @@ body {
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
     width: 600px;
     margin: 0 auto;
-    min-height: 500px; /* Asegúrate de que haya suficiente espacio para todos los elementos */
-    max-height: auto; /* Permite que el contenedor crezca */
+    min-height: 500px; 
+    max-height: auto; 
 }
 
 
@@ -46,13 +46,13 @@ body {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: calc(100% - 20px); /* Ajusta el ancho para incluir el padding */
+    width: calc(100% - 20px); 
     color: white;
-    font-size: 20px; /* Aumenta el tamaño del texto */
-    width: 100%; /* Cambiamos el ancho */
-    height: 50px; /* Aumenta la altura */
-    padding: 10px; /* Aumenta el relleno */
-    margin-bottom: 15px; /* Aumenta el margen inferior */
+    font-size: 20px;
+    width: 100%; 
+    height: 50px; 
+    padding: 10px; 
+    margin-bottom: 15px; 
     border: none;
     border-radius: 5px;
     background-color: #1E5E99;
@@ -66,18 +66,18 @@ input[type="checkbox"] {
 
 label {
     display: inline-block;
-    margin-bottom: 10px; /* Aumenta el margen inferior */
+    margin-bottom: 10px; 
 }
 
 .registro-btn {
     background-color: #0f3057;
     color: white;
     border: none;
-    padding: 25px 40px; /* Aumenta el relleno */
+    padding: 25px 40px; 
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    font-size: 35px; /* Aumenta el tamaño del texto */
+    font-size: 35px; 
 }
 
 .registro-btn:hover {
@@ -85,8 +85,8 @@ label {
 }
 
 .registro-btn a {
-    color: white; /* Color del texto */
-    text-decoration: none; /* Elimina el subrayado */
+    color: white; 
+    text-decoration: none; 
 }
 
 
@@ -108,8 +108,8 @@ label {
     display: block;
     width: 80%;
     margin: 20px auto;
-    padding: 15px 0; /* Aumenta el relleno */
-    font-size: 24px; /* Aumenta el tamaño del texto */
+    padding: 15px 0; 
+    font-size: 24px; 
     font-weight: bold;
     color: #fff;
     background-color: #007BFF;

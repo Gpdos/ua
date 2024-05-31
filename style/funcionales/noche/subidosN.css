@@ -14,8 +14,8 @@
     font-size: 16px;
     cursor: pointer;
     outline: none;
-    border-radius: 20px; /* Añadir bordes curvos */
-    margin: 0 10px; /* Añadir margen entre los botones */
+    border-radius: 20px; 
+    margin: 0 10px; 
     
 }
 
@@ -31,10 +31,10 @@
 
 .group-works,
 .model-3d {
-    color: rgb(255, 255, 255); /* Color del texto negro */
+    color: rgb(255, 255, 255); 
     font-size: 18px;
-    margin-top: 20px; /* Añadir margen superior */
-    margin-left: 20px; /* Añadir margen izquierdo */
+    margin-top: 20px; 
+    margin-left: 20px; 
 }
 
 .group-works h3,
@@ -46,13 +46,13 @@
 .model-3d .carousel {
     display: flex;
     overflow-x: auto;
-    scrollbar-width: none; /* Oculta la barra de desplazamiento horizontal */
-    -ms-overflow-style: none; /* Oculta la barra de desplazamiento horizontal para IE y Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 }
 
 .carousel::-webkit-scrollbar,
 .model-3d .carousel::-webkit-scrollbar {
-    display: none; /* Oculta la barra de desplazamiento horizontal en WebKit (Chrome, Safari, etc.) */
+    display: none;
 }
 
 .work,
@@ -61,16 +61,16 @@
     color: white;
     border-radius: 10px;
     margin-right: 20px;
-    flex: 0 0 auto; /* Evita que los trabajos se redimensionen */
-    width: 250px; /* Ancho de cada trabajo */
-    height: 300px; /* Altura de cada trabajo */
+    flex: 0 0 auto; 
+    width: 250px; 
+    height: 300px; 
 }
 
 .work img,
 .model-3d .work img {
-    display: block; /* Para que la imagen sea tratada como un bloque */
-    margin: 10px auto 0; /* Centra la imagen horizontalmente y agrega margen superior */
-    width: 90%; /* Ancho de la imagen */
+    display: block; 
+    margin: 10px auto 0; 
+    width: 90%; 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -83,5 +83,5 @@
 }
 
 .model-3d .work-title {
-    font-weight: bold; /* Aplica negrita al título del trabajo */
+    font-weight: bold; 
 }

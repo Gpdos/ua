@@ -9,7 +9,7 @@ main {
 }
 
 header {
-    margin-bottom: 20px; /* Ajusta el valor según sea necesario */
+    margin-bottom: 20px; 
 }
 
 #body_izq {
@@ -17,7 +17,7 @@ header {
     width: 54%;
     height: auto;
     padding: 5px;
-    background-color: #1b1b1b; /* Cambio a un azul oscuro */
+    background-color: #1b1b1b;
 }
 
 #body_dch {
@@ -47,7 +47,7 @@ header {
     height: auto;
     margin-left: auto;
     padding: 20px;
-    background-color: #1b1b1b; /* Cambio a un blanco hueso */
+    background-color: #1b1b1b; 
 }
 
 #publicacion_abj {
@@ -73,7 +73,7 @@ header {
 }
 
 #contenedorTexto {
-    background-color: #1b1b1b; /* Cambio a un blanco hueso */
+    background-color: #1b1b1b; 
     justify-content: space-around;
     padding-block: 10px;
     padding-inline: 20px;   
@@ -93,22 +93,20 @@ header {
 }
 
 
-/* Estilo para el botón */
 .button {
     display: inline-block;
     background-color: black;
-    color: white; /* Color del texto */
+    color: white; 
     font-size: 16px;
-    padding: 12px 24px; /* Espaciado interno */
+    padding: 12px 24px; 
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el color de fondo y el color del texto */
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Estilo para cuando se pasa el ratón sobre el botón */
 .button:hover {
-    background-color: #ffffff; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
-    color: rgb(0, 0, 0); /* Cambio de color del texto a blanco */
+    background-color: #ffffff; 
+    color: rgb(0, 0, 0);
 }

@@ -31,7 +31,7 @@ main {
 }
 
 #div_arr #div_flecha {
-    background-color: #ffffff; /* Blanco */
+    background-color: #ffffff; 
     width: 70px;
     height: auto;
 }
@@ -39,19 +39,19 @@ main {
 #div_arr i {
     font-size: 70px;
     padding-top: 100px;
-    color: black; /* Negro */
+    color: black; 
 }
 
 #div_arr .titulo {
     font-size: 30px;
     padding-left: 30px;
     line-height: 0;
-    color: rgb(255, 255, 255); /* Negro */
+    color: rgb(255, 255, 255); 
 }
 
 #div_arr a {
     text-decoration: none;
-    color: white; /* Blanco */
+    color: white; 
 }
 
 #div_abj {
@@ -66,13 +66,13 @@ main {
 #div_abj div {
     margin-inline: 40px;
     margin-block: 10px;
-    background-color: #ffffff; /* Blanco */
+    background-color: #ffffff; 
     width: 20%;
     padding: 10px;
 }
 
 #div_abj div > div {
-    background-color: #000000; /* Negro */
+    background-color: #000000; 
     width: auto;
     height: 50px;
     margin-inline: auto;
@@ -83,13 +83,13 @@ main {
     margin-block: 5px;
     margin-inline: 65px;
     line-height: 38px;
-    color: black; /* Negro */
-    text-shadow: 1px 1px 8px white; /* Blanco */
+    color: black; 
+    text-shadow: 1px 1px 8px white; 
 }
 
 #div_abj a {
     text-decoration: none;
-    color: black; /* Negro */
+    color: black; 
 }
 
 #lang {
@@ -100,7 +100,7 @@ main {
     text-decoration: none;
     font-size: 30px;
     margin-bottom: 10px;
-    color: black; /* Negro */
+    color: black; 
 }
 
 .content {
@@ -114,7 +114,7 @@ main {
     padding-block: 10px;
     padding-inline: 20px;
     line-height: 50px;
-    color: black; /* Negro */
+    color: black; 
 }
 
 .content-block img {
@@ -126,9 +126,9 @@ main {
 .content-block span {
     position: absolute;
     transform: translate(0%, 0%);
-    color: black; /* Negro */
+    color: black; 
     font-size: 30px;
-    text-shadow: 1px 1px 2px white; /* Blanco */
+    text-shadow: 1px 1px 2px white; 
 }
 
 .content-block {
@@ -149,7 +149,7 @@ main {
     display: inline-block;
     margin-inline: 10px;
     padding: 10px;
-    background-color: #ffffff; /* Blanco */
+    background-color: #ffffff; 
 }
 
 .card-image {
@@ -160,13 +160,13 @@ main {
 
 .card-content {
     padding: 10px;
-    background-color: #000000; /* Negro */
+    background-color: #000000;
 }
 
 .card-content h2 {
     margin-top: 0;
     font-size: 16px;
-    color: white; /* Blanco */
+    color: white; 
 }
 
 .card-content p {

@@ -1,24 +1,22 @@
 @import "styleN.css";
 
-/* Estilos generales */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #111; /* Color de fondo oscuro */
-    color: #fff; /* Color de texto blanco */
+    background-color: #111; 
+    color: #fff; 
 }
 
-/* Estilos del perfil */
 .profile-container {
     width: 300px;
-    background-color: #151515; /* Color de fondo del perfil en modo nocturno */
+    background-color: #151515; 
     padding: 20px;
     box-sizing: border-box;
-    float: left; /* Agregado para alinear a la izquierda */
+    float: left; 
     margin-right: 20px;
     margin-left: 0;
-    color: aquamarine; /* Mantenido el color original para el texto */
+    color: aquamarine; 
 }
 
 .settings-menu {
@@ -36,72 +34,68 @@ body {
 }
 
 .settings-menu li {
-    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+    margin-bottom: 10px; 
 }
 
 .settings-menu a {
-    color: #bbb; /* Color de texto gris claro */
+    color: #bbb; 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .settings-menu ul li a {
-    color: #fff; /* Color de texto blanco */
-    text-decoration: none; /* Quita el subrayado del enlace */
+    color: #fff; 
+    text-decoration: none; 
 }
 
 .settings-menu a:hover {
     color: #007bff;
 }
 
-/* Estilos de secciones centrales */
 .seccionesCen {
     padding: 20px;
-    background-color: #151515; /* Color de fondo de seccionesCen en modo nocturno */
+    background-color: #151515; 
     box-sizing: border-box;
-    margin-left: 340px; /* Espacio para el perfil */
-    margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
+    margin-left: 340px;
+    margin-bottom: 20px;
     color: #fff;
 }
 
-/* Estilos de los detalles de configuración */
 .settings-details h2 {
     font-size: 40px;
     margin-bottom: 10px;
 }
 
 .settings-details p {
-    margin-bottom: 10px; /* Espacio entre párrafos */
+    margin-bottom: 10px; 
     font-size: 20px;
 }
 
-/* Estilos de las publicaciones */
 .publications {
     padding: 20px;
-    background-color: #151515; /* Color de fondo de publications en modo nocturno */
+    background-color: #151515; 
     box-sizing: border-box;
-    margin-left: 340px; /* Espacio para el perfil */
-    margin-bottom: 20px; /* Agregar espacio entre seccionesCen y publications */
+    margin-left: 340px;
+    margin-bottom: 20px;
     font-size: 20px;
     color: #fff;
 }
 
-/* Estilos de las tarjetas de publicación */
 .publication-card {
-    background-color: #333; /* Color de fondo de la tarjeta en modo nocturno */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 15px; /* Espaciado interno */
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    background-color: #333; 
+    border-radius: 5px; 
+    padding: 15px;
+    margin-bottom: 20px; 
     font-size: 15px;
     color: #fff;
 }
 
 .card {
-    background-color: #333; /* Color de fondo de la tarjeta en modo nocturno */
-    border-radius: 5px; /* Bordes redondeados */
+    background-color: #333; 
+    border-radius: 5px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    margin-bottom: 20px; /* Espacio entre tarjetas */
+    margin-bottom: 20px; 
 }
 
 .card h2 {
@@ -110,10 +104,9 @@ body {
 }
 
 .card p {
-    margin-bottom: 10px; /* Espacio entre párrafos */
+    margin-bottom: 10px; 
 }
 
-/* Estilos del pie de página */
 #footer {
     text-align: center;
     margin-top: 20px;

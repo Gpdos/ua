@@ -1,30 +1,25 @@
-/* Importación de estilos adicionales */
 @import "styleS.css";
 
-/* Estilos del cuerpo */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Cambio leve para un gris más claro */
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    font-size: 19px; /* Tamaño de fuente más grande */
+    font-size: 19px; 
 }
 
-/* Estilos para enlaces */
 a {
     color: white;
     text-decoration: none;
 }
 
-/* Estilos para el contenido principal */
 .main-content {
     display: flex;
     padding: 20px;
 }
 
-/* Menú de configuración */
 .settings-menu {
-    flex-basis: 250px; /* Ancho fijo para consistencia */
+    flex-basis: 250px; 
     background-color: #003366;
     color: white;
     border-radius: 5px;
@@ -36,37 +31,33 @@ a {
     align-items: center;
 }
 
-/* Detalles de configuración */
 .settings-details {
     flex-grow: 1;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 5px;
     height: 600px;
-    overflow: auto; /* Manejar contenido excesivo */
+    overflow: auto; 
 }
 
-/* Contenedor de perfil */
 .profile-container {
     display: flex;
-    flex-direction: column; /* Organizar la foto y el menú en columna */
-    align-items: center; /* Centrar elementos horizontalmente */
-    width: 250px; /* Ancho fijo para la sección lateral */
-    padding-right: 20px; /* Espaciado entre este contenedor y los detalles */
+    flex-direction: column; 
+    align-items: center; 
+    width: 250px; 
+    padding-right: 20px;
 }
 
-/* Menú de configuración */
 .settings-menu {
     background-color: #003366;
     padding: 20px;
     color: white;
     border-radius: 5px;
-    width: 200px; /* Ajusta el ancho al contenedor */
-    margin-top: 20px; /* Espacio después de la foto de perfil */
+    width: 200px; 
+    margin-top: 20px; 
     margin-left: 30px;
 }
 
-/* Detalles de configuración y publicaciones */
 .settings-details, .publications {
     flex-grow: 1;
     background-color: #003366;
@@ -74,10 +65,9 @@ a {
     border-radius: 5px;
     color: white;
     width: 1150px;
-    margin-left: 20px; /* Espacio a la izquierda para separar del menú */
+    margin-left: 20px; 
 }
 
-/* Publicaciones */
 .publications {
     flex-grow: 1;
     color: white;
@@ -88,10 +78,9 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;
-    margin-top: 25px; /* Espacio entre detalles y publicaciones */
+    margin-top: 25px;
 }
 
-/* Estilos para tarjetas */
 .card {
     background-color: rgb(48, 188, 239);
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -112,12 +101,10 @@ a {
     padding: 10px;
 }
 
-/* Contenido de la tarjeta */
 .card-content h2 {
     margin-top: 0;
 }
 
-/* Estrellas en el contenido de la tarjeta */
 .card-content .stars {
     color: orange;
 }

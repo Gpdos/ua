@@ -8,11 +8,11 @@ main {
 #body_izq {
     float: left;
     width: 34%;
-    /* height: ; */
     padding: 15px;
     background-color: var(--azulOscuro);
     margin-right: 20px;
 }
+
 @import "style.css";
 
 main {
@@ -23,7 +23,6 @@ main {
 #body_izq {
     float: left;
     width: 34%;
-    /* height: ; */
     padding: 15px;
     background-color: var(--azulOscuro);
     margin-right: 20px;
@@ -34,7 +33,6 @@ main {
     width: 66%;
     height: 100%;
     padding: 15px;
-    /* background-color: yellow; */
 }
 
 
@@ -48,17 +46,16 @@ main {
     align-items: center;
 
 
-    #div_flecha{
+    #div_flecha {
         background-color: black;
         width: 70px;
         height: auto;
     }
 
-    i{
+    i {
         font-size: 70px;
         padding-top: 100px;
         color: white;
-        /* height: 100%; */
     }
 
     .titulo {
@@ -68,10 +65,10 @@ main {
         color: white;
     }
 
-    a{
+    a {
         text-decoration: none;
         color: black;
-    
+
     }
 }
 
@@ -80,12 +77,10 @@ main {
 #div_abj {
     width: auto;
     height: 34%;
-    /* background-color: blue; */
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
     justify-content: space-around;
-    /* margin-right: 50px; */
 
     div {
         margin-inline: 40px;
@@ -97,12 +92,13 @@ main {
     }
 
     div>div {
-        background-color:var(--azulClaro);
+        background-color: var(--azulClaro);
         width: auto;
         height: 50px;
         margin-inline: auto;
         margin-block: auto;
-        h2{
+
+        h2 {
             margin-block: 5px;
             margin-inline: 65px;
             line-height: 38px;
@@ -111,10 +107,10 @@ main {
         }
     }
 
-    a{
+    a {
         text-decoration: none;
         color: white;
-    
+
     }
 }
 
@@ -135,28 +131,26 @@ main {
     margin: 0 auto;
     text-decoration: none;
     font-size: 20px;
-    /* background-color: var(--azulOscuro); */
     width: 80%;
     padding-block: 10px;
     padding-inline: 20px;
-    /* margin-block: ; */
     line-height: 50px;
 }
 
 
 .content-block img {
-    width: 100%; /* Ajusta esto según necesites */
+    width: 100%;
     height: 100px;
     filter: blur(2px);
 }
 
 .content-block span {
-    position: absolute; /* Posiciona el span de forma absoluta */
-    left: 0; /* Alinea el span a la izquierda */
-    top: 0; /* Opcional: Puedes ajustar esta propiedad según sea necesario */
+    position: absolute;
+    left: 0;
+    top: 0;
     color: white;
-    font-size: 30px; /* Tamaño del texto */
-    text-shadow: 1px 1px 2px black; /* Opcional: sombra para mejorar la legibilidad */
+    font-size: 30px;
+    text-shadow: 1px 1px 2px black;
 }
 
 .content-block {
@@ -169,20 +163,17 @@ main {
     background-color: rgb(0, 203, 243);
     width: 100%;
     height: 100px;
-    /* padding-block: 10px;
-    padding-inline: 20px; */
     margin-block: 10px;
-    /* margin-inline: 0; */
     margin-block: 30px;
 }
 
 .left-align {
-    position: absolute; /* Posiciona el elemento de forma absoluta */
-    left: 0; /* Alinea el elemento a la izquierda */
-    top: 0; /* Opcional: puedes ajustar esto según sea necesario */
+    position: absolute;
+    left: 0;
+    top: 0;
     color: white;
-    font-size: 30px; /* Tamaño del texto */
-    text-shadow: 1px 1px 2px black; /* Opcional: sombra para mejorar la legibilidad */
+    font-size: 30px;
+    text-shadow: 1px 1px 2px black;
 }
 
 
@@ -227,12 +218,12 @@ main {
     color: gold;
     font-size: 16px;
 }
+
 #body_der {
     float: right;
     width: 66%;
     height: 100%;
     padding: 15px;
-    /* background-color: yellow; */
 }
 
 #div_arr {
@@ -301,7 +292,7 @@ main {
     line-height: 38px;
     color: white;
     text-shadow: 1px 1px 8px black;
-    font-size: 30px; /* Tamaño del texto */
+    font-size: 30px;
 }
 
 #div_abj a {
@@ -325,7 +316,7 @@ main {
     align-items: center;
     margin: 0 auto;
     text-decoration: none;
-    font-size: 30px; /* Tamaño del texto */
+    font-size: 30px;
     width: 80%;
     padding-block: 10px;
     padding-inline: 20px;

@@ -6,7 +6,6 @@
     src: url(../letras/letra_titulo.ttf);
 }
 
-/* Fuente texto */
 @font-face {
     font-family: texto;
     src: url(../letras/Texto.ttf);
@@ -21,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    background-color: #f4f4f4; /* Cambio leve para un gris más claro similar al de la imagen */
+    background-color: #f4f4f4; 
     margin: 0;
     padding: 0;
 }
@@ -34,7 +33,7 @@ a {
 }
 
 .logo {
-    font-size: 24px; /* Sin cambios aquí, ya es prominente */
+    font-size: 24px; 
 }
 
 .main-content {
@@ -44,7 +43,7 @@ a {
 
 
 .settings-menu {
-    flex-basis: 250px; /* Especificamos un ancho fijo para consistencia */
+    flex-basis: 250px; 
     background-color: #003366;
    
     color: white;
@@ -52,18 +51,18 @@ a {
     margin-right: 20px;
     width: 100px;
     height: fit-content;
-    display: flex; /* Añadimos flex para alinear los elementos internos */
-    flex-direction: column; /* Elementos internos en columna */
-    align-items: center; /* Centrar los elementos en el eje cruzado */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
 }
 
 .settings-details {
     flex-grow: 1;
-    background-color: #ffffff; /* Mantenemos el fondo blanco para detalles */
-    padding: 20px; /* Aumentamos el padding para más espacio */
+    background-color: #ffffff; 
+    padding: 20px;
     border-radius: 5px;
     height: 600px;
-    overflow: auto; /* Añadimos auto overflow para manejar contenido excesivo */
+    overflow: auto; 
 }
 
 .main-content {
@@ -72,21 +71,21 @@ a {
     
 }
 
-.profile-container { /* Contenedor para la foto y el menú de ajustes */
+.profile-container { 
     display: flex;
-    flex-direction: column; /* Organizar la foto y el menú en columna */
-    align-items: center; /* Centrar elementos horizontalmente */
-    width: 250px; /* Definir un ancho fijo para la sección lateral */
-    padding-right: 20px; /* Espaciado entre este contenedor y los detalles */
+    flex-direction: column; 
+    align-items: center; 
+    width: 250px; 
+    padding-right: 20px; 
 }
 
 .settings-menu {
-    background-color: #003366; /* Color del fondo ajustado para la sección */
+    background-color: #003366; 
     padding: 20px;
     color: white;
     border-radius: 5px;
-    width: 200px; /* Ajusta el ancho al contenedor */
-    margin-top: 20px; /* Espacio después de la foto de perfil */
+    width: 200px; 
+    margin-top: 20px; 
     margin-left: 30px;
 }
 
@@ -97,7 +96,7 @@ a {
     border-radius: 5px;
     color: white;
     width: 1150px;
-    margin-left: 20px; /* Espacio a la izquierda para separar del menú */
+    margin-left: 20px; 
 }
 
 
@@ -112,7 +111,7 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px;  
-    margin-top: 25px; /* Espacio entre detalles y publicaciones si están en la misma columna */
+    margin-top: 25px; 
 }
 
 img {

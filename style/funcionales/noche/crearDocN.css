@@ -55,7 +55,7 @@ main {
     height: auto;
     margin-left: auto;
     padding: 20px;
-    background-color: #000000; /* Cambio a un blanco hueso */
+    background-color: #000000; 
 }
 
 #publicacion_abj {
@@ -81,7 +81,7 @@ main {
 }
 
 #contenedorTexto {
-    background-color: #474747; /* Cambio a un blanco hueso */
+    background-color: #474747; 
     padding-block: 10px;
     padding-inline: 20px;   
 }
@@ -103,22 +103,20 @@ main {
     margin-right: 40px;
 }
 
-/* Estilo para el botón */
 .button {
     display: inline-block;
     background-color: black;
-    color: white; /* Color del texto */
+    color: white; 
     font-size: 16px;
-    padding: 12px 24px; /* Espaciado interno */
+    padding: 12px 24px; 
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el color de fondo y el color del texto */
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-/* Estilo para cuando se pasa el ratón sobre el botón */
 .button:hover {
-    background-color: #ffffff; /* Cambio de color de fondo al pasar el ratón a un azul más oscuro */
-    color: rgb(0, 0, 0); /* Cambio de color del texto a blanco */
+    background-color: #ffffff; 
+    color: rgb(0, 0, 0); 
 }

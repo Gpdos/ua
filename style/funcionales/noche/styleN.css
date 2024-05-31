@@ -27,36 +27,36 @@ main {
 }
 
 :root {
-    --main-bg-color: #1a1a1a; /* Fondo principal oscuro */
+    --main-bg-color: #1a1a1a; 
     --azulOscuro: #003366;
     --azulNormal: #333333;
     --azulClaro: #73ff75;
-    --blancoHueso: #d9d9d9; /* Blanco hueso más oscuro */
+    --blancoHueso: #d9d9d9;
 }
 
 .sombra {
-    box-shadow: 5px 5px 10px rgb(0, 0, 0); /* Sombras más oscuras */
+    box-shadow: 5px 5px 10px rgb(0, 0, 0); 
 }
 
 body {
     font-family: Helvetica, sans-serif;
-    background: linear-gradient(to bottom, #121212, #333333); /* Gradiente más oscuro */
-    color: #eaeaea; /* Texto claro */
+    background: linear-gradient(to bottom, #121212, #333333); 
+    color: #eaeaea; 
     height: 100%;
 }
 
 footer {
     margin-top: 10px;
-    background-color: #1f1f1f; /* Fondo oscuro */
-    color: #eaeaea; /* Texto claro */
+    background-color: #1f1f1f; 
+    color: #eaeaea; 
     text-align: center;
     padding: 10px 0;
 }
 
 /* HEADER */
 header {
-    background-color: #1f1f1f; /* Fondo oscuro */
-    color: #eaeaea; /* Texto claro */
+    background-color: #1f1f1f; 
+    color: #eaeaea; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,19 +76,17 @@ header input:checked~ul {
     display: block;
 }
 
-/* Estilos base para los enlaces en el nav */
 header nav a {
     display: inline-block;
     padding: 10px 15px;
-    color: #eaeaea; /* Texto claro */
+    color: #eaeaea; 
     text-decoration: none;
     transition: background-color 0.3s ease;
     border-radius: 10px;
 }
 
-/* Estilos para hover */
 header nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo claro al hacer hover */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 header nav a i {
@@ -140,7 +138,7 @@ header nav a i {
 #label_header {
     box-sizing: border-box;
     display: inline-block;
-    border: 3px solid #444; /* Bordes oscuros */
+    border: 3px solid #444; 
     border-radius: 40px;
     width: 80px;
     height: 80px;
@@ -153,20 +151,19 @@ header nav a i {
 
 .link_menu {
     display: block;
-    background: #333; /* Fondo oscuro */
-    color: #eaeaea; /* Texto claro */
+    background: #333; 
+    color: #eaeaea;
     margin: 0;
     padding: 10px;
     width: fit-content;
     list-style: none;
-    border-bottom: 1px solid #555; /* Borde oscuro */
+    border-bottom: 1px solid #555; 
 }
 
 .fa-solid {
-    color: #eaeaea !important; /* Texto claro */
+    color: #eaeaea !important; 
 }
 
-/* Estilos para el menú desplegable */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -174,7 +171,7 @@ header nav a i {
 
 .dropbtn {
     background-color: transparent;
-    color: #eaeaea; /* Texto claro */
+    color: #eaeaea; 
     font-size: 40px;
     border: none;
     cursor: pointer;
@@ -184,24 +181,23 @@ header nav a i {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #333333; /* Fondo oscuro */
+    background-color: #333333; 
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7); /* Sombra más oscura */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7); 
     z-index: 1;
 }
 
 .dropdown-content a {
-    color: #eaeaea; /* Texto claro */
+    color: #eaeaea;
     padding: 20px;
     text-decoration: none;
     display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #444444; /* Fondo más claro al hacer hover */
+    background-color: #444444; 
 }
 
-/* Mostrar el contenido cuando se pasa el ratón sobre el botón */
 .dropdown:hover .dropdown-content {
     display: block;
 }
