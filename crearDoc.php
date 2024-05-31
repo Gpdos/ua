@@ -177,9 +177,8 @@ $conn->close();
                             <input type="file" name="fileToUpload">
                         </div>
                         <div>
-                            <button type="submit" class="button">Crear Publicación</button> <button type="button"
-                                class="button" onclick="resetForm()">Limpiar Campos</button>
-
+                            <button type="submit" class="button">Crear Publicación</button>
+                            <button type="button" class="button" onclick="resetForm()">Limpiar Campos</button>
                         </div>
                     </form>
 
