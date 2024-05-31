@@ -1,19 +1,15 @@
 <?php
-// Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
 $servername = "localhost";
 $username = "admin";
 $password = "admin";
 $dbname = "ua";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar variables para almacenar los datos de la publicación
 $idPublicacion = "";
 $nombre = "";
 $carrera = "";
@@ -23,11 +19,9 @@ $fecha = "";
 $autor = "";
 $archivo = "";
 
-// Comprobar si se ha enviado un ID de publicación
 if (isset($_GET['idPublicacion'])) {
     $idPublicacion = $_GET['idPublicacion'];
 
-    // Preparar y ejecutar la consulta SQL para obtener los datos de la publicación junto con el nombre de la carrera y el tipo de trabajo
     $sql = $conn->prepare("
         SELECT p.*, e.Nombre AS nombreCarrera, t.Nombre AS nombreTipo
         FROM publicacion p
@@ -39,9 +33,7 @@ if (isset($_GET['idPublicacion'])) {
     $sql->execute();
     $result = $sql->get_result();
 
-    // Comprobar si la consulta devuelve algún resultado
     if ($result->num_rows > 0) {
-        // Obtener los datos de la publicación
         $row = $result->fetch_assoc();
         $nombre = $row['Nombre'];
         $carrera = $row['nombreCarrera'];
@@ -53,10 +45,8 @@ if (isset($_GET['idPublicacion'])) {
         echo "No se encontró la publicación.";
     }
 
-    // Cerrar la consulta
     $sql->close();
 
-    // Obtener el archivo asociado con la publicación
     $sql_archivo = $conn->prepare("SELECT contenido FROM trabajo WHERE idPubli = ?");
     $sql_archivo->bind_param("i", $idPublicacion);
     $sql_archivo->execute();
@@ -66,22 +56,19 @@ if (isset($_GET['idPublicacion'])) {
         $row_archivo = $result_archivo->fetch_assoc();
         $archivo = $row_archivo['contenido'];
     } else {
-        $archivo = ""; // No hay archivo asociado
+        $archivo = "";
     }
     $sql_archivo->close();
 } else {
     echo "No se proporcionó un ID de publicación.";
 }
 
-// Manejar la solicitud POST para agregar un comentario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comentario']) && !empty($_POST['comentario']) && isset($_POST['idPublicacion']) && !empty($_POST['idPublicacion'])) {
-    // Obtener los datos del formulario
     $comentario = $_POST['comentario'];
     $valoracionComentario = $_POST['valoracionComentario'];
     $idPublicacion = $_POST['idPublicacion'];
     $autorComentario = isset($_POST['autorComentario']) ? $_POST['autorComentario'] : 'Anonimo';
 
-    // Preparar y ejecutar la consulta SQL para insertar el comentario
     $sql = $conn->prepare("INSERT INTO comentario (publicacion, texto, autor, valoracion) VALUES (?, ?, ?, ?)");
     $sql->bind_param("issi", $idPublicacion, $comentario, $autorComentario, $valoracionComentario);
 
@@ -91,11 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['comentario']) && !empt
         echo "Error al añadir el comentario: " . $conn->error;
     }
 
-    // Cerrar la consulta
     $sql->close();
 }
 
-// Obtener los comentarios existentes para la publicación
 $comentarios = [];
 $sql_comentarios = $conn->prepare("
     SELECT c.*, u.Usuario AS autorNombre 
@@ -115,12 +100,12 @@ if ($result_comentarios->num_rows > 0) {
 
 $sql_comentarios->close();
 
-// Cerrar la conexión
 $conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Publicacion</title>
@@ -134,19 +119,22 @@ $conn->close();
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
+
 <body>
-<div id="header-container"></div>
+    <div id="header-container"></div>
     <main>
         <div id="body_izq">
             <h2 id="titulo"><?php echo htmlspecialchars($nombre); ?></h2>
             <div id="publicacion">
                 <div id="publicacion_arr">
-                    <img src="https://picsum.photos/600/400?random=<?php echo htmlspecialchars($idPublicacion); ?>" alt="Imagen publicacion" class="sombra">
+                    <img src="https://picsum.photos/600/400?random=<?php echo htmlspecialchars($idPublicacion) ; ?>"
+                        alt="Imagen publicacion" class="sombra">
                     <div id="descripcion" class="sombra">
                         <h3>Comentarios:</h3>
                         <?php foreach ($comentarios as $comentario): ?>
                             <div class="comentario">
-                                <p><strong><?php echo htmlspecialchars($comentario['autorNombre']); ?>:</strong> <?php echo htmlspecialchars($comentario['texto']); ?></p>
+                                <p><strong><?php echo htmlspecialchars($comentario['autorNombre']); ?>:</strong>
+                                    <?php echo htmlspecialchars($comentario['texto']); ?></p>
                                 <div class="stars">
                                     <span><?php echo str_repeat('⭐', htmlspecialchars($comentario['valoracion'])); ?></span>
                                 </div>
@@ -162,8 +150,10 @@ $conn->close();
                 <div id="contenedorTexto">
                     <p>Comentarios: </p>
                     <form id="comentarioForm" method="POST" action="">
-                        <textarea name="comentario" rows="10" cols="50" required placeholder="Escribe algo interesante"></textarea>
-                        <input type="hidden" name="idPublicacion" value="<?php echo htmlspecialchars($idPublicacion); ?>">
+                        <textarea name="comentario" rows="10" cols="50" required
+                            placeholder="Escribe algo interesante"></textarea>
+                        <input type="hidden" name="idPublicacion"
+                            value="<?php echo htmlspecialchars($idPublicacion); ?>">
                         <input type="hidden" name="autorComentario" id="autorComentario" value="">
                         <p>Valoracion: </p>
                         <div>
@@ -191,7 +181,8 @@ $conn->close();
                         <li>Referencias</li>
                         <li>Lazarillo de Tormes</li>
                     </ul>
-                    <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>" class="button">Editar</a>
+                    <a href="editarDoc.php?idPublicacion=<?php echo htmlspecialchars($idPublicacion); ?>"
+                        class="button">Editar</a>
                     <?php if ($archivo): ?>
                         <a href="<?php echo htmlspecialchars($archivo); ?>" target="_blank">
                             <button>Abrir Archivo</button>
@@ -203,7 +194,7 @@ $conn->close();
     </main>
     <?php require_once 'pie.php' ?>
     <script>
-        
+
         function translatePageContent(targetLanguage) {
             const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
             const textNodes = [];
@@ -238,13 +229,13 @@ $conn->close();
                     },
                     body: JSON.stringify(data)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.data && data.data.translations.length > 0) {
-                        node.textContent = data.data.translations[0].translatedText;
-                    }
-                })
-                .catch(error => console.error('Error in translation:', error));
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.data && data.data.translations.length > 0) {
+                            node.textContent = data.data.translations[0].translatedText;
+                        }
+                    })
+                    .catch(error => console.error('Error in translation:', error));
             });
         }
 
@@ -252,7 +243,7 @@ $conn->close();
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
             const style = sessionStorage.getItem('style');
-            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+            const language = sessionStorage.getItem('language'); 
 
             if (fontSize) {
                 document.documentElement.style.fontSize = fontSize;
@@ -313,7 +304,7 @@ $conn->close();
         }
 
         // Aplicar configuración cuando la página se carga
-        window.onload = function() {
+        window.onload = function () {
             applySettings();
             loadHeader();
             // Obtener userId desde sessionStorage y asignarlo al campo oculto autorComentario
@@ -321,10 +312,11 @@ $conn->close();
             if (userId) {
                 document.getElementById('autorComentario').value = userId;
             }
-            else{
+            else {
                 window.location.href = 'index.php';
             }
         };
     </script>
 </body>
+
 </html>

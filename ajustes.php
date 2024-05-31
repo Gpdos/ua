@@ -16,29 +16,26 @@
 <body>
 
 <?php
-// Realizar la conexión a la base de datos
 $servername = "localhost";
-$username = "admin"; // Asegúrate de cambiar 'admin' por el nombre de usuario real
-$password = "admin"; // Asegúrate de cambiar 'admin' por la contraseña real
+$username = "admin"; 
+$password = "admin"; 
 $dbname = "ua";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Suponiendo que el nombre de usuario se obtiene y se asigna a la variable $username de alguna forma segura
-$username = 'Javier'; // Esta línea debe ser ajustada para obtener el nombre de usuario de forma segura
 
-// Consulta SQL para recuperar publicaciones del usuario
+$username = 'Javier'; 
+
+
 $sql = "SELECT * FROM publicacion WHERE autor = '" . $username . "'";
 $result = $conn->query($sql);
 
-$number_of_posts = $result->num_rows; // Número de publicaciones
+$number_of_posts = $result->num_rows; 
 
-// Cerrar la conexión
 $conn->close();
 ?>
 <div id="header-container"></div>
@@ -70,7 +67,7 @@ $conn->close();
         <h2>Publicaciones:</h2>
         <?php if ($number_of_posts > 0): ?>
             <?php while($row = $result->fetch_assoc()): ?>
-                <div class="publication-card"> <!-- Agregamos un div para cada publicación -->
+                <div class="publication-card"> 
                     <h2><?php echo $row['Nombre']; ?></h2>
                     <p>Autor: <?php echo $row['autor']; ?></p>
                 </div>
@@ -85,7 +82,7 @@ $conn->close();
     <?php require_once 'pie.php' ?>
     <script>
         function translatePageContent(targetLanguage) {
-            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; 
             const textNodes = [];
 
             function extractTextNodes(node) {

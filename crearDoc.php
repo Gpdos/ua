@@ -1,25 +1,19 @@
 <?php
-// Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
 $servername = "localhost";
 $username = "admin";
 $password = "admin";
 $dbname = "ua";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar variables para almacenar los mensajes de error y éxito
 $error = "";
 $success = "";
 
-// Manejar la solicitud POST cuando se envía el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Procesar archivo
     if (isset($_FILES["fileToUpload"])) {
         $target_dir = "uploads/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -37,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Obtener los datos del formulario
     $nombre = $_POST['nombre'];
     $autor = $_POST['autor'];
     $carrera = $_POST['carrera'];
@@ -45,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valoracion = $_POST['valoracion'];
     $fecha = $_POST['fecha'];
 
-    // Preparar y ejecutar la consulta SQL para insertar los datos en la tabla de publicaciones
     $sql = $conn->prepare("INSERT INTO publicacion (Nombre, autor, carrera, tipo, valoracion, fecha) VALUES (?, ?, ?, ?, ?, ?)");
     $sql->bind_param("ssiiis", $nombre, $autor, $carrera, $tipo, $valoracion, $fecha);
 
@@ -55,15 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Error al crear la publicación: " . $conn->error;
     }
 
-    // Cerrar la consulta
     $sql->close();
 }
 
-// Obtener las opciones de estudio y tipo de trabajo para los selectores
 $estudios = [];
 $tipos = [];
 
-// Consulta para obtener los estudios
 $sql_estudios = "SELECT idEstudio, Nombre FROM estudio";
 $result_estudios = $conn->query($sql_estudios);
 if ($result_estudios->num_rows > 0) {
@@ -72,7 +61,6 @@ if ($result_estudios->num_rows > 0) {
     }
 }
 
-// Consulta para obtener los tipos de trabajo
 $sql_tipos = "SELECT idTipo, Nombre FROM tipotrabajo";
 $result_tipos = $conn->query($sql_tipos);
 if ($result_tipos->num_rows > 0) {
@@ -81,7 +69,6 @@ if ($result_tipos->num_rows > 0) {
     }
 }
 
-// Cerrar la conexión
 $conn->close();
 ?>
 
@@ -116,19 +103,6 @@ $conn->close();
         </div>
 
         <div id="body_dch">
-            <!-- <div id="body_arr">
-                 <div id="contenedorTexto">
-                    <p>Comentarios: </p>
-                    <textarea name="textarea" rows="10" cols="50" placeholder="Escribe algo interesante"></textarea>
-                    <p>Valoracion: </p>
-                    <div>
-                        <div class="stars">
-                            <span>⭐⭐⭐</span>
-                        </div>
-                        <button type="submit" class="button">Enviar</button>
-                    </div>
-                </div> 
-            </div> -->
             <div id="body_abj">
                 <div id="contenedorTexto">
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -200,7 +174,7 @@ $conn->close();
 
     <script>
         function translatePageContent(targetLanguage) {
-            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; 
             const textNodes = [];
 
             function extractTextNodes(node) {
@@ -252,7 +226,7 @@ $conn->close();
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
             const style = sessionStorage.getItem('style');
-            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+            const language = sessionStorage.getItem('language'); 
 
             if (fontSize) {
                 document.documentElement.style.fontSize = fontSize;

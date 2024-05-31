@@ -84,16 +84,13 @@ $conn->close();
 
         <section class="search-results">
         <?php
-        // Parámetros de conexión a la base de datos
         $servername = "localhost";
         $username = "admin";
         $password = "admin";
         $dbname = "ua";
 
-        // Crear conexión
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Verificar conexión
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -119,7 +116,6 @@ $conn->close();
         
 
         if ($result->num_rows > 0) {
-            // Almacenar y mostrar los datos de cada publicación
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="card">';
                 echo '<a href="documento.php?idPublicacion=' . htmlspecialchars($row['idPublicacion']) . '">';
@@ -139,7 +135,6 @@ $conn->close();
             echo "<p>No se encontraron resultados.</p>";
         }
 
-        // Cerrar conexión
         $conn->close();
         ?>
             

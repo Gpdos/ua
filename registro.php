@@ -1,37 +1,28 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
     $servername = "localhost";
     $username = "admin";
     $password = "admin";
     $dbname = "ua";
 
-    // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexión
     if ($conn->connect_error) {
         die("Conexión fallida: " . $conn->connect_error);
     }
 
-    // Obtener los datos del formulario
     $nombre = $_POST['nombre'];
     $correo = $_POST['email'];
     $contrasena = $_POST['password'];
 
-    // Insertar los datos en la tabla usuarios
     $sql = "INSERT INTO usuarios (Usuario, Correo, Contraseña) VALUES (?, ?, ?)";
 
-    // Preparar la declaración
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $nombre, $correo, $contrasena);
 
-    // Ejecutar la declaración
     if ($stmt->execute()) {
-        // Obtener el id del nuevo usuario
         $userId = $stmt->insert_id;
 
-        // Generar un script JavaScript para guardar el id del usuario en sessionStorage
         echo "<script>
         sessionStorage.setItem('username', '$nombre');
             sessionStorage.setItem('userId', '$userId');
@@ -42,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    // Cerrar la conexión
     $stmt->close();
     $conn->close();
 }

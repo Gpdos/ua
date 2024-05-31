@@ -44,7 +44,6 @@
             </div>
         </a>
 
-        <!-- Más trabajos aquí -->
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
             <div class="work-details">
@@ -55,7 +54,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más trabajos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -67,7 +65,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más trabajos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -79,7 +76,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más trabajos aquí -->
 
 
     </div>
@@ -99,7 +95,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más modelos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -111,7 +106,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más modelos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -123,7 +117,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más modelos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -135,7 +128,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más modelos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -147,7 +139,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más modelos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -159,7 +150,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más modelos aquí -->
 
         <a href="documento.php" class="work">
             <img src="fotos/arquitectura.jpg">
@@ -171,7 +161,6 @@
                 <p>01/01/2024</p>
             </div>
         </a>
-        <!-- Más modelos aquí -->
     </div>
 </div>
 

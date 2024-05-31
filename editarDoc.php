@@ -1,19 +1,15 @@
 <?php
-// Realizar la conexión a la base de datos (asegúrate de configurar tus credenciales)
 $servername = "localhost";
 $username = "admin";
 $password = "admin";
 $dbname = "ua";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Inicializar variables para almacenar los datos de la publicación y opciones
 $idPublicacion = "";
 $nombre = "";
 $carrera = "";
@@ -25,7 +21,6 @@ $archivo = "";
 $estudios = [];
 $tipos = [];
 
-// Obtener las opciones de estudio y tipo de trabajo para los selectores
 $sql_estudios = "SELECT idEstudio, Nombre FROM estudio";
 $result_estudios = $conn->query($sql_estudios);
 if ($result_estudios->num_rows > 0) {
@@ -42,19 +37,15 @@ if ($result_tipos->num_rows > 0) {
     }
 }
 
-// Comprobar si se ha enviado un ID de publicación
 if (isset($_GET['idPublicacion'])) {
     $idPublicacion = $_GET['idPublicacion'];
 
-    // Preparar y ejecutar la consulta SQL para obtener los datos de la publicación
     $sql = $conn->prepare("SELECT * FROM publicacion WHERE idPublicacion = ?");
     $sql->bind_param("i", $idPublicacion);
     $sql->execute();
     $result = $sql->get_result();
 
-    // Comprobar si la consulta devuelve algún resultado
     if ($result->num_rows > 0) {
-        // Obtener los datos de la publicación
         $row = $result->fetch_assoc();
         $nombre = $row['Nombre'];
         $carrera = $row['carrera'];
@@ -66,13 +57,11 @@ if (isset($_GET['idPublicacion'])) {
         echo "No se encontró la publicación.";
     }
 
-    // Cerrar la consulta
     $sql->close();
 } else {
     echo "No se proporcionó un ID de publicación.";
 }
 
-// Comprobar si se ha enviado el formulario para actualizar los datos
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idPublicacion = $_POST['idPublicacion'];
     $nombre = $_POST['nombre'];
@@ -82,29 +71,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha = $_POST['fecha'];
     $autor = $_POST['autor'];
 
-    // Preparar y ejecutar la consulta SQL para actualizar los datos de la publicación
     $sql = $conn->prepare("UPDATE publicacion SET Nombre = ?, carrera = ?, tipo = ?, valoracion = ?, fecha = ?, autor = ? WHERE idPublicacion = ?");
     $sql->bind_param("sssiisi", $nombre, $carrera, $tipo, $valoracion, $fecha, $autor, $idPublicacion);
 
     if ($sql->execute()) {
         echo "Publicación actualizada correctamente.";
-        // Redirigir a la página de detalle de la publicación
         header("Location: documento.php?idPublicacion=" . $idPublicacion);
         exit;
     } else {
         echo "Error al actualizar la publicación: " . $conn->error;
     }
 
-    // Cerrar la consulta
     $sql->close();
 }
 
-// Cerrar la conexión
 $conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Editar Publicacion</title>
@@ -118,10 +104,10 @@ $conn->close();
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fontello-10643fc5/css/fontello.css">
 </head>
+
 <body>
-<div id="header-container"></div>
+    <div id="header-container"></div>
     <main>
-        <!-- <div id="global"> -->
         <div id="body_izq">
             <h2>Editar Publicación</h2>
 
@@ -158,14 +144,17 @@ $conn->close();
             <div id="body_abj">
                 <div id="contenedorTexto">
                     <form method="POST" action="editarDoc.php">
-                        <input type="hidden" name="idPublicacion" value="<?php echo htmlspecialchars($idPublicacion); ?>">
+                        <input type="hidden" name="idPublicacion"
+                            value="<?php echo htmlspecialchars($idPublicacion); ?>">
                         <div class="editar_datos">
                             <p>Nombre de la Publicación:</p>
-                            <textarea name="nombre" rows="1" cols="30" required><?php echo htmlspecialchars($nombre); ?></textarea>
+                            <textarea name="nombre" rows="1" cols="30"
+                                required><?php echo htmlspecialchars($nombre); ?></textarea>
                         </div>
                         <div class="editar_datos">
                             <p>Autor:</p>
-                            <textarea name="autor" rows="1" cols="30" required><?php echo htmlspecialchars($autor); ?></textarea>
+                            <textarea name="autor" rows="1" cols="30"
+                                required><?php echo htmlspecialchars($autor); ?></textarea>
                         </div>
                         <div class="editar_datos">
                             <p>Estudio:</p>
@@ -191,7 +180,8 @@ $conn->close();
                         </div>
                         <div class="editar_datos">
                             <p>Valoración:</p>
-                            <input type="number" name="valoracion" min="0" max="5" required value="<?php echo htmlspecialchars($valoracion); ?>">
+                            <input type="number" name="valoracion" min="0" max="5" required
+                                value="<?php echo htmlspecialchars($valoracion); ?>">
                         </div>
                         <div class="editar_datos">
                             <p>Fecha de Publicación:</p>
@@ -204,14 +194,13 @@ $conn->close();
                 </div>
             </div>
         </div>
-        <!-- </div> -->
     </main>
 
     <?php require_once 'pie.php' ?>
 
     <script>
         function translatePageContent(targetLanguage) {
-            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; 
             const textNodes = [];
 
             function extractTextNodes(node) {
@@ -244,13 +233,13 @@ $conn->close();
                     },
                     body: JSON.stringify(data)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.data && data.data.translations.length > 0) {
-                        node.textContent = data.data.translations[0].translatedText;
-                    }
-                })
-                .catch(error => console.error('Error in translation:', error));
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.data && data.data.translations.length > 0) {
+                            node.textContent = data.data.translations[0].translatedText;
+                        }
+                    })
+                    .catch(error => console.error('Error in translation:', error));
             });
         }
 
@@ -258,7 +247,7 @@ $conn->close();
         function applySettings() {
             const fontSize = sessionStorage.getItem('fontSize');
             const style = sessionStorage.getItem('style');
-            const language = sessionStorage.getItem('language'); // Recuperar el idioma guardado
+            const language = sessionStorage.getItem('language'); 
 
             if (fontSize) {
                 document.documentElement.style.fontSize = fontSize;
@@ -319,10 +308,11 @@ $conn->close();
         }
 
         // Aplicar configuración y cargar el encabezado adecuado cuando la página se carga
-        window.onload = function() {
+        window.onload = function () {
             applySettings();
             loadHeader();
         };
     </script>
 </body>
+
 </html>

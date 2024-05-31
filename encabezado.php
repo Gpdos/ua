@@ -2,7 +2,6 @@
     <div id="izq">
         <a href="ajustes.php"><img src="fotos/gato.jpg" alt="logo" id="logo"></a>
 
-        <!-- Menú desplegable -->
         <div class="dropdown">
             <button class="dropbtn"><i class="fa-solid fa-bars"></i></button>
             <div class="dropdown-content">

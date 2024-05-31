@@ -57,7 +57,6 @@
     <option value="es">Español</option>
     <option value="en">English</option>
     <option value="fr">Français</option>
-    <!-- Añade más opciones de idioma según necesites -->
 </select>
 
                 <button type="button" onclick="saveSettings()">Guardar configuración</button>
@@ -93,7 +92,7 @@
 
 
         function translatePageContent(targetLanguage) {
-            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; // Sustituye 'TU_API_KEY' con tu clave de API real
+            const apiKey = 'AIzaSyC8OT8zQXEmeswRzRwnc_wi5lM8Fkjoqc8'; 
             const textNodes = [];
 
             function extractTextNodes(node) {
