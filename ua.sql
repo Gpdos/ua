@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2024 a las 13:33:15
+-- Tiempo de generación: 31-05-2024 a las 22:08:48
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,10 +46,14 @@ INSERT INTO `comentario` (`id`, `titulo`, `texto`, `autor`, `valoracion`, `publi
 (3, 'Inentndible', 'No comprendo nada', 3, 0, 3),
 (4, 'Genial!!', 'Ayuda mucho', 7, 0, 4),
 (5, 'Que hambre!!!', 'Me entran ganas de comer solo de leerlo', 3, 0, 5),
-(6, 'zzzzzzzzzzzz', 'zzzzzzzzzzzzzzz', 0, 1, 7),
 (7, 'Chulisimo', 'Muy vistoso', 4, 5, 9),
 (8, 'Muy interesante ', 'Me ha resultado muy util', 2, 4, 11),
-(9, 'Muy mal', 'Fatal estructurado', 1, 1, 12);
+(9, 'Muy mal', 'Fatal estructurado', 1, 1, 12),
+(11, '', 'Me ha gustado', 2, 4, 1),
+(16, '', 'Me encanta', 2, 5, 1),
+(18, '', 'Me ha parecido interesante', 7, 3, 1),
+(19, '', 'Me ha gustado mucho', 8, 3, 3),
+(20, '', 'No me ha gustado', 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -120,15 +124,18 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`idPublicacion`, `Nombre`, `carrera`, `tipo`, `valoracion`, `fecha`, `autor`) VALUES
-(1, 'Memoria Arquitectura', 4, 6, 4, '0000-00-00', 'Javier'),
-(2, 'TFG Matemáticas', 2, 1, 2, '0000-00-00', 'Francisco'),
-(3, 'TFM Diseño grafico', 6, 2, 3, '0000-00-00', 'Perez Galdos'),
-(4, 'ABP Web', 1, 3, 3, '0000-00-00', 'Perez Galdos'),
+(1, 'Memoria Arquitectura', 4, 1, 4, '2018-05-10', 'Lucía'),
+(2, 'TFG Matemáticas', 2, 2, 2, '0000-00-00', 'Francisco'),
+(3, 'TFM Diseño grafico', 6, 2, 3, '2003-04-12', 'Perez Galdos'),
+(4, 'ABP Web', 1, 1, 5, '0000-00-00', 'Perez Galdos'),
 (5, 'Presentacion menu', 5, 4, 2, '2024-05-29', 'Javier'),
 (7, 'TFM estadistica', 2, 2, 2, '0000-00-00', 'Dani'),
 (9, 'Diseño 3D', 6, 5, 5, '0000-00-00', 'Yus'),
 (11, 'Legislacion Bélgica', 3, 4, 1, '2024-05-15', 'Samuel'),
-(12, 'TFG Arquitectura', 4, 1, 1, '2024-05-01', 'Miguel');
+(12, 'TFG Arquitectura', 4, 1, 1, '2024-05-01', 'Miguel'),
+(14, 'Memoria ua', 1, 6, 4, '2024-05-22', 'Lucas'),
+(17, 'Apuntes mac', 6, 1, 3, '2020-05-05', 'Lucas'),
+(18, 'Apuntes MAC', 3, 1, 3, '2024-05-31', 'Javier');
 
 -- --------------------------------------------------------
 
@@ -203,7 +210,10 @@ INSERT INTO `usuarios` (`Id`, `Usuario`, `Contraseña`, `Correo`) VALUES
 (3, 'Dani', '1234', 'dfef@alu.ua.es'),
 (4, 'Samuel', '1234', 'srfr@alu.ua.es'),
 (5, 'Manuel', '1234', 'mala14@alu.ua.es'),
-(6, 'Miguel', '1234', 'mapj@alu.ua.es');
+(6, 'Miguel', '1234', 'mapj@alu.ua.es'),
+(7, 'Lucas', '1234', 'lucas@gmail.com'),
+(8, 'Paco', '1234', 'paco@paco'),
+(10, 'Yus', '1234', 'yus@yus');
 
 --
 -- Índices para tablas volcadas
@@ -259,7 +269,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `estudio`
@@ -277,7 +287,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idPublicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `tipotrabajo`
@@ -295,7 +305,7 @@ ALTER TABLE `trabajo`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
