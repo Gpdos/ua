@@ -8,7 +8,6 @@
                 <a href="ajustes.php"><i class="fas fa-user"></i> Mi Perfil</a>
                 <a href="colecciones.php"><i class="fas fa-folder"></i> Mis Colecciones</a>
                 <a href="config.php"><i class="fas fa-cog"></i> Configuración</a>
-                <a href="#"><i class="fas fa-question-circle"></i> Ayuda</a>
             </div>
         </div>
     </div>
